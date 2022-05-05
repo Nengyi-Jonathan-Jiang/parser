@@ -85,7 +85,7 @@ public class LR0Parser{
     }
 
     public void generateActionSetEntry(ParsingTable table, Grammar grammar, int state, ItemSet itemSet, Item item){
-        if(item.equals(endItem)){
+        if(item.isFinished() && item.getRule().equals(grammar.startRule)){
             table.setActionAccept(state, "__END__");
         }
         else if(item.isFinished()){
