@@ -1,12 +1,12 @@
 package parser;
 import java.util.*;
 
-public class TokenString implements Iterable<String>, Comparable<TokenString>, Printable{
+public class SymbolString implements Iterable<String>, Comparable<SymbolString>, Printable{
     private final List<String> tkns;
     private final int length;
     private final String repr;
-    public TokenString(String... tokens){this(Arrays.asList(tokens));}
-    public TokenString(List<String> tokens){
+    public SymbolString(String... tokens){this(Arrays.asList(tokens));}
+    public SymbolString(List<String> tokens){
         this.tkns = tokens;
         length = tokens.size();
         repr = String.join(" ", tokens);
@@ -26,17 +26,17 @@ public class TokenString implements Iterable<String>, Comparable<TokenString>, P
     
     public String toString(){return repr;}
     
-    public boolean equals(TokenString that){return repr.equals(that.repr);}
+    public boolean equals(SymbolString that){return repr.equals(that.repr);}
     
-    public int compareTo(TokenString that){return repr.compareTo(that.repr);}
+    public int compareTo(SymbolString that){return repr.compareTo(that.repr);}
     
     public List<String> getList(){return tkns.subList(0, length);}
     
-    public TokenString substr(int start){
+    public SymbolString substr(int start){
         return substr(start, length);
     }
-    public TokenString substr(int start, int end){
-        return new TokenString(tkns.subList(start, end));
+    public SymbolString substr(int start, int end){
+        return new SymbolString(tkns.subList(start, end));
     }
     
     public Iterator<String> iterator(){

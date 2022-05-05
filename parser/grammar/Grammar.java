@@ -3,7 +3,7 @@ import java.util.*;
 
 import parser.Printable;
 import parser.Rule;
-import parser.TokenString;
+import parser.SymbolString;
 import parser.ComparableSet;
 
 public class Grammar implements Printable{
@@ -73,7 +73,7 @@ public class Grammar implements Printable{
 		    updated = false;
 			for(Rule rule : this.rules){
 			    String lhs = rule.getLhs();
-			    TokenString rhs = rule.getRhs();
+			    SymbolString rhs = rule.getRhs();
 				boolean brk = false;
 				for(String sym : rhs){
 					updated |= firstSets.get(lhs).addAll(first(sym));
@@ -118,7 +118,7 @@ public class Grammar implements Printable{
         return rules.stream().map(i->i.toString()).reduce("",(String a, String b)->a+"\n"+b);
     }
     
-    public boolean isNullable(TokenString tkns){
+    public boolean isNullable(SymbolString tkns){
         if(tkns.size() == 0) return true;
         for(String tkn : tkns)
             if(isNullable(tkn))
@@ -130,7 +130,7 @@ public class Grammar implements Printable{
         return nullableSet.contains(tkn);
     }
     
-    public ComparableSet<String> follow(TokenString tkns){
+    public ComparableSet<String> follow(SymbolString tkns){
         // Follow set of empty token string is {epsilon}
         if(tkns.size() == 0)
             return new ComparableSet<>(Arrays.asList(new String[]{null}));
@@ -144,7 +144,7 @@ public class Grammar implements Printable{
     }
     public Set<String> follow(String tkn){return followSets.get(tkn);}
     
-    public Set<String> first(TokenString tkns){
+    public Set<String> first(SymbolString tkns){
         // First set of empty token string is {epsilon}
         if(tkns.size() == 0)
             return new TreeSet<>(Arrays.asList(new String[]{"__EPSILON__"}));
