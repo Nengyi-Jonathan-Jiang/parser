@@ -12,8 +12,8 @@ public class Grammar implements Printable{
     private final Rule startRule;
     
     private final TreeMap<String, List<Rule>> startsWith;
-    private final ComparableSet<String> allSymbols, terminals, nonTerminals, nullableSet;
-    private final TreeMap<String, ComparableSet<String>> firstSets, followSets;
+    private final Set<String> allSymbols, terminals, nonTerminals, nullableSet;
+    private final TreeMap<String, Set<String>> firstSets, followSets;
     
     public Grammar(List<Rule> rules, String startSymbol){
         
@@ -84,7 +84,7 @@ public class Grammar implements Printable{
 				}
 				if(!brk) updated |= nullableSet.add(lhs);
 				
-                ComparableSet<String> aux = follow(lhs);
+                Set<String> aux = follow(lhs);
 				for(int i = rhs.size() - 1; i >= 0; i--){
 					if(isNonTerminal(rhs.get(i)))
 						updated |= follow(rhs.get(i)).addAll(aux);
@@ -142,19 +142,19 @@ public class Grammar implements Printable{
             res.addAll(follow(tkns.substr(0, tkns.size() - 1)));
         return res;
     }
-    public ComparableSet<String> follow(String tkn){return followSets.get(tkn);}
+    public Set<String> follow(String tkn){return followSets.get(tkn);}
     
-    public ComparableSet<String> first(TokenString tkns){
+    public Set<String> first(TokenString tkns){
         // First set of empty token string is {epsilon}
         if(tkns.size() == 0)
-            return new ComparableSet<>(Arrays.asList(new String[]{"__EPSILON__"}));
+            return new TreeSet<>(Arrays.asList(new String[]{"__EPSILON__"}));
         // Otherwise first set of token string is first set of the first token
         // of the token string
-        ComparableSet<String> res = new ComparableSet<>(first(tkns.firstTkn()));
+        Set<String> res = new TreeSet<>(first(tkns.firstTkn()));
         // If the first token of the token string is nullable, then also add the
         // first set of the rest of the token string
         if(isNullable(tkns.firstTkn())) res.addAll(first(tkns.substr(1)));
         return res;
     }
-    public ComparableSet<String> first(String tkn){return firstSets.get(tkn);}
+    public Set<String> first(String tkn){return firstSets.get(tkn);}
 }

@@ -12,7 +12,7 @@ public class Item implements Comparable<Item>, Printable{
     private final ComparableSet<String> lookahead;
 
     public Item(Grammar grammar, Rule rule, int pos){
-        this(grammar, rule, pos, grammar.follow(rule.getLhs()));
+        this(grammar, rule, pos, new ComparableSet<>(grammar.follow(rule.getLhs())));
     }
     public Item(Grammar grammar, Rule rule, int pos, ComparableSet<String> lookahead){
         this.rule = rule;
