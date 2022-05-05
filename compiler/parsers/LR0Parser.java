@@ -5,7 +5,10 @@ import java.util.Map.Entry;
 
 import compiler.Grammar;
 import compiler.Rule;
+import compiler.items.Item;
+import compiler.items.ItemSet;
 import compiler.parsingTable.ParsingTable;
+import compiler.ComparableSet;
 
 import java.util.TreeMap;
 
@@ -17,7 +20,7 @@ public class LR0Parser extends Parser{
 
     public Map<ItemSet, Integer> generateConfiguratingSets(Grammar grammar){
         Map<ItemSet, Integer> configuratingSets = new TreeMap<>();
-        ItemSet initialState = new Item(grammar, grammar.getStartRule(), 0).closure();
+        ItemSet initialState = new Item(grammar, grammar.getStartRule(), 0, new ComparableSet<>("__END__")).closure();
         configuratingSets.put(initialState, 0);
         
         boolean updated = true;

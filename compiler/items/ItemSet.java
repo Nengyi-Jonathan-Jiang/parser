@@ -1,4 +1,4 @@
-package compiler.parsers;
+package compiler.items;
 import java.util.*;
 
 import compiler.ComparableSet;

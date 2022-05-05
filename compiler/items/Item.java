@@ -1,4 +1,4 @@
-package compiler.parsers;
+package compiler.items;
 import java.util.*;
 
 import compiler.ComparableSet;
@@ -12,9 +12,6 @@ public class Item implements Comparable<Item>, Printable{
     private final Grammar grammar;
     private final ComparableSet<String> lookahead;
 
-    public Item(Grammar grammar, Rule rule, int pos){
-        this(grammar, rule, pos, new ComparableSet<>(grammar.follow(rule.getLhs())));
-    }
     public Item(Grammar grammar, Rule rule, int pos, ComparableSet<String> lookahead){
         this.rule = rule;
         this.pos = pos;
@@ -36,19 +33,21 @@ public class Item implements Comparable<Item>, Printable{
     
     public Item shift(){
         if(isFinished()) throw new IndexOutOfBoundsException();
-        return new Item(grammar, rule, pos + 1);
+        return new Item(grammar, rule, pos + 1, lookahead);
     }
     
     public int compareTo(Item other){
-        if(pos != other.pos) return pos - other.pos;
-        return rule.compareTo(other.rule);
+        if(pos != other.getPos()) return pos - other.getPos();
+        int ruleCompare = rule.compareTo(other.getRule());
+        if(ruleCompare != 0) return ruleCompare;
+        return lookahead.compareTo(other.getLookahead());
     }
     
     public boolean equals(Item other){
-        return pos == other.pos && rule.equals(other.rule);
+        return pos == other.pos && rule.equals(other.rule) && lookahead.equals(other.lookahead);
     }
 
-    public Set<String> getLookahead(){
+    public ComparableSet<String> getLookahead(){
         return lookahead;
     }
     
@@ -66,7 +65,7 @@ public class Item implements Comparable<Item>, Printable{
             if(!grammar.isNonTerminal(sym)) continue;
             
             for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(grammar, r, 0)))
+                if(res.add(new Item(grammar, r, 0, new ComparableSet<>(grammar.follow(r.getLhs())))))
                     dq.add(r);
         }
         return res;
