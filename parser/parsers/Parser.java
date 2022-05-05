@@ -1,13 +1,16 @@
-package parser;
-import java.util.*;
+package parser.parsers;
 
 import parser.parsingTable.*;
+import parser.Rule;
+import java.util.*;
 
-public class LRParser {
+public class Parser {
     private ParsingTable table;
-    public LRParser(ParsingTable table){
+
+    public Parser(ParsingTable table){
         this.table = table;
     }
+
     public void parse(String[] tokens){
         String[] tkns = new String[tokens.length + 1];
         System.arraycopy(tokens, 0, tkns, 0, tokens.length);
@@ -17,13 +20,10 @@ public class LRParser {
         Deque<String> tknStack = new ArrayDeque<>();
         stateStack.push(0);
 
-        for(int i = 0; i < tkns.length; ){
+        int index = 0;
+        while(index < tkns.length){
             int state = stateStack.peek();
-            String tkn = tkns[i];
-
-            // System.out.println("Current state: " + state);
-            // System.out.println("Current token: \"" + tkn + "\"");
-            // System.out.println(stateStack);
+            String tkn = tkns[index];
 
             TableEntry entry = table.getAction(state, tkn);
 
@@ -37,7 +37,7 @@ public class LRParser {
                     stateStack.push(((ShiftEntry)entry).getNextState());
                     System.out.println("SHIFT \"" + tkn + "\"");
                     tknStack.push(tkn);
-                    i++;
+                    index++;
                     break;
                 case ACCEPT:
                     System.out.println("ACCEPTED INPUT");
@@ -46,16 +46,10 @@ public class LRParser {
                     Rule reduceRule = ((ReduceEntry)entry).getRule();
                     System.out.println("REDUCE " + reduceRule);
                     String lhs = reduceRule.getLhs();
-                    
                     for(int j = 0; j < reduceRule.getRhs().size(); j++){
                         stateStack.pop();
                         tknStack.pop();
                     }
-
-                    // System.out.println(stateStack);
-
-                    // System.out.println("Querying GOTO[" + state + "][\"" + lhs + "\"]");
-
                     GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
                     stateStack.push(gotoEntry.getNextState());
                     tknStack.push(lhs);
@@ -64,7 +58,7 @@ public class LRParser {
             }
 
             
-            System.out.print(String.format("%-20s", tknStack.toString().replaceAll("^\\[|\\]$", "").replaceAll(", ", " ")));
+            System.out.print(String.format("%-20s", tknStack.toString().replaceAll("^[\\[\\]]$", "").replace(", ", " ")));
         }
     }
 }

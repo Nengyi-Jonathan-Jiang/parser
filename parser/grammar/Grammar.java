@@ -9,23 +9,21 @@ import parser.ComparableSet;
 public class Grammar implements Printable{
     /*private*/ public final List<Rule> rules;
     /*private*/ public String startSymbol;
+    public Rule startRule;
     
     /*private*/ public final TreeMap<String, List<Rule>> startsWith;
     /*private*/ public final ComparableSet<String> allSymbols, terminals, nonTerminals, nullableSet;
     /*private*/ public final TreeMap<String, ComparableSet<String>> firstSets, followSets;
     
     public Grammar(List<Rule> rules, String startSymbol){this(rules, startSymbol, true);}
-    public Grammar(List<Rule> rules, String startSymbol, boolean augment){
+    public Grammar(List<Rule> rules, String startSymbol){
         
         this.rules = new ArrayList<>(rules);
         
         // Augment the grammar (if needed)
         
-        if(augment){
-            this.rules.add(new Rule("__START__", startSymbol));
-            this.startSymbol = "__START__";
-        }
-        else this.startSymbol = startSymbol;
+        this.rules.add(new Rule("__START__", startSymbol));
+        this.startSymbol = "__START__";
         
         // Classify symbols as terminals or nonterminals
         
