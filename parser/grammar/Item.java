@@ -46,6 +46,10 @@ public class Item implements Comparable<Item>, Printable{
     public boolean equals(Item other){
         return pos == other.pos && rule.equals(other.rule);
     }
+
+    public Set<String> getLookahead(){
+        return lookahead;
+    }
     
     public ItemSet closure(){
         //The closure will always contain this item
@@ -72,12 +76,11 @@ public class Item implements Comparable<Item>, Printable{
         sb.append(rule.getLhs());
         sb.append(" :=");
         for(int i = 0; i < rule.getRhs().size(); i++){
-            if(i == pos) sb.append(" . ");
+            if(i == pos) sb.append(" ● ");
             else sb.append(" ");
             sb.append(rule.getRhs().get(i));
         }
-        if(isFinished()) sb.append(" .");
+        if(isFinished()) sb.append(" ●");
         return sb.toString();
-        //●
     }
 }
