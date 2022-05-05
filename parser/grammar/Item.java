@@ -25,7 +25,7 @@ public class Item implements Comparable<Item>, Printable{
     public int getPos(){return pos;}
     
     public boolean isFinished(){
-        return pos >= rule.getRhs().size();
+        return pos >= rule.getRhsSize();
     }
     
     public String next(){
@@ -75,7 +75,7 @@ public class Item implements Comparable<Item>, Printable{
         StringBuilder sb = new StringBuilder();
         sb.append(rule.getLhs());
         sb.append(" :=");
-        for(int i = 0; i < rule.getRhs().size(); i++){
+        for(int i = 0; i < rule.getRhsSize(); i++){
             if(i == pos) sb.append(" ● ");
             else sb.append(" ");
             sb.append(rule.getRhs().get(i));

@@ -7,13 +7,13 @@ import parser.TokenString;
 import parser.ComparableSet;
 
 public class Grammar implements Printable{
-    /*private*/ public final List<Rule> rules;
-    /*private*/ public final String startSymbol;
-    public final Rule startRule;
+    private final List<Rule> rules;
+    private final String startSymbol;
+    private final Rule startRule;
     
-    /*private*/ public final TreeMap<String, List<Rule>> startsWith;
-    /*private*/ public final ComparableSet<String> allSymbols, terminals, nonTerminals, nullableSet;
-    /*private*/ public final TreeMap<String, ComparableSet<String>> firstSets, followSets;
+    private final TreeMap<String, List<Rule>> startsWith;
+    private final ComparableSet<String> allSymbols, terminals, nonTerminals, nullableSet;
+    private final TreeMap<String, ComparableSet<String>> firstSets, followSets;
     
     public Grammar(List<Rule> rules, String startSymbol){
         
@@ -102,6 +102,14 @@ public class Grammar implements Printable{
     
     public List<Rule> getRules(){return rules;}
     public List<Rule> getRules(String sym){return startsWith.get(sym);}
+    
+    public Set<String> getAllSymbols(){return allSymbols;}
+    public Set<String> getNonTerminals(){return nonTerminals;}
+    public Set<String> getTerminals(){return terminals;}
+
+    public Rule getStartRule(){
+        return startRule;
+    }
     
     // public Strin
 

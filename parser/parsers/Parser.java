@@ -11,13 +11,13 @@ public class Parser {
         this.table = table;
     }
 
-    public void parse(String[] tokens){
+    public ParseTree parse(String[] tokens){
         String[] tkns = new String[tokens.length + 1];
         System.arraycopy(tokens, 0, tkns, 0, tokens.length);
         tkns[tokens.length] = "__END__";
 
         Deque<Integer> stateStack = new ArrayDeque<>();
-        Deque<String> tknStack = new ArrayDeque<>();
+        Deque<ParseTree> tknStack = new ArrayDeque<>();
         stateStack.push(0);
 
         int index = 0;
@@ -29,7 +29,7 @@ public class Parser {
 
             if(entry == null){
                 System.out.println("Could not parse string!");
-                return;
+                return null;
             }
             
             System.out.print(String.format("%-20s", tknStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
@@ -38,26 +38,28 @@ public class Parser {
                 case SHIFT:
                     stateStack.push(((ShiftEntry)entry).getNextState());
                     System.out.println("SHIFT \"" + tkn + "\"");
-                    tknStack.push(tkn);
+                    tknStack.push(new ParseTree(tkn));
                     index++;
                     break;
                 case ACCEPT:
                     System.out.println("ACCEPTED INPUT");
-                    return;
+                    return null;
                 case REDUCE:
                     Rule reduceRule = ((ReduceEntry)entry).getRule();
                     System.out.println("REDUCE " + reduceRule);
                     String lhs = reduceRule.getLhs();
-                    for(int j = 0; j < reduceRule.getRhs().size(); j++){
+                    ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
+                    for(int j = 0; j < reduceRule.getRhsSize(); j++){
                         stateStack.pop();
-                        tknStack.pop();
+                        children[j] = tknStack.pop();
                     }
                     GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
                     stateStack.push(gotoEntry.getNextState());
-                    tknStack.push(lhs);
+                    tknStack.push(new ParseTree(lhs, children));
                     break;
                 case GOTO: break;
             }
         }
+        return tknStack.getFirst();
     }
 }

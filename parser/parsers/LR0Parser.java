@@ -26,7 +26,7 @@ public class LR0Parser{
 
     public Map<ItemSet, Integer> generateConfiguratingSets(Grammar grammar){
         Map<ItemSet, Integer> configuratingSets = new TreeMap<>();
-        ItemSet initialState = new Item(grammar, grammar.startRule, 0).closure();
+        ItemSet initialState = new Item(grammar, grammar.getStartRule(), 0).closure();
         configuratingSets.put(initialState, 0);
         
         boolean updated = true;
@@ -34,7 +34,7 @@ public class LR0Parser{
             updated = false;
             Map<ItemSet,Integer> newSet = new TreeMap<>(configuratingSets);
             for(ItemSet configuratingSet : configuratingSets.keySet()){
-                for(String symbol : grammar.allSymbols){
+                for(String symbol : grammar.getAllSymbols()){
                     ItemSet successor = configuratingSet.successor(symbol);
                     if(!successor.isEmpty() && !newSet.containsKey(successor)){
                         updated = true;
@@ -58,7 +58,7 @@ public class LR0Parser{
                 generateActionSetEntry(table, grammar, state, itemSet, item);
             }
             
-            for(String symbol : grammar.nonTerminals){
+            for(String symbol : grammar.getNonTerminals()){
                 Integer nextState = configuratingSets.get(itemSet.successor(symbol));
                 if(nextState != null) table.setGoto(state, symbol, nextState);
             }
@@ -68,7 +68,7 @@ public class LR0Parser{
     }
 
     public void generateActionSetEntry(ParsingTable table, Grammar grammar, int state, ItemSet itemSet, Item item){
-        if(item.isFinished() && item.getRule().equals(grammar.startRule)){
+        if(item.isFinished() && item.getRule().equals(grammar.getStartRule())){
             table.setActionAccept(state, "__END__");
         }
         else if(item.isFinished()){

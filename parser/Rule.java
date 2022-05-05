@@ -15,6 +15,7 @@ public class Rule implements Comparable<Rule>, Printable{
     
     public String getLhs(){return lhs;}
     public TokenString getRhs(){return rhs;}
+    public int getRhsSize(){return rhs.size();}
     public boolean isEmpty(){return empty;}
     
     public String toString(){
