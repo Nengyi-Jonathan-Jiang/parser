@@ -31,6 +31,8 @@ public class Parser {
                 System.out.println("Could not parse string!");
                 return;
             }
+            
+            System.out.print(String.format("%-20s", tknStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
 
             switch(entry.getAction()){
                 case SHIFT:
@@ -56,9 +58,6 @@ public class Parser {
                     break;
                 case GOTO: break;
             }
-
-            
-            System.out.print(String.format("%-20s", tknStack.toString().replaceAll("^[\\[\\]]$", "").replace(", ", " ")));
         }
     }
 }

@@ -18,66 +18,49 @@ public class LR0Parser{
         
         //Construct configurating sets / states and state transition table
         
-        String startSymbol = grammar.startSymbol;
-        Rule startRule = grammar.getRules(startSymbol).iterator().next();
+        configuratingSets = generateConfiguratingSets(grammar);
+        //Construct parsing table
         
-        configuratingSets = new TreeMap<>();
-        
-        ItemSet initialState = new Item(grammar, startRule,0).closure();
+        parsingTable = generateParsingTable(grammar);
+    }
+
+    public Map<ItemSet, Integer> generateConfiguratingSets(Grammar grammar){
+        Map<ItemSet, Integer> configuratingSets = new TreeMap<>();
+        ItemSet initialState = new Item(grammar, grammar.startRule, 0).closure();
         configuratingSets.put(initialState, 0);
         
         boolean updated = true;
         while(updated){
             updated = false;
             Map<ItemSet,Integer> newSet = new TreeMap<>(configuratingSets);
-            for(ItemSet cfs : configuratingSets.keySet()){
-                for(String sym : grammar.allSymbols){
-                    ItemSet set = cfs.successor(sym);
-                    if(!set.isEmpty() && !newSet.containsKey(set)){
+            for(ItemSet configuratingSet : configuratingSets.keySet()){
+                for(String symbol : grammar.allSymbols){
+                    ItemSet successor = configuratingSet.successor(symbol);
+                    if(!successor.isEmpty() && !newSet.containsKey(successor)){
                         updated = true;
-                        newSet.put(set, newSet.size());
+                        newSet.put(successor, newSet.size());
                     }
                 }
             }
             configuratingSets = newSet;
         }
-        
-        //Construct parsing table
-        
-        parsingTable = generateParsingTable(grammar);
+        return configuratingSets;
     }
 
     public ParsingTable generateParsingTable(Grammar grammar){
         ParsingTable table = new ParsingTable(configuratingSets.size());
 
-        String startSymbol = grammar.startSymbol;
-        Rule startRule = grammar.getRules(startSymbol).iterator().next();
-        
-        Item endItem = new Item(grammar, startRule, startRule.getRhs().size());
-
         for(Entry<ItemSet, Integer> entry : configuratingSets.entrySet()){
-            ItemSet its = entry.getKey();
-            int i = entry.getValue();
+            ItemSet itemSet = entry.getKey();
+            int state = entry.getValue();
 
-            for(Item it : its){
-                if(it.equals(endItem)){
-                    table.setActionAccept(i, "__END__");
-                }
-                else if(it.isFinished()){
-                    Rule reduce = it.getRule();
-                    for(String sym : grammar.follow(reduce.getLhs())){
-                        table.setActionReduce(i, sym, reduce);
-                    }
-                }
-                else{
-                    Integer st2 = configuratingSets.get(its.successor(it.next()));
-                    if(st2 != null) table.setActionShift(i, it.next(), st2);
-                }
+            for(Item item : itemSet){
+                generateActionSetEntry(table, grammar, state, itemSet, item);
             }
             
-            for(String sym : grammar.nonTerminals){
-                Integer st2 = configuratingSets.get(its.successor(sym));
-                if(st2 != null) table.setGoto(i, sym, st2);
+            for(String symbol : grammar.nonTerminals){
+                Integer nextState = configuratingSets.get(itemSet.successor(symbol));
+                if(nextState != null) table.setGoto(state, symbol, nextState);
             }
         }
 
@@ -90,8 +73,8 @@ public class LR0Parser{
         }
         else if(item.isFinished()){
             Rule reduce = item.getRule();
-            for(String sym : grammar.follow(reduce.getLhs())){
-                table.setActionReduce(state, sym, reduce);
+            for(String symbol : grammar.follow(reduce.getLhs())){
+                table.setActionReduce(state, symbol, reduce);
             }
         }
         else{
