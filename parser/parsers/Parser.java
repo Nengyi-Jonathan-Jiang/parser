@@ -12,53 +12,66 @@ public abstract class Parser {
         generateParsingTable(grammar);
     }
 
-    public ParseTree parse(String[] tokens){
-        String[] tkns = new String[tokens.length + 1];
-        System.arraycopy(tokens, 0, tkns, 0, tokens.length);
-        tkns[tokens.length] = "__END__";
+    public ParseTree parse(String[] tokens){return parse(tokens, false);}
 
-        Deque<Integer> stateStack = new ArrayDeque<>();
-        Deque<ParseTree> tknStack = new ArrayDeque<>();
-        stateStack.push(0);
+    public ParseTree parse(String[] tokens, boolean debug){
+
+        Deque<Integer> stateStack = new ArrayDeque<>(); //Stack of states
+        Deque<ParseTree> tknStack = new ArrayDeque<>(); //Stack of parse trees nodes
+        stateStack.push(0); // Start in state 0
 
         int index = 0;
-        while(index < tkns.length){
+        while(index < tokens.length){
             int state = stateStack.peek();
-            String tkn = tkns[index];
+            String tkn = tokens[index];
 
             TableEntry entry = table.getAction(state, tkn);
 
+            // Parse failed
             if(entry == null){
-                System.out.println("Could not parse string!");
+                if(debug) System.out.println("Could not parse string!");
                 return null;
             }
             
-            System.out.print(String.format("%-20s", tknStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
+            
+            if(debug) System.out.print(String.format("%-20s", tknStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
 
             switch(entry.getAction()){
                 case SHIFT:
+                    if(debug) System.out.println("SHIFT \"" + tkn + "\"");
+
+                    // Update state stack and current token pointer
                     stateStack.push(((ShiftEntry)entry).getNextState());
-                    System.out.println("SHIFT \"" + tkn + "\"");
-                    tknStack.push(new ParseTree(tkn));
                     index++;
+
+                    // Update parse tree -- add new leaf node to stack
+                    tknStack.push(new ParseTree(tkn));
                     break;
-                case ACCEPT:
-                    System.out.println("ACCEPTED INPUT");
+
+                case ACCEPT: //Parse successful -- return parse tree
+                    if(debug) System.out.println("ACCEPTED INPUT");
                     return tknStack.getFirst();
+
                 case REDUCE:
                     Rule reduceRule = ((ReduceEntry)entry).getRule();
-                    System.out.println("REDUCE " + reduceRule);
                     String lhs = reduceRule.getLhs();
-                    ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
-                    for(int j = 0; j < reduceRule.getRhsSize(); j++){
-                        stateStack.pop();
-                        children[reduceRule.getRhsSize() - j - 1] = tknStack.pop();
-                    }
+
+                    if(debug) System.out.println("REDUCE " + reduceRule);
+
+                    // Update state stack
+                    for(int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
                     GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
                     stateStack.push(gotoEntry.getNextState());
+
+                    // Update parse tree - merge nodes into parent node
+
+                    if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
+                    ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
+                    for(int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = tknStack.pop();
                     tknStack.push(new ParseTree(lhs, children));
                     break;
-                case GOTO: break;
+                
+                default:
             }
         }
         return null;

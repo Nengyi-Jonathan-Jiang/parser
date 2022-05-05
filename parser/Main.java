@@ -33,8 +33,8 @@ public class Main {
 
 		LR0Parser parse = new LR0Parser(gram);
 
-		String str = "id = id + ( id + id ) * ( id )";
-		// String str = "id = id + id";
+		String str = "id = id + ( id + id ) * ( id ) __END__";
+		// String str = "id = id + id __END__";
 
 		ParseTree pTree = parse.parse(str.split(" "));
 		System.out.println(pTree.prnt());
