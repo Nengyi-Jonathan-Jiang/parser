@@ -1,14 +1,15 @@
 package parser.parsers;
 
 import parser.parsingTable.*;
-import parser.Rule;
+import parser.*;
+import parser.grammar.*;
 import java.util.*;
 
-public class Parser {
-    private ParsingTable table;
+public abstract class Parser {
+    protected ParsingTable table;
 
-    public Parser(ParsingTable table){
-        this.table = table;
+    public Parser(Grammar grammar){
+        generateParsingTable(grammar);
     }
 
     public ParseTree parse(String[] tokens){
@@ -43,7 +44,7 @@ public class Parser {
                     break;
                 case ACCEPT:
                     System.out.println("ACCEPTED INPUT");
-                    return null;
+                    return tknStack.getFirst();
                 case REDUCE:
                     Rule reduceRule = ((ReduceEntry)entry).getRule();
                     System.out.println("REDUCE " + reduceRule);
@@ -51,7 +52,7 @@ public class Parser {
                     ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
                     for(int j = 0; j < reduceRule.getRhsSize(); j++){
                         stateStack.pop();
-                        children[j] = tknStack.pop();
+                        children[reduceRule.getRhsSize() - j - 1] = tknStack.pop();
                     }
                     GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
                     stateStack.push(gotoEntry.getNextState());
@@ -60,6 +61,8 @@ public class Parser {
                 case GOTO: break;
             }
         }
-        return tknStack.getFirst();
+        return null;
     }
+
+    protected abstract ParsingTable generateParsingTable(Grammar grammar);
 }

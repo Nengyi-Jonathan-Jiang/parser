@@ -107,9 +107,10 @@ public class Grammar implements Printable{
     public Set<String> getNonTerminals(){return nonTerminals;}
     public Set<String> getTerminals(){return terminals;}
 
-    public Rule getStartRule(){
-        return startRule;
-    }
+    public boolean isTerminal(String sym){return terminals.contains(sym);}
+    public boolean isNonTerminal(String sym){return nonTerminals.contains(sym);}
+    
+    public Rule getStartRule(){return startRule;}
     
     // public Strin
 
@@ -117,12 +118,11 @@ public class Grammar implements Printable{
         return rules.stream().map(i->i.toString()).reduce("",(String a, String b)->a+"\n"+b);
     }
     
-    public boolean isTerminal(String sym){return terminals.contains(sym);}
-    public boolean isNonTerminal(String sym){return nonTerminals.contains(sym);}
-    
     public boolean isNullable(TokenString tkns){
         if(tkns.size() == 0) return true;
-        if(isNullable(tkns.firstTkn())) return isNullable(tkns.substr(1));
+        for(String tkn : tkns)
+            if(isNullable(tkn))
+                return true;
         return false;
     }
     

@@ -1,27 +1,16 @@
 package parser.parsers;
 
-import java.util.*;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
+import parser.grammar.*;
+import parser.parsingTable.ParsingTable;
+import parser.Rule;
 
-import parser.grammar.Grammar;
-import parser.grammar.Item;
-import parser.grammar.ItemSet;
-import parser.parsingTable.*;
-import parser.*;
+public class LR0Parser extends Parser{ 
 
-public class LR0Parser{
-    Map<ItemSet,Integer> configuratingSets;
-
-    ParsingTable parsingTable;
-    
     public LR0Parser(Grammar grammar){
-        
-        //Construct configurating sets / states and state transition table
-        
-        configuratingSets = generateConfiguratingSets(grammar);
-        //Construct parsing table
-        
-        parsingTable = generateParsingTable(grammar);
+        super(grammar);
     }
 
     public Map<ItemSet, Integer> generateConfiguratingSets(Grammar grammar){
@@ -32,6 +21,7 @@ public class LR0Parser{
         boolean updated = true;
         while(updated){
             updated = false;
+
             Map<ItemSet,Integer> newSet = new TreeMap<>(configuratingSets);
             for(ItemSet configuratingSet : configuratingSets.keySet()){
                 for(String symbol : grammar.getAllSymbols()){
@@ -42,22 +32,28 @@ public class LR0Parser{
                     }
                 }
             }
+
             configuratingSets = newSet;
         }
         return configuratingSets;
     }
 
+    @Override
     public ParsingTable generateParsingTable(Grammar grammar){
-        ParsingTable table = new ParsingTable(configuratingSets.size());
+        Map<ItemSet, Integer> configuratingSets = generateConfiguratingSets(grammar);
+
+        table = new ParsingTable(configuratingSets.size());
 
         for(Entry<ItemSet, Integer> entry : configuratingSets.entrySet()){
             ItemSet itemSet = entry.getKey();
             int state = entry.getValue();
 
+            // Generate Action table
             for(Item item : itemSet){
-                generateActionSetEntry(table, grammar, state, itemSet, item);
+                generateActionSetEntry(configuratingSets, grammar, state, itemSet, item);
             }
             
+            // Generate Goto table
             for(String symbol : grammar.getNonTerminals()){
                 Integer nextState = configuratingSets.get(itemSet.successor(symbol));
                 if(nextState != null) table.setGoto(state, symbol, nextState);
@@ -67,7 +63,7 @@ public class LR0Parser{
         return table;
     }
 
-    public void generateActionSetEntry(ParsingTable table, Grammar grammar, int state, ItemSet itemSet, Item item){
+    public void generateActionSetEntry(Map<ItemSet, Integer> configuratingSets, Grammar grammar, int state, ItemSet itemSet, Item item){
         if(item.isFinished() && item.getRule().equals(grammar.getStartRule())){
             table.setActionAccept(state, "__END__");
         }
@@ -81,9 +77,5 @@ public class LR0Parser{
             Integer st2 = configuratingSets.get(itemSet.successor(item.next()));
             if(st2 != null) table.setActionShift(state, item.next(), st2);
         }
-    }
-
-    public void parse(String[] tokens){
-        new Parser(parsingTable).parse(tokens);
     }
 }

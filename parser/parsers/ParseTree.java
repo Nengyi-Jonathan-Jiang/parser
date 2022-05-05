@@ -25,4 +25,12 @@ public class ParseTree implements Iterable<ParseTree>{
     public String toString(){
         return description;
     }
+
+    public String indentEachLine(String str){
+        return str.replace("\n", "\n    ");
+    }
+
+    public String prnt(){
+        return isLeaf() ? "\"" + description + "\"" : description + " {" + indentEachLine(Arrays.stream(children).map(i->i.prnt()).reduce("",(a,b)-> a + "\n" + b)) + "\n}";
+    }
 }
