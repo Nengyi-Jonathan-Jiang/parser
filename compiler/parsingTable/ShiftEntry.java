@@ -1,4 +1,4 @@
-package parser.parsingTable;
+package compiler.parsingTable;
 
 public class ShiftEntry implements TableEntry{
     private int nextState;

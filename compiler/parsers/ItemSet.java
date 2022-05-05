@@ -1,8 +1,8 @@
-package parser.grammar;
+package compiler.parsers;
 import java.util.*;
 
-import parser.ComparableSet;
-import parser.Printable;
+import compiler.ComparableSet;
+import compiler.Printable;
 
 public class ItemSet extends ComparableSet<Item> implements Printable{
 

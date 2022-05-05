@@ -1,6 +1,6 @@
-package parser.parsingTable;
+package compiler.parsingTable;
 
-import parser.Rule;
+import compiler.Rule;
 
 public class ReduceEntry implements TableEntry{
     private Rule rule;

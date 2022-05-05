@@ -1,10 +1,8 @@
-package parser;
+package compiler;
 import java.util.*;
 import java.util.stream.*;
 
-import parser.grammar.Grammar;
-
-import parser.parsers.*;
+import compiler.parsers.*;
 
 public class Main {
 	public static void main(String[] args) {

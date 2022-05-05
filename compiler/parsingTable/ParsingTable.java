@@ -1,8 +1,8 @@
-package parser.parsingTable;
+package compiler.parsingTable;
 
 import java.util.*;
 
-import parser.Rule;
+import compiler.Rule;
 
 public class ParsingTable{
     

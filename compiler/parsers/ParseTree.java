@@ -1,4 +1,4 @@
-package parser.parsers;
+package compiler.parsers;
 
 import java.util.*;
 

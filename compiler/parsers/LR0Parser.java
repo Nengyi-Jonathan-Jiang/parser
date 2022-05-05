@@ -1,11 +1,13 @@
-package parser.parsers;
+package compiler.parsers;
 
 import java.util.Map;
 import java.util.Map.Entry;
+
+import compiler.Grammar;
+import compiler.Rule;
+import compiler.parsingTable.ParsingTable;
+
 import java.util.TreeMap;
-import parser.grammar.*;
-import parser.parsingTable.ParsingTable;
-import parser.Rule;
 
 public class LR0Parser extends Parser{ 
 

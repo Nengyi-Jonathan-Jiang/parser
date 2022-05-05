@@ -1,4 +1,4 @@
-package parser;
+package compiler;
 import java.util.*;
 
 public class Rule implements Comparable<Rule>, Printable{

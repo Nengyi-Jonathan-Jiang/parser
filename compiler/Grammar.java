@@ -1,10 +1,5 @@
-package parser.grammar;
+package compiler;
 import java.util.*;
-
-import parser.Printable;
-import parser.Rule;
-import parser.SymbolString;
-import parser.ComparableSet;
 
 public class Grammar implements Printable{
     private final List<Rule> rules;
@@ -96,8 +91,6 @@ public class Grammar implements Printable{
 				}
 			}
 		}
-		
-		// Ok now this grammar ready to go
     }
     
     public List<Rule> getRules(){return rules;}

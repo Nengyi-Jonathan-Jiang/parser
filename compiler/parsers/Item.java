@@ -1,9 +1,10 @@
-package parser.grammar;
+package compiler.parsers;
 import java.util.*;
 
-import parser.Printable;
-import parser.Rule;
-import parser.ComparableSet;
+import compiler.ComparableSet;
+import compiler.Grammar;
+import compiler.Printable;
+import compiler.Rule;
 
 public class Item implements Comparable<Item>, Printable{
     private final Rule rule;

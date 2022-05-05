@@ -1,4 +1,4 @@
-package parser;
+package compiler;
 import java.util.*;
 
 public class SymbolString implements Iterable<String>, Comparable<SymbolString>, Printable{

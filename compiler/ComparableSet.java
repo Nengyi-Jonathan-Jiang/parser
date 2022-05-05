@@ -1,4 +1,4 @@
-package parser;
+package compiler;
 import java.util.*;
 
 public class ComparableSet<T extends Comparable<T>> extends TreeSet<T> implements Comparable<ComparableSet<T>>{
