@@ -15,11 +15,13 @@ public class LR1Parser extends LRParser{
         super(grammar);
     }
 
+    static Map<Item, ItemSet> memoization = new TreeMap<>();
+
     public ItemSet closure(Item item){
-        //The closure will always contain this item
+        if(memoization.containsKey(item)) return memoization.get(item);
+
         ItemSet res = new ItemSet(Arrays.asList(item));
         if(item.isFinished()) return res;
-        //Now compute the rest of the closure
         
         boolean updated = true;
         while(updated){
@@ -44,6 +46,9 @@ public class LR1Parser extends LRParser{
 
             res = nRes;
         }
+
+        memoization.put(item, res);
+
         return res;
     }
 }

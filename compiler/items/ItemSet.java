@@ -14,17 +14,8 @@ public class ItemSet extends ComparableSet<Item> implements Printable{
     
     public ItemSet(ItemSet set){super(set);}
     
-    public boolean add(Collection<Item> items) {return super.addAll(items);}
-    
-    public ItemSet mergeWith(ItemSet set) {add(set); return this;}
-    
-    public ItemSet merge(ItemSet set){
-        return new ItemSet(this).mergeWith(set);
-    }
-    
     public int compareTo(ItemSet other){
-        Iterator<Item> i1 = iterator();
-        Iterator<Item> i2 = other.iterator();
+        Iterator<Item> i1 = iterator(), i2 = other.iterator();
         while (i1.hasNext() && i2.hasNext()) {
             int res = i1.next().compareTo(i2.next());
             if (res != 0) return res;

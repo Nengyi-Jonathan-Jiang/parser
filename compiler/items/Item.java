@@ -42,6 +42,11 @@ public class Item implements Comparable<Item>, Printable{
         return lookahead.compareTo(other.getLookahead());
     }
     
+    public int hashCode(){
+        final int prime = 1500450271;
+        return prime * (prime * (prime * rule.hashCode() + pos) + lookahead.hashCode());
+    }
+
     public boolean equals(Item other){
         return pos == other.pos && rule.equals(other.rule) && lookahead.equals(other.lookahead);
     }

@@ -8,7 +8,6 @@ public class ComparableSet<T extends Comparable<T>> extends TreeSet<T> implement
     @SafeVarargs
     public ComparableSet(T... items){super(Arrays.asList(items));}
 
-    // public
     public int compareTo(ComparableSet<T> other){
         Iterator<T> i1 = iterator();
         Iterator<T> i2 = other.iterator();

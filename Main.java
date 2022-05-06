@@ -1,10 +1,11 @@
 import java.util.*;
 import java.util.stream.*;
 
-import compiler.Rule;
 import compiler.grammar.Grammar;
 import compiler.grammar.GrammarReader;
+import compiler.items.Item;
 import compiler.parsers.*;
+import compiler.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -16,12 +17,11 @@ public class Main {
 		System.out.println(gram);
 		System.out.println("===================");
 
-		// Parser parse = new SLRParser(gram);
-		// Parser parse = new LR0Parser(gram);
 		System.out.println("Generating Parser...");
 
+		// Parser parse = new LR0Parser(gram);
+		// Parser parse = new SLRParser(gram);
 		LRParser parse = new LR1Parser(gram);
-		// LRParser parse = new SLRParser(gram);
 
 		System.out.println("Parsing...");
 
