@@ -5,7 +5,7 @@ public class ComparableSet<T extends Comparable<T>> extends TreeSet<T> implement
     public ComparableSet(){}
     public ComparableSet(Collection<? extends T> items){super(items);}
     public ComparableSet(SortedSet<? extends T> items){super(items);}
-    @SuppressWarnings("all")
+    @SafeVarargs
     public ComparableSet(T... items){super(Arrays.asList(items));}
 
     // public

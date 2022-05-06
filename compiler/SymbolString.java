@@ -1,5 +1,6 @@
 package compiler;
 import java.util.*;
+import java.util.stream.*;
 
 public class SymbolString implements Iterable<String>, Comparable<SymbolString>, Printable{
     private final List<String> tkns;
@@ -13,14 +14,10 @@ public class SymbolString implements Iterable<String>, Comparable<SymbolString>,
     }
     
     public String get(int i){return tkns.get(i);}
-    public String firstTkn(){
-        if(length == 0) return null;
-        return tkns.get(0);
-    }
-    public String lastTkn(){
-        if(length == 0) return null;
-        return tkns.get(length - 1);
-    }
+
+    public String firstTkn(){return length == 0 ? null : tkns.get(0);}
+
+    public String lastTkn(){return length == 0 ? null : tkns.get(length - 1);}
     
     public int size(){return length;}
     
@@ -31,15 +28,20 @@ public class SymbolString implements Iterable<String>, Comparable<SymbolString>,
     public int compareTo(SymbolString that){return repr.compareTo(that.repr);}
     
     public List<String> getList(){return tkns.subList(0, length);}
+
+    public Stream<String> stream(){return tkns.stream();}
     
-    public SymbolString substr(int start){
-        return substr(start, length);
-    }
+    public SymbolString substr(int start){return substr(start, length);}
     public SymbolString substr(int start, int end){
         return new SymbolString(tkns.subList(start, end));
     }
     
-    public Iterator<String> iterator(){
-        return tkns.iterator();
+    public Iterator<String> iterator(){return tkns.iterator();}
+
+    public SymbolString concat(SymbolString other){
+        return new SymbolString(Stream.concat(stream(), other.stream()).collect(Collectors.toList()));
+    }
+    public SymbolString concat(String symbol){
+        return new SymbolString(Stream.concat(stream(), Arrays.asList(symbol).stream()).collect(Collectors.toList()));
     }
 }

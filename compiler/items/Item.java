@@ -1,5 +1,4 @@
 package compiler.items;
-import java.util.*;
 
 import compiler.ComparableSet;
 import compiler.Grammar;
@@ -51,26 +50,6 @@ public class Item implements Comparable<Item>, Printable{
         return lookahead;
     }
     
-    public ItemSet closure(){
-        //The closure will always contain this item
-        ItemSet res = new ItemSet(Arrays.asList(new Item[]{this}));
-        if(isFinished()) return res;
-        //Now compute the rest of the closure
-        Queue<Rule> dq = new ArrayDeque<>(Arrays.asList(new Rule("__DUMMY__", next())));
-        
-        while(dq.size() > 0){
-            Rule rule = dq.remove();
-            String sym = rule.getRhs().firstTkn();
-            
-            if(!grammar.isNonTerminal(sym)) continue;
-            
-            for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(grammar, r, 0, new ComparableSet<>(grammar.follow(r.getLhs())))))
-                    dq.add(r);
-        }
-        return res;
-    }
-    
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(rule.getLhs());
@@ -81,6 +60,8 @@ public class Item implements Comparable<Item>, Printable{
             sb.append(rule.getRhs().get(i));
         }
         if(isFinished()) sb.append(" ●");
+        sb.append(" ");
+        sb.append(lookahead.stream().map(i -> "\"" + i + "\"").reduce("", (a, b) -> a.equals("") ? "\t\t" + b : a + " / " + b));
         return sb.toString();
     }
 }

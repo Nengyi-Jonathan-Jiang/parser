@@ -8,9 +8,9 @@ import compiler.items.Item;
 import compiler.items.ItemSet;
 import compiler.ComparableSet;
 
-public class LR0Parser extends LRParser{ 
+public class SLRParser extends LRParser{ 
 
-    public LR0Parser(Grammar grammar){
+    public SLRParser(Grammar grammar){
         super(grammar);
     }
 
@@ -28,7 +28,7 @@ public class LR0Parser extends LRParser{
             if(!grammar.isNonTerminal(sym)) continue;
             
             for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(grammar, r, 0, new ComparableSet<>(grammar.getTerminals()))))
+                if(res.add(new Item(grammar, r, 0, new ComparableSet<>(grammar.follow(r.getLhs())))))
                     dq.add(r);
         }
         return res;

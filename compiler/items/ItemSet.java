@@ -22,28 +22,6 @@ public class ItemSet extends ComparableSet<Item> implements Printable{
         return new ItemSet(this).mergeWith(set);
     }
     
-    public ItemSet applyClosure(){
-        Deque<Item> addedElements = new ArrayDeque<>();
-        for(Item item : this)
-            for(Item newItem : item.closure())
-                addedElements.push(newItem);
-        
-        addAll(addedElements);
-        return this;
-    }
-    
-    public ItemSet closure(){
-        return new ItemSet(this).applyClosure();
-    }
-    
-    public ItemSet successor(String sym){
-        ItemSet res = new ItemSet();
-        for(Item it : this)
-            if(sym.equals(it.next()))
-                res.add(it.shift());
-        return res.applyClosure();
-    }
-    
     public int compareTo(ItemSet other){
         Iterator<Item> i1 = iterator();
         Iterator<Item> i2 = other.iterator();
@@ -65,5 +43,9 @@ public class ItemSet extends ComparableSet<Item> implements Printable{
         }
         sb.append("\n}");
         return sb.toString();
+    }
+
+    public ItemSet copy(){
+        return new ItemSet(this);
     }
 }

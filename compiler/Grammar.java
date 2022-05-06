@@ -23,6 +23,7 @@ public class Grammar implements Printable{
         // Classify symbols as terminals or nonterminals
         
         allSymbols = new ComparableSet<>();
+        allSymbols.add("__END__");
         nonTerminals = new ComparableSet<>();
         startsWith = new TreeMap<>();
         
@@ -36,7 +37,6 @@ public class Grammar implements Printable{
         
         terminals = new ComparableSet<>(allSymbols);
         terminals.removeAll(nonTerminals);
-        terminals.add("__END__");
         
         // Compute for each symbol the set of rules whose left-hand-sides match
         // said symbol
@@ -56,7 +56,9 @@ public class Grammar implements Printable{
         for(String sym : allSymbols){
 			firstSets.put(sym, new ComparableSet<>());
 			followSets.put(sym, new ComparableSet<>());
-			if(isTerminal(sym)) firstSets.get(sym).add(sym);
+			if(isTerminal(sym)){
+                firstSets.get(sym).add(sym);
+            }
 		}
         
         followSets.get(this.startSymbol).add("__END__");
@@ -140,7 +142,7 @@ public class Grammar implements Printable{
     public Set<String> first(SymbolString tkns){
         // First set of empty token string is {epsilon}
         if(tkns.size() == 0)
-            return new TreeSet<>(Arrays.asList(new String[]{"__EPSILON__"}));
+            return new TreeSet<>(Arrays.asList(new String[]{null}));
         // Otherwise first set of token string is first set of the first token
         // of the token string
         Set<String> res = new TreeSet<>(first(tkns.firstTkn()));
