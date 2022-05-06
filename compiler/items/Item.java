@@ -1,9 +1,9 @@
 package compiler.items;
 
 import compiler.ComparableSet;
-import compiler.Grammar;
 import compiler.Printable;
 import compiler.Rule;
+import compiler.grammar.Grammar;
 
 public class Item implements Comparable<Item>, Printable{
     private final Rule rule;
@@ -44,6 +44,10 @@ public class Item implements Comparable<Item>, Printable{
     
     public boolean equals(Item other){
         return pos == other.pos && rule.equals(other.rule) && lookahead.equals(other.lookahead);
+    }
+
+    public boolean coreEquals(Item other){
+        return pos == other.pos && rule.equals(other.rule);
     }
 
     public ComparableSet<String> getLookahead(){

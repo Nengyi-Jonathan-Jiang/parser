@@ -2,16 +2,22 @@
 import java.util.*;
 import java.util.stream.*;
 
-import compiler.Grammar;
 import compiler.Rule;
+import compiler.grammar.Grammar;
 import compiler.parsers.*;
 
 public class Main {
 	public static void main(String[] args) {
 		Grammar gram = new Grammar(Arrays.asList(
-			new Rule("S", "X", "X"),
-			new Rule("X", "a", "X"),
-			new Rule("X", "b")
+			// new Rule("S", "X", "X"),
+			// new Rule("X", "a", "X"),
+			// new Rule("X", "b")
+
+			new Rule("S","L","=","R"),
+			new Rule("S","R"),
+			new Rule("L","*","R"),
+			new Rule("L","id"),
+			new Rule("R","L")
 
 		//    new Rule("E", "E","*","T"),
 		//    new Rule("E", "V","=","T"),
@@ -42,7 +48,8 @@ public class Main {
 
 		// String str = "id = id + ( id + id ) * ( id ) __END__";
 		// String str = "id = id + id __END__";
-		String str = "b a a b __END__";
+		// String str = "b a a b __END__";
+		String str = "id = id __END__";
 
 		ParseTree pTree = parse.parse(str.split(" "), true);
 		if(pTree == null) System.out.println("ERROR PARSING STRING");

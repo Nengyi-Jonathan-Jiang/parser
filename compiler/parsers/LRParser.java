@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import compiler.*;
+import compiler.grammar.Grammar;
 import compiler.parsingTable.*;
 import compiler.items.*;
 

@@ -2,8 +2,8 @@ package compiler.parsers;
 
 import java.util.*;
 
-import compiler.Grammar;
 import compiler.Rule;
+import compiler.grammar.Grammar;
 import compiler.items.Item;
 import compiler.items.ItemSet;
 import compiler.ComparableSet;

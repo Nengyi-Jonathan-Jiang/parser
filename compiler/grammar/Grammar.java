@@ -1,5 +1,10 @@
-package compiler;
+package compiler.grammar;
 import java.util.*;
+
+import compiler.ComparableSet;
+import compiler.Printable;
+import compiler.Rule;
+import compiler.SymbolString;
 
 public class Grammar implements Printable{
     private final List<Rule> rules;

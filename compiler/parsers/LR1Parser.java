@@ -2,12 +2,12 @@ package compiler.parsers;
 
 import java.util.*;
 
-import compiler.Grammar;
 import compiler.Rule;
 import compiler.items.Item;
 import compiler.items.ItemSet;
 import compiler.ComparableSet;
 import compiler.SymbolString;
+import compiler.grammar.Grammar;
 
 public class LR1Parser extends LRParser{ 
 
