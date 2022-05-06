@@ -28,6 +28,8 @@ public class LR1Parser extends LRParser{
             ItemSet nRes = res.copy();
             
             for(Item itm : res){
+                if(itm.getRule().getRhsSize() == 0) continue;
+                
                 String symbol = itm.next();
                 SymbolString rest = itm.getRule().getRhs().substr(itm.getPos() + 1);
 

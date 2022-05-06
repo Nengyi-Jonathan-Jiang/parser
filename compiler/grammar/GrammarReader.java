@@ -4,13 +4,18 @@ import java.io.*;
 import java.util.*;
 import compiler.Rule;
 
-public class GrammarFromFile {
+public class GrammarReader {
     private static Rule ruleFromLine(String str){
         Scanner scan = new Scanner(str);
         String lhs = scan.next();
-        scan.next();    //There must be a separator between lhs and rhs but it can be any token
+        if(scan.next().equals("__EPSILON__")){
+            scan.close();
+            return new Rule(lhs);
+        }
         List<String> rhs = new ArrayList<>();
-        while(scan.hasNext()) rhs.add(scan.next());
+        while(scan.hasNext()){
+            rhs.add(scan.next());
+        }
         scan.close();
         return new Rule(lhs, rhs);
     }

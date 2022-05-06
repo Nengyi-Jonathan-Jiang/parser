@@ -1,55 +1,30 @@
-
 import java.util.*;
 import java.util.stream.*;
 
 import compiler.Rule;
 import compiler.grammar.Grammar;
+import compiler.grammar.GrammarReader;
 import compiler.parsers.*;
 
 public class Main {
 	public static void main(String[] args) {
-		Grammar gram = new Grammar(Arrays.asList(
-			// new Rule("S", "X", "X"),
-			// new Rule("X", "a", "X"),
-			// new Rule("X", "b")
+		System.out.println("Generating Grammar...");
 
-			new Rule("S","L","=","R"),
-			new Rule("S","R"),
-			new Rule("L","*","R"),
-			new Rule("L","id"),
-			new Rule("R","L")
+		Grammar gram = GrammarReader.readFromFile("Grammar.ebnf");
 
-		//    new Rule("E", "E","*","T"),
-		//    new Rule("E", "V","=","T"),
-		//    new Rule("E", "T"),
-		//    new Rule("T", "T","+","F"),
-		//    new Rule("T", "F"),
-		//    new Rule("F", "(","E",")"),
-		//    new Rule("F", "id"),
-		//    new Rule("V", "id")
-
-		    // new Rule("E", "E","+","T"),
-            // new Rule("E", "T"),
-            // new Rule("T", "(","E",")"),
-            // new Rule("T", "id")
-
-			// new Rule("E", "E", "+", "T"),
-			// new Rule("E", "V", "=", "E"),
-			// new Rule("E", "T"),
-			// new Rule("T", "(", "E", ")"),
-			// new Rule("T", "id"),
-			// new Rule("V", "id")
-		// ), "E");
-		), "S");
+		System.out.println("===================");
+		System.out.println(gram);
+		System.out.println("===================");
 
 		// Parser parse = new SLRParser(gram);
 		// Parser parse = new LR0Parser(gram);
-		LRParser parse = new LR1Parser(gram);
+		System.out.println("Generating Parser...");
 
-		// String str = "id = id + ( id + id ) * ( id ) __END__";
-		// String str = "id = id + id __END__";
-		// String str = "b a a b __END__";
-		String str = "id = id __END__";
+		LRParser parse = new SLRParser(gram);
+
+		System.out.println("Parsing...");
+
+		String str = "id = id ; __END__";
 
 		ParseTree pTree = parse.parse(str.split(" "), true);
 		if(pTree == null) System.out.println("ERROR PARSING STRING");
