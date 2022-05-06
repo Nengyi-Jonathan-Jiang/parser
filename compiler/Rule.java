@@ -5,6 +5,7 @@ public class Rule implements Comparable<Rule>, Printable{
     private final String lhs;
     private final SymbolString rhs;
     private final boolean empty;
+
     public Rule(String lhs, String... rhs){this(lhs, Arrays.asList(rhs));}
     public Rule(String lhs, List<String> rhs){this(lhs, new SymbolString(rhs));}
     public Rule(String lhs, SymbolString rhs){
@@ -23,9 +24,12 @@ public class Rule implements Comparable<Rule>, Printable{
     }
     
     public boolean equals(Rule that){
-        return toString().equals(that.toString());
+        // return toString().equals(that.toString());
+        return this == that;
     }
+
     public int compareTo(Rule that){
-        return toString().compareTo(that.toString());
+        // return toString().compareTo(that.toString());
+        return hashCode() - that.hashCode();
     }
 }

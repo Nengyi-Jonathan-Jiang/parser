@@ -138,6 +138,7 @@ public abstract class LRParser implements Parser{
                     if(!successor.isEmpty() && !newSet.containsKey(successor)){
                         updated = true;
                         newSet.put(successor, newSet.size());
+                        System.out.println("Found " + newSet.size() + "th configurating set (" + successor.size() + " items)");
                     }
                 }
             }

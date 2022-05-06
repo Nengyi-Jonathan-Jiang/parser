@@ -20,7 +20,8 @@ public class Main {
 		// Parser parse = new LR0Parser(gram);
 		System.out.println("Generating Parser...");
 
-		LRParser parse = new SLRParser(gram);
+		LRParser parse = new LR1Parser(gram);
+		// LRParser parse = new SLRParser(gram);
 
 		System.out.println("Parsing...");
 

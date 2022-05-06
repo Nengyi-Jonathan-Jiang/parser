@@ -23,6 +23,7 @@ public class LR0Parser extends LRParser{
         
         while(dq.size() > 0){
             Rule rule = dq.remove();
+            if(rule.isEmpty()) continue;
             String sym = rule.getRhs().firstTkn();
             
             if(!grammar.isNonTerminal(sym)) continue;
