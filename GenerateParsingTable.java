@@ -2,7 +2,6 @@ import compiler.grammar.Grammar;
 import compiler.grammar.GrammarReader;
 import compiler.parsers.LR1Parser;
 import compiler.parsers.LRParser;
-import compiler.parsers.LRParserFromFile;
 
 public class GenerateParsingTable {
     public static void main(String[] args){
