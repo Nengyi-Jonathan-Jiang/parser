@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Generating Grammar...");
 
-		Grammar gram = GrammarReader.readFromFile("Grammar.ebnf");
+		Grammar gram = GrammarReader.readFromFile("Code.ebnf");
 
 		System.out.println("===================");
 		System.out.println(gram);
@@ -25,7 +25,7 @@ public class Main {
 
 		System.out.println("Parsing...");
 
-		String str = "id = id + int ; __END__";
+		String str = "IDENTIFIER = IDENTIFIER + NUMBER_CONST ; __END__";
 
 		ParseTree pTree = parse.parse(str.split(" "), true);
 		if(pTree == null) System.out.println("ERROR PARSING STRING");

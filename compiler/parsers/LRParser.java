@@ -87,7 +87,7 @@ public abstract class LRParser implements Parser{
 
                     // Update parse tree - merge nodes into parent node
 
-                    if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
+                    // if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
                     ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
                     for(int j = reduceRule.getRhsSize() - 1; j >= 0; j--)
                         children[j] = parseTreeStack.pop();
@@ -110,6 +110,8 @@ public abstract class LRParser implements Parser{
         for(Entry<ItemSet, Integer> entry : configuratingSets.entrySet()){
             ItemSet itemSet = entry.getKey();
             int state1 = entry.getValue();
+
+            System.out.println("For state " + state1 + ":");
 
             // Generate Action table
             for(Item item : itemSet){
@@ -146,7 +148,7 @@ public abstract class LRParser implements Parser{
                 for(String symbol : grammar.getAllSymbols()){
                     ItemSet successor = successor(configuratingSet, symbol);
                     if(successor.isEmpty()) continue;
-                    
+
                     int state2;
 
                     if(!configuratingSets.containsKey(successor)){
