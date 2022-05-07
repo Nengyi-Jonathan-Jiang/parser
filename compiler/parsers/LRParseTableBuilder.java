@@ -11,7 +11,7 @@ import java.util.*;
 
 public abstract class LRParseTableBuilder {
     protected ParsingTable table;
-    protected Grammar grammar;
+    protected final Grammar grammar;
 
     protected Map<Integer, Map<String, Integer>> successors;
 

@@ -30,12 +30,6 @@ public class GrammarReader {
         return new Grammar(rules, startSymbol);
     }
 
-    public static Grammar readFromString(String grammar){
-        Scanner scan = new Scanner(grammar);
-        Grammar res = readFromScanner(scan);
-        scan.close();
-        return res;
-    }
     public static Grammar readFromFile(String filename){
         Scanner scan;
         try{

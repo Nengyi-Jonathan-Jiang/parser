@@ -24,15 +24,7 @@ public final class LRParser implements Parser{
      * @param tokens A string of tokens to be parsed
      * @return The parse tree if the tokens were parsed successfully, otherwise null
      */
-    public ParseTree parse(String[] tokens){return parse(tokens, false);}
-
-    /**
-     * Parses a string of tokens
-     * @param tokens A string of tokens to be parsed
-     * @param debug Whether to print out the parsing steps
-     * @return The parse tree if the tokens were parsed successfully, otherwise null
-     */
-    public ParseTree parse(String[] tokens, boolean debug){
+    public ParseTree parse(String[] tokens) {
 
         Deque<Integer> stateStack = new ArrayDeque<>();
         Deque<ParseTree> parseTreeStack = new ArrayDeque<>();

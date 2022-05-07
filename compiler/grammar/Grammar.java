@@ -8,7 +8,6 @@ import compiler.SymbolString;
 
 public class Grammar implements Printable{
     private final List<Rule> rules;
-    private final String startSymbol;
     private final Rule startRule;
     
     private final TreeMap<String, List<Rule>> startsWith;
@@ -23,7 +22,7 @@ public class Grammar implements Printable{
 
         startRule = new Rule("__START__", startSymbol);
         this.rules.add(startRule);
-        this.startSymbol = "__START__";
+        String startSymbol1 = "__START__";
         
         // Classify symbols as terminals or nonterminals
         
@@ -32,8 +31,8 @@ public class Grammar implements Printable{
         nonTerminals = new ComparableSet<>();
         startsWith = new TreeMap<>();
         
-        allSymbols.add(this.startSymbol);
-        nonTerminals.add(this.startSymbol);
+        allSymbols.add(startSymbol1);
+        nonTerminals.add(startSymbol1);
         
         for(Rule rule : this.rules){
             nonTerminals.add(rule.getLhs());
@@ -66,7 +65,7 @@ public class Grammar implements Printable{
             }
 		}
         
-        followSets.get(this.startSymbol).add("__END__");
+        followSets.get(startSymbol1).add("__END__");
         
         // Calculate FIRST sets, FOLLOW sets, and the set of nullable symbols
         
@@ -100,6 +99,7 @@ public class Grammar implements Printable{
 		}
     }
     
+    @SuppressWarnings("unused")
     public List<Rule> getRules(){return rules;}
     public List<Rule> getRules(String sym){return startsWith.get(sym);}
     
@@ -118,6 +118,7 @@ public class Grammar implements Printable{
         return rules.stream().map(i->i.toString()).reduce("",(String a, String b)->a+"\n"+b);
     }
     
+    @SuppressWarnings("unused")
     public boolean isNullable(SymbolString tkns){
         if(tkns.size() == 0) return true;
         for(String tkn : tkns)
@@ -130,6 +131,7 @@ public class Grammar implements Printable{
         return nullableSet.contains(tkn);
     }
     
+    @SuppressWarnings("unused")
     public ComparableSet<String> follow(SymbolString tkns){
         // Follow set of empty token string is {epsilon}
         if(tkns.size() == 0)

@@ -11,11 +11,12 @@ import compiler.grammar.Grammar;
 
 public class LR1ParseTableBuilder extends LRParseTableBuilder{
 
+    protected final Map<Item, ItemSet> memoization;
+
     public LR1ParseTableBuilder(Grammar grammar){
         super(grammar);
+        memoization = new TreeMap<>();
     }
-
-    protected static Map<Item, ItemSet> memoization = new TreeMap<>();
 
     protected ItemSet closure(Item item){
         if(memoization.containsKey(item)) return memoization.get(item);

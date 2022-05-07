@@ -30,7 +30,7 @@ public class Main {
 			+	"} "
 			+	"__END__";
 
-		ParseTree pTree = parse.parse(str.split(" "), true);
+		ParseTree pTree = parse.parse(str.split(" "));
 		if(pTree == null) System.out.println("ERROR PARSING STRING");
 		else System.out.println(pTree.prnt());
 	}

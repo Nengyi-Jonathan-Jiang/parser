@@ -4,5 +4,5 @@ package compiler.parsers;
  * Parses an array of tokens into a parse tree
  */
 public interface Parser {
-    public ParseTree parse(String[] tokens);
+    ParseTree parse(String[] tokens);
 }
