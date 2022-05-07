@@ -1,9 +1,10 @@
 import compiler.parsers.*;
+import compiler.parsingTable.ParsingTable;
 
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("Generating Parser...");
-		LRParser parse = new LRParserFromFile("Code.ptbl");
+		LRParser parse = new LRParser(ParsingTable.loadFromFile("Code.ptbl"));
 
 		System.out.println("Parsing...");
 

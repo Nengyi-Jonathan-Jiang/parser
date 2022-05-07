@@ -9,18 +9,18 @@ import compiler.ComparableSet;
 import compiler.SymbolString;
 import compiler.grammar.Grammar;
 
-public class LR1Parser extends LRParser{ 
+public class LR1ParseTableBuilder extends LRParseTableBuilder{
 
-    public LR1Parser(Grammar grammar){
+    public LR1ParseTableBuilder(Grammar grammar){
         super(grammar);
     }
 
-    static Map<Item, ItemSet> memoization = new TreeMap<>();
+    protected static Map<Item, ItemSet> memoization = new TreeMap<>();
 
-    public ItemSet closure(Item item){
+    protected ItemSet closure(Item item){
         if(memoization.containsKey(item)) return memoization.get(item);
 
-        ItemSet res = new ItemSet(Arrays.asList(item));
+        ItemSet res = new ItemSet(Collections.singletonList(item));
         if(item.isFinished()) return res;
         
         boolean updated = true;

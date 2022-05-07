@@ -8,18 +8,18 @@ import compiler.items.Item;
 import compiler.items.ItemSet;
 import compiler.ComparableSet;
 
-public class SLRParser extends LRParser{ 
+public class LR0ParseTableBuilder extends LRParseTableBuilder{
 
-    public SLRParser(Grammar grammar){
+    public LR0ParseTableBuilder(Grammar grammar){
         super(grammar);
     }
 
-    public ItemSet closure(Item item){
+    protected ItemSet closure(Item item){
         //The closure will always contain this item
-        ItemSet res = new ItemSet(Arrays.asList(item));
+        ItemSet res = new ItemSet(Collections.singletonList(item));
         if(item.isFinished()) return res;
         //Now compute the rest of the closure
-        Queue<Rule> dq = new ArrayDeque<>(Arrays.asList(new Rule("__DUMMY__", item.next())));
+        Queue<Rule> dq = new ArrayDeque<>(Collections.singletonList(new Rule("__DUMMY__", item.next())));
         
         while(dq.size() > 0){
             Rule rule = dq.remove();
@@ -29,7 +29,7 @@ public class SLRParser extends LRParser{
             if(!grammar.isNonTerminal(sym)) continue;
             
             for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(r, 0, new ComparableSet<>(grammar.follow(r.getLhs())))))
+                if(res.add(new Item(r, 0, new ComparableSet<>(grammar.getTerminals()))))
                     dq.add(r);
         }
         return res;

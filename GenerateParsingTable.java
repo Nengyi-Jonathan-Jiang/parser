@@ -1,6 +1,6 @@
 import compiler.grammar.Grammar;
 import compiler.grammar.GrammarReader;
-import compiler.parsers.LR1Parser;
+import compiler.parsers.LR1ParseTableBuilder;
 import compiler.parsers.LRParser;
 
 public class GenerateParsingTable {
@@ -15,8 +15,6 @@ public class GenerateParsingTable {
 
         System.out.println("Generating Parser...");
 
-		LRParser parse = new LR1Parser(grammar);
-
-		parse.saveParsingTableToFile("Code.ptbl");
+		new LR1ParseTableBuilder(grammar).getTable().saveToFile("Code.ptbl");
     }
 }
