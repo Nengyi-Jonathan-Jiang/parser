@@ -27,6 +27,11 @@ public abstract class LRParser implements Parser{
         this.grammar = grammar;
         generateParsingTable();
     }
+
+    public LRParser(String filename){
+        table = ParsingTable.loadFromFile(filename);
+    }
+
     /**
      * Parses a string of tokens
      * @param tokens A string of tokens to be parsed
@@ -106,9 +111,6 @@ public abstract class LRParser implements Parser{
         return null;
     }
 
-    private void loadParsingTableToFile(String filename){
-        table = ParsingTable.loadFromFile(filename);
-    }
     public void saveParsingTableToFile(String filename){
         table.saveToFile(filename);
     }

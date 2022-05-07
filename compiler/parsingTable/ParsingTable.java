@@ -8,7 +8,7 @@ import compiler.Rule;
 
 public class ParsingTable{
     
-    private List<Map<String,TableEntry>> actionTable, gotoTable;
+    private final List<Map<String,TableEntry>> actionTable, gotoTable;
     private final int numStates;
     
     public ParsingTable(int numStates){
@@ -45,12 +45,12 @@ public class ParsingTable{
     public void saveToFile(String filename){
         try {
             PrintWriter printWriter = new PrintWriter(filename);
+
             StringBuilder sb = new StringBuilder();
 
             sb.append(numStates);
 
             for(int state = 0; state < numStates; state++){
-                sb.append("\ns");
                 for(Map.Entry<String, TableEntry> mapEntry : actionTable.get(state).entrySet()){
                     String symbol = mapEntry.getKey();
                     TableEntry entry = mapEntry.getValue();
@@ -83,9 +83,12 @@ public class ParsingTable{
                     sb.append(" ");
                     sb.append(entry.getNextState());
                 }
+                sb.append("\ns");
             }
 
             printWriter.print(sb.toString());
+            printWriter.flush();
+            printWriter.close();
         }
         catch(Exception e){
             System.out.println("Error saving LR parse table to file");
@@ -98,45 +101,39 @@ public class ParsingTable{
             int size = scan.nextInt();
             ParsingTable table = new ParsingTable(size);
             for(int state = 0; state < size; state++){
-//                sb.append("\ns");
-//                for(Map.Entry<String, TableEntry> mapEntry : actionTable.get(state).entrySet()){
-//                    String symbol = mapEntry.getKey();
-//                    TableEntry entry = mapEntry.getValue();
-//                    sb.append("\na ");
-//                    sb.append(symbol);
-//                    switch(entry.getAction()){
-//                        case SHIFT:
-//                            sb.append(" s ");
-//                            sb.append(((ShiftEntry)entry).getNextState());
-//                            break;
-//                        case ACCEPT:
-//                            sb.append(" a ");
-//                            break;
-//                        case REDUCE:
-//                            sb.append(" r ");
-//                            Rule rule = ((ReduceEntry)entry).getRule();
-//                            sb.append(rule.getRhsSize());
-//                            sb.append(" ");
-//                            sb.append(rule.getLhs());
-//                            sb.append(" ");
-//                            sb.append(rule.getRhs().toString());
-//                            break;
-//                    }
-//                }
-//                for(Map.Entry<String, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
-//                    String symbol = mapEntry.getKey();
-//                    GotoEntry entry = (GotoEntry) mapEntry.getValue();
-//                    sb.append("\ng ");
-//                    sb.append(symbol);
-//                    sb.append(" ");
-//                    sb.append(entry.getNextState());
-//                }
+                String tableType;
+                while(!(tableType = scan.next()).equals("s")){
+                    String symbol = scan.next();
+                    switch(tableType){
+                        case "a":
+                            switch(scan.next()){
+                                case "a":
+                                    table.setActionAccept(state, symbol);
+                                    break;
+                                case "s":
+                                    table.setActionShift(state, symbol, scan.nextInt());
+                                    break;
+                                case "r":
+                                    int rhsSize = scan.nextInt();
+                                    String lhs = scan.next();
+                                    String[] rhs = new String[rhsSize];
+                                    for(int i = 0; i < rhsSize; i++) rhs[i] = scan.next();
+                                    table.setActionReduce(state, symbol, new Rule(lhs, rhs));
+                                    break;
+                            }
+                            break;
+                        case "g":
+                            table.setGoto(state, symbol, scan.nextInt());
+                            break;
+                    }
+                }
             }
             scan.close();
             return table;
         }
         catch(Exception e){
             System.out.println("Error loading LR parse table from file");
+            e.printStackTrace();
             return null;
         }
     }
