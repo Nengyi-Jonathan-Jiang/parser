@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build Grammar" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="GenerateParsingTable" />
+    <module name="parser" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

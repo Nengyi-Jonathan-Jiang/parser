@@ -50,15 +50,15 @@ public abstract class LRParser implements Parser{
         Deque<Integer> stateStack = new ArrayDeque<>();
         Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
 
-        // Start in state1 0
+        // Start in state 0
         stateStack.push(0);
 
         int index = 0;
         while(index < tokens.length){
-            int state1 = stateStack.peek();
+            int state = stateStack.peek();
             String token = tokens[index];
 
-            TableEntry entry = table.getAction(state1, token);
+            TableEntry entry = table.getAction(state, token);
 
             // Parse failed
             if(entry == null){
@@ -67,13 +67,13 @@ public abstract class LRParser implements Parser{
             }
             
             
-            if(debug) System.out.print(String.format("%-50s", parseTreeStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
+            if(debug) System.out.print(String.format("%-70s", parseTreeStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")) + " ");
 
             switch(entry.getAction()){
                 case SHIFT:
                     if(debug) System.out.println("SHIFT \"" + token + "\"");
 
-                    // Update state1 stack and current token pointer
+                    // Update state stack and current token pointer
                     stateStack.push(((ShiftEntry)entry).getNextState());
                     index++;
 
@@ -91,7 +91,7 @@ public abstract class LRParser implements Parser{
 
                     if(debug) System.out.println("REDUCE " + reduceRule);
 
-                    // Update state1 stack
+                    // Update state stack
                     for(int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
                     GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
                     stateStack.push(gotoEntry.getNextState());
@@ -125,19 +125,19 @@ public abstract class LRParser implements Parser{
         int i = 0;
         for(Entry<ItemSet, Integer> entry : configuratingSets.entrySet()){
             ItemSet itemSet = entry.getKey();
-            int state1 = entry.getValue();
+            int state = entry.getValue();
 
-            System.out.println("Generated entries for " + (++i) + " states (currently on state " + state1 + ")");
+            System.out.println("Generated entries for " + (++i) + " states (currently on state " + state + ")");
 
             // Generate Action table
             for(Item item : itemSet){
-                generateActionSetEntry(state1, item);
+                generateActionSetEntry(state, item);
             }
             
             // Generate Goto table
             for(String symbol : grammar.getNonTerminals()){
-                Integer nextState = successors.get(state1).get(symbol);
-                if(nextState != null) table.setGoto(state1, symbol, nextState);
+                Integer nextState = successors.get(state).get(symbol);
+                if(nextState != null) table.setGoto(state, symbol, nextState);
             }
         }
     }
@@ -186,19 +186,19 @@ public abstract class LRParser implements Parser{
         return configuratingSets;
     }
 
-    protected void generateActionSetEntry(int state1, Item item){
+    protected void generateActionSetEntry(int state, Item item){
         if(item.isFinished() && item.getRule().equals(grammar.getStartRule())){
-            table.setActionAccept(state1, "__END__");
+            table.setActionAccept(state, "__END__");
         }
         else if(item.isFinished()){
             Rule reduce = item.getRule();
             for(String symbol : item.getLookahead()){
-                table.setActionReduce(state1, symbol, reduce);
+                table.setActionReduce(state, symbol, reduce);
             }
         }
         else{
-            Integer nextState = successors.get(state1).get(item.next());
-            if(nextState != null) table.setActionShift(state1, item.next(), nextState);
+            Integer nextState = successors.get(state).get(item.next());
+            if(nextState != null) table.setActionShift(state, item.next(), nextState);
         }
 
         

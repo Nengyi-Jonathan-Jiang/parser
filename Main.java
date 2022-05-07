@@ -7,7 +7,27 @@ public class Main {
 
 		System.out.println("Parsing...");
 
-		String str = "IDENTIFIER = IDENTIFIER + NUMBER_CONST ; __END__";
+		// IDENTIFIER FUNC IDENTIFIER ( ) { IDENTIFIER VAR IDENTIFIER ; INPUT IDENTIFIER ; TEST ( IDENTIFIER != NUMBER_CONST ) { TEST ( IDENTIFIER ) { CASE ( IDENTIFIER == NUMBER_CONST ) { OUTPUT STRING_CONST; } CASE ( IDENTIFIER % 2 == NUMBER_CONST ) { OUTPUT HEX_CONST ; } DEFAULT { OUTPUT STRING_CONST ; } } } OUTPUT NUMBER_CONST ; }
+
+//		String str = "IDENTIFIER = IDENTIFIER + NUMBER_CONST ; __END__";
+		String str =
+				"IDENTIFIER FUNC IDENTIFIER ( ) { "
+			+ 		"IDENTIFIER VAR IDENTIFIER ; "
+			+ 		"INPUT IDENTIFIER ; "
+			+ 		"TEST ( IDENTIFIER != NUMBER_CONST ) { "
+			+ 			"CASE ( IDENTIFIER == NUMBER_CONST ) { "
+			+	 			"OUTPUT STRING_CONST ; "
+			+ 			"} "
+			+ 			"CASE ( IDENTIFIER % NUMBER_CONST == NUMBER_CONST ) { "
+			+ 				"OUTPUT HEX_CONST ; "
+			+ 			"} "
+			+			"DEFAULT { "
+			+ 				"OUTPUT STRING_CONST ; "
+			+ 			"} "
+			+ 		"} "
+			+ 		"OUTPUT NUMBER_CONST ; "
+			+	"} "
+			+	"__END__";
 
 		ParseTree pTree = parse.parse(str.split(" "), true);
 		if(pTree == null) System.out.println("ERROR PARSING STRING");
