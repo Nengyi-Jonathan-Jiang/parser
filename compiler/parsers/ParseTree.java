@@ -31,6 +31,6 @@ public class ParseTree implements Iterable<ParseTree>{
     }
 
     public String prnt(){
-        return isLeaf() ? "\"" + description + "\"" : description + " {" + indentEachLine(Arrays.stream(children).map(i->i.prnt()).reduce("",(a,b)-> a + "\n" + b)) + "\n}";
+        return isLeaf() ? "\"" + description + "\"" : description + " {" + indentEachLine(Arrays.stream(children).map(ParseTree::prnt).reduce("",(a,b)-> a + "\n" + b)) + "\n}";
     }
 }

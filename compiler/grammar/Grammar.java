@@ -115,7 +115,7 @@ public class Grammar implements Printable{
     // public Strin
 
     public String toString(){
-        return rules.stream().map(i->i.toString()).reduce("",(String a, String b)->a+"\n"+b);
+        return rules.stream().map(Rule::toString).reduce("",(String a, String b)->a+"\n"+b);
     }
     
     @SuppressWarnings("unused")
