@@ -87,7 +87,7 @@ public abstract class LRParser implements Parser{
 
                     // Update parse tree - merge nodes into parent node
 
-                    // if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
+                    if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
                     ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
                     for(int j = reduceRule.getRhsSize() - 1; j >= 0; j--)
                         children[j] = parseTreeStack.pop();
