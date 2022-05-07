@@ -127,23 +127,27 @@ public abstract class LRParser implements Parser{
         ItemSet initialState = closure(new Item(grammar, grammar.getStartRule(), 0, new ComparableSet<>("__END__")));
         configuratingSets.put(initialState, 0);
         
+        Set<ItemSet> edge = new TreeSet<>(Arrays.asList(initialState));
+
         boolean updated = true;
         while(updated){
             updated = false;
 
-            Map<ItemSet,Integer> newSet = new TreeMap<>(configuratingSets);
-            for(ItemSet configuratingSet : configuratingSets.keySet()){
+            Map<ItemSet,Integer> newSet = new TreeMap<>();
+            
+            for(ItemSet configuratingSet : edge){
                 for(String symbol : grammar.getAllSymbols()){
                     ItemSet successor = successor(configuratingSet, symbol);
-                    if(!successor.isEmpty() && !newSet.containsKey(successor)){
+                    if(!successor.isEmpty() && !newSet.containsKey(successor) && !configuratingSets.containsKey(successor)){
                         updated = true;
-                        newSet.put(successor, newSet.size());
-                        System.out.println("Found " + newSet.size() + "th configurating set (" + successor.size() + " items)");
+                        newSet.put(successor, configuratingSets.size() + newSet.size());
+                        System.out.println("Found " + (configuratingSets.size() + newSet.size()) + "th configurating set (" + successor.size() + " items)");
                     }
                 }
             }
 
-            configuratingSets = newSet;
+            edge = newSet.keySet();
+            configuratingSets.putAll(newSet);
         }
 
         return configuratingSets;
@@ -168,12 +172,13 @@ public abstract class LRParser implements Parser{
     public abstract ItemSet closure(Item item);
 
     public ItemSet applyClosure(ItemSet itemSet){
-        Deque<Item> addedElements = new ArrayDeque<>();
-        for(Item item : itemSet)
-            for(Item newItem : closure(item))
-                addedElements.push(newItem);
+        Set<Item> addedElements = new TreeSet<>();
+
+        for(Item item : itemSet) 
+            addedElements.addAll(closure(item));
         
         itemSet.addAll(addedElements);
+
         return itemSet;
     }
     
@@ -184,7 +189,7 @@ public abstract class LRParser implements Parser{
     public ItemSet successor(ItemSet itemSet, String symbol){
         ItemSet res = new ItemSet();
         for(Item item : itemSet)
-            if(symbol.equals(item.next()))
+            if(!item.isFinished() && item.next().equals(symbol))
                 res.add(item.shift());
         return applyClosure(res);
     }

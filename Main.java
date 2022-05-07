@@ -25,7 +25,7 @@ public class Main {
 
 		System.out.println("Parsing...");
 
-		String str = "id = id ; __END__";
+		String str = "id = id + int ; __END__";
 
 		ParseTree pTree = parse.parse(str.split(" "), true);
 		if(pTree == null) System.out.println("ERROR PARSING STRING");
