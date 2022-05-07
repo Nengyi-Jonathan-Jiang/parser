@@ -158,7 +158,7 @@ public abstract class LRParser implements Parser{
                         updated = true;
                         configuratingSets.put(successor, state2);
                         newEdge.add(successor);
-                        System.out.println("Found " + state2 + 1 + "th configurating set (" + successor.size() + " items)");
+                        System.out.println("Found " + (state2 + 1) + "th configurating set (" + successor.size() + " items)");
                     }
                     else state2 = configuratingSets.get(successor);
 
