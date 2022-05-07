@@ -116,13 +116,12 @@ public abstract class LRParser implements Parser{
 
             // Generate Action table
             for(Item item : itemSet){
-                generateActionSetEntry(configuratingSets, state1, itemSet, item);
+                generateActionSetEntry(state1, item);
             }
             
             // Generate Goto table
             for(String symbol : grammar.getNonTerminals()){
-                // Integer nextState = configuratingSets.get(successor(itemSet, symbol));
-                Integer nextState = successors.get(configuratingSets.get(itemSet)).get(symbol);
+                Integer nextState = successors.get(state1).get(symbol);
                 if(nextState != null) table.setGoto(state1, symbol, nextState);
             }
         }
@@ -172,7 +171,7 @@ public abstract class LRParser implements Parser{
         return configuratingSets;
     }
 
-    protected void generateActionSetEntry(Map<ItemSet, Integer> configuratingSets, int state1, ItemSet itemSet, Item item){
+    protected void generateActionSetEntry(int state1, Item item){
         if(item.isFinished() && item.getRule().equals(grammar.getStartRule())){
             table.setActionAccept(state1, "__END__");
         }
@@ -183,9 +182,8 @@ public abstract class LRParser implements Parser{
             }
         }
         else{
-            // Integer st2 = configuratingSets.get(successor(itemSet, item.next()));
-            Integer st2 = successors.get(configuratingSets.get(itemSet)).get(item.next());
-            if(st2 != null) table.setActionShift(state1, item.next(), st2);
+            Integer nextState = successors.get(state1).get(item.next());
+            if(nextState != null) table.setActionShift(state1, item.next(), nextState);
         }
 
         
