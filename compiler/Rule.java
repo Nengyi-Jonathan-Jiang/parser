@@ -13,7 +13,7 @@ public class Rule implements Comparable<Rule>, Printable{
         this.rhs = rhs;
         this.empty = rhs.size() == 0;
     }
-    
+
     public String getLhs(){return lhs;}
     public SymbolString getRhs(){return rhs;}
     public int getRhsSize(){return rhs.size();}
@@ -23,15 +23,14 @@ public class Rule implements Comparable<Rule>, Printable{
     public String toString(){
         return lhs + " := " + rhs;
     }
-    
-    public boolean equals(Rule that){
-        // return toString().equals(that.toString());
+
+    @Override
+    public boolean equals(Object that){
         return this == that;
     }
 
     @Override
     public int compareTo(Rule that){
-        // return toString().compareTo(that.toString());
         return hashCode() - that.hashCode();
     }
 }

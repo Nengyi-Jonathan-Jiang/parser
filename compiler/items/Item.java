@@ -14,6 +14,7 @@ public class Item implements Comparable<Item>, Printable{
         this.rule = rule;
         this.pos = pos;
         this.lookahead = lookahead;
+
     }
     
     public Rule getRule(){return rule;}

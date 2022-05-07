@@ -7,6 +7,7 @@ import compiler.*;
 import compiler.grammar.Grammar;
 import compiler.parsingTable.*;
 import compiler.items.*;
+import java.io.*;
 
 /**
  * An abstract table-driven parser implementing the LR parsing algorithm. Table
@@ -26,8 +27,13 @@ public abstract class LRParser implements Parser{
         this.grammar = grammar;
         generateParsingTable();
     }
-
+    /**
+     * Parses a string of tokens
+     * @param tokens A string of tokens to be parsed
+     * @return The parse tree if the tokens were parsed successfully, otherwise null
+     */
     public ParseTree parse(String[] tokens){return parse(tokens, false);}
+
     /**
      * Parses a string of tokens
      * @param tokens A string of tokens to be parsed
@@ -56,7 +62,7 @@ public abstract class LRParser implements Parser{
             }
             
             
-            if(debug) System.out.print(String.format("%-20s", parseTreeStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
+            if(debug) System.out.print(String.format("%-50s", parseTreeStack.toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ")));
 
             switch(entry.getAction()){
                 case SHIFT:
@@ -98,6 +104,13 @@ public abstract class LRParser implements Parser{
             }
         }
         return null;
+    }
+
+    private void loadParsingTableToFile(String filename){
+        table = ParsingTable.loadFromFile(filename);
+    }
+    public void saveParsingTableToFile(String filename){
+        table.saveToFile(filename);
     }
 
     protected void generateParsingTable(){

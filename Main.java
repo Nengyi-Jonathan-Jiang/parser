@@ -23,6 +23,8 @@ public class Main {
 		// Parser parse = new SLRParser(gram);
 		LRParser parse = new LR1Parser(gram);
 
+		parse.saveParsingTableToFile("Code.ptbl");
+
 		System.out.println("Parsing...");
 
 		String str = "IDENTIFIER = IDENTIFIER + NUMBER_CONST ; __END__";
