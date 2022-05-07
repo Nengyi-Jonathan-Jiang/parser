@@ -107,11 +107,12 @@ public abstract class LRParser implements Parser{
 
         table = new ParsingTable(configuratingSets.size());
 
+        int i = 0;
         for(Entry<ItemSet, Integer> entry : configuratingSets.entrySet()){
             ItemSet itemSet = entry.getKey();
             int state1 = entry.getValue();
 
-            System.out.println("For state " + state1 + ":");
+            System.out.println("Generated entries for " + (++i) + " states (currently on state " + state1 + ")");
 
             // Generate Action table
             for(Item item : itemSet){
@@ -157,7 +158,7 @@ public abstract class LRParser implements Parser{
                         updated = true;
                         configuratingSets.put(successor, state2);
                         newEdge.add(successor);
-                        System.out.println("Found " + state2 + "th configurating set (" + successor.size() + " items)");
+                        System.out.println("Found " + state2 + 1 + "th configurating set (" + successor.size() + " items)");
                     }
                     else state2 = configuratingSets.get(successor);
 
