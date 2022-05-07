@@ -29,7 +29,7 @@ public class LR0Parser extends LRParser{
             if(!grammar.isNonTerminal(sym)) continue;
             
             for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(grammar, r, 0, new ComparableSet<>(grammar.getTerminals()))))
+                if(res.add(new Item(r, 0, new ComparableSet<>(grammar.getTerminals()))))
                     dq.add(r);
         }
         return res;

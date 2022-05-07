@@ -8,13 +8,11 @@ import compiler.grammar.Grammar;
 public class Item implements Comparable<Item>, Printable{
     private final Rule rule;
     private final int pos;
-    private final Grammar grammar;
     private final ComparableSet<String> lookahead;
 
-    public Item(Grammar grammar, Rule rule, int pos, ComparableSet<String> lookahead){
+    public Item(Rule rule, int pos, ComparableSet<String> lookahead){
         this.rule = rule;
         this.pos = pos;
-        this.grammar = grammar;
         this.lookahead = lookahead;
     }
     
@@ -32,7 +30,7 @@ public class Item implements Comparable<Item>, Printable{
     
     public Item shift(){
         if(isFinished()) throw new IndexOutOfBoundsException();
-        return new Item(grammar, rule, pos + 1, lookahead);
+        return new Item(rule, pos + 1, lookahead);
     }
     
     public int compareTo(Item other){

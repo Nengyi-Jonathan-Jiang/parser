@@ -9,13 +9,14 @@ import compiler.parsingTable.*;
 import compiler.items.*;
 
 /**
- * An abstract parser implementing the LR parsing algorithm. Subclasses
- * are expected to implement the {@code generateParseTable} method, which
- * should return a valid {@link ParsingTable} that the parser will use
+ * An abstract table-driven parser implementing the LR parsing algorithm. Table
+ * generation may be slow but the actual parsing runs in O(n) time
  */
 public abstract class LRParser implements Parser{
     protected ParsingTable table;
     protected Grammar grammar;
+
+    private Map<Integer, Map<String, Integer>> successors;
 
     /**
      * Makes a parser given a {@link Grammar}
@@ -27,7 +28,6 @@ public abstract class LRParser implements Parser{
     }
 
     public ParseTree parse(String[] tokens){return parse(tokens, false);}
-
     /**
      * Parses a string of tokens
      * @param tokens A string of tokens to be parsed
@@ -39,15 +39,15 @@ public abstract class LRParser implements Parser{
         Deque<Integer> stateStack = new ArrayDeque<>();
         Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
 
-        // Start in state 0
+        // Start in state1 0
         stateStack.push(0);
 
         int index = 0;
         while(index < tokens.length){
-            int state = stateStack.peek();
+            int state1 = stateStack.peek();
             String token = tokens[index];
 
-            TableEntry entry = table.getAction(state, token);
+            TableEntry entry = table.getAction(state1, token);
 
             // Parse failed
             if(entry == null){
@@ -62,7 +62,7 @@ public abstract class LRParser implements Parser{
                 case SHIFT:
                     if(debug) System.out.println("SHIFT \"" + token + "\"");
 
-                    // Update state stack and current token pointer
+                    // Update state1 stack and current token pointer
                     stateStack.push(((ShiftEntry)entry).getNextState());
                     index++;
 
@@ -80,7 +80,7 @@ public abstract class LRParser implements Parser{
 
                     if(debug) System.out.println("REDUCE " + reduceRule);
 
-                    // Update state stack
+                    // Update state1 stack
                     for(int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
                     GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
                     stateStack.push(gotoEntry.getNextState());
@@ -100,32 +100,38 @@ public abstract class LRParser implements Parser{
         return null;
     }
 
-    public void generateParsingTable(){
+    protected void generateParsingTable(){
         Map<ItemSet, Integer> configuratingSets = generateConfiguratingSets();
+
+        System.out.println("Generating parsing table entries...");
 
         table = new ParsingTable(configuratingSets.size());
 
         for(Entry<ItemSet, Integer> entry : configuratingSets.entrySet()){
             ItemSet itemSet = entry.getKey();
-            int state = entry.getValue();
+            int state1 = entry.getValue();
 
             // Generate Action table
             for(Item item : itemSet){
-                generateActionSetEntry(configuratingSets, state, itemSet, item);
+                generateActionSetEntry(configuratingSets, state1, itemSet, item);
             }
             
             // Generate Goto table
             for(String symbol : grammar.getNonTerminals()){
-                Integer nextState = configuratingSets.get(successor(itemSet, symbol));
-                if(nextState != null) table.setGoto(state, symbol, nextState);
+                // Integer nextState = configuratingSets.get(successor(itemSet, symbol));
+                Integer nextState = successors.get(configuratingSets.get(itemSet)).get(symbol);
+                if(nextState != null) table.setGoto(state1, symbol, nextState);
             }
         }
     }
 
-    public Map<ItemSet, Integer> generateConfiguratingSets(){
+    protected Map<ItemSet, Integer> generateConfiguratingSets(){
+        System.out.println("Generating configurating sets...");
         Map<ItemSet, Integer> configuratingSets = new TreeMap<>();
-        ItemSet initialState = closure(new Item(grammar, grammar.getStartRule(), 0, new ComparableSet<>("__END__")));
+        successors = new TreeMap<>();
+        ItemSet initialState = closure(new Item(grammar.getStartRule(), 0, new ComparableSet<>("__END__")));
         configuratingSets.put(initialState, 0);
+        successors.put(0, new TreeMap<>());
         
         Set<ItemSet> edge = new TreeSet<>(Arrays.asList(initialState));
 
@@ -133,45 +139,62 @@ public abstract class LRParser implements Parser{
         while(updated){
             updated = false;
 
-            Map<ItemSet,Integer> newSet = new TreeMap<>();
+            Set<ItemSet> newEdge = new TreeSet<>();
             
             for(ItemSet configuratingSet : edge){
+                int state1 = configuratingSets.get(configuratingSet);
                 for(String symbol : grammar.getAllSymbols()){
                     ItemSet successor = successor(configuratingSet, symbol);
-                    if(!successor.isEmpty() && !newSet.containsKey(successor) && !configuratingSets.containsKey(successor)){
+                    if(successor.isEmpty()) continue;
+                    
+                    int state2;
+
+                    if(!configuratingSets.containsKey(successor)){
+                        state2 = configuratingSets.size();
+                        successors.put(state2, new TreeMap<>());
                         updated = true;
-                        newSet.put(successor, configuratingSets.size() + newSet.size());
-                        System.out.println("Found " + (configuratingSets.size() + newSet.size()) + "th configurating set (" + successor.size() + " items)");
+                        configuratingSets.put(successor, state2);
+                        newEdge.add(successor);
+                        System.out.println("Found " + state2 + "th configurating set (" + successor.size() + " items)");
                     }
+                    else state2 = configuratingSets.get(successor);
+
+                    successors.get(state1).put(symbol, state2);
                 }
             }
 
-            edge = newSet.keySet();
-            configuratingSets.putAll(newSet);
+            edge = newEdge;
         }
 
         return configuratingSets;
     }
 
-    public void generateActionSetEntry(Map<ItemSet, Integer> configuratingSets, int state, ItemSet itemSet, Item item){
+    protected void generateActionSetEntry(Map<ItemSet, Integer> configuratingSets, int state1, ItemSet itemSet, Item item){
         if(item.isFinished() && item.getRule().equals(grammar.getStartRule())){
-            table.setActionAccept(state, "__END__");
+            table.setActionAccept(state1, "__END__");
         }
         else if(item.isFinished()){
             Rule reduce = item.getRule();
             for(String symbol : item.getLookahead()){
-                table.setActionReduce(state, symbol, reduce);
+                table.setActionReduce(state1, symbol, reduce);
             }
         }
         else{
-            Integer st2 = configuratingSets.get(successor(itemSet, item.next()));
-            if(st2 != null) table.setActionShift(state, item.next(), st2);
+            // Integer st2 = configuratingSets.get(successor(itemSet, item.next()));
+            Integer st2 = successors.get(configuratingSets.get(itemSet)).get(item.next());
+            if(st2 != null) table.setActionShift(state1, item.next(), st2);
         }
+
+        
     }
 
-    public abstract ItemSet closure(Item item);
+    /**
+     * Computes the closure of an item. Will be implemented
+     * differently depending on the table generation algorithm
+     */
+    protected abstract ItemSet closure(Item item);
 
-    public ItemSet applyClosure(ItemSet itemSet){
+    protected ItemSet closure(ItemSet itemSet){
         Set<Item> addedElements = new TreeSet<>();
 
         for(Item item : itemSet) 
@@ -181,16 +204,12 @@ public abstract class LRParser implements Parser{
 
         return itemSet;
     }
-    
-    public ItemSet closure(ItemSet itemSet){
-        return applyClosure(itemSet.copy());
-    }
 
-    public ItemSet successor(ItemSet itemSet, String symbol){
+    protected ItemSet successor(ItemSet itemSet, String symbol){
         ItemSet res = new ItemSet();
         for(Item item : itemSet)
             if(!item.isFinished() && item.next().equals(symbol))
                 res.add(item.shift());
-        return applyClosure(res);
+        return closure(res);
     }
 }

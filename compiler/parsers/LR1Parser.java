@@ -39,7 +39,7 @@ public class LR1Parser extends LRParser{
                 
                 for(Rule r : grammar.getRules(symbol)){
                     for(String lookahead : itm.getLookahead()){
-                        updated |= nRes.add(new Item(grammar, r, 0, new ComparableSet<>(grammar.first(rest.concat(lookahead)))));
+                        updated |= nRes.add(new Item(r, 0, new ComparableSet<>(grammar.first(rest.concat(lookahead)))));
                     }
                 }
             }
