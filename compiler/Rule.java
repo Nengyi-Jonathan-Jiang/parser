@@ -18,7 +18,8 @@ public class Rule implements Comparable<Rule>, Printable{
     public SymbolString getRhs(){return rhs;}
     public int getRhsSize(){return rhs.size();}
     public boolean isEmpty(){return empty;}
-    
+
+    @Override
     public String toString(){
         return lhs + " := " + rhs;
     }
@@ -28,6 +29,7 @@ public class Rule implements Comparable<Rule>, Printable{
         return this == that;
     }
 
+    @Override
     public int compareTo(Rule that){
         // return toString().compareTo(that.toString());
         return hashCode() - that.hashCode();
