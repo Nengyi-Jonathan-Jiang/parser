@@ -42,7 +42,7 @@ public class LR1ParseTableBuilder extends LRParseTableBuilder{
 
                 for(Rule r : grammar.getRules(symbol)){
                     for(String lookahead : itm.getLookahead()){
-                        Item newItem = new Item(r, 0, new ComparableHashSet<>(grammar.first(rest.concat(lookahead))));
+                        Item newItem = new Item(r, 0, new ComparableTreeSet<>(grammar.first(rest.concat(lookahead))));
 
                         updated |= res.add(newItem);
                         newEdge.add(newItem);
