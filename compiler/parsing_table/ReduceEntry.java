@@ -1,4 +1,4 @@
-package compiler.parsingTable;
+package compiler.parsing_table;
 
 import compiler.Rule;
 

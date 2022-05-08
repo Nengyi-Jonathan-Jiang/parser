@@ -1,10 +1,10 @@
 package compiler.items;
 import java.util.*;
 
-import compiler.ComparableSet;
 import compiler.Printable;
+import compiler.sets.ComparableTreeSet;
 
-public class ItemSet extends ComparableSet<Item> implements Printable{
+public class ItemSet extends ComparableTreeSet<Item> implements Printable{
 
     public ItemSet(){}
     
@@ -12,6 +12,7 @@ public class ItemSet extends ComparableSet<Item> implements Printable{
     
     public ItemSet(SortedSet<Item> items){super(items);}
 
+    @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("{");

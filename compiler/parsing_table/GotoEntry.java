@@ -1,4 +1,4 @@
-package compiler.parsingTable;
+package compiler.parsing_table;
 
 public class GotoEntry implements TableEntry{
     private final int nextState;

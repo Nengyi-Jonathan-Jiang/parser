@@ -5,6 +5,8 @@ import java.util.*;
 import compiler.Rule;
 
 public class GrammarReader {
+    private GrammarReader(){}
+    
     private static Rule ruleFromLine(String str){
         Scanner scan = new Scanner(str);
         String lhs = scan.next();

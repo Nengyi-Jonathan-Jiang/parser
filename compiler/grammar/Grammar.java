@@ -1,7 +1,6 @@
 package compiler.grammar;
 import java.util.*;
 
-import compiler.ComparableSet;
 import compiler.Printable;
 import compiler.Rule;
 import compiler.SymbolString;
@@ -10,9 +9,9 @@ public class Grammar implements Printable{
     private final List<Rule> rules;
     private final Rule startRule;
     
-    private final TreeMap<String, List<Rule>> startsWith;
+    private final Map<String, List<Rule>> startsWith;
     private final Set<String> allSymbols, terminals, nonTerminals, nullableSet;
-    private final TreeMap<String, Set<String>> firstSets, followSets;
+    private final Map<String, Set<String>> firstSets, followSets;
     
     public Grammar(List<Rule> rules, String startSymbol){
         
@@ -26,10 +25,10 @@ public class Grammar implements Printable{
         
         // Classify symbols as terminals or nonterminals
         
-        allSymbols = new ComparableSet<>();
+        allSymbols = new HashSet<>();
         allSymbols.add("__END__");
-        nonTerminals = new ComparableSet<>();
-        startsWith = new TreeMap<>();
+        nonTerminals = new HashSet<>();
+        startsWith = new HashMap<>();
         
         allSymbols.add(startSymbol1);
         nonTerminals.add(startSymbol1);
@@ -39,7 +38,7 @@ public class Grammar implements Printable{
             allSymbols.addAll(rule.getRhs().getList());
         }
         
-        terminals = new ComparableSet<>(allSymbols);
+        terminals = new HashSet<>(allSymbols);
         terminals.removeAll(nonTerminals);
         
         // Compute for each symbol the set of rules whose left-hand-sides match
@@ -53,13 +52,13 @@ public class Grammar implements Printable{
         
         //Initialize FIRST sets, FOLLOW sets, nullable set
         
-        nullableSet = new ComparableSet<>();
-        firstSets = new TreeMap<>();
-        followSets = new TreeMap<>();
+        nullableSet = new HashSet<>();
+        firstSets = new HashMap<>();
+        followSets = new HashMap<>();
         
         for(String sym : allSymbols){
-			firstSets.put(sym, new ComparableSet<>());
-			followSets.put(sym, new ComparableSet<>());
+			firstSets.put(sym, new HashSet<>());
+			followSets.put(sym, new HashSet<>());
 			if(isTerminal(sym)){
                 firstSets.get(sym).add(sym);
             }
@@ -90,7 +89,7 @@ public class Grammar implements Printable{
 					if(isNonTerminal(rhs.get(i)))
 						updated |= follow(rhs.get(i)).addAll(aux);
 					if(isNullable(rhs.get(i))){
-						aux = new ComparableSet<>(aux);
+						aux = new HashSet<>(aux);
 						aux.addAll(first(rhs.get(i)));
 					}
 					else aux = first(rhs.get(i));
@@ -132,12 +131,12 @@ public class Grammar implements Printable{
     }
     
     @SuppressWarnings("unused")
-    public ComparableSet<String> follow(SymbolString tkns){
+    public Set<String> follow(SymbolString tkns){
         // Follow set of empty token string is {epsilon}
         if(tkns.size() == 0)
-            return new ComparableSet<>(Arrays.asList(new String[]{null}));
+            return new HashSet<>(Collections.singletonList(null));
         // Otherwise follow set of token string is follow set of last token
-        ComparableSet<String> res = new ComparableSet<>(follow(tkns.lastTkn()));
+        Set<String> res = new HashSet<>(follow(tkns.lastTkn()));
         // If last token is nullable, then also add the follow set of the rest
         // of the token string
         if(isNullable(tkns.lastTkn()))
@@ -149,10 +148,10 @@ public class Grammar implements Printable{
     public Set<String> first(SymbolString tkns){
         // First set of empty token string is {epsilon}
         if(tkns.size() == 0)
-            return new TreeSet<>(Arrays.asList(new String[]{null}));
+            return new HashSet<>(Collections.singletonList(null));
         // Otherwise first set of token string is first set of the first token
         // of the token string
-        Set<String> res = new TreeSet<>(first(tkns.firstTkn()));
+        Set<String> res = new HashSet<>(first(tkns.firstTkn()));
         // If the first token of the token string is nullable, then also add the
         // first set of the rest of the token string
         if(isNullable(tkns.firstTkn())) res.addAll(first(tkns.substr(1)));

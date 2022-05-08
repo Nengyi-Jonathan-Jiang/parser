@@ -1,8 +1,8 @@
 package compiler.items;
 
-import compiler.ComparableSet;
 import compiler.Printable;
 import compiler.Rule;
+import compiler.sets.ComparableSet;
 
 public class Item implements Comparable<Item>, Printable{
     private final Rule rule;

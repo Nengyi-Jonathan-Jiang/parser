@@ -1,11 +1,11 @@
 package compiler.parsers;
 
-import compiler.ComparableSet;
 import compiler.Rule;
 import compiler.grammar.Grammar;
 import compiler.items.Item;
 import compiler.items.ItemSet;
-import compiler.parsingTable.*;
+import compiler.parsing_table.*;
+import compiler.sets.*;
 
 import java.util.*;
 
@@ -55,7 +55,7 @@ public abstract class LRParseTableBuilder {
         System.out.println("Generating configurating sets...");
         Map<ItemSet, Integer> configuratingSets = new TreeMap<>();
         successors = new TreeMap<>();
-        ItemSet initialState = closure(new Item(grammar.getStartRule(), 0, new ComparableSet<>("__END__")));
+        ItemSet initialState = closure(new Item(grammar.getStartRule(), 0, new ComparableHashSet<>("__END__")));
         configuratingSets.put(initialState, 0);
         successors.put(0, new TreeMap<>());
 

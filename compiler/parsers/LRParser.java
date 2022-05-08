@@ -3,7 +3,7 @@ package compiler.parsers;
 import java.util.*;
 
 import compiler.*;
-import compiler.parsingTable.*;
+import compiler.parsing_table.*;
 
 /**
  * An table-driven parser implementing the LR parsing algorithm. Parses input in O(N) time

@@ -6,7 +6,7 @@ import compiler.Rule;
 import compiler.grammar.Grammar;
 import compiler.items.Item;
 import compiler.items.ItemSet;
-import compiler.ComparableSet;
+import compiler.sets.ComparableTreeSet;
 
 public class LR0ParseTableBuilder extends LRParseTableBuilder{
 
@@ -29,7 +29,7 @@ public class LR0ParseTableBuilder extends LRParseTableBuilder{
             if(!grammar.isNonTerminal(sym)) continue;
             
             for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(r, 0, new ComparableSet<>(grammar.getTerminals()))))
+                if(res.add(new Item(r, 0, new ComparableTreeSet<>(grammar.getTerminals()))))
                     dq.add(r);
         }
         return res;

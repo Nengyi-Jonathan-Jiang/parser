@@ -1,4 +1,4 @@
-package compiler.parsingTable;
+package compiler.parsing_table;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -43,8 +43,7 @@ public class ParsingTable{
     }
 
     public void saveToFile(String filename){
-        try {
-            PrintWriter printWriter = new PrintWriter(filename);
+        try(PrintWriter printWriter = new PrintWriter(filename);) {
 
             StringBuilder sb = new StringBuilder();
 
@@ -73,6 +72,7 @@ public class ParsingTable{
                             sb.append(" ");
                             sb.append(rule.getRhs().toString());
                             break;
+                        default:
                     }
                 }
                 for(Map.Entry<String, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
@@ -88,7 +88,6 @@ public class ParsingTable{
 
             printWriter.print(sb.toString());
             printWriter.flush();
-            printWriter.close();
         }
         catch(Exception e){
             System.out.println("Error saving LR parse table to file");
@@ -96,8 +95,8 @@ public class ParsingTable{
     }
 
     public static ParsingTable loadFromFile(String filename){
-        try{
-            Scanner scan = new Scanner(new File(filename));
+        try(Scanner scan = new Scanner(new File(filename));){
+
             int size = scan.nextInt();
             ParsingTable table = new ParsingTable(size);
             for(int state = 0; state < size; state++){
@@ -120,15 +119,16 @@ public class ParsingTable{
                                     for(int i = 0; i < rhsSize; i++) rhs[i] = scan.next();
                                     table.setActionReduce(state, symbol, new Rule(lhs, rhs));
                                     break;
+                                default:
                             }
                             break;
                         case "g":
                             table.setGoto(state, symbol, scan.nextInt());
                             break;
+                        default:
                     }
                 }
             }
-            scan.close();
             return table;
         }
         catch(Exception e){

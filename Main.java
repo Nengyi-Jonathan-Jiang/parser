@@ -1,5 +1,5 @@
 import compiler.parsers.*;
-import compiler.parsingTable.ParsingTable;
+import compiler.parsing_table.ParsingTable;
 
 public class Main {
 	public static void main(String[] args) {

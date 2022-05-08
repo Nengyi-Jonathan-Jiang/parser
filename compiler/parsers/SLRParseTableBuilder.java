@@ -2,11 +2,11 @@ package compiler.parsers;
 
 import java.util.*;
 
-import compiler.Rule;
 import compiler.grammar.Grammar;
 import compiler.items.Item;
 import compiler.items.ItemSet;
-import compiler.ComparableSet;
+import compiler.sets.ComparableTreeSet;
+import compiler.*;
 
 public class SLRParseTableBuilder extends LRParseTableBuilder{
 
@@ -29,7 +29,7 @@ public class SLRParseTableBuilder extends LRParseTableBuilder{
             if(!grammar.isNonTerminal(sym)) continue;
             
             for(Rule r : grammar.getRules(sym))
-                if(res.add(new Item(r, 0, new ComparableSet<>(grammar.follow(r.getLhs())))))
+                if(res.add(new Item(r, 0, new ComparableTreeSet<>(grammar.follow(r.getLhs())))))
                     dq.add(r);
         }
         return res;
