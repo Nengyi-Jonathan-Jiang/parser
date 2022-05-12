@@ -1,22 +1,25 @@
-package compiler.parsers;
+package compiler.parsers.LRParsers;
+
+import compiler.Rule;
+import compiler.SymbolString;
+import compiler.grammar.Grammar;
+import compiler.parsers.LRParsers.items.Item;
+import compiler.parsers.LRParsers.items.ItemSet;
+import compiler.sets.ComparableSet;
+import compiler.sets.ComparableTreeSet;
 
 import java.util.*;
 
-import compiler.*;
-import compiler.items.Item;
-import compiler.items.ItemSet;
-import compiler.sets.*;
-import compiler.grammar.Grammar;
-
-public class LR1ParseTableBuilder extends LRParseTableBuilder{
-
-    protected Map<Item, ItemSet> memoization;
-
-    public LR1ParseTableBuilder(Grammar grammar){
+public class LALRParseTableBuilder extends LR1ParseTableBuilder{
+    public LALRParseTableBuilder(Grammar grammar) {
         super(grammar);
     }
 
-    protected ItemSet closure(Item item){
+    public Item getStartItem(){
+        return new LALRItem(super.getStartItem());
+    }
+
+    public ItemSet closure(Item item){
         if(memoization == null) memoization = new TreeMap<>();
         else if(memoization.containsKey(item)) return memoization.get(item);
 
@@ -42,7 +45,7 @@ public class LR1ParseTableBuilder extends LRParseTableBuilder{
 
                 for(Rule r : grammar.getRules(symbol)){
                     for(String lookahead : itm.getLookahead()){
-                        Item newItem = new Item(r, 0, new ComparableTreeSet<>(grammar.first(rest.concat(lookahead))));
+                        Item newItem = new LALRItem(r, 0, new ComparableTreeSet<>(grammar.first(rest.concat(lookahead))));
 
                         updated |= res.add(newItem);
                         newEdge.add(newItem);
@@ -56,5 +59,19 @@ public class LR1ParseTableBuilder extends LRParseTableBuilder{
         memoization.put(item, res);
 
         return res;
+    }
+}
+
+class LALRItem extends Item{
+    public LALRItem(Rule rule, int pos, ComparableSet<String> lookahead){
+        super(rule, pos, lookahead);
+    }
+
+    public LALRItem(Item item){
+        super(item.getRule(), item.getPos(), item.getLookahead());
+    }
+
+    public int compareTo(Item other){
+        return coreCompareTo(other);
     }
 }

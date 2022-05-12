@@ -1,4 +1,4 @@
-package compiler.items;
+package compiler.parsers.LRParsers.items;
 
 import compiler.Printable;
 import compiler.Rule;

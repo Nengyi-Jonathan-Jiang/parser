@@ -1,9 +1,11 @@
-package compiler.parsers;
+package compiler.parsers.LRParsers;
 
 import java.util.*;
 
 import compiler.*;
-import compiler.parsing_table.*;
+import compiler.parsers.ParseTree;
+import compiler.parsers.Parser;
+import compiler.parsers.LRParsers.parsing_table.*;
 
 /**
  * An table-driven parser implementing the LR parsing algorithm. Parses input in O(N) time
@@ -41,7 +43,7 @@ public final class LRParser implements Parser{
 
             // Parse failed
             if(entry == null) return null;
-
+            
             switch(entry.getAction()){
                 case SHIFT:
                     // Update state stack and current token pointer

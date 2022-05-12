@@ -1,11 +1,11 @@
-package compiler.parsers;
+package compiler.parsers.LRParsers;
 
 import java.util.*;
 
 import compiler.Rule;
 import compiler.grammar.Grammar;
-import compiler.items.Item;
-import compiler.items.ItemSet;
+import compiler.parsers.LRParsers.items.Item;
+import compiler.parsers.LRParsers.items.ItemSet;
 import compiler.sets.ComparableTreeSet;
 
 public class LR0ParseTableBuilder extends LRParseTableBuilder{
