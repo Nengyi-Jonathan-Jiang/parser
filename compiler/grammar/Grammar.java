@@ -47,7 +47,13 @@ public class Grammar implements Printable{
         for(String sym : allSymbols)
             startsWith.put(sym, new ArrayList<>());
         for(Rule rule : this.rules)
-            startsWith.get(rule.getLhs()).add(rule);
+            try {
+                startsWith.get(rule.getLhs()).add(rule);
+            }
+            catch (NullPointerException e){
+                System.out.println("NullPtrExeption on adding rule to startsWith:\n\t" + rule);
+                throw e;
+            }
         
         
         //Initialize FIRST sets, FOLLOW sets, nullable set

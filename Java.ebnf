@@ -1,0 +1,420 @@
+CompilationUnit
+
+Literal := IntegerLiteral
+Literal := FloatingPointLiteral
+Literal := BooleanLiteral
+Literal := CharacterLiteral
+Literal := StringLiteral
+Literal := NullLiteral
+
+Type := PrimitiveType
+Type := ReferenceType
+
+PrimitiveType := NumericType
+PrimitiveType := boolean
+
+NumericType := IntegralType
+NumericType := FloatingPointType
+
+IntegralType := byte
+IntegralType := short
+IntegralType := int
+IntegralType := long
+IntegralType := char
+
+FloatingPointType := float
+FloatingPointType := double
+
+ReferenceType := ClassOrInterfaceType
+ReferenceType := ArrayType
+
+ClassOrInterfaceType := Name
+
+ClassType := ClassOrInterfaceType
+
+InterfaceType := ClassOrInterfaceType
+
+ArrayType := PrimitiveType [ ]
+ArrayType := Name [ ]
+ArrayType := ArrayType [ ]
+
+Name := SimpleName
+Name := QualifiedName
+
+SimpleName := Identifier
+
+QualifiedName := Name . Identifier
+
+CompilationUnit := PackageDeclaration? ImportDeclaration* TypeDeclaration*
+
+ImportDeclaration* __EPSILON__
+ImportDeclaration* := ImportDeclaration* ImportDeclaration
+
+TypeDeclaration* := __EPSILON__
+TypeDeclaration* := TypeDeclaration* TypeDeclaration
+
+PackageDeclaration? __EPSILON__
+PackageDeclaration? := PackageDeclaration
+
+PackageDeclaration := package Name ;
+
+ImportDeclaration := SingleTypeImportDeclaration
+ImportDeclaration := TypeImportOnDemandDeclaration
+
+SingleTypeImportDeclaration := import Name ;
+
+TypeImportOnDemandDeclaration := import Name . * ;
+
+TypeDeclaration := ClassDeclaration
+TypeDeclaration := InterfaceDeclaration
+TypeDeclaration := ;
+
+Modifiers := Modifier
+Modifiers := Modifiers Modifier
+
+Modifier := public
+Modifier := protected
+Modifier := private
+Modifier := static
+Modifier := abstract
+Modifier := final
+Modifier := native
+Modifier := synchronized
+Modifier := transient
+Modifier := volatile
+
+ClassDeclaration := Modifiers? class Identifier Super? Interfaces? ClassBody
+
+Super := extends ClassType
+
+Interfaces := implements InterfaceTypeList
+
+InterfaceTypeList := InterfaceType
+InterfaceTypeList := InterfaceTypeList , InterfaceType
+
+ClassBody := { ClassBodyDeclarations? }
+
+ClassBodyDeclarations := ClassBodyDeclaration
+ClassBodyDeclarations := ClassBodyDeclarations ClassBodyDeclaration
+
+ClassBodyDeclaration := ClassMemberDeclaration
+ClassBodyDeclaration := StaticInitializer
+ClassBodyDeclaration := ConstructorDeclaration
+
+ClassMemberDeclaration := FieldDeclaration
+ClassMemberDeclaration := MethodDeclaration
+
+FieldDeclaration := Modifiers? Type VariableDeclarators ;
+
+VariableDeclarators := VariableDeclarator
+VariableDeclarators := VariableDeclarators , VariableDeclarator
+
+VariableDeclarator := VariableDeclaratorId
+VariableDeclarator := VariableDeclaratorId = VariableInitializer
+
+VariableDeclaratorId := Identifier
+VariableDeclaratorId := VariableDeclaratorId [ ]
+
+VariableInitializer := Expression
+VariableInitializer := ArrayInitializer
+
+MethodDeclaration := MethodHeader MethodBody
+
+MethodHeader := Modifiers? Type MethodDeclarator Throws?
+MethodHeader := Modifiers? void MethodDeclarator Throws?
+
+MethodDeclarator := Identifier ( FormalParameterList? )
+MethodDeclarator := MethodDeclarator [ ]
+
+FormalParameterList := FormalParameter
+FormalParameterList := FormalParameterList , FormalParameter
+
+FormalParameter := Type VariableDeclaratorId
+
+Throws := throws ClassTypeList
+
+ClassTypeList := ClassType
+ClassTypeList := ClassTypeList , ClassType
+
+MethodBody := Block 
+MethodBody := ;
+
+StaticInitializer := static Block
+
+ConstructorDeclaration := Modifiers? ConstructorDeclarator Throws? ConstructorBody
+
+ConstructorDeclarator := SimpleName ( FormalParameterList? )
+
+ConstructorBody := { ExplicitConstructorInvocation? BlockStatements? }
+
+ExplicitConstructorInvocation := this ( ArgumentList? ) ;
+ExplicitConstructorInvocation := super ( ArgumentList? ) ;
+
+InterfaceDeclaration := Modifiers? interface Identifier ExtendsInterfaces? InterfaceBody
+
+ExtendsInterfaces := extends InterfaceType
+ExtendsInterfaces := ExtendsInterfaces , InterfaceType
+
+InterfaceBody := { InterfaceMemberDeclarations? }
+
+InterfaceMemberDeclarations := InterfaceMemberDeclaration
+InterfaceMemberDeclarations := InterfaceMemberDeclarations InterfaceMemberDeclaration
+
+InterfaceMemberDeclaration := ConstantDeclaration
+InterfaceMemberDeclaration := AbstractMethodDeclaration
+
+ConstantDeclaration := FieldDeclaration
+
+AbstractMethodDeclaration := MethodHeader ;
+
+ArrayInitializer := { VariableInitializers? ,opt }
+
+VariableInitializers := VariableInitializer
+VariableInitializers := VariableInitializers , VariableInitializer
+
+Block := { BlockStatements? }
+
+BlockStatements := BlockStatement
+BlockStatements := BlockStatements BlockStatement
+
+BlockStatement := LocalVariableDeclarationStatement
+BlockStatement := Statement
+
+LocalVariableDeclarationStatement := LocalVariableDeclaration ;
+
+LocalVariableDeclaration := Type VariableDeclarators
+
+Statement := StatementWithoutTrailingSubstatement
+Statement := LabeledStatement
+Statement := IfThenStatement
+Statement := IfThenElseStatement
+Statement := WhileStatement
+Statement := ForStatement
+
+StatementNoShortIf := StatementWithoutTrailingSubstatement
+StatementNoShortIf := LabeledStatementNoShortIf
+StatementNoShortIf := IfThenElseStatementNoShortIf
+StatementNoShortIf := WhileStatementNoShortIf
+StatementNoShortIf := ForStatementNoShortIf
+
+StatementWithoutTrailingSubstatement := Block
+StatementWithoutTrailingSubstatement := EmptyStatement
+StatementWithoutTrailingSubstatement := ExpressionStatement
+StatementWithoutTrailingSubstatement := SwitchStatement
+StatementWithoutTrailingSubstatement := DoStatement
+StatementWithoutTrailingSubstatement := BreakStatement
+StatementWithoutTrailingSubstatement := ContinueStatement
+StatementWithoutTrailingSubstatement := ReturnStatement
+StatementWithoutTrailingSubstatement := SynchronizedStatement
+StatementWithoutTrailingSubstatement := ThrowStatement
+StatementWithoutTrailingSubstatement := TryStatement
+
+EmptyStatement := ;
+
+LabeledStatement := Identifier : Statement
+
+LabeledStatementNoShortIf := Identifier : StatementNoShortIf
+
+ExpressionStatement := StatementExpression ;
+
+StatementExpression := Assignment
+StatementExpression := PreIncrementExpression
+StatementExpression := PreDecrementExpression
+StatementExpression := PostIncrementExpression
+StatementExpression := PostDecrementExpression
+StatementExpression := MethodInvocation
+StatementExpression := ClassInstanceCreationExpression
+IfThenStatement := if ( Expression ) Statement
+
+IfThenElseStatement := if ( Expression ) StatementNoShortIf else Statement
+
+IfThenElseStatementNoShortIf := if ( Expression ) StatementNoShortIf else StatementNoShortIf
+
+SwitchStatement := switch ( Expression ) SwitchBlock
+
+SwitchBlock := { SwitchBlockStatementGroups? SwitchLabels? }
+
+SwitchBlockStatementGroups := SwitchBlockStatementGroup
+SwitchBlockStatementGroups := SwitchBlockStatementGroups SwitchBlockStatementGroup
+
+SwitchBlockStatementGroup := SwitchLabels BlockStatements
+
+SwitchLabels := SwitchLabel
+SwitchLabels := SwitchLabels SwitchLabel
+
+SwitchLabel := case ConstantExpression :
+SwitchLabel := default :
+
+WhileStatement := while ( Expression ) Statement
+
+WhileStatementNoShortIf := while ( Expression ) StatementNoShortIf
+
+DoStatement := do Statement while ( Expression ) ;
+
+ForStatement := for ( ForInit? ; Expression? ; ForUpdate? )
+ForStatement := Statement
+
+ForStatementNoShortIf := for ( ForInit? ; Expression? ; ForUpdate? )
+ForStatementNoShortIf := StatementNoShortIf
+
+ForInit := StatementExpressionList
+ForInit := LocalVariableDeclaration
+
+ForUpdate := StatementExpressionList
+
+StatementExpressionList := StatementExpression
+StatementExpressionList := StatementExpressionList , StatementExpression
+
+BreakStatement := break Identifier? ;
+
+ContinueStatement := continue Identifier? ;
+
+ReturnStatement := return Expression? ;
+
+ThrowStatement := throw Expression ;
+
+SynchronizedStatement := synchronized ( Expression ) Block
+
+TryStatement := try Block Catches
+TryStatement := try Block Catches? Finally
+
+Catches := CatchClause
+Catches := Catches CatchClause
+
+CatchClause := catch ( FormalParameter ) Block
+
+Finally := finally Block
+
+Primary := PrimaryNoNewArray
+Primary := ArrayCreationExpression
+
+PrimaryNoNewArray := Literal
+PrimaryNoNewArray := this
+PrimaryNoNewArray := ( Expression )
+PrimaryNoNewArray := ClassInstanceCreationExpression
+PrimaryNoNewArray := FieldAccess
+PrimaryNoNewArray := MethodInvocation
+PrimaryNoNewArray := ArrayAccess
+
+ClassInstanceCreationExpression := new ClassType ( ArgumentList? )
+
+ArgumentList := Expression
+ArgumentList := ArgumentList , Expression
+
+ArrayCreationExpression := new PrimitiveType DimExprs Dims?
+ArrayCreationExpression := new ClassOrInterfaceType DimExprs Dims?
+
+DimExprs := __EPSILON__
+DimExprs := DimExprs DimExpr
+
+DimExpr := [ Expression ]
+
+Dims := [ ]
+Dims := Dims [ ]
+
+FieldAccess := Primary . Identifier
+FieldAccess := super . Identifier
+
+MethodInvocation := Name ( ArgumentList? )
+MethodInvocation := Primary . Identifier ( ArgumentList? )
+MethodInvocation := super . Identifier ( ArgumentList? )
+
+ArrayAccess := Name [ Expression ]
+ArrayAccess := PrimaryNoNewArray [ Expression ]
+
+PostfixExpression := Primary
+PostfixExpression := Name
+PostfixExpression := PostIncrementExpression
+PostfixExpression := PostDecrementExpression
+
+PostIncrementExpression := PostfixExpression ++
+
+PostDecrementExpression := PostfixExpression --
+
+UnaryExpression := PreIncrementExpression
+UnaryExpression := PreDecrementExpression
+UnaryExpression := + UnaryExpression
+UnaryExpression := - UnaryExpression
+UnaryExpression := UnaryExpressionNotPlusMinus
+
+PreIncrementExpression := ++ UnaryExpression
+
+PreDecrementExpression := -- UnaryExpression
+
+UnaryExpressionNotPlusMinus := PostfixExpression
+UnaryExpressionNotPlusMinus := ~ UnaryExpression
+UnaryExpressionNotPlusMinus := ! UnaryExpression
+UnaryExpressionNotPlusMinus := CastExpression
+
+CastExpression := ( PrimitiveType Dims? ) UnaryExpression
+CastExpression := ( Expression ) UnaryExpressionNotPlusMinus
+CastExpression := ( Name Dims ) UnaryExpressionNotPlusMinus
+
+MultiplicativeExpression := UnaryExpression
+MultiplicativeExpression := MultiplicativeExpression * UnaryExpression
+MultiplicativeExpression := MultiplicativeExpression / UnaryExpression
+MultiplicativeExpression := MultiplicativeExpression % UnaryExpression
+
+AdditiveExpression := MultiplicativeExpression
+AdditiveExpression := AdditiveExpression + MultiplicativeExpression
+AdditiveExpression := AdditiveExpression - MultiplicativeExpression
+
+ShiftExpression := AdditiveExpression
+ShiftExpression := ShiftExpression << AdditiveExpression
+ShiftExpression := ShiftExpression >> AdditiveExpression
+ShiftExpression := ShiftExpression >>> AdditiveExpression
+
+RelationalExpression := ShiftExpression
+RelationalExpression := RelationalExpression < ShiftExpression
+RelationalExpression := RelationalExpression > ShiftExpression
+RelationalExpression := RelationalExpression <= ShiftExpression
+RelationalExpression := RelationalExpression >= ShiftExpression
+RelationalExpression := RelationalExpression instanceof ReferenceType
+
+EqualityExpression := RelationalExpression
+EqualityExpression := EqualityExpression == RelationalExpression
+EqualityExpression := EqualityExpression != RelationalExpression
+
+AndExpression := EqualityExpression
+AndExpression := AndExpression & EqualityExpression
+
+ExclusiveOrExpression := AndExpression
+ExclusiveOrExpression := ExclusiveOrExpression ^ AndExpression
+
+InclusiveOrExpression := ExclusiveOrExpression
+InclusiveOrExpression := InclusiveOrExpression | ExclusiveOrExpression
+
+ConditionalAndExpression := InclusiveOrExpression
+ConditionalAndExpression := ConditionalAndExpression && InclusiveOrExpression
+
+ConditionalOrExpression := ConditionalAndExpression
+ConditionalOrExpression := ConditionalOrExpression || ConditionalAndExpression
+
+ConditionalExpression := ConditionalOrExpression
+ConditionalExpression := ConditionalOrExpression ? Expression : ConditionalExpression
+
+AssignmentExpression := ConditionalExpression
+AssignmentExpression := Assignment
+
+Assignment := LeftHandSide AssignmentOperator AssignmentExpression
+
+LeftHandSide := Name
+LeftHandSide := FieldAccess
+LeftHandSide := ArrayAccess
+
+AssignmentOperator := =
+AssignmentOperator := *=
+AssignmentOperator := /=
+AssignmentOperator := %=
+AssignmentOperator := +=
+AssignmentOperator := -=
+AssignmentOperator := <<=
+AssignmentOperator := >>=
+AssignmentOperator := >>>=
+AssignmentOperator := &=
+AssignmentOperator := ^=
+AssignmentOperator := |=
+
+Expression := AssignmentExpression
+
+ConstantExpression := Expression
