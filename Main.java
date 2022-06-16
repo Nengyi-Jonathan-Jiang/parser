@@ -1,5 +1,6 @@
 import compiler.parsers.*;
-import compiler.parsing_table.ParsingTable;
+import compiler.parsers.LRParsers.LRParser;
+import compiler.parsers.LRParsers.parsing_table.ParsingTable;
 
 import java.io.File;
 import java.util.ArrayList;

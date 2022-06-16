@@ -1,6 +1,6 @@
 import compiler.grammar.Grammar;
 import compiler.grammar.GrammarReader;
-import compiler.parsers.LR1ParseTableBuilder;
+import compiler.parsers.LRParsers.LR1ParseTableBuilder;
 
 public class GenerateParsingTable {
     public static void main(String[] args){

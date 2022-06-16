@@ -1,12 +1,12 @@
-package compiler.parsers;
+package compiler.parsers.LRParsers;
 
 import java.util.*;
 
 import compiler.*;
-import compiler.items.Item;
-import compiler.items.ItemSet;
 import compiler.sets.*;
 import compiler.grammar.Grammar;
+import compiler.parsers.LRParsers.items.Item;
+import compiler.parsers.LRParsers.items.ItemSet;
 
 public class LR1ParseTableBuilder extends LRParseTableBuilder{
 

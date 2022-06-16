@@ -1,4 +1,4 @@
-package compiler.parsing_table;
+package compiler.parsers.LRParsers.parsing_table;
 
 public class GotoEntry implements TableEntry{
     private final int nextState;

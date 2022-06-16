@@ -1,4 +1,4 @@
-package compiler.items;
+package compiler.parsers.LRParsers.items;
 import java.util.*;
 
 import compiler.Printable;
