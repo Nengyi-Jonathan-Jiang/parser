@@ -7,4 +7,11 @@ import compiler.Token;
  */
 public interface Parser {
     ParseTree parse(Token[] tokens);
+
+    Parse getParse();
+
+    static interface Parse{
+        void process(Token tok);
+        ParseTree getParseTree();
+    }
 }

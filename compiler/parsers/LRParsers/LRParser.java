@@ -79,4 +79,17 @@ public final class LRParser implements Parser{
         }
         return null;
     }
+
+    public Parse getParse(){
+        return null;
+    }
+
+    private static class Parse implements Parser.Parse{
+        public void process(Token tok){
+            
+        }
+        public ParseTree getParseTree(){
+            return null;
+        }
+    }
 }
