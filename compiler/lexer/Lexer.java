@@ -1,89 +1,121 @@
 package compiler.lexer;
 
+import compiler.Token;
+
+import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Function;
+import java.util.regex.*;
 
 public class Lexer {
-    public static void main(String[] args){
-        String reg = "acbdegfh";
-        DFA dfa = Lexer.toDFA(reg);
+    private List<TokenRule> tokenRules;
 
-        System.out.println(dfa.start);
-        for(DFAState state : dfa.states){
-            System.out.println(state);
-        }
-        System.out.println(dfa.end);
+    public Lexer(){
+        tokenRules = new LinkedList<>();
     }
 
-    public Lexer(DFA[] rules){
-
+    public void addRule(String name, String regex){
+        addRule(name, regex, null);
+    }
+    public void addRule(String name, String regex, Function<Token, Token> func){
+        tokenRules.add(new TokenRule(name, regex, func));
     }
 
-    private static DFA toDFA(String regex){
-        regex = regex
-                .replace("\\\\", "\\")
-                .replace("\\d", "0123456789")
-                .replace("\\w", "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz")
-                .replace("\\n", "\n");
-        DFAState startState = new DFAState();
-        return toDFA(new CharacterIterator(regex), startState);
-    }
-
-    private static DFA toDFA(CharacterIterator iterator, DFAState start){
-
-        char chr = iterator.next();
-
-        DFA dfa;
-
-        switch(chr){
-            case '|':
-                return null;
-            case '\\':
-                dfa = new DFA(null, null, null);
-                break;
-            case '(':
-                dfa = new DFA(null, null, null);
-                break;
-            case '[':
-                dfa = new DFA(null, null, null);
-                break;
-            default:
-                DFAState end = new DFAState();
-                start.on(chr, end);
-                dfa = new DFA(new ArrayList<>(), start, end);
-                break;
-        }
-
-        if(iterator.hasNext()){
-            DFA after = toDFA(iterator, dfa.end);
-            if(after != null) {
-                return new DFA(Stream.concat(Stream.of(dfa.end), after.states.stream()).collect(Collectors.toList()), start, after.end);
+    public void setFunc(String ruleName, Function<Token, Token> func){
+        for(TokenRule tkr : tokenRules){
+            if(tkr.name == ruleName){
+                tkr.setFunc(func);
+                return;
             }
         }
-        return dfa;
-    }
-}
-
-class CharacterIterator implements Iterator<Character> {
-    private final String str;
-    private int pos = 0;
-
-    public CharacterIterator(String str) {
-        this.str = str;
-    }
-    public boolean hasNext() {
-        return pos < str.length();
-    }
-    public Character next() {
-        return str.charAt(pos++);
     }
 
-    public Character peek() {
-        return str.charAt(pos);
+    public static Lexer fromFile(String filename){
+        Scanner scan;
+        try{
+            scan = new Scanner(new File(filename));
+        }
+        catch(Exception e){
+            System.out.println("Could not read file!");
+            return null;
+        }
+        Lexer lexer = new Lexer();
+        while(scan.hasNextLine()){
+            Scanner s = new Scanner(scan.nextLine());
+            if(!s.hasNext()) continue;
+            String name = s.next();
+            if(!s.hasNext()){
+                lexer.addRule(name, name.replaceAll("[#-.]|[\\[-^]|[?|{}]", "\\\\$0"));
+                continue;
+            }
+            s.next();
+            String regex = s.nextLine().stripLeading();
+            lexer.addRule(name, regex);
+        }
+        return lexer;
+    }
+    
+    private static class TokenRule{
+        public String name;
+        private Pattern regex;
+        private Function<Token, Token> func;
+        public TokenRule(String name, String regex, Function<Token, Token> func){
+            this.name = name;
+            this.regex = Pattern.compile(regex);
+            this.func = func;
+        }
+
+        public int match(String input){
+            Matcher m = regex.matcher(input);
+            return m.find() && m.start() == 0 ? m.end() : -1;
+        }
+
+        public Token func(Token token){
+            return func == null ? token : this.func.apply(token);
+        }
+
+        public void setFunc(Function<Token, Token> func){
+            this.func = func;
+        }
     }
 
-    public void remove() {
-        throw new UnsupportedOperationException();
+    public Lex lex(String input){
+        return new Lex(this, input);
+    }
+
+    public static class Lex{
+        private String s;
+        private int index;
+        private Lexer lexer;
+
+        Lex(Lexer lexer, String input){
+            this.lexer = lexer;
+            s = input;
+            index = 0;
+        }
+
+        public Token next(){
+            if(s.length() == 0) return new Token("__END__","__END__", index);
+
+            TokenRule rule = null;
+            String sbstr = null;
+            for(TokenRule tkr : lexer.tokenRules){
+                int match = tkr.match(s);
+                if(match != -1 && (sbstr == null || match > sbstr.length())){
+                    rule = tkr;
+                    sbstr = s.substring(0, match);
+                }
+            }
+
+            if(rule != null && sbstr != null){
+                Token res = new Token(rule.name, sbstr, index);
+                index += sbstr.length();
+                s = s.substring(sbstr.length());
+                return rule.func(res);
+            }
+            index++;
+            s = s.substring(1);
+            return next();
+        }
     }
 }

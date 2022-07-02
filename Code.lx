@@ -1,4 +1,5 @@
 COMMENT := (//[^\n]*|/\*([^*]|\*[^/])*?\*?\*/)
+STRING_LITERAL := "[^"\\]*(\\.[^"\\]*)*"
 INT_LITERAL := (0|-?[123456789][\d]*)
 FLOAT_LITERAL := (0|-?[123456789][\d]*)(.[\d]+)?
 BOOL_LITERAL := (true|false)

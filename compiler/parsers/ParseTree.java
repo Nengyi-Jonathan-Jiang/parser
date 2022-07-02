@@ -2,16 +2,27 @@ package compiler.parsers;
 
 import java.util.*;
 
+import compiler.Token;
+
 public class ParseTree implements Iterable<ParseTree>{
     private final String description;
     private final ParseTree[] children;
-    public ParseTree(String description){
+    private final Token value;
+    public ParseTree(String description, Token value){
         this.description = description;
         children = null;
+        this.value = value;
     }
     public ParseTree(String description, ParseTree... children){
         this.description = description;
         this.children = children;
+        this.value = null;
+    }
+    public ParseTree[] getChildren(){
+        return children;
+    }
+    public Token getValue(){
+        return value;
     }
     public Iterator<ParseTree> iterator(){
         return Arrays.asList(children).iterator();
@@ -26,11 +37,11 @@ public class ParseTree implements Iterable<ParseTree>{
         return description;
     }
 
-    public String indentEachLine(String str){
+    private static String indentEachLine(String str){
         return str.replace("\n", "\n    ");
     }
 
     public String prnt(){
-        return isLeaf() ? "\"" + description + "\"" : description + " {" + indentEachLine(Arrays.stream(children).map(ParseTree::prnt).reduce("",(a,b)-> a + "\n" + b)) + "\n}";
+        return isLeaf() ? value.toString() : description + " {" + indentEachLine(Arrays.stream(children).map(ParseTree::prnt).reduce("",(a,b)-> a + "\n" + b)) + "\n}";
     }
 }

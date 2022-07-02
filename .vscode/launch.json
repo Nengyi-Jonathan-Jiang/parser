@@ -6,15 +6,15 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Generate Parsing Table",
+            "name": "Launch Main",
             "request": "launch",
-            "mainClass": "GenerateParsingTable"
+            "mainClass": "Main"
         },
         {
             "type": "java",
-            "name": "Launch Main",
+            "name": "Generate Parsing Table",
             "request": "launch",
-            "mainClass": "Main",
+            "mainClass": "GenerateParsingTable"
         }
     ]
 }

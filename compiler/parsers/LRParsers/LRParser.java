@@ -26,7 +26,7 @@ public final class LRParser implements Parser{
      * @param tokens A string of tokens to be parsed
      * @return The parse tree if the tokens were parsed successfully, otherwise null
      */
-    public ParseTree parse(String[] tokens) {
+    public ParseTree parse(Token[] tokens) {
 
         Deque<Integer> stateStack = new ArrayDeque<>();
         Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
@@ -37,9 +37,9 @@ public final class LRParser implements Parser{
         int index = 0;
         while(index < tokens.length){
             int state = stateStack.peek();
-            String token = tokens[index];
+            Token token = tokens[index];
 
-            TableEntry entry = table.getAction(state, token);
+            TableEntry entry = table.getAction(state, token.type);
 
             // Parse failed
             if(entry == null) return null;
@@ -51,7 +51,7 @@ public final class LRParser implements Parser{
                     index++;
 
                     // Update parse tree -- add new leaf node to stack
-                    parseTreeStack.push(new ParseTree(token));
+                    parseTreeStack.push(new ParseTree(token.type, token));
                     break;
 
                 case ACCEPT: //Parse successful -- return parse tree

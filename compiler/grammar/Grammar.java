@@ -104,7 +104,6 @@ public class Grammar implements Printable{
 		}
     }
     
-    @SuppressWarnings("unused")
     public List<Rule> getRules(){return rules;}
     public List<Rule> getRules(String sym){return startsWith.get(sym);}
     
@@ -123,7 +122,6 @@ public class Grammar implements Printable{
         return rules.stream().map(Rule::toString).reduce("",(String a, String b)->a+"\n"+b);
     }
     
-    @SuppressWarnings("unused")
     public boolean isNullable(SymbolString tkns){
         if(tkns.size() == 0) return true;
         for(String tkn : tkns)
@@ -136,7 +134,6 @@ public class Grammar implements Printable{
         return nullableSet.contains(tkn);
     }
     
-    @SuppressWarnings("unused")
     public Set<String> follow(SymbolString tkns){
         // Follow set of empty token string is {epsilon}
         if(tkns.size() == 0)

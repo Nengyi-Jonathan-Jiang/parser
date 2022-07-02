@@ -51,12 +51,10 @@ public class Item implements Comparable<Item>, Printable{
         return prime * (prime * (prime * rule.hashCode() + pos) + lookahead.hashCode());
     }
 
-    @SuppressWarnings("unused")
     public boolean equals(Item other){
         return pos == other.pos && rule.equals(other.rule) && lookahead.equals(other.lookahead);
     }
 
-    @SuppressWarnings("unused")
     public boolean coreEquals(Item other){
         return pos == other.pos && rule.equals(other.rule);
     }

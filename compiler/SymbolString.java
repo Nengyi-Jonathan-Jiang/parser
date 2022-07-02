@@ -23,7 +23,6 @@ public class SymbolString implements Iterable<String>, Comparable<SymbolString>,
     
     public String toString(){return repr;}
     
-    @SuppressWarnings("unused")
     public boolean equals(SymbolString that){return repr.equals(that.repr);}
     
     public int compareTo(SymbolString that){return repr.compareTo(that.repr);}
@@ -39,7 +38,6 @@ public class SymbolString implements Iterable<String>, Comparable<SymbolString>,
     
     public Iterator<String> iterator(){return tkns.iterator();}
 
-    @SuppressWarnings("unused")
     public SymbolString concat(SymbolString other){
         return new SymbolString(Stream.concat(stream(), other.stream()).collect(Collectors.toList()));
     }
