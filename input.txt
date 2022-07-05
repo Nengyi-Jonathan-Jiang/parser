@@ -1,17 +1,16 @@
-0;
-2.1;
-"Hello";
+println 0;
+println 2.1;
+println "Hello";
 
-1 + 2;
-1 - 2;
-1 + (2 - 3);
-1 - (2 + 3);
+1;
+2;
 
-a;
-a + b;
-
-a = 1;
-a = b.c = 1;
-a += 1;
-
-a += 1 + 2;
+println 1 + 2;
+println 3462 + 34526;
+println 1 - 2;
+println "HELLO " + "world";
+println "H" + 3 + 1 + 1 + 0;
+println "" + 1 + 2 + 3 + ": concat\"";
+println 1 + 2 + "" + 3 + 4;
+println 1 + (2 + 3);
+println 1 - (2 - 3);

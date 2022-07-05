@@ -1,8 +1,8 @@
 package compiler;
 
 public class Token{
-    public String type, value;
-    public int index;
+    public final String type, value;
+    public final int index;
     public Token(String type, String value, int index){
         this.type = type;
         this.value = value;

@@ -10,8 +10,8 @@ Statement := Expression ;
 
 // Commands
 
-PrintStmt := PRINT Expression
-PrintStmt := PRINTLN Expression
+PrintStmt := print Expression ;
+PrintStmt := println Expression ;
 
 // Names and types
 

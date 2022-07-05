@@ -1,99 +1,77 @@
-123
+89
 a ( r 0 Statements 
 a FLOAT_LITERAL r 0 Statements 
 a IDENTIFIER r 0 Statements 
 a INT_LITERAL r 0 Statements 
-a PRINT r 0 Statements 
-a PRINTLN r 0 Statements 
 a STRING_LITERAL r 0 Statements 
 a Statements s 1
 a __END__ r 0 Statements 
+a print r 0 Statements 
+a println r 0 Statements 
 g Statements 1
 s
-a ( s 14
-a AdditiveExpression s 11
-a AssignmentExpression s 6
+a ( s 13
+a AdditiveExpression s 10
+a AssignmentExpression s 5
 a Expression s 16
 a FLOAT_LITERAL s 17
-a IDENTIFIER s 9
-a INT_LITERAL s 8
-a Literal s 7
-a Name s 5
-a PRINT s 2
-a PRINTLN s 4
-a ParenthesizedExpression s 10
-a PrimaryExpression s 3
-a PrintStmt s 12
+a IDENTIFIER s 8
+a INT_LITERAL s 7
+a Literal s 6
+a Name s 3
+a ParenthesizedExpression s 9
+a PrimaryExpression s 2
+a PrintStmt s 11
 a STRING_LITERAL s 18
-a Statement s 13
+a Statement s 12
 a __END__ a 
 a lvalue s 15
-g AdditiveExpression 11
-g AssignmentExpression 6
+a print s 14
+a println s 4
+g AdditiveExpression 10
+g AssignmentExpression 5
 g Expression 16
-g Literal 7
-g Name 5
-g ParenthesizedExpression 10
-g PrimaryExpression 3
-g PrintStmt 12
-g Statement 13
+g Literal 6
+g Name 3
+g ParenthesizedExpression 9
+g PrimaryExpression 2
+g PrintStmt 11
+g Statement 12
 g lvalue 15
-s
-a ( s 27
-a AdditiveExpression s 26
-a AssignmentExpression s 21
-a Expression s 32
-a FLOAT_LITERAL s 30
-a IDENTIFIER s 24
-a INT_LITERAL s 23
-a Literal s 22
-a Name s 20
-a ParenthesizedExpression s 25
-a PrimaryExpression s 19
-a STRING_LITERAL s 31
-a lvalue s 28
-g AdditiveExpression 26
-g AssignmentExpression 21
-g Expression 32
-g Literal 22
-g Name 20
-g ParenthesizedExpression 25
-g PrimaryExpression 19
-g lvalue 28
 s
 a + r 1 AdditiveExpression PrimaryExpression
 a - r 1 AdditiveExpression PrimaryExpression
 a ; r 1 AdditiveExpression PrimaryExpression
 s
-a ( s 27
-a AdditiveExpression s 26
-a AssignmentExpression s 21
-a Expression s 29
-a FLOAT_LITERAL s 30
-a IDENTIFIER s 24
-a INT_LITERAL s 23
-a Literal s 22
-a Name s 20
-a ParenthesizedExpression s 25
-a PrimaryExpression s 19
-a STRING_LITERAL s 31
-a lvalue s 28
-g AdditiveExpression 26
-g AssignmentExpression 21
-g Expression 29
-g Literal 22
-g Name 20
-g ParenthesizedExpression 25
-g PrimaryExpression 19
-g lvalue 28
-s
 a + r 1 PrimaryExpression Name
 a += r 1 lvalue Name
 a - r 1 PrimaryExpression Name
 a -= r 1 lvalue Name
-a . s 53
+a . s 41
 a ; r 1 PrimaryExpression Name
 a = r 1 lvalue Name
+s
+a ( s 13
+a AdditiveExpression s 10
+a AssignmentExpression s 5
+a Expression s 32
+a FLOAT_LITERAL s 17
+a IDENTIFIER s 8
+a INT_LITERAL s 7
+a Literal s 6
+a Name s 3
+a ParenthesizedExpression s 9
+a PrimaryExpression s 2
+a STRING_LITERAL s 18
+a lvalue s 15
+g AdditiveExpression 10
+g AssignmentExpression 5
+g Expression 32
+g Literal 6
+g Name 3
+g ParenthesizedExpression 9
+g PrimaryExpression 2
+g lvalue 15
 s
 a += r 1 lvalue AssignmentExpression
 a -= r 1 lvalue AssignmentExpression
@@ -120,59 +98,81 @@ a + r 1 PrimaryExpression ParenthesizedExpression
 a - r 1 PrimaryExpression ParenthesizedExpression
 a ; r 1 PrimaryExpression ParenthesizedExpression
 s
-a + s 50
-a - s 51
+a + s 38
+a - s 39
 a ; r 1 Expression AdditiveExpression
-a AdditiveOperator s 52
-g AdditiveOperator 52
+a AdditiveOperator s 40
+g AdditiveOperator 40
 s
 a ( r 1 Statement PrintStmt
 a FLOAT_LITERAL r 1 Statement PrintStmt
 a IDENTIFIER r 1 Statement PrintStmt
 a INT_LITERAL r 1 Statement PrintStmt
-a PRINT r 1 Statement PrintStmt
-a PRINTLN r 1 Statement PrintStmt
 a STRING_LITERAL r 1 Statement PrintStmt
 a __END__ r 1 Statement PrintStmt
+a print r 1 Statement PrintStmt
+a println r 1 Statement PrintStmt
 s
 a ( r 2 Statements Statements Statement
 a FLOAT_LITERAL r 2 Statements Statements Statement
 a IDENTIFIER r 2 Statements Statements Statement
 a INT_LITERAL r 2 Statements Statements Statement
-a PRINT r 2 Statements Statements Statement
-a PRINTLN r 2 Statements Statements Statement
 a STRING_LITERAL r 2 Statements Statements Statement
 a __END__ r 2 Statements Statements Statement
+a print r 2 Statements Statements Statement
+a println r 2 Statements Statements Statement
 s
-a ( s 41
-a AdditiveExpression s 40
-a AssignmentExpression s 35
-a Expression s 43
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 38
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 34
-a ParenthesizedExpression s 39
-a PrimaryExpression s 33
-a STRING_LITERAL s 45
-a lvalue s 42
-g AdditiveExpression 40
-g AssignmentExpression 35
-g Expression 43
-g Literal 36
-g Name 34
-g ParenthesizedExpression 39
-g PrimaryExpression 33
-g lvalue 42
+a ( s 27
+a AdditiveExpression s 26
+a AssignmentExpression s 21
+a Expression s 29
+a FLOAT_LITERAL s 30
+a IDENTIFIER s 24
+a INT_LITERAL s 23
+a Literal s 22
+a Name s 20
+a ParenthesizedExpression s 25
+a PrimaryExpression s 19
+a STRING_LITERAL s 31
+a lvalue s 28
+g AdditiveExpression 26
+g AssignmentExpression 21
+g Expression 29
+g Literal 22
+g Name 20
+g ParenthesizedExpression 25
+g PrimaryExpression 19
+g lvalue 28
 s
-a += s 48
-a -= s 47
-a = s 49
-a AssignmentOperator s 46
-g AssignmentOperator 46
+a ( s 13
+a AdditiveExpression s 10
+a AssignmentExpression s 5
+a Expression s 33
+a FLOAT_LITERAL s 17
+a IDENTIFIER s 8
+a INT_LITERAL s 7
+a Literal s 6
+a Name s 3
+a ParenthesizedExpression s 9
+a PrimaryExpression s 2
+a STRING_LITERAL s 18
+a lvalue s 15
+g AdditiveExpression 10
+g AssignmentExpression 5
+g Expression 33
+g Literal 6
+g Name 3
+g ParenthesizedExpression 9
+g PrimaryExpression 2
+g lvalue 15
 s
-a ; s 54
+a += s 36
+a -= s 35
+a = s 37
+a AssignmentOperator s 34
+g AssignmentOperator 34
+s
+a ; s 42
 s
 a + r 1 Literal FLOAT_LITERAL
 a - r 1 Literal FLOAT_LITERAL
@@ -181,173 +181,6 @@ s
 a + r 1 Literal STRING_LITERAL
 a - r 1 Literal STRING_LITERAL
 a ; r 1 Literal STRING_LITERAL
-s
-a ( r 1 AdditiveExpression PrimaryExpression
-a + r 1 AdditiveExpression PrimaryExpression
-a - r 1 AdditiveExpression PrimaryExpression
-a FLOAT_LITERAL r 1 AdditiveExpression PrimaryExpression
-a IDENTIFIER r 1 AdditiveExpression PrimaryExpression
-a INT_LITERAL r 1 AdditiveExpression PrimaryExpression
-a PRINT r 1 AdditiveExpression PrimaryExpression
-a PRINTLN r 1 AdditiveExpression PrimaryExpression
-a STRING_LITERAL r 1 AdditiveExpression PrimaryExpression
-a __END__ r 1 AdditiveExpression PrimaryExpression
-s
-a ( r 1 PrimaryExpression Name
-a + r 1 PrimaryExpression Name
-a += r 1 lvalue Name
-a - r 1 PrimaryExpression Name
-a -= r 1 lvalue Name
-a . s 73
-a = r 1 lvalue Name
-a FLOAT_LITERAL r 1 PrimaryExpression Name
-a IDENTIFIER r 1 PrimaryExpression Name
-a INT_LITERAL r 1 PrimaryExpression Name
-a PRINT r 1 PrimaryExpression Name
-a PRINTLN r 1 PrimaryExpression Name
-a STRING_LITERAL r 1 PrimaryExpression Name
-a __END__ r 1 PrimaryExpression Name
-s
-a ( r 1 Expression AssignmentExpression
-a += r 1 lvalue AssignmentExpression
-a -= r 1 lvalue AssignmentExpression
-a = r 1 lvalue AssignmentExpression
-a FLOAT_LITERAL r 1 Expression AssignmentExpression
-a IDENTIFIER r 1 Expression AssignmentExpression
-a INT_LITERAL r 1 Expression AssignmentExpression
-a PRINT r 1 Expression AssignmentExpression
-a PRINTLN r 1 Expression AssignmentExpression
-a STRING_LITERAL r 1 Expression AssignmentExpression
-a __END__ r 1 Expression AssignmentExpression
-s
-a ( r 1 PrimaryExpression Literal
-a + r 1 PrimaryExpression Literal
-a - r 1 PrimaryExpression Literal
-a FLOAT_LITERAL r 1 PrimaryExpression Literal
-a IDENTIFIER r 1 PrimaryExpression Literal
-a INT_LITERAL r 1 PrimaryExpression Literal
-a PRINT r 1 PrimaryExpression Literal
-a PRINTLN r 1 PrimaryExpression Literal
-a STRING_LITERAL r 1 PrimaryExpression Literal
-a __END__ r 1 PrimaryExpression Literal
-s
-a ( r 1 Literal INT_LITERAL
-a + r 1 Literal INT_LITERAL
-a - r 1 Literal INT_LITERAL
-a FLOAT_LITERAL r 1 Literal INT_LITERAL
-a IDENTIFIER r 1 Literal INT_LITERAL
-a INT_LITERAL r 1 Literal INT_LITERAL
-a PRINT r 1 Literal INT_LITERAL
-a PRINTLN r 1 Literal INT_LITERAL
-a STRING_LITERAL r 1 Literal INT_LITERAL
-a __END__ r 1 Literal INT_LITERAL
-s
-a ( r 1 Name IDENTIFIER
-a + r 1 Name IDENTIFIER
-a += r 1 Name IDENTIFIER
-a - r 1 Name IDENTIFIER
-a -= r 1 Name IDENTIFIER
-a . r 1 Name IDENTIFIER
-a = r 1 Name IDENTIFIER
-a FLOAT_LITERAL r 1 Name IDENTIFIER
-a IDENTIFIER r 1 Name IDENTIFIER
-a INT_LITERAL r 1 Name IDENTIFIER
-a PRINT r 1 Name IDENTIFIER
-a PRINTLN r 1 Name IDENTIFIER
-a STRING_LITERAL r 1 Name IDENTIFIER
-a __END__ r 1 Name IDENTIFIER
-s
-a ( r 1 PrimaryExpression ParenthesizedExpression
-a + r 1 PrimaryExpression ParenthesizedExpression
-a - r 1 PrimaryExpression ParenthesizedExpression
-a FLOAT_LITERAL r 1 PrimaryExpression ParenthesizedExpression
-a IDENTIFIER r 1 PrimaryExpression ParenthesizedExpression
-a INT_LITERAL r 1 PrimaryExpression ParenthesizedExpression
-a PRINT r 1 PrimaryExpression ParenthesizedExpression
-a PRINTLN r 1 PrimaryExpression ParenthesizedExpression
-a STRING_LITERAL r 1 PrimaryExpression ParenthesizedExpression
-a __END__ r 1 PrimaryExpression ParenthesizedExpression
-s
-a ( r 1 Expression AdditiveExpression
-a + s 50
-a - s 51
-a AdditiveOperator s 71
-a FLOAT_LITERAL r 1 Expression AdditiveExpression
-a IDENTIFIER r 1 Expression AdditiveExpression
-a INT_LITERAL r 1 Expression AdditiveExpression
-a PRINT r 1 Expression AdditiveExpression
-a PRINTLN r 1 Expression AdditiveExpression
-a STRING_LITERAL r 1 Expression AdditiveExpression
-a __END__ r 1 Expression AdditiveExpression
-g AdditiveOperator 71
-s
-a ( s 41
-a AdditiveExpression s 40
-a AssignmentExpression s 35
-a Expression s 55
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 38
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 34
-a ParenthesizedExpression s 39
-a PrimaryExpression s 33
-a STRING_LITERAL s 45
-a lvalue s 42
-g AdditiveExpression 40
-g AssignmentExpression 35
-g Expression 55
-g Literal 36
-g Name 34
-g ParenthesizedExpression 39
-g PrimaryExpression 33
-g lvalue 42
-s
-a += s 48
-a -= s 47
-a = s 49
-a AssignmentOperator s 69
-g AssignmentOperator 69
-s
-a ( r 2 PrintStmt PRINTLN Expression
-a FLOAT_LITERAL r 2 PrintStmt PRINTLN Expression
-a IDENTIFIER r 2 PrintStmt PRINTLN Expression
-a INT_LITERAL r 2 PrintStmt PRINTLN Expression
-a PRINT r 2 PrintStmt PRINTLN Expression
-a PRINTLN r 2 PrintStmt PRINTLN Expression
-a STRING_LITERAL r 2 PrintStmt PRINTLN Expression
-a __END__ r 2 PrintStmt PRINTLN Expression
-s
-a ( r 1 Literal FLOAT_LITERAL
-a + r 1 Literal FLOAT_LITERAL
-a - r 1 Literal FLOAT_LITERAL
-a FLOAT_LITERAL r 1 Literal FLOAT_LITERAL
-a IDENTIFIER r 1 Literal FLOAT_LITERAL
-a INT_LITERAL r 1 Literal FLOAT_LITERAL
-a PRINT r 1 Literal FLOAT_LITERAL
-a PRINTLN r 1 Literal FLOAT_LITERAL
-a STRING_LITERAL r 1 Literal FLOAT_LITERAL
-a __END__ r 1 Literal FLOAT_LITERAL
-s
-a ( r 1 Literal STRING_LITERAL
-a + r 1 Literal STRING_LITERAL
-a - r 1 Literal STRING_LITERAL
-a FLOAT_LITERAL r 1 Literal STRING_LITERAL
-a IDENTIFIER r 1 Literal STRING_LITERAL
-a INT_LITERAL r 1 Literal STRING_LITERAL
-a PRINT r 1 Literal STRING_LITERAL
-a PRINTLN r 1 Literal STRING_LITERAL
-a STRING_LITERAL r 1 Literal STRING_LITERAL
-a __END__ r 1 Literal STRING_LITERAL
-s
-a ( r 2 PrintStmt PRINT Expression
-a FLOAT_LITERAL r 2 PrintStmt PRINT Expression
-a IDENTIFIER r 2 PrintStmt PRINT Expression
-a INT_LITERAL r 2 PrintStmt PRINT Expression
-a PRINT r 2 PrintStmt PRINT Expression
-a PRINTLN r 2 PrintStmt PRINT Expression
-a STRING_LITERAL r 2 PrintStmt PRINT Expression
-a __END__ r 2 PrintStmt PRINT Expression
 s
 a ) r 1 AdditiveExpression PrimaryExpression
 a + r 1 AdditiveExpression PrimaryExpression
@@ -358,7 +191,7 @@ a + r 1 PrimaryExpression Name
 a += r 1 lvalue Name
 a - r 1 PrimaryExpression Name
 a -= r 1 lvalue Name
-a . s 74
+a . s 58
 a = r 1 lvalue Name
 s
 a ) r 1 Expression AssignmentExpression
@@ -387,40 +220,40 @@ a + r 1 PrimaryExpression ParenthesizedExpression
 a - r 1 PrimaryExpression ParenthesizedExpression
 s
 a ) r 1 Expression AdditiveExpression
-a + s 50
-a - s 51
-a AdditiveOperator s 72
-g AdditiveOperator 72
+a + s 38
+a - s 39
+a AdditiveOperator s 57
+g AdditiveOperator 57
 s
-a ( s 41
-a AdditiveExpression s 40
-a AssignmentExpression s 35
-a Expression s 56
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 38
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 34
-a ParenthesizedExpression s 39
-a PrimaryExpression s 33
-a STRING_LITERAL s 45
-a lvalue s 42
-g AdditiveExpression 40
-g AssignmentExpression 35
-g Expression 56
-g Literal 36
-g Name 34
-g ParenthesizedExpression 39
-g PrimaryExpression 33
-g lvalue 42
+a ( s 27
+a AdditiveExpression s 26
+a AssignmentExpression s 21
+a Expression s 43
+a FLOAT_LITERAL s 30
+a IDENTIFIER s 24
+a INT_LITERAL s 23
+a Literal s 22
+a Name s 20
+a ParenthesizedExpression s 25
+a PrimaryExpression s 19
+a STRING_LITERAL s 31
+a lvalue s 28
+g AdditiveExpression 26
+g AssignmentExpression 21
+g Expression 43
+g Literal 22
+g Name 20
+g ParenthesizedExpression 25
+g PrimaryExpression 19
+g lvalue 28
 s
-a += s 48
-a -= s 47
-a = s 49
-a AssignmentOperator s 70
-g AssignmentOperator 70
+a += s 36
+a -= s 35
+a = s 37
+a AssignmentOperator s 56
+g AssignmentOperator 56
 s
-a ) s 75
+a ) s 59
 s
 a ) r 1 Literal FLOAT_LITERAL
 a + r 1 Literal FLOAT_LITERAL
@@ -430,21 +263,25 @@ a ) r 1 Literal STRING_LITERAL
 a + r 1 Literal STRING_LITERAL
 a - r 1 Literal STRING_LITERAL
 s
-a ( s 63
-a AdditiveExpression s 62
-a FLOAT_LITERAL s 64
-a IDENTIFIER s 9
-a INT_LITERAL s 60
-a Literal s 59
-a Name s 58
-a ParenthesizedExpression s 61
-a PrimaryExpression s 57
-a STRING_LITERAL s 65
-g AdditiveExpression 62
-g Literal 59
-g Name 58
-g ParenthesizedExpression 61
-g PrimaryExpression 57
+a ; s 60
+s
+a ; s 62
+s
+a ( s 50
+a AdditiveExpression s 49
+a FLOAT_LITERAL s 51
+a IDENTIFIER s 8
+a INT_LITERAL s 47
+a Literal s 46
+a Name s 45
+a ParenthesizedExpression s 48
+a PrimaryExpression s 44
+a STRING_LITERAL s 52
+g AdditiveExpression 49
+g Literal 46
+g Name 45
+g ParenthesizedExpression 48
+g PrimaryExpression 44
 s
 a ( r 1 AssignmentOperator -=
 a FLOAT_LITERAL r 1 AssignmentOperator -=
@@ -476,34 +313,32 @@ a IDENTIFIER r 1 AdditiveOperator -
 a INT_LITERAL r 1 AdditiveOperator -
 a STRING_LITERAL r 1 AdditiveOperator -
 s
-a ( s 14
+a ( s 13
 a FLOAT_LITERAL s 17
-a IDENTIFIER s 68
-a INT_LITERAL s 8
-a Literal s 7
-a Name s 67
-a ParenthesizedExpression s 10
-a PrimaryExpression s 66
+a IDENTIFIER s 55
+a INT_LITERAL s 7
+a Literal s 6
+a Name s 54
+a ParenthesizedExpression s 9
+a PrimaryExpression s 53
 a STRING_LITERAL s 18
-g Literal 7
-g Name 67
-g ParenthesizedExpression 10
-g PrimaryExpression 66
+g Literal 6
+g Name 54
+g ParenthesizedExpression 9
+g PrimaryExpression 53
 s
-a IDENTIFIER s 76
+a IDENTIFIER s 61
 s
 a ( r 2 Statement Expression ;
 a FLOAT_LITERAL r 2 Statement Expression ;
 a IDENTIFIER r 2 Statement Expression ;
 a INT_LITERAL r 2 Statement Expression ;
-a PRINT r 2 Statement Expression ;
-a PRINTLN r 2 Statement Expression ;
 a STRING_LITERAL r 2 Statement Expression ;
 a __END__ r 2 Statement Expression ;
+a print r 2 Statement Expression ;
+a println r 2 Statement Expression ;
 s
-a ) s 104
-s
-a ) s 105
+a ) s 78
 s
 a + r 1 AdditiveExpression PrimaryExpression
 a += r 1 AdditiveExpression PrimaryExpression
@@ -516,7 +351,7 @@ a + r 1 PrimaryExpression Name
 a += r 1 PrimaryExpression Name
 a - r 1 PrimaryExpression Name
 a -= r 1 PrimaryExpression Name
-a . s 53
+a . s 41
 a ; r 1 PrimaryExpression Name
 a = r 1 PrimaryExpression Name
 s
@@ -541,36 +376,36 @@ a -= r 1 PrimaryExpression ParenthesizedExpression
 a ; r 1 PrimaryExpression ParenthesizedExpression
 a = r 1 PrimaryExpression ParenthesizedExpression
 s
-a + s 50
+a + s 38
 a += r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a - s 51
+a - s 39
 a -= r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
 a ; r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
 a = r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a AdditiveOperator s 102
-g AdditiveOperator 102
+a AdditiveOperator s 76
+g AdditiveOperator 76
 s
-a ( s 41
-a AdditiveExpression s 40
-a AssignmentExpression s 35
-a Expression s 98
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 38
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 34
-a ParenthesizedExpression s 39
-a PrimaryExpression s 33
-a STRING_LITERAL s 45
-a lvalue s 42
-g AdditiveExpression 40
-g AssignmentExpression 35
-g Expression 98
-g Literal 36
-g Name 34
-g ParenthesizedExpression 39
-g PrimaryExpression 33
-g lvalue 42
+a ( s 27
+a AdditiveExpression s 26
+a AssignmentExpression s 21
+a Expression s 72
+a FLOAT_LITERAL s 30
+a IDENTIFIER s 24
+a INT_LITERAL s 23
+a Literal s 22
+a Name s 20
+a ParenthesizedExpression s 25
+a PrimaryExpression s 19
+a STRING_LITERAL s 31
+a lvalue s 28
+g AdditiveExpression 26
+g AssignmentExpression 21
+g Expression 72
+g Literal 22
+g Name 20
+g ParenthesizedExpression 25
+g PrimaryExpression 19
+g lvalue 28
 s
 a + r 1 Literal FLOAT_LITERAL
 a += r 1 Literal FLOAT_LITERAL
@@ -592,7 +427,7 @@ a ; r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 s
 a + r 1 PrimaryExpression Name
 a - r 1 PrimaryExpression Name
-a . s 103
+a . s 77
 a ; r 1 PrimaryExpression Name
 s
 a + r 1 Name IDENTIFIER
@@ -600,73 +435,50 @@ a - r 1 Name IDENTIFIER
 a . r 1 Name IDENTIFIER
 a ; r 1 Name IDENTIFIER
 s
-a ( s 83
-a AdditiveExpression s 82
-a FLOAT_LITERAL s 84
+a ( s 69
+a AdditiveExpression s 68
+a FLOAT_LITERAL s 70
 a IDENTIFIER s 24
-a INT_LITERAL s 80
-a Literal s 79
-a Name s 78
-a ParenthesizedExpression s 81
-a PrimaryExpression s 77
-a STRING_LITERAL s 85
-g AdditiveExpression 82
-g Literal 79
-g Name 78
-g ParenthesizedExpression 81
-g PrimaryExpression 77
-s
-a ( s 95
-a AdditiveExpression s 94
-a FLOAT_LITERAL s 96
-a IDENTIFIER s 38
-a INT_LITERAL s 92
-a Literal s 91
-a Name s 90
-a ParenthesizedExpression s 93
-a PrimaryExpression s 89
-a STRING_LITERAL s 97
-g AdditiveExpression 94
-g Literal 91
-g Name 90
-g ParenthesizedExpression 93
-g PrimaryExpression 89
+a INT_LITERAL s 66
+a Literal s 65
+a Name s 64
+a ParenthesizedExpression s 67
+a PrimaryExpression s 63
+a STRING_LITERAL s 71
+g AdditiveExpression 68
+g Literal 65
+g Name 64
+g ParenthesizedExpression 67
+g PrimaryExpression 63
 s
 a ( s 27
 a FLOAT_LITERAL s 30
-a IDENTIFIER s 88
+a IDENTIFIER s 75
 a INT_LITERAL s 23
 a Literal s 22
-a Name s 87
+a Name s 74
 a ParenthesizedExpression s 25
-a PrimaryExpression s 86
+a PrimaryExpression s 73
 a STRING_LITERAL s 31
 g Literal 22
-g Name 87
+g Name 74
 g ParenthesizedExpression 25
-g PrimaryExpression 86
+g PrimaryExpression 73
 s
-a ( s 41
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 101
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 100
-a ParenthesizedExpression s 39
-a PrimaryExpression s 99
-a STRING_LITERAL s 45
-g Literal 36
-g Name 100
-g ParenthesizedExpression 39
-g PrimaryExpression 99
-s
-a IDENTIFIER s 106
-s
-a IDENTIFIER s 107
+a IDENTIFIER s 79
 s
 a + r 3 ParenthesizedExpression ( Expression )
 a - r 3 ParenthesizedExpression ( Expression )
 a ; r 3 ParenthesizedExpression ( Expression )
+s
+a ( r 3 PrintStmt println Expression ;
+a FLOAT_LITERAL r 3 PrintStmt println Expression ;
+a IDENTIFIER r 3 PrintStmt println Expression ;
+a INT_LITERAL r 3 PrintStmt println Expression ;
+a STRING_LITERAL r 3 PrintStmt println Expression ;
+a __END__ r 3 PrintStmt println Expression ;
+a print r 3 PrintStmt println Expression ;
+a println r 3 PrintStmt println Expression ;
 s
 a + r 3 Name Name . IDENTIFIER
 a += r 3 Name Name . IDENTIFIER
@@ -676,177 +488,14 @@ a . r 3 Name Name . IDENTIFIER
 a ; r 3 Name Name . IDENTIFIER
 a = r 3 Name Name . IDENTIFIER
 s
-a ( r 1 AdditiveExpression PrimaryExpression
-a + r 1 AdditiveExpression PrimaryExpression
-a += r 1 AdditiveExpression PrimaryExpression
-a - r 1 AdditiveExpression PrimaryExpression
-a -= r 1 AdditiveExpression PrimaryExpression
-a = r 1 AdditiveExpression PrimaryExpression
-a FLOAT_LITERAL r 1 AdditiveExpression PrimaryExpression
-a IDENTIFIER r 1 AdditiveExpression PrimaryExpression
-a INT_LITERAL r 1 AdditiveExpression PrimaryExpression
-a PRINT r 1 AdditiveExpression PrimaryExpression
-a PRINTLN r 1 AdditiveExpression PrimaryExpression
-a STRING_LITERAL r 1 AdditiveExpression PrimaryExpression
-a __END__ r 1 AdditiveExpression PrimaryExpression
-s
-a ( r 1 PrimaryExpression Name
-a + r 1 PrimaryExpression Name
-a += r 1 PrimaryExpression Name
-a - r 1 PrimaryExpression Name
-a -= r 1 PrimaryExpression Name
-a . s 73
-a = r 1 PrimaryExpression Name
-a FLOAT_LITERAL r 1 PrimaryExpression Name
-a IDENTIFIER r 1 PrimaryExpression Name
-a INT_LITERAL r 1 PrimaryExpression Name
-a PRINT r 1 PrimaryExpression Name
-a PRINTLN r 1 PrimaryExpression Name
-a STRING_LITERAL r 1 PrimaryExpression Name
-a __END__ r 1 PrimaryExpression Name
-s
-a ( r 1 PrimaryExpression Literal
-a + r 1 PrimaryExpression Literal
-a += r 1 PrimaryExpression Literal
-a - r 1 PrimaryExpression Literal
-a -= r 1 PrimaryExpression Literal
-a = r 1 PrimaryExpression Literal
-a FLOAT_LITERAL r 1 PrimaryExpression Literal
-a IDENTIFIER r 1 PrimaryExpression Literal
-a INT_LITERAL r 1 PrimaryExpression Literal
-a PRINT r 1 PrimaryExpression Literal
-a PRINTLN r 1 PrimaryExpression Literal
-a STRING_LITERAL r 1 PrimaryExpression Literal
-a __END__ r 1 PrimaryExpression Literal
-s
-a ( r 1 Literal INT_LITERAL
-a + r 1 Literal INT_LITERAL
-a += r 1 Literal INT_LITERAL
-a - r 1 Literal INT_LITERAL
-a -= r 1 Literal INT_LITERAL
-a = r 1 Literal INT_LITERAL
-a FLOAT_LITERAL r 1 Literal INT_LITERAL
-a IDENTIFIER r 1 Literal INT_LITERAL
-a INT_LITERAL r 1 Literal INT_LITERAL
-a PRINT r 1 Literal INT_LITERAL
-a PRINTLN r 1 Literal INT_LITERAL
-a STRING_LITERAL r 1 Literal INT_LITERAL
-a __END__ r 1 Literal INT_LITERAL
-s
-a ( r 1 PrimaryExpression ParenthesizedExpression
-a + r 1 PrimaryExpression ParenthesizedExpression
-a += r 1 PrimaryExpression ParenthesizedExpression
-a - r 1 PrimaryExpression ParenthesizedExpression
-a -= r 1 PrimaryExpression ParenthesizedExpression
-a = r 1 PrimaryExpression ParenthesizedExpression
-a FLOAT_LITERAL r 1 PrimaryExpression ParenthesizedExpression
-a IDENTIFIER r 1 PrimaryExpression ParenthesizedExpression
-a INT_LITERAL r 1 PrimaryExpression ParenthesizedExpression
-a PRINT r 1 PrimaryExpression ParenthesizedExpression
-a PRINTLN r 1 PrimaryExpression ParenthesizedExpression
-a STRING_LITERAL r 1 PrimaryExpression ParenthesizedExpression
-a __END__ r 1 PrimaryExpression ParenthesizedExpression
-s
-a ( r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a + s 50
-a += r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a - s 51
-a -= r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a = r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a AdditiveOperator s 111
-a FLOAT_LITERAL r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a IDENTIFIER r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a INT_LITERAL r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a PRINT r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a PRINTLN r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a STRING_LITERAL r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a __END__ r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-g AdditiveOperator 111
-s
-a ( s 41
-a AdditiveExpression s 40
-a AssignmentExpression s 35
-a Expression s 108
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 38
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 34
-a ParenthesizedExpression s 39
-a PrimaryExpression s 33
-a STRING_LITERAL s 45
-a lvalue s 42
-g AdditiveExpression 40
-g AssignmentExpression 35
-g Expression 108
-g Literal 36
-g Name 34
-g ParenthesizedExpression 39
-g PrimaryExpression 33
-g lvalue 42
-s
-a ( r 1 Literal FLOAT_LITERAL
-a + r 1 Literal FLOAT_LITERAL
-a += r 1 Literal FLOAT_LITERAL
-a - r 1 Literal FLOAT_LITERAL
-a -= r 1 Literal FLOAT_LITERAL
-a = r 1 Literal FLOAT_LITERAL
-a FLOAT_LITERAL r 1 Literal FLOAT_LITERAL
-a IDENTIFIER r 1 Literal FLOAT_LITERAL
-a INT_LITERAL r 1 Literal FLOAT_LITERAL
-a PRINT r 1 Literal FLOAT_LITERAL
-a PRINTLN r 1 Literal FLOAT_LITERAL
-a STRING_LITERAL r 1 Literal FLOAT_LITERAL
-a __END__ r 1 Literal FLOAT_LITERAL
-s
-a ( r 1 Literal STRING_LITERAL
-a + r 1 Literal STRING_LITERAL
-a += r 1 Literal STRING_LITERAL
-a - r 1 Literal STRING_LITERAL
-a -= r 1 Literal STRING_LITERAL
-a = r 1 Literal STRING_LITERAL
-a FLOAT_LITERAL r 1 Literal STRING_LITERAL
-a IDENTIFIER r 1 Literal STRING_LITERAL
-a INT_LITERAL r 1 Literal STRING_LITERAL
-a PRINT r 1 Literal STRING_LITERAL
-a PRINTLN r 1 Literal STRING_LITERAL
-a STRING_LITERAL r 1 Literal STRING_LITERAL
-a __END__ r 1 Literal STRING_LITERAL
-s
-a ( r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a + r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a - r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a FLOAT_LITERAL r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a IDENTIFIER r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a INT_LITERAL r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a PRINT r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a PRINTLN r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a STRING_LITERAL r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a __END__ r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-s
-a ( r 1 PrimaryExpression Name
-a + r 1 PrimaryExpression Name
-a - r 1 PrimaryExpression Name
-a . s 113
-a FLOAT_LITERAL r 1 PrimaryExpression Name
-a IDENTIFIER r 1 PrimaryExpression Name
-a INT_LITERAL r 1 PrimaryExpression Name
-a PRINT r 1 PrimaryExpression Name
-a PRINTLN r 1 PrimaryExpression Name
-a STRING_LITERAL r 1 PrimaryExpression Name
-a __END__ r 1 PrimaryExpression Name
-s
-a ( r 1 Name IDENTIFIER
-a + r 1 Name IDENTIFIER
-a - r 1 Name IDENTIFIER
-a . r 1 Name IDENTIFIER
-a FLOAT_LITERAL r 1 Name IDENTIFIER
-a IDENTIFIER r 1 Name IDENTIFIER
-a INT_LITERAL r 1 Name IDENTIFIER
-a PRINT r 1 Name IDENTIFIER
-a PRINTLN r 1 Name IDENTIFIER
-a STRING_LITERAL r 1 Name IDENTIFIER
-a __END__ r 1 Name IDENTIFIER
+a ( r 3 PrintStmt print Expression ;
+a FLOAT_LITERAL r 3 PrintStmt print Expression ;
+a IDENTIFIER r 3 PrintStmt print Expression ;
+a INT_LITERAL r 3 PrintStmt print Expression ;
+a STRING_LITERAL r 3 PrintStmt print Expression ;
+a __END__ r 3 PrintStmt print Expression ;
+a print r 3 PrintStmt print Expression ;
+a println r 3 PrintStmt print Expression ;
 s
 a ) r 1 AdditiveExpression PrimaryExpression
 a + r 1 AdditiveExpression PrimaryExpression
@@ -860,7 +509,7 @@ a + r 1 PrimaryExpression Name
 a += r 1 PrimaryExpression Name
 a - r 1 PrimaryExpression Name
 a -= r 1 PrimaryExpression Name
-a . s 74
+a . s 58
 a = r 1 PrimaryExpression Name
 s
 a ) r 1 PrimaryExpression Literal
@@ -885,35 +534,35 @@ a -= r 1 PrimaryExpression ParenthesizedExpression
 a = r 1 PrimaryExpression ParenthesizedExpression
 s
 a ) r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a + s 50
+a + s 38
 a += r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a - s 51
+a - s 39
 a -= r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
 a = r 3 AssignmentExpression lvalue AssignmentOperator AdditiveExpression
-a AdditiveOperator s 112
-g AdditiveOperator 112
+a AdditiveOperator s 82
+g AdditiveOperator 82
 s
-a ( s 41
-a AdditiveExpression s 40
-a AssignmentExpression s 35
-a Expression s 109
-a FLOAT_LITERAL s 44
-a IDENTIFIER s 38
-a INT_LITERAL s 37
-a Literal s 36
-a Name s 34
-a ParenthesizedExpression s 39
-a PrimaryExpression s 33
-a STRING_LITERAL s 45
-a lvalue s 42
-g AdditiveExpression 40
-g AssignmentExpression 35
-g Expression 109
-g Literal 36
-g Name 34
-g ParenthesizedExpression 39
-g PrimaryExpression 33
-g lvalue 42
+a ( s 27
+a AdditiveExpression s 26
+a AssignmentExpression s 21
+a Expression s 80
+a FLOAT_LITERAL s 30
+a IDENTIFIER s 24
+a INT_LITERAL s 23
+a Literal s 22
+a Name s 20
+a ParenthesizedExpression s 25
+a PrimaryExpression s 19
+a STRING_LITERAL s 31
+a lvalue s 28
+g AdditiveExpression 26
+g AssignmentExpression 21
+g Expression 80
+g Literal 22
+g Name 20
+g ParenthesizedExpression 25
+g PrimaryExpression 19
+g lvalue 28
 s
 a ) r 1 Literal FLOAT_LITERAL
 a + r 1 Literal FLOAT_LITERAL
@@ -929,7 +578,7 @@ a - r 1 Literal STRING_LITERAL
 a -= r 1 Literal STRING_LITERAL
 a = r 1 Literal STRING_LITERAL
 s
-a ) s 115
+a ) s 84
 s
 a ) r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a + r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
@@ -938,58 +587,32 @@ s
 a ) r 1 PrimaryExpression Name
 a + r 1 PrimaryExpression Name
 a - r 1 PrimaryExpression Name
-a . s 114
+a . s 83
 s
 a ) r 1 Name IDENTIFIER
 a + r 1 Name IDENTIFIER
 a - r 1 Name IDENTIFIER
 a . r 1 Name IDENTIFIER
 s
-a ( s 63
-a FLOAT_LITERAL s 64
-a IDENTIFIER s 9
-a INT_LITERAL s 60
-a Literal s 59
-a Name s 58
-a ParenthesizedExpression s 61
-a PrimaryExpression s 110
-a STRING_LITERAL s 65
-g Literal 59
-g Name 58
-g ParenthesizedExpression 61
-g PrimaryExpression 110
+a ( s 50
+a FLOAT_LITERAL s 51
+a IDENTIFIER s 8
+a INT_LITERAL s 47
+a Literal s 46
+a Name s 45
+a ParenthesizedExpression s 48
+a PrimaryExpression s 81
+a STRING_LITERAL s 52
+g Literal 46
+g Name 45
+g ParenthesizedExpression 48
+g PrimaryExpression 81
 s
-a IDENTIFIER s 116
-s
-a ( r 3 ParenthesizedExpression ( Expression )
-a + r 3 ParenthesizedExpression ( Expression )
-a - r 3 ParenthesizedExpression ( Expression )
-a FLOAT_LITERAL r 3 ParenthesizedExpression ( Expression )
-a IDENTIFIER r 3 ParenthesizedExpression ( Expression )
-a INT_LITERAL r 3 ParenthesizedExpression ( Expression )
-a PRINT r 3 ParenthesizedExpression ( Expression )
-a PRINTLN r 3 ParenthesizedExpression ( Expression )
-a STRING_LITERAL r 3 ParenthesizedExpression ( Expression )
-a __END__ r 3 ParenthesizedExpression ( Expression )
+a IDENTIFIER s 85
 s
 a ) r 3 ParenthesizedExpression ( Expression )
 a + r 3 ParenthesizedExpression ( Expression )
 a - r 3 ParenthesizedExpression ( Expression )
-s
-a ( r 3 Name Name . IDENTIFIER
-a + r 3 Name Name . IDENTIFIER
-a += r 3 Name Name . IDENTIFIER
-a - r 3 Name Name . IDENTIFIER
-a -= r 3 Name Name . IDENTIFIER
-a . r 3 Name Name . IDENTIFIER
-a = r 3 Name Name . IDENTIFIER
-a FLOAT_LITERAL r 3 Name Name . IDENTIFIER
-a IDENTIFIER r 3 Name Name . IDENTIFIER
-a INT_LITERAL r 3 Name Name . IDENTIFIER
-a PRINT r 3 Name Name . IDENTIFIER
-a PRINTLN r 3 Name Name . IDENTIFIER
-a STRING_LITERAL r 3 Name Name . IDENTIFIER
-a __END__ r 3 Name Name . IDENTIFIER
 s
 a ) r 3 Name Name . IDENTIFIER
 a + r 3 Name Name . IDENTIFIER
@@ -999,9 +622,7 @@ a -= r 3 Name Name . IDENTIFIER
 a . r 3 Name Name . IDENTIFIER
 a = r 3 Name Name . IDENTIFIER
 s
-a ) s 119
-s
-a ) s 120
+a ) s 87
 s
 a + r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a += r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
@@ -1010,37 +631,21 @@ a -= r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpressio
 a ; r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a = r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 s
-a ( s 83
-a FLOAT_LITERAL s 84
+a ( s 69
+a FLOAT_LITERAL s 70
 a IDENTIFIER s 24
-a INT_LITERAL s 80
-a Literal s 79
-a Name s 78
-a ParenthesizedExpression s 81
-a PrimaryExpression s 117
-a STRING_LITERAL s 85
-g Literal 79
-g Name 78
-g ParenthesizedExpression 81
-g PrimaryExpression 117
+a INT_LITERAL s 66
+a Literal s 65
+a Name s 64
+a ParenthesizedExpression s 67
+a PrimaryExpression s 86
+a STRING_LITERAL s 71
+g Literal 65
+g Name 64
+g ParenthesizedExpression 67
+g PrimaryExpression 86
 s
-a ( s 95
-a FLOAT_LITERAL s 96
-a IDENTIFIER s 38
-a INT_LITERAL s 92
-a Literal s 91
-a Name s 90
-a ParenthesizedExpression s 93
-a PrimaryExpression s 118
-a STRING_LITERAL s 97
-g Literal 91
-g Name 90
-g ParenthesizedExpression 93
-g PrimaryExpression 118
-s
-a IDENTIFIER s 121
-s
-a IDENTIFIER s 122
+a IDENTIFIER s 88
 s
 a + r 3 ParenthesizedExpression ( Expression )
 a += r 3 ParenthesizedExpression ( Expression )
@@ -1054,20 +659,6 @@ a - r 3 Name Name . IDENTIFIER
 a . r 3 Name Name . IDENTIFIER
 a ; r 3 Name Name . IDENTIFIER
 s
-a ( r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a + r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a += r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a - r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a -= r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a = r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a FLOAT_LITERAL r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a IDENTIFIER r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a INT_LITERAL r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a PRINT r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a PRINTLN r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a STRING_LITERAL r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-a __END__ r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
-s
 a ) r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a + r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a += r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
@@ -1075,38 +666,12 @@ a - r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a -= r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 a = r 3 AdditiveExpression AdditiveExpression AdditiveOperator PrimaryExpression
 s
-a ( r 3 ParenthesizedExpression ( Expression )
-a + r 3 ParenthesizedExpression ( Expression )
-a += r 3 ParenthesizedExpression ( Expression )
-a - r 3 ParenthesizedExpression ( Expression )
-a -= r 3 ParenthesizedExpression ( Expression )
-a = r 3 ParenthesizedExpression ( Expression )
-a FLOAT_LITERAL r 3 ParenthesizedExpression ( Expression )
-a IDENTIFIER r 3 ParenthesizedExpression ( Expression )
-a INT_LITERAL r 3 ParenthesizedExpression ( Expression )
-a PRINT r 3 ParenthesizedExpression ( Expression )
-a PRINTLN r 3 ParenthesizedExpression ( Expression )
-a STRING_LITERAL r 3 ParenthesizedExpression ( Expression )
-a __END__ r 3 ParenthesizedExpression ( Expression )
-s
 a ) r 3 ParenthesizedExpression ( Expression )
 a + r 3 ParenthesizedExpression ( Expression )
 a += r 3 ParenthesizedExpression ( Expression )
 a - r 3 ParenthesizedExpression ( Expression )
 a -= r 3 ParenthesizedExpression ( Expression )
 a = r 3 ParenthesizedExpression ( Expression )
-s
-a ( r 3 Name Name . IDENTIFIER
-a + r 3 Name Name . IDENTIFIER
-a - r 3 Name Name . IDENTIFIER
-a . r 3 Name Name . IDENTIFIER
-a FLOAT_LITERAL r 3 Name Name . IDENTIFIER
-a IDENTIFIER r 3 Name Name . IDENTIFIER
-a INT_LITERAL r 3 Name Name . IDENTIFIER
-a PRINT r 3 Name Name . IDENTIFIER
-a PRINTLN r 3 Name Name . IDENTIFIER
-a STRING_LITERAL r 3 Name Name . IDENTIFIER
-a __END__ r 3 Name Name . IDENTIFIER
 s
 a ) r 3 Name Name . IDENTIFIER
 a + r 3 Name Name . IDENTIFIER

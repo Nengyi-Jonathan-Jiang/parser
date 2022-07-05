@@ -19,9 +19,11 @@ public class ParseTree implements Iterable<ParseTree>{
         this.value = null;
     }
     public ParseTree[] getChildren(){
+        if(isLeaf()) throw new Error("Cannot access value of leaf node");
         return children;
     }
     public Token getValue(){
+        if(!isLeaf()) throw new Error("Cannot access value of non-leaf node");
         return value;
     }
     public Iterator<ParseTree> iterator(){

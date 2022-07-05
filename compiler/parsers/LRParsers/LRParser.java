@@ -27,69 +27,79 @@ public final class LRParser implements Parser{
      * @return The parse tree if the tokens were parsed successfully, otherwise null
      */
     public ParseTree parse(Token[] tokens) {
-
-        Deque<Integer> stateStack = new ArrayDeque<>();
-        Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
-
-        // Start in state 0
-        stateStack.push(0);
-
-        int index = 0;
-        while(index < tokens.length){
-            int state = stateStack.peek();
-            Token token = tokens[index];
-
-            TableEntry entry = table.getAction(state, token.type);
-
-            // Parse failed
-            if(entry == null) return null;
-            
-            switch(entry.getAction()){
-                case SHIFT:
-                    // Update state stack and current token pointer
-                    stateStack.push(((ShiftEntry)entry).getNextState());
-                    index++;
-
-                    // Update parse tree -- add new leaf node to stack
-                    parseTreeStack.push(new ParseTree(token.type, token));
-                    break;
-
-                case ACCEPT: //Parse successful -- return parse tree
-                    return parseTreeStack.getFirst();
-
-                case REDUCE:
-                    Rule reduceRule = ((ReduceEntry)entry).getRule();
-                    String lhs = reduceRule.getLhs();
-
-                    // Update state stack
-                    for(int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
-                    GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
-                    stateStack.push(gotoEntry.getNextState());
-
-                    // Update parse tree - merge nodes into parent node
-
-                    if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
-                    ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
-                    for(int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeStack.pop();
-                    parseTreeStack.push(new ParseTree(lhs, children));
-                    break;
-                
-                default:
-            }
+        Parse p = getParse();
+        for(Token token : tokens){
+            p.process(token);
         }
-        return null;
+        if(!p.isFinished()){
+            return null;
+        }
+        return p.getParseTree();
     }
 
     public Parse getParse(){
-        return null;
+        return new Parse(this);
     }
 
     private static class Parse implements Parser.Parse{
-        public void process(Token tok){
-            
+        private Deque<Integer> stateStack = new ArrayDeque<>();
+        private Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
+        private ParsingTable table;
+        private boolean finished;
+
+        public Parse(LRParser parser){
+            stateStack.push(0);
+            table = parser.table;
+            finished = false;
+        }
+
+        public void process(Token token){
+            while(true){
+                int state = stateStack.peek();
+
+                TableEntry entry = table.getAction(state, token.type);
+
+                // Parse failed
+                if(entry == null) throw new Error("Parse failed!");
+                
+                switch(entry.getAction()){
+                    case SHIFT:
+                        // Update state stack and current token pointer
+                        stateStack.push(((ShiftEntry)entry).getNextState());
+
+                        // Update parse tree -- add new leaf node to stack
+                        parseTreeStack.push(new ParseTree(token.type, token));
+                        return;
+                    case ACCEPT: //Parse successful -- return parse tree
+                        finished = true;
+                        return;
+
+                    case REDUCE:
+                        Rule reduceRule = ((ReduceEntry)entry).getRule();
+                        String lhs = reduceRule.getLhs();
+
+                        // Update state stack
+                        for(int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
+                        GotoEntry gotoEntry = (GotoEntry)table.getGoto(stateStack.peek(), lhs);
+                        stateStack.push(gotoEntry.getNextState());
+
+                        // Update parse tree - merge nodes into parent node
+
+                        if(reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
+                        ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
+                        for(int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeStack.pop();
+                        parseTreeStack.push(new ParseTree(lhs, children));
+                        break;
+                    
+                    default:
+                }
+            }
         }
         public ParseTree getParseTree(){
-            return null;
+            return parseTreeStack.getLast();
+        }
+        public boolean isFinished(){
+            return finished;
         }
     }
 }
