@@ -29,10 +29,10 @@ public class Interp {
             return (String)args[0] + (String)args[1];
         }));
         scope.addFunc(new InterpFunction(new FunctionSignature("operator_+_", "STRING", "INT"), "STRING", (Object[] args) -> {
-            return (String)args[0] + (Integer)args[1];
+            return (String)args[0] + args[1];
         }));
         scope.addFunc(new InterpFunction(new FunctionSignature("operator_+_", "INT", "STRING"), "STRING", (Object[] args) -> {
-            return (Integer)args[0] + (String)args[1];
+            return args[0] + (String)args[1];
         }));
 
         scopeStack.push(scope);
@@ -61,14 +61,9 @@ public class Interp {
                 run(children[1]);
                 Value val = stack.pop();
                 System.out.println(children[0].getDescription() + " " + val);
-                switch(children[0].getValue().type){
-                    case "print":
-                        output.append(val.toString());
-                        break;
-                    case "println":
-                        output.append(val.toString());
-                        output.append("\n");
-                        break;
+                output.append(val.toString());
+                if(children[0].getDescription().equals("println")){
+                    output.append("\n");
                 }
                 break;
             case "ParenthesizedExpression":
@@ -96,7 +91,7 @@ public class Interp {
                     default:
                         stack.push(new Value(literal_type, value));
                 }
-                System.out.println(stack.stream().toList());
+                System.out.println(stack.stream().collect(Collectors.toList()));
                 break;
             case "AdditiveExpression":
                 String operator = children[1].getDescription();
@@ -109,7 +104,7 @@ public class Interp {
                 InterpFunction func = getCurrScope().getFunc(new FunctionSignature("operator_" + operator + "_", v2.type, v1.type));
                 stack.push(func.apply(v2, v1));
 
-                System.out.println(stack.stream().toList());
+                System.out.println(stack.stream().collect(Collectors.toList()));
                 break;
             case "VarDeclStmt":{
                 String type = children[0].getValue().value;

@@ -6,16 +6,15 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch GenerateParsingTable",
-            "request": "launch",
-            "mainClass": "GenerateParsingTable",
-            "projectName": "parser_8fcaf55"
-        },
-        {
-            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main"
+        },
+        {
+            "type": "java",
+            "name": "Update ParsingTable",
+            "request": "launch",
+            "mainClass": "GenerateParsingTable",
         }
     ]
 }
