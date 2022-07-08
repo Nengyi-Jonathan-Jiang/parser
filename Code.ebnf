@@ -3,15 +3,28 @@ Statements
 Statements := Statements Statement
 Statements __EPSILON__
 
-Statement := PrintStmt
+Statement := PrintStmt ;
+Statement := InputStmt ; 
 Statement := Expression ;
+Statement := VarDeclStmt ;
 
 // Control statements
 
 // Commands
 
-PrintStmt := print Expression ;
-PrintStmt := println Expression ;
+PrintStmt := print Expression
+PrintStmt := println Expression
+
+InputStmt := input Name ;
+InputStmt := inputln Name ;
+
+VarDecl := IDENTIFIER
+VarInit := IDENTIFIER = Expression
+VarDeclOrInit := VarDecl
+VarDeclOrInit := VarInit
+
+VarDeclStmt := decl Type var VarDeclOrInit
+VarDeclStmt := VarDeclStmt , VarDeclOrInit
 
 // Names and types
 
@@ -20,22 +33,12 @@ Name := Name . IDENTIFIER
 
 Type := IDENTIFIER
 Type := Type :: IDENTIFIER
-Type := Type TemplateArgs
 
 // Templates
-
-TemplateArgs := < TemplateArgList >
-
-TemplateArgList := TemplateArgList , TemplateArg
-TemplateArgList := TemplateArg
-
-TemplateArg := Literal
-TemplateArg := Type
 
 // Expressions
 
 lvalue := Name
-lvalue := AssignmentExpression
 
 Literal := INT_LITERAL
 Literal := FLOAT_LITERAL
@@ -57,7 +60,7 @@ AssignmentOperator := =
 AssignmentOperator := +=
 AssignmentOperator := -=
 
-AssignmentExpression := lvalue AssignmentOperator AdditiveExpression
+AssignmentExpression := lvalue AssignmentOperator AssignmentExpression
 
 Expression := AssignmentExpression
 Expression := AdditiveExpression

@@ -9,6 +9,7 @@ import compiler.parsers.ParseTree;
 public class Interp {
     public Deque<Value> stack;
     public Deque<Scope> scopeStack;
+    private Scanner scan;
 
     StringBuilder output;
 
@@ -36,6 +37,12 @@ public class Interp {
         }));
 
         scopeStack.push(scope);
+
+        scan = new Scanner(System.in);
+    }
+
+    public void close(){
+        scan.close();
     }
 
     private Scope getCurrScope(){
@@ -60,7 +67,7 @@ public class Interp {
             case "PrintStmt":
                 run(children[1]);
                 Value val = stack.pop();
-                System.out.println(children[0].getDescription() + " " + val);
+                // System.out.println(children[0].getDescription() + " " + val);
                 output.append(val.toString());
                 if(children[0].getDescription().equals("println")){
                     output.append("\n");
@@ -73,7 +80,7 @@ public class Interp {
             case "FLOAT_LITERAL":
             case "STRING_LITERAL":
                 String literal_type = nodeType.substring(0, nodeType.length() - 8);
-                System.out.println(pTree.prnt());
+                // System.out.println(pTree.prnt());
                 switch(literal_type){
                     case "INT":
                         stack.push(new Value(literal_type, Integer.parseInt(value)));
@@ -91,7 +98,7 @@ public class Interp {
                     default:
                         stack.push(new Value(literal_type, value));
                 }
-                System.out.println(stack.stream().collect(Collectors.toList()));
+                // System.out.println(stack.stream().collect(Collectors.toList()));
                 break;
             case "AdditiveExpression":
                 String operator = children[1].getDescription();
@@ -99,12 +106,12 @@ public class Interp {
                 run(children[2]);
                 Value v1 = stack.pop(), v2 = stack.pop();
 
-                System.out.println(v1.type + " " + operator + " " + v2.type);
+                // System.out.println(v1.type + " " + operator + " " + v2.type);
 
                 InterpFunction func = getCurrScope().getFunc(new FunctionSignature("operator_" + operator + "_", v2.type, v1.type));
                 stack.push(func.apply(v2, v1));
 
-                System.out.println(stack.stream().collect(Collectors.toList()));
+                // System.out.println(stack.stream().collect(Collectors.toList()));
                 break;
             case "VarDeclStmt":{
                 String type = children[0].getValue().value;

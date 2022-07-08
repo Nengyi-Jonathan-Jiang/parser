@@ -6,6 +6,8 @@ BOOL_LITERAL := (true|false)
 
 const
 
+decl
+impl
 class
 func
 var
@@ -30,6 +32,9 @@ static
 
 println
 print
+
+input
+inputln
 
 read
 
