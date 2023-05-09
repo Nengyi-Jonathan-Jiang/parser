@@ -5,10 +5,11 @@ import java.io.PrintWriter;
 import java.util.*;
 
 import compiler.Rule;
+import compiler.Symbol;
 
 public class ParsingTable{
     
-    private final List<Map<String,TableEntry>> actionTable, gotoTable;
+    private final List<Map<Symbol,TableEntry>> actionTable, gotoTable;
     private final int numStates;
     
     public ParsingTable(int numStates){
@@ -21,28 +22,28 @@ public class ParsingTable{
         }
     }
     
-    public TableEntry getAction(int state, String symbol){
+    public TableEntry getAction(int state, Symbol symbol){
         return actionTable.get(state).get(symbol);
     }
     
-    public TableEntry getGoto(int state, String symbol){
+    public TableEntry getGoto(int state, Symbol symbol){
         return gotoTable.get(state).get(symbol);
     }
     
-    public void setActionReduce(int state, String symbol, Rule rule){
+    public void setActionReduce(int state, Symbol symbol, Rule rule){
         actionTable.get(state).put(symbol, new ReduceEntry(rule));
     }
-    public void setActionShift(int state, String symbol, int nextState){
+    public void setActionShift(int state, Symbol symbol, int nextState){
         actionTable.get(state).put(symbol, new ShiftEntry(nextState));
     }
-    public void setActionAccept(int state, String symbol){
+    public void setActionAccept(int state, Symbol symbol){
         actionTable.get(state).put(symbol, new AcceptEntry());
     }
-    public void setGoto(int state, String symbol, int n){
+    public void setGoto(int state, Symbol symbol, int n){
         gotoTable.get(state).put(symbol, new GotoEntry(n));
     }
 
-    public void saveToFile(String filename){
+    public void saveToFile(Symbol filename){
         try(PrintWriter printWriter = new PrintWriter(filename);) {
 
             StringBuilder sb = new StringBuilder();
@@ -50,8 +51,8 @@ public class ParsingTable{
             sb.append(numStates);
 
             for(int state = 0; state < numStates; state++){
-                for(Map.Entry<String, TableEntry> mapEntry : actionTable.get(state).entrySet()){
-                    String symbol = mapEntry.getKey();
+                for(Map.Entry<Symbol, TableEntry> mapEntry : actionTable.get(state).entrySet()){
+                    Symbol symbol = mapEntry.getKey();
                     TableEntry entry = mapEntry.getValue();
                     sb.append("\na ");
                     sb.append(symbol);
@@ -75,8 +76,8 @@ public class ParsingTable{
                         default:
                     }
                 }
-                for(Map.Entry<String, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
-                    String symbol = mapEntry.getKey();
+                for(Map.Entry<Symbol, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
+                    Symbol symbol = mapEntry.getKey();
                     GotoEntry entry = (GotoEntry) mapEntry.getValue();
                     sb.append("\ng ");
                     sb.append(symbol);
@@ -94,15 +95,15 @@ public class ParsingTable{
         }
     }
 
-    public static ParsingTable loadFromFile(String filename){
+    public static ParsingTable loadFromFile(Symbol filename){
         try(Scanner scan = new Scanner(new File(filename));){
 
             int size = scan.nextInt();
             ParsingTable table = new ParsingTable(size);
             for(int state = 0; state < size; state++){
-                String tableType;
+                Symbol tableType;
                 while(!(tableType = scan.next()).equals("s")){
-                    String symbol = scan.next();
+                    Symbol symbol = scan.next();
                     switch(tableType){
                         case "a":
                             switch(scan.next()){
@@ -114,8 +115,8 @@ public class ParsingTable{
                                     break;
                                 case "r":
                                     int rhsSize = scan.nextInt();
-                                    String lhs = scan.next();
-                                    String[] rhs = new String[rhsSize];
+                                    Symbol lhs = scan.next();
+                                    Symbol[] rhs = new Symbol[rhsSize];
                                     for(int i = 0; i < rhsSize; i++) rhs[i] = scan.next();
                                     table.setActionReduce(state, symbol, new Rule(lhs, rhs));
                                     break;

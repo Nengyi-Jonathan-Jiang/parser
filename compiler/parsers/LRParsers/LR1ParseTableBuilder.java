@@ -34,15 +34,15 @@ public class LR1ParseTableBuilder extends LRParseTableBuilder{
             
             for(Item itm : edge){
 
-                String symbol = itm.next();
+                Symbol symbol = itm.next();
 
                 if(itm.isFinished() || !grammar.isNonTerminal(symbol)) continue;
 
                 SymbolString rest = itm.getRule().getRhs().substr(itm.getPos() + 1);
 
                 for(Rule r : grammar.getRules(symbol)){
-                    for(String lookahead : itm.getLookahead()){
-                        Item newItem = new Item(r, 0, new ComparableTreeSet<>(grammar.first(rest.concat(lookahead))));
+                    for(Symbol lookahead : itm.getLookahead()){
+                        Item newItem = new Item(r, 0, new ComparableTreeSet<>(grammar.first(rest.append(lookahead))));
 
                         updated |= res.add(newItem);
                         newEdge.add(newItem);

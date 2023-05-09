@@ -1,5 +1,6 @@
 package compiler.lexer;
 
+import compiler.Symbol;
 import compiler.Token;
 
 import java.io.File;
@@ -8,29 +9,22 @@ import java.util.function.Function;
 import java.util.regex.*;
 
 public class Lexer {
+    private final Symbol.SymbolTable table;
     private List<TokenRule> tokenRules;
 
-    public Lexer(){
+    public Lexer(Symbol.SymbolTable table){
+        this.table = table;
         tokenRules = new LinkedList<>();
     }
 
-    public void addRule(String name, String regex){
+    public void addRule(Symbol name, String regex){
         addRule(name, regex, null);
     }
-    public void addRule(String name, String regex, Function<Token, Token> func){
+    public void addRule(Symbol name, String regex, Function<Token, Token> func){
         tokenRules.add(new TokenRule(name, regex, func));
     }
 
-    public void setFunc(String ruleName, Function<Token, Token> func){
-        for(TokenRule tkr : tokenRules){
-            if(tkr.name == ruleName){
-                tkr.setFunc(func);
-                return;
-            }
-        }
-    }
-
-    public static Lexer fromFile(String filename){
+    public static Lexer fromFile(String filename, Symbol.SymbolTable symbolTable){
         Scanner scan;
         try{
             scan = new Scanner(new File(filename));
@@ -39,27 +33,27 @@ public class Lexer {
             System.out.println("Could not read file!");
             return null;
         }
-        Lexer lexer = new Lexer();
+        Lexer lexer = new Lexer(symbolTable);
         while(scan.hasNextLine()){
             Scanner s = new Scanner(scan.nextLine());
             if(!s.hasNext()) continue;
             String name = s.next();
             if(!s.hasNext()){
-                lexer.addRule(name, name.replaceAll("[#-.]|[\\[-^]|[?|{}]", "\\\\$0"));
+                lexer.addRule(symbolTable.create(name), name.replaceAll("[#-.]|[\\[-^]|[?|{}]", "\\\\$0"));
                 continue;
             }
             s.next();
             String regex = s.nextLine().stripLeading();
-            lexer.addRule(name, regex);
+            lexer.addRule(symbolTable.create(name), regex);
         }
         return lexer;
     }
     
     private static class TokenRule{
-        public String name;
-        private Pattern regex;
+        public Symbol name;
+        private final Pattern regex;
         private Function<Token, Token> func;
-        public TokenRule(String name, String regex, Function<Token, Token> func){
+        public TokenRule(Symbol name, String regex, Function<Token, Token> func){
             this.name = name;
             this.regex = Pattern.compile(regex);
             this.func = func;
@@ -79,14 +73,14 @@ public class Lexer {
         }
     }
 
-    public Lex lex(String input){
+    public Lex lex(Symbol input){
         return new Lex(this, input);
     }
 
     public static class Lex{
         private String s;
         private int index;
-        private Lexer lexer;
+        private final Lexer lexer;
 
         Lex(Lexer lexer, String input){
             this.lexer = lexer;
@@ -95,7 +89,7 @@ public class Lexer {
         }
 
         public Token next(){
-            if(s.length() == 0) return new Token("__END__","__END__", index);
+            if(s.length() == 0) return new Token(lexer.table.__END__, "", index);
 
             TokenRule rule = null;
             String sbstr = null;
@@ -107,7 +101,7 @@ public class Lexer {
                 }
             }
 
-            if(rule != null && sbstr != null){
+            if(rule != null) {
                 Token res = new Token(rule.name, sbstr, index);
                 index += sbstr.length();
                 s = s.substring(sbstr.length());

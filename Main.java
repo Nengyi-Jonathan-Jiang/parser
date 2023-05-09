@@ -11,12 +11,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
+	public static void main(Symbol[] args) throws Exception {
 	
 		System.out.println("Lexing...");
 
 		Lexer lexer = Lexer.fromFile("Code.lx");
-		Lexer.Lex lex = lexer.lex(new String(Files.readAllBytes(Path.of("input.txt"))));
+		Lexer.Lex lex = lexer.lex(new Symbol(Files.readAllBytes(Path.of("input.txt"))));
 
 		PrintWriter tokenStreamFile = new PrintWriter("TokenStream.txt");
 
@@ -39,7 +39,7 @@ public class Main {
 
 		Interp interp = new Interp();
 		interp.run(pTree);
-		String result = interp.result();
+		Symbol result = interp.result();
 		System.out.println("--------------------\n" + result);
 		FileWriter output = new FileWriter("output.txt");
 		output.write(result);

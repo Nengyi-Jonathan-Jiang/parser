@@ -1,6 +1,7 @@
 package compiler.parsers.LRParsers;
 
 import compiler.Rule;
+import compiler.Symbol;
 import compiler.grammar.Grammar;
 import compiler.parsers.LRParsers.items.Item;
 import compiler.parsers.LRParsers.parsing_table.*;
@@ -14,7 +15,7 @@ public abstract class LRParseTableBuilder {
     protected final Grammar grammar;
     Map<ItemSet, Integer> configuratingSets;
 
-    protected Map<Integer, Map<String, Integer>> successors;
+    protected Map<Integer, Map<Symbol, Integer>> successors;
 
     /**
      * Generates an LR parse table given a {@link Grammar}
@@ -76,7 +77,7 @@ public abstract class LRParseTableBuilder {
 
             for(ItemSet configuratingSet : edge){
                 int state1 = configuratingSets.get(configuratingSet);
-                for(String symbol : grammar.getAllSymbols()){
+                for(Symbol symbol : grammar.getAllSymbols()){
                     ItemSet successor = successor(configuratingSet, symbol);
                     if(successor.isEmpty()) continue;
 
@@ -92,7 +93,7 @@ public abstract class LRParseTableBuilder {
     }
 
     /** Tries to add a configurating set to the family of configurating sets and returns true if something was updated */
-    protected boolean addConfiguratingState(int state, String symbol, ItemSet successor){
+    protected boolean addConfiguratingState(int state, Symbol symbol, ItemSet successor){
         if(!configuratingSets.containsKey(successor)){
             int newState = configuratingSets.size();
             successors.put(newState, new TreeMap<>());
@@ -125,7 +126,7 @@ public abstract class LRParseTableBuilder {
     /** Generate reduction entries given a state and an item */
     protected void generateReductions(int state, Item item){
         Rule reduce = item.getRule();
-        for(String symbol : item.getLookahead()){
+        for(Symbol symbol : item.getLookahead()){
             table.setActionReduce(state, symbol, reduce);
         }
     }
@@ -140,7 +141,7 @@ public abstract class LRParseTableBuilder {
 
     /** Generates the goto table entries for a state */
     protected void generateGotoSetEntries(int state, ItemSet itemSet){
-        for(String symbol : grammar.getNonTerminals()){
+        for(Symbol symbol : grammar.getNonTerminals()){
             Integer nextState = successors.get(state).get(symbol);
             if(nextState != null){
                 table.setGoto(state, symbol, nextState);
@@ -164,7 +165,7 @@ public abstract class LRParseTableBuilder {
     }
 
     /** Computes the successor set of an itemset */
-    protected ItemSet successor(ItemSet itemSet, String symbol){
+    protected ItemSet successor(ItemSet itemSet, Symbol symbol){
         ItemSet res = new ItemSet();
         for(Item item : itemSet)
             if(!item.isFinished() && item.next().equals(symbol))

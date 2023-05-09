@@ -3,7 +3,7 @@ import compiler.grammar.GrammarReader;
 import compiler.parsers.LRParsers.LR1ParseTableBuilder;
 
 public class GenerateParsingTable {
-    public static void main(String[] args){
+    public static void main(Symbol[] args){
         System.out.println("Generating Grammar...");
 
 		Grammar grammar = GrammarReader.readFromFile("Code.ebnf");

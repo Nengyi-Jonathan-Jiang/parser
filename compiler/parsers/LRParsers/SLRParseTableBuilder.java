@@ -24,7 +24,7 @@ public class SLRParseTableBuilder extends LRParseTableBuilder{
         while(dq.size() > 0){
             Rule rule = dq.remove();
             if(rule.isEmpty()) continue;
-            String sym = rule.getRhs().firstTkn();
+            Symbol sym = rule.getRhs().firstTkn();
             
             if(!grammar.isNonTerminal(sym)) continue;
             

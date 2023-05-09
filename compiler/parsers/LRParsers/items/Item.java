@@ -2,14 +2,15 @@ package compiler.parsers.LRParsers.items;
 
 import compiler.Printable;
 import compiler.Rule;
+import compiler.Symbol;
 import compiler.sets.ComparableSet;
 
 public class Item implements Comparable<Item>, Printable{
     private final Rule rule;
     private final int pos;
-    private final ComparableSet<String> lookahead;
+    private final ComparableSet<Symbol> lookahead;
 
-    public Item(Rule rule, int pos, ComparableSet<String> lookahead){
+    public Item(Rule rule, int pos, ComparableSet<Symbol> lookahead){
         this.rule = rule;
         this.pos = pos;
         this.lookahead = lookahead;
@@ -23,7 +24,7 @@ public class Item implements Comparable<Item>, Printable{
         return pos >= rule.getRhsSize();
     }
     
-    public String next(){
+    public Symbol next(){
         if(isFinished()) return null;
         return rule.getRhs().get(pos);
     }
@@ -59,11 +60,11 @@ public class Item implements Comparable<Item>, Printable{
         return pos == other.pos && rule.equals(other.rule);
     }
 
-    public ComparableSet<String> getLookahead(){
+    public ComparableSet<Symbol> getLookahead(){
         return lookahead;
     }
     
-    public String toString(){
+    public Symbol toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(rule.getLhs());
         sb.append(" :=");

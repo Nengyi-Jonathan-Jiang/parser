@@ -1,47 +1,65 @@
 package compiler;
+import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.*;
 
-public class SymbolString implements Iterable<String>, Comparable<SymbolString>, Printable{
-    private final List<String> tkns;
+public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>, Printable {
+    private final Symbol[] tkns;
     private final int length;
     private final String repr;
-    public SymbolString(String... tokens){this(Arrays.asList(tokens));}
-    public SymbolString(List<String> tokens){
+    private final BigInteger hash;
+
+    public SymbolString(Symbol... tokens) {
         this.tkns = tokens;
-        length = tokens.size();
-        repr = String.join(" ", tokens);
+        length = tokens.length;
+        repr = Arrays.stream(tokens).map(Symbol::toString).collect(Collectors.joining(","));
+
+        // Generate hash for easy compare
+        BigInteger h = BigInteger.ZERO;
+        for (Symbol token : tokens) h = h.add(BigInteger.valueOf(token.id()));
+        hash = h;
     }
     
-    public String get(int i){return tkns.get(i);}
+    public Symbol get(int i){return tkns[i];}
 
-    public String firstTkn(){return length == 0 ? null : tkns.get(0);}
+    public Symbol firstTkn(){return length == 0 ? null : tkns[0];}
 
-    public String lastTkn(){return length == 0 ? null : tkns.get(length - 1);}
+    public Symbol lastTkn(){return length == 0 ? null : tkns[length - 1];}
     
     public int size(){return length;}
-    
+
+    @Override
     public String toString(){return repr;}
     
-    public boolean equals(SymbolString that){return repr.equals(that.repr);}
+    public boolean equals(SymbolString that){
+        return hash.equals(that.hash);
+    }
     
     public int compareTo(SymbolString that){return repr.compareTo(that.repr);}
     
-    public List<String> getList(){return tkns.subList(0, length);}
+    public List<Symbol> getList(){
+        return List.of(tkns);
+    }
 
-    public Stream<String> stream(){return tkns.stream();}
+    public Stream<Symbol> stream(){
+        return Arrays.stream(tkns);
+    }
     
     public SymbolString substr(int start){return substr(start, length);}
     public SymbolString substr(int start, int end){
-        return new SymbolString(tkns.subList(start, end));
+        Symbol[] res = new Symbol[end - start];
+        System.arraycopy(tkns, start, res, 0, end - start);
+        return new SymbolString(res);
     }
     
-    public Iterator<String> iterator(){return tkns.iterator();}
-
-    public SymbolString concat(SymbolString other){
-        return new SymbolString(Stream.concat(stream(), other.stream()).collect(Collectors.toList()));
+    public Iterator<Symbol> iterator(){
+        return List.of(tkns).iterator();
     }
-    public SymbolString concat(String symbol){
-        return new SymbolString(Stream.concat(stream(), Stream.of(symbol)).collect(Collectors.toList()));
+
+    public SymbolString append (Symbol symbol){
+        Symbol[] res = new Symbol[length + 1];
+        System.arraycopy(tkns, 0, res, 0, length);
+        res[length] = symbol;
+        return new SymbolString(res);
     }
 }

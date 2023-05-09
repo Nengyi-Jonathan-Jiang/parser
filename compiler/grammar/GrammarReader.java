@@ -3,36 +3,41 @@ package compiler.grammar;
 import java.io.*;
 import java.util.*;
 import compiler.Rule;
+import compiler.Symbol;
 
 public class GrammarReader {
-    private GrammarReader(){}
+    private final Symbol.SymbolTable table;
+
+    private GrammarReader(Symbol.SymbolTable table){
+        this.table = table;
+    }
     
-    private static Rule ruleFromLine(String str){
+    private static Rule ruleFromLine(Symbol.SymbolTable table, String str){
         Scanner scan = new Scanner(str);
         String lhs = scan.next();
         if(scan.next().equals("__EPSILON__")){
             scan.close();
-            return new Rule(lhs);
+            return new Rule(table.get(lhs));
         }
-        List<String> rhs = new ArrayList<>();
-        while(scan.hasNext()){
-            rhs.add(scan.next());
-        }
+        List<Symbol> rhs = new ArrayList<>();
+
+        while(scan.hasNext()) rhs.add(table.get(scan.next()));
+
         scan.close();
-        return new Rule(lhs, rhs);
+        return new Rule(table.get(lhs), rhs);
     }
-    private static Grammar readFromScanner(Scanner scan){
-        String startSymbol = scan.next();
+    private static Grammar readFromScanner(Symbol.SymbolTable table, Scanner scan){
+        Symbol startSymbol = table.get(scan.next());
         List<Rule> rules = new ArrayList<>();
         while(scan.hasNextLine()){
             String line = scan.nextLine();
             if(line.length() == 0 || line.indexOf("//") == 0) continue; //Filter out empty or commented lines
-            rules.add(ruleFromLine(line));
+            rules.add(ruleFromLine(table, line));
         }
-        return new Grammar(rules, startSymbol);
+        return new Grammar(rules, startSymbol, table);
     }
 
-    public static Grammar readFromFile(String filename){
+    public static Grammar readFromFile(Symbol filename){
         Scanner scan;
         try{
             scan = new Scanner(new File(filename));

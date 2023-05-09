@@ -1,37 +1,41 @@
 package compiler.grammar;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import compiler.Printable;
 import compiler.Rule;
+import compiler.Symbol;
 import compiler.SymbolString;
 
 public class Grammar implements Printable{
     private final List<Rule> rules;
     private final Rule startRule;
     
-    private final Map<String, List<Rule>> startsWith;
-    private final Set<String> allSymbols, terminals, nonTerminals, nullableSet;
-    private final Map<String, Set<String>> firstSets, followSets;
-    
-    public Grammar(List<Rule> rules, String startSymbol){
+    private final Map<Symbol, List<Rule>> startsWith;
+    private final Set<Symbol> allSymbols, terminals, nonTerminals, nullableSet;
+    private final Map<Symbol, Set<Symbol>> firstSets, followSets;
+    private final Map<SymbolString, Set<Symbol>> firstCache = new TreeMap<>(), followCache = new TreeMap<>();
+
+    public final Symbol.SymbolTable symbolTable;
+
+    public Grammar(List<Rule> rules, Symbol startSymbol, Symbol.SymbolTable symbolTable){
         
         this.rules = new ArrayList<>(rules);
-        
-        // Augment the grammar (if needed)
 
-        startRule = new Rule("__START__", startSymbol);
+        // Augment the grammar
+        startRule = new Rule(symbolTable.__START__, startSymbol);
+        this.symbolTable = symbolTable;
         this.rules.add(startRule);
-        String startSymbol1 = "__START__";
         
         // Classify symbols as terminals or nonterminals
         
         allSymbols = new HashSet<>();
-        allSymbols.add("__END__");
+        allSymbols.add(symbolTable.__END__);
         nonTerminals = new HashSet<>();
         startsWith = new HashMap<>();
         
-        allSymbols.add(startSymbol1);
-        nonTerminals.add(startSymbol1);
+        allSymbols.add(symbolTable.__START__);
+        nonTerminals.add(symbolTable.__START__);
         
         for(Rule rule : this.rules){
             nonTerminals.add(rule.getLhs());
@@ -44,16 +48,17 @@ public class Grammar implements Printable{
         // Compute for each symbol the set of rules whose left-hand-sides match
         // said symbol
         
-        for(String sym : allSymbols)
+        for(Symbol sym : allSymbols)
             startsWith.put(sym, new ArrayList<>());
-        for(Rule rule : this.rules)
+        for(Rule rule : this.rules) {
             try {
                 startsWith.get(rule.getLhs()).add(rule);
             }
             catch (NullPointerException e){
-                System.out.println("NullPtrExeption on adding rule to startsWith:\n\t" + rule);
+                System.out.println("NullPtrException on adding rule to startsWith:\n\t" + rule);
                 throw e;
             }
+        }
         
         
         //Initialize FIRST sets, FOLLOW sets, nullable set
@@ -62,7 +67,7 @@ public class Grammar implements Printable{
         firstSets = new HashMap<>();
         followSets = new HashMap<>();
         
-        for(String sym : allSymbols){
+        for(Symbol sym : allSymbols){
 			firstSets.put(sym, new HashSet<>());
 			followSets.put(sym, new HashSet<>());
 			if(isTerminal(sym)){
@@ -70,7 +75,7 @@ public class Grammar implements Printable{
             }
 		}
         
-        followSets.get(startSymbol1).add("__END__");
+        followSets.get(symbolTable.__START__).add(symbolTable.__END__);
         
         // Calculate FIRST sets, FOLLOW sets, and the set of nullable symbols
         
@@ -78,10 +83,10 @@ public class Grammar implements Printable{
 		while(updated) {
 		    updated = false;
 			for(Rule rule : this.rules){
-			    String lhs = rule.getLhs();
+			    Symbol lhs = rule.getLhs();
 			    SymbolString rhs = rule.getRhs();
 				boolean brk = false;
-				for(String sym : rhs){
+				for(Symbol sym : rhs){
 					updated |= firstSets.get(lhs).addAll(first(sym));
 					if(!isNullable(sym)){
 					    brk = true;
@@ -90,7 +95,7 @@ public class Grammar implements Printable{
 				}
 				if(!brk) updated |= nullableSet.add(lhs);
 				
-                Set<String> aux = follow(lhs);
+                Set<Symbol> aux = follow(lhs);
 				for(int i = rhs.size() - 1; i >= 0; i--){
 					if(isNonTerminal(rhs.get(i)))
 						updated |= follow(rhs.get(i)).addAll(aux);
@@ -105,60 +110,76 @@ public class Grammar implements Printable{
     }
     
     public List<Rule> getRules(){return rules;}
-    public List<Rule> getRules(String sym){return startsWith.get(sym);}
+    public List<Rule> getRules(Symbol sym){return startsWith.get(sym);}
     
-    public Set<String> getAllSymbols(){return allSymbols;}
-    public Set<String> getNonTerminals(){return nonTerminals;}
-    public Set<String> getTerminals(){return terminals;}
+    public Set<Symbol> getAllSymbols(){return allSymbols;}
+    public Set<Symbol> getNonTerminals(){return nonTerminals;}
+    public Set<Symbol> getTerminals(){return terminals;}
 
-    public boolean isTerminal(String sym){return terminals.contains(sym);}
-    public boolean isNonTerminal(String sym){return nonTerminals.contains(sym);}
+    public boolean isTerminal(Symbol sym){return terminals.contains(sym);}
+    public boolean isNonTerminal(Symbol sym){return nonTerminals.contains(sym);}
     
     public Rule getStartRule(){return startRule;}
-    
-    // public Strin
 
     public String toString(){
-        return rules.stream().map(Rule::toString).reduce("",(String a, String b)->a+"\n"+b);
+        return rules.stream().map(Rule::toString).collect(Collectors.joining("\n"));
     }
     
     public boolean isNullable(SymbolString tkns){
         if(tkns.size() == 0) return true;
-        for(String tkn : tkns)
+        for(Symbol tkn : tkns)
             if(isNullable(tkn))
                 return true;
         return false;
     }
     
-    public boolean isNullable(String tkn){
+    public boolean isNullable(Symbol tkn){
         return nullableSet.contains(tkn);
     }
     
-    public Set<String> follow(SymbolString tkns){
+    public Set<Symbol> follow(SymbolString tkns){
         // Follow set of empty token string is {epsilon}
-        if(tkns.size() == 0)
-            return new HashSet<>(Collections.singletonList(null));
+        if(tkns.size() == 0) return new HashSet<>(Collections.singletonList(null));
+
+        // Check result in cache
+        if(followCache.containsKey(tkns)) return followCache.get(tkns);
+
         // Otherwise follow set of token string is follow set of last token
-        Set<String> res = new HashSet<>(follow(tkns.lastTkn()));
+        Set<Symbol> res = new HashSet<>(follow(tkns.lastTkn()));
+
         // If last token is nullable, then also add the follow set of the rest
         // of the token string
-        if(isNullable(tkns.lastTkn()))
-            res.addAll(follow(tkns.substr(0, tkns.size() - 1)));
+        if(isNullable(tkns.lastTkn())) res.addAll(follow(tkns.substr(0, tkns.size() - 1)));
+
+        // Cache result
+        followCache.put(tkns, res);
+
         return res;
     }
-    public Set<String> follow(String tkn){return followSets.get(tkn);}
+    public Set<Symbol> follow(Symbol tkn){
+        return followSets.get(tkn);
+    }
     
-    public Set<String> first(SymbolString tkns){
-        // First set of empty token string is {epsilon}
-        if(tkns.size() == 0)
-            return new HashSet<>(Collections.singletonList(null));
+    public Set<Symbol> first(SymbolString tkns){
+        // First set of empty token string is just { epsilon }
+        if(tkns.size() == 0) return new HashSet<>(Collections.singletonList(null));
+
+        // Check result in cache
+        if(firstCache.containsKey(tkns)) return firstCache.get(tkns);
+
         // Otherwise first set of token string is first set of the first token
         // of the token string
-        Set<String> res = new HashSet<>(first(tkns.firstTkn()));
+        Set<Symbol> res = new HashSet<>(first(tkns.firstTkn()));
         // If the first token of the token string is nullable, then also add the
         // first set of the rest of the token string
         if(isNullable(tkns.firstTkn())) res.addAll(first(tkns.substr(1)));
+
+        // Cache result
+        firstCache.put(tkns, res);
+
         return res;
     }
-    public Set<String> first(String tkn){return firstSets.get(tkn);}
+    public Set<Symbol> first(Symbol tkn){
+        return firstSets.get(tkn);
+    }
 }

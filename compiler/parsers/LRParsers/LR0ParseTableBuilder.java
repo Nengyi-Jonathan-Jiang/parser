@@ -3,6 +3,7 @@ package compiler.parsers.LRParsers;
 import java.util.*;
 
 import compiler.Rule;
+import compiler.Symbol;
 import compiler.grammar.Grammar;
 import compiler.parsers.LRParsers.items.Item;
 import compiler.parsers.LRParsers.items.ItemSet;
@@ -19,12 +20,12 @@ public class LR0ParseTableBuilder extends LRParseTableBuilder{
         ItemSet res = new ItemSet(Collections.singletonList(item));
         if(item.isFinished()) return res;
         //Now compute the rest of the closure
-        Queue<Rule> dq = new ArrayDeque<>(Collections.singletonList(new Rule("__DUMMY__", item.next())));
+        Queue<Rule> dq = new ArrayDeque<>(Collections.singletonList(new Rule(grammar.symbolTable.__DUMMY__, item.next())));
         
         while(dq.size() > 0){
             Rule rule = dq.remove();
             if(rule.isEmpty()) continue;
-            String sym = rule.getRhs().firstTkn();
+            Symbol sym = rule.getRhs().firstTkn();
             
             if(!grammar.isNonTerminal(sym)) continue;
             

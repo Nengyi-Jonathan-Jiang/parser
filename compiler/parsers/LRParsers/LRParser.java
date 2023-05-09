@@ -76,7 +76,7 @@ public final class LRParser implements Parser{
 
                     case REDUCE:
                         Rule reduceRule = ((ReduceEntry)entry).getRule();
-                        String lhs = reduceRule.getLhs();
+                        Symbol lhs = reduceRule.getLhs();
 
                         // Update state stack
                         for(int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
