@@ -1,6 +1,7 @@
 package compiler.parsers.LRParsers.parsing_table;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
@@ -43,7 +44,7 @@ public class ParsingTable{
         gotoTable.get(state).put(symbol, new GotoEntry(n));
     }
 
-    public void saveToFile(Symbol filename){
+    public void saveToFile(String filename){
         try(PrintWriter printWriter = new PrintWriter(filename);) {
 
             StringBuilder sb = new StringBuilder();
@@ -56,24 +57,21 @@ public class ParsingTable{
                     TableEntry entry = mapEntry.getValue();
                     sb.append("\na ");
                     sb.append(symbol);
-                    switch(entry.getAction()){
-                        case SHIFT:
+                    switch (entry.getAction()) {
+                        case SHIFT -> {
                             sb.append(" s ");
-                            sb.append(((ShiftEntry)entry).getNextState());
-                            break;
-                        case ACCEPT:
-                            sb.append(" a ");
-                            break;
-                        case REDUCE:
+                            sb.append(((ShiftEntry) entry).getNextState());
+                        }
+                        case ACCEPT -> sb.append(" a ");
+                        case REDUCE -> {
                             sb.append(" r ");
-                            Rule rule = ((ReduceEntry)entry).getRule();
+                            Rule rule = ((ReduceEntry) entry).getRule();
                             sb.append(rule.getRhsSize());
                             sb.append(" ");
                             sb.append(rule.getLhs());
                             sb.append(" ");
                             sb.append(rule.getRhs().toString());
-                            break;
-                        default:
+                        }
                     }
                 }
                 for(Map.Entry<Symbol, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
@@ -87,7 +85,7 @@ public class ParsingTable{
                 sb.append("\ns");
             }
 
-            printWriter.print(sb.toString());
+            printWriter.print(sb);
             printWriter.flush();
         }
         catch(Exception e){
@@ -95,38 +93,37 @@ public class ParsingTable{
         }
     }
 
-    public static ParsingTable loadFromFile(Symbol filename){
-        try(Scanner scan = new Scanner(new File(filename));){
-
+    public static ParsingTable loadFromFile(Symbol.SymbolTable symbolTable, String filename){
+        try(Scanner scan = new Scanner(new File(filename))){
             int size = scan.nextInt();
             ParsingTable table = new ParsingTable(size);
             for(int state = 0; state < size; state++){
-                Symbol tableType;
-                while(!(tableType = scan.next()).equals("s")){
-                    Symbol symbol = scan.next();
-                    switch(tableType){
-                        case "a":
-                            switch(scan.next()){
-                                case "a":
-                                    table.setActionAccept(state, symbol);
-                                    break;
-                                case "s":
-                                    table.setActionShift(state, symbol, scan.nextInt());
-                                    break;
-                                case "r":
+                String entryType;
+                while(!(entryType = scan.next()).equals("s")){
+                    Symbol symbol = symbolTable.get(scan.next());
+                    switch (entryType) {
+                        case "a" -> {
+                            switch (scan.next()) {
+                                case "a" -> table.setActionAccept(state, symbol);
+                                case "s" -> table.setActionShift(state, symbol, scan.nextInt());
+                                case "r" -> {
                                     int rhsSize = scan.nextInt();
-                                    Symbol lhs = scan.next();
+                                    Symbol lhs = symbolTable.get(scan.next());
                                     Symbol[] rhs = new Symbol[rhsSize];
-                                    for(int i = 0; i < rhsSize; i++) rhs[i] = scan.next();
+                                    for (int i = 0; i < rhsSize; i++) {
+                                        var a = scan.next();
+                                        try {
+                                            rhs[i] = symbolTable.get(a);
+                                        }
+                                        catch (Error e){
+                                            throw new Error("Could not get symbol " + a + " at state " + state);
+                                        }
+                                    }
                                     table.setActionReduce(state, symbol, new Rule(lhs, rhs));
-                                    break;
-                                default:
+                                }
                             }
-                            break;
-                        case "g":
-                            table.setGoto(state, symbol, scan.nextInt());
-                            break;
-                        default:
+                        }
+                        case "g" -> table.setGoto(state, symbol, scan.nextInt());
                     }
                 }
             }

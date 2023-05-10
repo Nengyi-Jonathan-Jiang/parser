@@ -13,7 +13,7 @@ public class ItemSet extends ComparableTreeSet<Item> implements Printable{
     public ItemSet(SortedSet<Item> items){super(items);}
 
     @Override
-    public Symbol toString(){
+    public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for(Item it : this){

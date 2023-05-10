@@ -24,14 +24,13 @@ public class Lexer {
         tokenRules.add(new TokenRule(name, regex, func));
     }
 
-    public static Lexer fromFile(String filename, Symbol.SymbolTable symbolTable){
+    public static Lexer fromFile(Symbol.SymbolTable symbolTable, String filename){
         Scanner scan;
         try{
             scan = new Scanner(new File(filename));
         }
         catch(Exception e){
-            System.out.println("Could not read file!");
-            return null;
+            throw new Error("Could not read file!");
         }
         Lexer lexer = new Lexer(symbolTable);
         while(scan.hasNextLine()){
@@ -73,7 +72,7 @@ public class Lexer {
         }
     }
 
-    public Lex lex(Symbol input){
+    public Lex lex(String input){
         return new Lex(this, input);
     }
 

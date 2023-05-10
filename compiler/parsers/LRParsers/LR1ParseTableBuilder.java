@@ -8,7 +8,7 @@ import compiler.grammar.Grammar;
 import compiler.parsers.LRParsers.items.Item;
 import compiler.parsers.LRParsers.items.ItemSet;
 
-public class LR1ParseTableBuilder extends LRParseTableBuilder{
+public class LR1ParseTableBuilder extends AbstractLRParseTableBuilder {
 
     protected Map<Item, ItemSet> memoization;
 

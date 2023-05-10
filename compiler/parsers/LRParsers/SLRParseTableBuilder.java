@@ -8,7 +8,7 @@ import compiler.parsers.LRParsers.items.ItemSet;
 import compiler.sets.ComparableTreeSet;
 import compiler.*;
 
-public class SLRParseTableBuilder extends LRParseTableBuilder{
+public class SLRParseTableBuilder extends AbstractLRParseTableBuilder {
 
     public SLRParseTableBuilder(Grammar grammar){
         super(grammar);
@@ -19,7 +19,7 @@ public class SLRParseTableBuilder extends LRParseTableBuilder{
         ItemSet res = new ItemSet(Collections.singletonList(item));
         if(item.isFinished()) return res;
         //Now compute the rest of the closure
-        Queue<Rule> dq = new ArrayDeque<>(Collections.singletonList(new Rule("__DUMMY__", item.next())));
+        Queue<Rule> dq = new ArrayDeque<>(Collections.singletonList(new Rule(grammar.symbolTable.__DUMMY__, item.next())));
         
         while(dq.size() > 0){
             Rule rule = dq.remove();

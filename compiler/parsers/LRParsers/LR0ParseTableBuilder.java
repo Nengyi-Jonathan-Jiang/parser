@@ -9,7 +9,7 @@ import compiler.parsers.LRParsers.items.Item;
 import compiler.parsers.LRParsers.items.ItemSet;
 import compiler.sets.ComparableTreeSet;
 
-public class LR0ParseTableBuilder extends LRParseTableBuilder{
+public class LR0ParseTableBuilder extends AbstractLRParseTableBuilder {
 
     public LR0ParseTableBuilder(Grammar grammar){
         super(grammar);

@@ -1,12 +1,15 @@
+import compiler.SymbolTableReader;
 import compiler.grammar.Grammar;
 import compiler.grammar.GrammarReader;
 import compiler.parsers.LRParsers.LR1ParseTableBuilder;
 
 public class GenerateParsingTable {
-    public static void main(Symbol[] args){
+    public static void main(String[] args){
         System.out.println("Generating Grammar...");
 
-		Grammar grammar = GrammarReader.readFromFile("Code.ebnf");
+		var symbolTable = SymbolTableReader.generateFromGrammarFile("Code.ebnf");
+
+		Grammar grammar = GrammarReader.readFromFile(symbolTable, "Code.ebnf");
 
 		System.out.println("===================");
 		System.out.println(grammar);

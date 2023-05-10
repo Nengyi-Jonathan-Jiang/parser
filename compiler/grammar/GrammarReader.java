@@ -37,7 +37,7 @@ public class GrammarReader {
         return new Grammar(rules, startSymbol, table);
     }
 
-    public static Grammar readFromFile(Symbol filename){
+    public static Grammar readFromFile(Symbol.SymbolTable table, String filename){
         Scanner scan;
         try{
             scan = new Scanner(new File(filename));
@@ -46,7 +46,7 @@ public class GrammarReader {
             System.out.println("Could not read file!");
             return null;
         }
-        Grammar res = readFromScanner(scan);
+        Grammar res = readFromScanner(table, scan);
         scan.close();
         return res;
     }

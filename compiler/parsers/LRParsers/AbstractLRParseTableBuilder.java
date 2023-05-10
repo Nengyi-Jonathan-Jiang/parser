@@ -10,7 +10,7 @@ import compiler.sets.*;
 
 import java.util.*;
 
-public abstract class LRParseTableBuilder {
+public abstract class AbstractLRParseTableBuilder {
     protected ParsingTable table;
     protected final Grammar grammar;
     Map<ItemSet, Integer> configuratingSets;
@@ -21,7 +21,7 @@ public abstract class LRParseTableBuilder {
      * Generates an LR parse table given a {@link Grammar}
      * @param grammar the grammar to use
      */
-    protected LRParseTableBuilder(Grammar grammar){
+    protected AbstractLRParseTableBuilder(Grammar grammar){
         this.grammar = grammar;
         generateConfiguratingSets();
         generateParsingTable();
@@ -52,7 +52,7 @@ public abstract class LRParseTableBuilder {
     }
 
     protected Item getStartItem(){
-        return new Item(grammar.getStartRule(), 0, new ComparableHashSet<>("__END__"));
+        return new Item(grammar.getStartRule(), 0, new ComparableHashSet<>(grammar.symbolTable.__END__));
     }
 
     /** Compute all configurating sets */
@@ -112,7 +112,7 @@ public abstract class LRParseTableBuilder {
     protected void generateActionSetEntries(int state, ItemSet itemSet){
         for(Item item : itemSet){
             if(item.isFinished() && item.getRule().equals(grammar.getStartRule())){
-                table.setActionAccept(state, "__END__");
+                table.setActionAccept(state, grammar.symbolTable.__END__);
             }
             else if(item.isFinished()){
                 generateReductions(state, item);

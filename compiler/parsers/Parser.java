@@ -10,7 +10,7 @@ public interface Parser {
 
     Parse getParse();
 
-    static interface Parse{
+    interface Parse{
         void process(Token tok);
         boolean isFinished();
         ParseTree getParseTree();

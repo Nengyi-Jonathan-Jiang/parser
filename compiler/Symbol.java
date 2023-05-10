@@ -37,6 +37,17 @@ public class Symbol implements Comparable<Symbol> {
         public void lock() {
             locked = true;
         }
+
+        public String toString() {
+            return all().toString();
+        }
+
+        public static SymbolTable merge(SymbolTable a, SymbolTable b){
+            SymbolTable res = new SymbolTable();
+            for(var s : a.all()) res.create(s.string);
+            for(var s : b.all()) res.create(s.string);
+            return res;
+        }
     }
     
     public final String string;

@@ -12,7 +12,7 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
     public SymbolString(Symbol... tokens) {
         this.tkns = tokens;
         length = tokens.length;
-        repr = Arrays.stream(tokens).map(Symbol::toString).collect(Collectors.joining(","));
+        repr = Arrays.stream(tokens).map(Symbol::toString).collect(Collectors.joining(" "));
 
         // Generate hash for easy compare
         BigInteger h = BigInteger.ZERO;

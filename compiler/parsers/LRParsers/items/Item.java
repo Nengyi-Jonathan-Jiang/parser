@@ -64,7 +64,7 @@ public class Item implements Comparable<Item>, Printable{
         return lookahead;
     }
     
-    public Symbol toString(){
+    public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(rule.getLhs());
         sb.append(" :=");

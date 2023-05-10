@@ -2,6 +2,7 @@ package compiler.parsers;
 
 import java.util.*;
 
+import compiler.Symbol;
 import compiler.Token;
 
 public class ParseTree implements Iterable<ParseTree>{
@@ -27,7 +28,7 @@ public class ParseTree implements Iterable<ParseTree>{
         return value;
     }
     public Iterator<ParseTree> iterator(){
-        return Arrays.asList(children).iterator();
+        return children == null ? Collections.emptyIterator() : Arrays.asList(children).iterator();
     }
     public boolean isLeaf(){
         return children == null;
@@ -35,20 +36,17 @@ public class ParseTree implements Iterable<ParseTree>{
     public Symbol getDescription(){
         return description;
     }
-    public Symbol toString(){
-        return description;
+    public String toString(){
+        return description.string;
     }
 
-    private static Symbol indentEachLine(Symbol str){
+    private static String indentEachLine(String str){
         return str.replace("\n", "\n    ");
     }
 
-    public Symbol prnt(){
-        return 
-            isLeaf() ? value.toString() : 
-            children.length == 0 ? description + "{}" : 
-            description + " {" +
-                indentEachLine(Arrays.stream(children).map(ParseTree::prnt).reduce("",(a,b)-> a + "\n" + b))
-            + "\n}";
+    public String prnt(){
+        if (children == null) return String.valueOf(value);
+        if (children.length == 0) return description + " []";
+        return description + " [" + indentEachLine(Arrays.stream(children).map(ParseTree::prnt).reduce("", (a, b) -> a + "\n" + b)) + "\n]";
     }
 }

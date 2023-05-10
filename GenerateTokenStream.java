@@ -1,5 +1,5 @@
 public class GenerateTokenStream {
-    public static void main(Symbol[] args){
+    public static void main(String[] args){
 
     }
 }
