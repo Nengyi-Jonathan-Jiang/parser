@@ -19,7 +19,7 @@ public class Main {
 
 		var symbolTable = Symbol.SymbolTable.merge(
 			SymbolTableReader.generateFromLexerFile("Code.lx"),
-			SymbolTableReader.generateFromLexerFile("Code.ebnf")
+			SymbolTableReader.generateFromGrammarFile("Crab.ebnf")
 		);
 
 		System.out.println(symbolTable);

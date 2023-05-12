@@ -35,6 +35,7 @@ public class SymbolTableReader {
             while(scan.hasNext()) table.create(scan.next());
         }
 
+        table.lock();
         return table;
     }
 

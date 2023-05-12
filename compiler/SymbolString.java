@@ -7,17 +7,18 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
     private final Symbol[] tkns;
     private final int length;
     private final String repr;
-    private final BigInteger hash;
 
     public SymbolString(Symbol... tokens) {
         this.tkns = tokens;
         length = tokens.length;
-        repr = Arrays.stream(tokens).map(Symbol::toString).collect(Collectors.joining(" "));
 
-        // Generate hash for easy compare
-        BigInteger h = BigInteger.ZERO;
-        for (Symbol token : tokens) h = h.add(BigInteger.valueOf(token.id()));
-        hash = h;
+        StringBuilder s = new StringBuilder();
+        if(tokens.length > 0) s.append(tokens[0]);
+        for(int i = 1; i < tokens.length; i++){
+            s.append(" ").append(tokens[i]);
+        }
+        repr = s.toString();
+//        repr = Arrays.stream(tokens).map(Symbol::toString).collect(Collectors.joining(" "));
     }
     
     public Symbol get(int i){return tkns[i];}
@@ -32,19 +33,17 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
     public String toString(){return repr;}
     
     public boolean equals(SymbolString that){
-        return hash.equals(that.hash);
+        return repr.equals(that.repr);
     }
     
-    public int compareTo(SymbolString that){return repr.compareTo(that.repr);}
+    public int compareTo(SymbolString that){
+        return repr.compareTo(that.repr);
+    }
     
     public List<Symbol> getList(){
         return List.of(tkns);
     }
 
-    public Stream<Symbol> stream(){
-        return Arrays.stream(tkns);
-    }
-    
     public SymbolString substr(int start){return substr(start, length);}
     public SymbolString substr(int start, int end){
         Symbol[] res = new Symbol[end - start];

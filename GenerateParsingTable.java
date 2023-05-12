@@ -5,11 +5,13 @@ import compiler.parsers.LRParsers.LR1ParseTableBuilder;
 
 public class GenerateParsingTable {
     public static void main(String[] args){
+		var symbolTable = SymbolTableReader.generateFromGrammarFile("Crab.ebnf");
+
+		System.out.println(symbolTable.size());
+
         System.out.println("Generating Grammar...");
 
-		var symbolTable = SymbolTableReader.generateFromGrammarFile("Code.ebnf");
-
-		Grammar grammar = GrammarReader.readFromFile(symbolTable, "Code.ebnf");
+		Grammar grammar = GrammarReader.readFromFile(symbolTable, "Crab.ebnf");
 
 		System.out.println("===================");
 		System.out.println(grammar);

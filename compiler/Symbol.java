@@ -17,11 +17,11 @@ public class Symbol implements Comparable<Symbol> {
 
         public Symbol create(String string){
             if(locked) throw new Error("Cannot create new symbol after table is locked");
-            return store.containsKey(string) ? get(string) : new Symbol(this, string, size++);
+            return store.containsKey(string) ? get(string) : new Symbol(this, string, ++size);
         }
 
         public Symbol get(String string) {
-            if(!store.containsKey(string)) throw new Error("Symbol does not exist");
+            if(!store.containsKey(string)) throw new Error("Symbol \"" + string + "\" does not exist");
             return store.get(string);
         }
         
@@ -79,8 +79,8 @@ public class Symbol implements Comparable<Symbol> {
     public int compareTo(Symbol o) {
         return id - o.id;
     }
-    
-    public SymbolTable getSymbolTable() {
+
+    public SymbolTable getTable() {
         return table;
     }
 }
