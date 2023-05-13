@@ -4,15 +4,14 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import compiler.Symbol;
 import compiler.parsers.ParseTree;
 
 public class Interp {
-    public Deque<Value> stack;
-    public Deque<Scope> scopeStack;
+    public final Deque<Value> stack;
+    public final Deque<Scope> scopeStack;
     private final Scanner scan;
 
-    StringBuilder output;
+    final StringBuilder output;
 
     public Interp(){
         stack = new ArrayDeque<>();
@@ -61,30 +60,25 @@ public class Interp {
                 Value val = stack.pop();
                 // System.out.println(children[0].getDescription() + " " + val);
                 output.append(val.toString());
-                if (children[0].getDescription().equals("println")) {
+                if (children[0].getDescription().toString().equals("println")) {
                     output.append("\n");
                 }
             }
             case "ParenthesizedExpression" -> run(children[1]);
             case "INT_LITERAL", "FLOAT_LITERAL", "STRING_LITERAL" -> {
                 String literal_type = nodeType.substring(0, nodeType.length() - 8);
-                // System.out.println(pTree.prnt());
+
                 switch (literal_type) {
-                    case "INT":
-                        stack.push(new Value(literal_type, Integer.parseInt(value)));
-                        break;
-                    case "FLOAT":
-                        stack.push(new Value(literal_type, Double.parseDouble(value)));
-                        break;
-                    case "STRING":
+                    case "INT" -> stack.push(new Value(literal_type, Integer.parseInt(value)));
+                    case "FLOAT" -> stack.push(new Value(literal_type, Double.parseDouble(value)));
+                    case "STRING" -> {
                         String str = value.substring(1, value.length() - 1)
                                 .replace("\\n", "\n")
                                 .replace("\\t", "\t")
                                 .replaceAll("\\\\(.)", "$1");
                         stack.push(new Value(literal_type, str));
-                        break;
-                    default:
-                        stack.push(new Value(literal_type, value));
+                    }
+                    default -> stack.push(new Value(literal_type, value));
                 }
             }
             // System.out.println(stack.stream().collect(Collectors.toList()));
@@ -123,8 +117,8 @@ public class Interp {
 }
 
 class Value{
-    public String type;
-    public Object value;
+    public final String type;
+    public final Object value;
     public Value(String type, Object value){
         this.type = type;
         this.value = value;
@@ -149,14 +143,12 @@ class Scope{
         this.variables = new TreeMap<>();
     }
 
-    public Scope addFunc(InterpFunction function){
+    public void addFunc(InterpFunction function){
         functions.put(function.getSignature(), function);
-        return this;
     }
 
-    public Scope addVar(InterpVariable variable){
+    public void addVar(InterpVariable variable){
         variables.put(variable.signature, variable);
-        return this;
     }
 
     public InterpVariable getVariable(VariableSignature name){
@@ -177,7 +169,8 @@ class Scope{
 }
 
 class FunctionSignature implements Comparable<FunctionSignature>{
-    public final String name, args[];
+    public final String name;
+    public final String[] args;
 
     public FunctionSignature(String name, String... args){
         this.args = args;
@@ -199,7 +192,7 @@ class FunctionSignature implements Comparable<FunctionSignature>{
 }
 
 class VariableSignature{
-    public String name;
+    public final String name;
     public VariableSignature(String name){
         this.name = name;
     }
@@ -216,7 +209,7 @@ class VariableSignature{
 
 class InterpVariable{
     public final VariableSignature signature;
-    public String type;
+    public final String type;
     public final Value value;
     public InterpVariable(VariableSignature signature, String type, Value value){
         this.signature = signature;
@@ -226,9 +219,9 @@ class InterpVariable{
 }
 
 class InterpFunction{
-    private Function<Object[], Object> function;
-    private FunctionSignature signature;
-    private String retType;
+    private final Function<Object[], Object> function;
+    private final FunctionSignature signature;
+    private final String retType;
     public InterpFunction(FunctionSignature signature, String retType, Function<Object[], Object> function){
         this.signature = signature;
         this.retType = retType;

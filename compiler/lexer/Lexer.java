@@ -10,7 +10,7 @@ import java.util.regex.*;
 
 public class Lexer {
     private final Symbol.SymbolTable table;
-    private List<TokenRule> tokenRules;
+    private final List<TokenRule> tokenRules;
 
     public Lexer(Symbol.SymbolTable table){
         this.table = table;
@@ -49,7 +49,7 @@ public class Lexer {
     }
     
     private static class TokenRule{
-        public Symbol name;
+        public final Symbol name;
         private final Pattern regex;
         private Function<Token, Token> func;
         public TokenRule(Symbol name, String regex, Function<Token, Token> func){

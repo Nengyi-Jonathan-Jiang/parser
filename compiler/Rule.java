@@ -2,6 +2,9 @@ package compiler;
 import java.util.*;
 
 public class Rule implements Comparable<Rule>, Printable{
+    private static int _id = 0;
+    private final int id = ++_id;
+
     private final Symbol lhs;
     private final SymbolString rhs;
     private final boolean empty;
@@ -26,6 +29,7 @@ public class Rule implements Comparable<Rule>, Printable{
 
     @Override
     public int compareTo(Rule that){
-        return hashCode() - that.hashCode();
+//        return hashCode() - that.hashCode();
+        return id - that.id;
     }
 }

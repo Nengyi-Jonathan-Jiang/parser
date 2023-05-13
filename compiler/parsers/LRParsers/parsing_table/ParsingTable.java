@@ -1,7 +1,6 @@
 package compiler.parsers.LRParsers.parsing_table;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
@@ -45,7 +44,7 @@ public class ParsingTable{
     }
 
     public void saveToFile(String filename){
-        try(PrintWriter printWriter = new PrintWriter(filename);) {
+        try(PrintWriter printWriter = new PrintWriter(filename)) {
 
             StringBuilder sb = new StringBuilder();
 
@@ -60,12 +59,12 @@ public class ParsingTable{
                     switch (entry.getAction()) {
                         case SHIFT -> {
                             sb.append(" s ");
-                            sb.append(((ShiftEntry) entry).getNextState());
+                            sb.append(((ShiftEntry) entry).nextState());
                         }
                         case ACCEPT -> sb.append(" a ");
                         case REDUCE -> {
                             sb.append(" r ");
-                            Rule rule = ((ReduceEntry) entry).getRule();
+                            Rule rule = ((ReduceEntry) entry).rule();
                             sb.append(rule.getRhsSize());
                             sb.append(" ");
                             sb.append(rule.getLhs());
@@ -80,7 +79,7 @@ public class ParsingTable{
                     sb.append("\ng ");
                     sb.append(symbol);
                     sb.append(" ");
-                    sb.append(entry.getNextState());
+                    sb.append(entry.nextState());
                 }
                 sb.append("\ns");
             }

@@ -3,14 +3,12 @@ package compiler.parsers.LRParsers;
 import compiler.Rule;
 import compiler.Symbol;
 import compiler.grammar.Grammar;
-import compiler.parsers.LRParsers.items.Item;
 import compiler.parsers.LRParsers.parsing_table.*;
 import compiler.parsers.LRParsers.items.*;
-import compiler.sets.*;
 
 import java.util.*;
 
-public abstract class AbstractLRParseTableBuilder {
+public abstract class LRParseTableBuilderBase {
     protected ParsingTable table;
     protected final Grammar grammar;
     Map<ItemSet, Integer> configuratingSets;
@@ -21,7 +19,7 @@ public abstract class AbstractLRParseTableBuilder {
      * Generates an LR parse table given a {@link Grammar}
      * @param grammar the grammar to use
      */
-    protected AbstractLRParseTableBuilder(Grammar grammar){
+    protected LRParseTableBuilderBase(Grammar grammar){
         this.grammar = grammar;
         generateConfiguratingSets();
         generateParsingTable();
@@ -52,7 +50,7 @@ public abstract class AbstractLRParseTableBuilder {
     }
 
     protected Item getStartItem(){
-        return new Item(grammar.getStartRule(), 0, new ComparableHashSet<>(grammar.symbolTable.__END__));
+        return new Item(grammar.getStartRule(), 0, grammar.follow(grammar.symbolTable.__START__));
     }
 
     /** Compute all configurating sets */
@@ -154,14 +152,9 @@ public abstract class AbstractLRParseTableBuilder {
 
     /** Computes the closure of an itemset */
     protected ItemSet closure(ItemSet itemSet){
-        Set<Item> addedElements = new TreeSet<>();
-
-        for(Item item : itemSet)
-            addedElements.addAll(closure(item));
-
-        itemSet.addAll(addedElements);
-
-        return itemSet;
+        ItemSet res = itemSet.copy();
+        for(Item item : itemSet) res.addAll(closure(item));
+        return res;
     }
 
     /** Computes the successor set of an itemset */

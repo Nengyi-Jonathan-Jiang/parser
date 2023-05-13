@@ -1,30 +1,32 @@
 package compiler.parsers.LRParsers;
 
-import java.util.*;
-
 import compiler.*;
-import compiler.sets.*;
+import compiler.util.*;
 import compiler.grammar.Grammar;
 import compiler.parsers.LRParsers.items.Item;
 import compiler.parsers.LRParsers.items.ItemSet;
 
-public class LR1ParseTableBuilder extends AbstractLRParseTableBuilder {
+public class LR1ParseTableBuilder extends LRParseTableBuilderBase {
 
-    protected Map<Item, ItemSet> memoization;
+    protected Cache<Item, ItemSet> memoization;
 
     public LR1ParseTableBuilder(Grammar grammar){
         super(grammar);
     }
 
     protected ItemSet closure(Item item){
-        if(memoization == null) memoization = new TreeMap<>();
-        else if(memoization.containsKey(item)) return memoization.get(item);
+        if(memoization == null) memoization = new CompareCache<>();
 
-        ItemSet res = new ItemSet(Collections.singletonList(item));
+        {
+            var cachedRes = memoization.get(item);
+            if(cachedRes != null) return cachedRes;
+        }
+
+        ItemSet res = new ItemSet(item);
 
         if(item.isFinished()) return res;
         
-        ItemSet edge = new ItemSet(res);
+        ItemSet edge = res.copy();
         
         boolean updated = true;
         while(updated){
@@ -42,7 +44,7 @@ public class LR1ParseTableBuilder extends AbstractLRParseTableBuilder {
 
                 for(Rule r : grammar.getRules(symbol)){
                     for(Symbol lookahead : itm.getLookahead()){
-                        Item newItem = new Item(r, 0, new ComparableTreeSet<>(grammar.first(rest.append(lookahead))));
+                        Item newItem = new Item(r, 0, grammar.first(rest.append(lookahead)));
 
                         updated |= res.add(newItem);
                         newEdge.add(newItem);
@@ -53,7 +55,7 @@ public class LR1ParseTableBuilder extends AbstractLRParseTableBuilder {
             edge = newEdge;
         }
 
-        memoization.put(item, res);
+        memoization.cache(item, res);
 
         return res;
     }

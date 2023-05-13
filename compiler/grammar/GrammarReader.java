@@ -6,11 +6,7 @@ import compiler.Rule;
 import compiler.Symbol;
 
 public class GrammarReader {
-    private final Symbol.SymbolTable table;
-
-    private GrammarReader(Symbol.SymbolTable table){
-        this.table = table;
-    }
+    private GrammarReader(){}
     
     private static Rule ruleFromLine(Symbol.SymbolTable table, String str){
         Scanner scan = new Scanner(str);

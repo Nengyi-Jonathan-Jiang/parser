@@ -1,16 +1,15 @@
 package compiler.parsers.LRParsers.items;
-import java.util.*;
 
 import compiler.Printable;
-import compiler.sets.ComparableTreeSet;
+import compiler.util.ComparableTreeSet;
 
 public class ItemSet extends ComparableTreeSet<Item> implements Printable{
 
     public ItemSet(){}
-    
-    public ItemSet(List<Item> items){super(items);}
-    
-    public ItemSet(SortedSet<Item> items){super(items);}
+
+    public ItemSet(Item item){
+        add(item);
+    }
 
     @Override
     public String toString(){
@@ -25,6 +24,6 @@ public class ItemSet extends ComparableTreeSet<Item> implements Printable{
     }
 
     public ItemSet copy(){
-        return new ItemSet(this);
+        return (ItemSet) clone();
     }
 }

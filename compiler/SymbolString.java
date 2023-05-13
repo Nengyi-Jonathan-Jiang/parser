@@ -1,12 +1,11 @@
 package compiler;
-import java.math.BigInteger;
 import java.util.*;
-import java.util.stream.*;
 
 public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>, Printable {
     private final Symbol[] tkns;
     private final int length;
     private final String repr;
+    private final int hashCode;
 
     public SymbolString(Symbol... tokens) {
         this.tkns = tokens;
@@ -14,13 +13,25 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
 
         StringBuilder s = new StringBuilder();
         if(tokens.length > 0) s.append(tokens[0]);
-        for(int i = 1; i < tokens.length; i++){
-            s.append(" ").append(tokens[i]);
-        }
+        for(int i = 1; i < tokens.length; i++) s.append(" ").append(tokens[i]);
+
         repr = s.toString();
-//        repr = Arrays.stream(tokens).map(Symbol::toString).collect(Collectors.joining(" "));
+        hashCode = repr.hashCode();
     }
-    
+
+    private SymbolString(String repr, Symbol... tokens) {
+        this.tkns = tokens;
+        length = tokens.length;
+
+        this.repr = repr;
+        hashCode = repr.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return hashCode;
+    }
+
     public Symbol get(int i){return tkns[i];}
 
     public Symbol firstTkn(){return length == 0 ? null : tkns[0];}
@@ -32,8 +43,8 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
     @Override
     public String toString(){return repr;}
     
-    public boolean equals(SymbolString that){
-        return repr.equals(that.repr);
+    public boolean equals(Object that){
+        return that instanceof SymbolString && repr.equals(that.toString());
     }
     
     public int compareTo(SymbolString that){
@@ -56,9 +67,8 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
     }
 
     public SymbolString append (Symbol symbol){
-        Symbol[] res = new Symbol[length + 1];
-        System.arraycopy(tkns, 0, res, 0, length);
+        Symbol[] res = Arrays.copyOf(tkns, length + 1);
         res[length] = symbol;
-        return new SymbolString(res);
+        return new SymbolString(length == 0 ? symbol.toString() : repr + " " + symbol.toString(), res);
     }
 }

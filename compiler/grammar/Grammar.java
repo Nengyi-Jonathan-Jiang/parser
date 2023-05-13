@@ -2,19 +2,17 @@ package compiler.grammar;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import compiler.Printable;
-import compiler.Rule;
-import compiler.Symbol;
-import compiler.SymbolString;
+import compiler.*;
+import compiler.util.*;
 
 public class Grammar implements Printable{
     private final List<Rule> rules;
     private final Rule startRule;
     
     private final Map<Symbol, List<Rule>> startsWith;
-    private final Set<Symbol> allSymbols, terminals, nonTerminals, nullableSet;
-    private final Map<Symbol, Set<Symbol>> firstSets, followSets;
-    private final Map<SymbolString, Set<Symbol>> firstCache = new TreeMap<>(), followCache = new TreeMap<>();
+    private final SymbolSet allSymbols, terminals, nonTerminals, nullableComparableSet;
+    private final Map<Symbol, SymbolSet> firstComparableSets, followComparableSets;
+    private final Cache<SymbolString, SymbolSet> firstCache = new HashCompareCache<>(), followCache = new HashCompareCache<>();
 
     public final Symbol.SymbolTable symbolTable;
 
@@ -29,9 +27,9 @@ public class Grammar implements Printable{
         
         // Classify symbols as terminals or nonterminals
         
-        allSymbols = new HashSet<>();
+        allSymbols = new SymbolSet();
         allSymbols.add(symbolTable.__END__);
-        nonTerminals = new HashSet<>();
+        nonTerminals = new SymbolSet();
         startsWith = new HashMap<>();
         
         allSymbols.add(symbolTable.__START__);
@@ -42,7 +40,7 @@ public class Grammar implements Printable{
             allSymbols.addAll(rule.getRhs().getList());
         }
         
-        terminals = new HashSet<>(allSymbols);
+        terminals = new SymbolSet(allSymbols);
         terminals.removeAll(nonTerminals);
         
         // Compute for each symbol the set of rules whose left-hand-sides match
@@ -63,19 +61,19 @@ public class Grammar implements Printable{
         
         //Initialize FIRST sets, FOLLOW sets, nullable set
         
-        nullableSet = new HashSet<>();
-        firstSets = new HashMap<>();
-        followSets = new HashMap<>();
+        nullableComparableSet = new SymbolSet();
+        firstComparableSets = new HashMap<>();
+        followComparableSets = new HashMap<>();
         
         for(Symbol sym : allSymbols){
-			firstSets.put(sym, new HashSet<>());
-			followSets.put(sym, new HashSet<>());
+			firstComparableSets.put(sym, new SymbolSet());
+			followComparableSets.put(sym, new SymbolSet());
 			if(isTerminal(sym)){
-                firstSets.get(sym).add(sym);
+                firstComparableSets.get(sym).add(sym);
             }
 		}
         
-        followSets.get(symbolTable.__START__).add(symbolTable.__END__);
+        followComparableSets.get(symbolTable.__START__).add(symbolTable.__END__);
         
         // Calculate FIRST sets, FOLLOW sets, and the set of nullable symbols
         
@@ -87,20 +85,20 @@ public class Grammar implements Printable{
 			    SymbolString rhs = rule.getRhs();
 				boolean brk = false;
 				for(Symbol sym : rhs){
-					updated |= firstSets.get(lhs).addAll(first(sym));
+					updated |= firstComparableSets.get(lhs).addAll(first(sym));
 					if(!isNullable(sym)){
 					    brk = true;
 					    break;
 					}
 				}
-				if(!brk) updated |= nullableSet.add(lhs);
+				if(!brk) updated |= nullableComparableSet.add(lhs);
 				
-                Set<Symbol> aux = follow(lhs);
+                ComparableSet<Symbol> aux = follow(lhs);
 				for(int i = rhs.size() - 1; i >= 0; i--){
 					if(isNonTerminal(rhs.get(i)))
 						updated |= follow(rhs.get(i)).addAll(aux);
 					if(isNullable(rhs.get(i))){
-						aux = new HashSet<>(aux);
+						aux = new ComparableHashSet<>(aux);
 						aux.addAll(first(rhs.get(i)));
 					}
 					else aux = first(rhs.get(i));
@@ -112,9 +110,9 @@ public class Grammar implements Printable{
     public List<Rule> getRules(){return rules;}
     public List<Rule> getRules(Symbol sym){return startsWith.get(sym);}
     
-    public Set<Symbol> getAllSymbols(){return allSymbols;}
-    public Set<Symbol> getNonTerminals(){return nonTerminals;}
-    public Set<Symbol> getTerminals(){return terminals;}
+    public ComparableSet<Symbol> getAllSymbols(){return allSymbols;}
+    public ComparableSet<Symbol> getNonTerminals(){return nonTerminals;}
+    public ComparableSet<Symbol> getTerminals(){return terminals;}
 
     public boolean isTerminal(Symbol sym){return terminals.contains(sym);}
     public boolean isNonTerminal(Symbol sym){return nonTerminals.contains(sym);}
@@ -134,52 +132,58 @@ public class Grammar implements Printable{
     }
     
     public boolean isNullable(Symbol tkn){
-        return nullableSet.contains(tkn);
+        return nullableComparableSet.contains(tkn);
     }
     
-    public Set<Symbol> follow(SymbolString tkns){
+    public ComparableSet<Symbol> follow(SymbolString tkns){
         // Follow set of empty token string is {epsilon}
-        if(tkns.size() == 0) return new HashSet<>(Collections.singletonList(null));
+        if(tkns.size() == 0) return new ComparableHashSet<>(Collections.singletonList(null));
 
         // Check result in cache
-        if(followCache.containsKey(tkns)) return followCache.get(tkns);
-
+        {
+            var cachedResult = followCache.get(tkns);
+            if(cachedResult != null) return cachedResult;
+        }
         // Otherwise follow set of token string is follow set of last token
-        Set<Symbol> res = new HashSet<>(follow(tkns.lastTkn()));
+        SymbolSet res = new SymbolSet(follow(tkns.lastTkn()));
 
         // If last token is nullable, then also add the follow set of the rest
         // of the token string
         if(isNullable(tkns.lastTkn())) res.addAll(follow(tkns.substr(0, tkns.size() - 1)));
 
         // Cache result
-        followCache.put(tkns, res);
+        followCache.cache(tkns, res);
 
         return res;
     }
-    public Set<Symbol> follow(Symbol tkn){
-        return followSets.get(tkn);
+    public SymbolSet follow(Symbol tkn){
+        return followComparableSets.get(tkn);
     }
     
-    public Set<Symbol> first(SymbolString tkns){
-        // First set of empty token string is just { epsilon }
-        if(tkns.size() == 0) return new HashSet<>(Collections.singletonList(null));
-
+    public SymbolSet first(SymbolString tkns){
         // Check result in cache
-        if(firstCache.containsKey(tkns)) return firstCache.get(tkns);
+        {
+            var cachedResult = firstCache.get(tkns);
+            if(cachedResult != null) return cachedResult;
+        }
+
+        // First set of empty token string is just { epsilon }
+        if(tkns.size() == 0) return new SymbolSet(Collections.singletonList(null));
+
 
         // Otherwise first set of token string is first set of the first token
         // of the token string
-        Set<Symbol> res = new HashSet<>(first(tkns.firstTkn()));
+        SymbolSet res = new SymbolSet(first(tkns.firstTkn()));
         // If the first token of the token string is nullable, then also add the
         // first set of the rest of the token string
         if(isNullable(tkns.firstTkn())) res.addAll(first(tkns.substr(1)));
 
         // Cache result
-        firstCache.put(tkns, res);
+        firstCache.cache(tkns, res);
 
         return res;
     }
-    public Set<Symbol> first(Symbol tkn){
-        return firstSets.get(tkn);
+    public SymbolSet first(Symbol tkn){
+        return firstComparableSets.get(tkn);
     }
 }

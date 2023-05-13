@@ -1,9 +1,9 @@
-package compiler.sets;
+package compiler.util;
 import java.util.*;
 
 public interface ComparableSet<T extends Comparable<T>> extends Comparable<ComparableSet<T>>, Set<T>{
     
-    public static <T extends Comparable<T>> int compare(ComparableSet<T> a, ComparableSet<T> b){
+    static <T extends Comparable<T>> int compare(ComparableSet<T> a, ComparableSet<T> b){
         Iterator<T> i1 = a.iterator();
         Iterator<T> i2 = b.iterator();
         while (i1.hasNext() && i2.hasNext()) {

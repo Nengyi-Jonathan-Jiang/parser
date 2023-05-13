@@ -55,6 +55,7 @@ public final class LRParser implements Parser{
 
         public void process(Token token){
             while(true){
+                //noinspection DataFlowIssue
                 int state = stateStack.peek();
 
                 TableEntry entry = table.getAction(state, token.type);
@@ -65,7 +66,7 @@ public final class LRParser implements Parser{
                 switch (entry.getAction()) {
                     case SHIFT -> {
                         // Update state stack and current token pointer
-                        stateStack.push(((ShiftEntry) entry).getNextState());
+                        stateStack.push(((ShiftEntry) entry).nextState());
 
                         // Update parse tree -- add new leaf node to stack
                         parseTreeStack.push(new ParseTree(token.type, token));
@@ -76,13 +77,13 @@ public final class LRParser implements Parser{
                         return;
                     }
                     case REDUCE -> {
-                        Rule reduceRule = ((ReduceEntry) entry).getRule();
+                        Rule reduceRule = ((ReduceEntry) entry).rule();
                         Symbol lhs = reduceRule.getLhs();
 
                         // Update state stack
                         for (int j = 0; j < reduceRule.getRhsSize(); j++) stateStack.pop();
                         GotoEntry gotoEntry = (GotoEntry) table.getGoto(stateStack.peek(), lhs);
-                        stateStack.push(gotoEntry.getNextState());
+                        stateStack.push(gotoEntry.nextState());
 
                         // Update parse tree - merge nodes into parent node
 
@@ -94,6 +95,7 @@ public final class LRParser implements Parser{
                 }
             }
         }
+
         public ParseTree getParseTree(){
             return parseTreeStack.getLast();
         }

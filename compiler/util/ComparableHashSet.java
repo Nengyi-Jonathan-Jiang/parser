@@ -1,4 +1,4 @@
-package compiler.sets;
+package compiler.util;
 import java.util.*;
 
 public class ComparableHashSet<T extends Comparable<T>> extends HashSet<T> implements ComparableSet<T>{
