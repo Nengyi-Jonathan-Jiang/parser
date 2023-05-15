@@ -1,4 +1,4 @@
-package compiler.vm;
+package compiler.jevm;
 
 import java.util.Arrays;
 
@@ -7,7 +7,6 @@ class Memory {
 
     private byte[] memory = new byte[65536];
     private int used = 0;
-
 
     private void resizeToFit(int ptr) {
         if (ptr < 0)

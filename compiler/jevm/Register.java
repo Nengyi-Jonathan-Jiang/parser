@@ -1,10 +1,10 @@
-package compiler.vm;
+package compiler.jevm;
 
 public class Register {
     private Register(){}
 
-    public static class Reg1 {
-        private byte value;
+    public static class R1 implements MemoryLocation.M1 {
+        protected byte value;
         public void setChar(char c) {
             value = (byte) (c & 0xFF);
         }
@@ -19,21 +19,17 @@ public class Register {
         }
     }
 
-    public static class Reg4 {
-        private final byte[] bytes = new byte[4];
+    public static class R4 implements MemoryLocation.M4 {
+        protected int value;
         public void setInt(int val){
-            bytes[0] = (byte)(val & 0xFF);
-            bytes[1] = (byte)(val >> 8 & 0xFF);
-            bytes[2] = (byte)(val >> 16 & 0xFF);
-            bytes[3] = (byte)(val >> 24 & 0xFF);
+            value = val;
         }
         public void setFloat(float val){
             setInt(Float.floatToRawIntBits(val));
         }
         public int getInt(){
-            return bytes[0] | bytes[1] << 8 | bytes[2] << 16 | bytes[3] << 24;
+            return value;
         }
-
         public float getFloat() {
             return Float.intBitsToFloat(getInt());
         }

@@ -1,4 +1,4 @@
-package compiler.vm;
+package compiler.jevm;
 
 import compiler.util.Pair;
 
