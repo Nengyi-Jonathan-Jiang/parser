@@ -93,6 +93,8 @@ public class Allocator {
     }
 
     public void deallocate(int ptr){
+        if(!isValidPointer(ptr)) throw new Error("JeVM Error: Segmentation fault");
+
         int size = sizes.get(ptr);
         sizes.remove(ptr);
         returnBlock(ptr, size);

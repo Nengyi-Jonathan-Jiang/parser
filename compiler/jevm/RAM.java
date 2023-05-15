@@ -49,4 +49,13 @@ public class RAM {
             }
         };
     }
+
+    public void memcpy(int source, int dest, int length){
+        if(source < 0 && source + length > 0 || dest < 0 && dest + length > 0 || source <= dest && source + length > dest || dest <= source && dest + length > source){
+            throw new Error("JeVM Error: Invalid copy range");
+        }
+        for(int i = 0; i < length; i++){
+            _set(dest + i, _get(source + i));
+        }
+    }
 }

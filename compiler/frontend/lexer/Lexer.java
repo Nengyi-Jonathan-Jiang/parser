@@ -24,14 +24,7 @@ public class Lexer {
         tokenRules.add(new TokenRule(name, regex, func));
     }
 
-    public static Lexer fromFile(Symbol.SymbolTable symbolTable, String filename){
-        Scanner scan;
-        try{
-            scan = new Scanner(new File(filename));
-        }
-        catch(Exception e){
-            throw new Error("Could not read file!");
-        }
+    public static Lexer fromScanner(Symbol.SymbolTable symbolTable, Scanner scan){
         Lexer lexer = new Lexer(symbolTable);
         while(scan.hasNextLine()){
             Scanner s = new Scanner(scan.nextLine());
@@ -46,6 +39,17 @@ public class Lexer {
             lexer.addRule(symbolTable.create(name), regex);
         }
         return lexer;
+    }
+
+    public static Lexer fromFile(Symbol.SymbolTable symbolTable, String filename){
+        Scanner scan;
+        try {
+            scan = new Scanner(new File(filename));
+        }
+        catch(Exception e){
+            throw new Error("Could not read file!");
+        }
+        return fromScanner(symbolTable, scan);
     }
     
     private static class TokenRule{

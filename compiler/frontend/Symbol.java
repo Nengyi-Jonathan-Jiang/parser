@@ -10,10 +10,7 @@ public class Symbol implements Comparable<Symbol> {
         private int size = 0;
         private boolean locked = false;
 
-        public final Symbol
-                __START__ = create("§"),
-                __END__ = create("Ω"),
-                __DUMMY__ = create("█");
+        public final Symbol __START__ = create("§"), __END__ = create("Ω");
 
         public Symbol create(String string){
             if(locked) throw new Error("Cannot create new symbol after table is locked");

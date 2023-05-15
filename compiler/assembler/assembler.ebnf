@@ -1,0 +1,41 @@
+statement := print string ;
+
+loc := reg
+loc := * reg
+
+bloc := b loc
+cloc := c loc
+iloc := i loc
+floc := f loc
+
+aloc := bloc
+aloc := cloc
+aloc := iloc
+aloc := floc
+
+statement := mov aloc aloc;
+statement := cpy iloc iloc iloc;
+
+aop := add
+aop := sub
+aop := mul
+aop := div
+aop := mod
+
+statement := aop iloc iloc
+statement := aop iloc floc
+statement := aop floc iloc
+statement := aop floc floc
+
+bop := or
+bop := xor
+bop := and
+
+statement := aop iloc iloc
+statement := aop bloc bloc
+
+sop := shl
+sop := shr
+
+statement := sop iloc iloc
+

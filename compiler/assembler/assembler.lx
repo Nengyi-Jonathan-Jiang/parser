@@ -1,0 +1,42 @@
+mov
+cpy
+add
+sub
+mul
+div
+mod
+or
+and
+xor
+shl
+shr
+jmp
+any
+eqz
+nez
+gtz
+ltz
+gez
+lez
+dsp
+new
+del
+(
+)
+*
+b
+c
+i
+f
+;
+
+print
+
+reg := rr?[0-7]|sp
+
+iconst := (0|-?[123456789][\d]*)
+fconst := (0|-?[123456789][\d]*)(.[\d]+)?
+bconst := (true|false)
+cconst := '\\?.'
+
+string := "[^"\\]*(\\.[^"\\]*)*"

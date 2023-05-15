@@ -6,6 +6,7 @@ public class VM {
     private final Register.R4[] register4 = new Register.R4[8];
     private final Register.R4 stack_ptr = new Register.R4();
     private final Register.R4 instruction_ptr = new Register.R4();
+    public final Allocator allocator = new Allocator();
 
     public void execute(Program program){
         instruction_ptr.setInt(0);
@@ -38,5 +39,10 @@ public class VM {
                 throw new IllegalAccessError("JeVM Error: Register index out of range (id=" + id + ")");
 
         return indirect ? ram.getM1(_getRegister4(id).getInt()) : register1[id];
+    }
+
+    public void display(String s){
+        // TODO: add log file?
+        System.out.print(s);
     }
 }
