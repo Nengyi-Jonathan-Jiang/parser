@@ -4,29 +4,13 @@ INT_LITERAL := (0|-?[123456789][\d]*)
 FLOAT_LITERAL := (0|-?[123456789][\d]*)(.[\d]+)?
 BOOL_LITERAL := (true|false)
 
-LOGICAL_OPERATOR := \|\||&&|^^
-COMPARATIVE_OPERATOR := [<=>]=?|!=
-BITWISE_OPERATOR := \||^|&|>>|<<
-ADDITIVE_OPERATOR := [+-]
-MULTIPLICATIVE_OPERATOR := [/%]
-ASSIGNMENT_OPERATOR := ([+\-*/%^|&]?|>>|<<)=
-UNARY_OPERATOR := [!~@]
-POSTFIX_OPERATOR := \+\+|--
-SCOPING_OPERATOR := ->|::|\.
+const
 
-OPERATOR_OVERLOAD_NAME := operator([+\-*/%^|&]|>>|<<)=?|[<=>]=?|!=|[!~@]
-
-VISIBILITY_KEYWORD := public|private|protected
-
-output
-
-readInt
-readString
-
-local
-member
+decl
+impl
 class
 func
+var
 
 if
 else
@@ -38,10 +22,26 @@ continue
 
 return
 
+goto
+
+public
+private
+protected
+
 static
 
+println
+print
+
+input
+inputln
+
+read
+
+dealloc
 alloc
-delete
+
+as
 
 [
 ]
@@ -52,6 +52,54 @@ delete
 
 ;
 ,
+
+.
+
+~
+~~
+!
+!!
+++
+--
+
+=
+
+@
++
++=
+-
+-=
+%
+%=
+*
+*=
+/
+/=
+^
+^=
+^^
+^^=
+&
+&=
+&&
+&&=
+|
+|=
+||
+||=
+
+>
+>=
+<
+<=
+>>
+>>=
+<<
+<<=
+!=
+==
+
+::
 
 ?
 :
