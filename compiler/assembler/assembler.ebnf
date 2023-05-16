@@ -1,41 +1,119 @@
-statement := print string ;
+statements
 
-loc := reg
-loc := * reg
+statements __EPSILON__
+statements := statements statement
+statement := partial_statement ;
 
-bloc := b loc
-cloc := c loc
-iloc := i loc
-floc := f loc
+// Label declaration
 
-aloc := bloc
-aloc := cloc
-aloc := iloc
-aloc := floc
+statement := label label_name :
 
-statement := mov aloc aloc;
-statement := cpy iloc iloc iloc;
+// Type Definitions
 
-aop := add
-aop := sub
-aop := mul
-aop := div
-aop := mod
+raw_location := reg
+raw_location := @ reg
 
-statement := aop iloc iloc
-statement := aop iloc floc
-statement := aop floc iloc
-statement := aop floc floc
+constant := bconst
+constant := cconst
+constant := iconst
+constant := fconst
 
-bop := or
-bop := xor
-bop := and
+bool_location := [ b raw_location ]
+char_location := [ c raw_location ]
+int_location := [ i raw_location ]
+float_location := [ f raw_location ]
 
-statement := aop iloc iloc
-statement := aop bloc bloc
+location := bool_location
+location := char_location
+location := int_location
+location := float_location
+
+bool := bool_location
+bool := bconst
+char := char_location
+char := cconst
+int := int_location
+int := iconst
+// We can use a location as a parameter to jmp
+int := label_name
+float := float_location
+float := fconst
+any := location
+any := constant
+
+// PRINT statement (maps to multiple instructions)
+
+print_statement := print string
+partial_statement := print_statement
+
+// MOV and CPY
+
+mov_statement := mov any location
+cpy_statement := cpy int int int
+
+partial_statement := mov_statement
+partial_statement := cpy_statement
+
+// Arithmetic operations
+
+arithmetic_op := add
+arithmetic_op := sub
+arithmetic_op := mul
+arithmetic_op := div
+arithmetic_op := mod
+
+arithmetic_statement := arithmetic_op int int int_location
+arithmetic_statement := arithmetic_op int float float_location
+arithmetic_statement := arithmetic_op float int float_location
+arithmetic_statement := arithmetic_op float float float_location
+
+partial_statement := arithmetic_statement
+
+// Bitwise operations
+
+bitwise_op := or
+bitwise_op := xor
+bitwise_op := and
+
+bitwise_statement := arithmetic_op int int int_location
+bitwise_statement := arithmetic_op bool bool bool_location
+
+partial_statement := bitwise_statement
+
+// Bit Shift operations
 
 sop := shl
 sop := shr
 
-statement := sop iloc iloc
+shift_statement := sop int int int_location
 
+partial_statement := shift_statement
+
+// JMP and CMP
+
+condition := any
+condition := eqz
+condition := nez
+condition := gtz
+condition := ltz
+condition := gez
+condition := lez
+
+jmp_statement := jmp any int condition
+cmp_statement := cmp any bool_location condition
+
+partial_statement := jmp_statement
+partial_statement := cmp_statement
+
+// DSP
+
+display_statement := dsp any
+partial_statement := display_statement
+
+// Memory management instructions
+
+alloc_statement := new int int_location
+dealloc_statement := del int
+
+partial_statement := alloc_statement
+partial_statement := dealloc_statement

@@ -1,0 +1,8 @@
+print "Hello World";
+
+mov 3 [i r0];
+mov 5 [i r1];
+add [i r0] [i r1] [i r0];
+dsp [i r1];
+
+mov [i r0] [f r0];

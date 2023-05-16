@@ -8,7 +8,7 @@ import compiler.frontend.Token;
 public interface Parser {
     ParseTree parse(Token[] tokens);
 
-    Parse getParse();
+    Parse start();
 
     interface Parse{
         void process(Token tok);

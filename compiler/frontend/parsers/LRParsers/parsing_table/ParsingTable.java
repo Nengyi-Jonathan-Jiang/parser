@@ -25,6 +25,10 @@ public class ParsingTable{
     public TableEntry getAction(int state, Symbol symbol){
         return actionTable.get(state).get(symbol);
     }
+
+    public Set<Symbol> acceptableSymbolsAtState(int state) {
+        return actionTable.get(state).keySet();
+    }
     
     public TableEntry getGoto(int state, Symbol symbol){
         return gotoTable.get(state).get(symbol);

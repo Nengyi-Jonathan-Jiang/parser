@@ -37,6 +37,7 @@ public class Grammar implements Printable {
         
         for(Rule rule : this.rules){
             nonTerminals.add(rule.getLhs());
+            allSymbols.add(rule.getLhs());
             allSymbols.addAll(rule.getRhs().getList());
         }
         
@@ -48,6 +49,7 @@ public class Grammar implements Printable {
         
         for(Symbol sym : allSymbols)
             startsWith.put(sym, new ArrayList<>());
+
         for(Rule rule : this.rules) {
             try {
                 startsWith.get(rule.getLhs()).add(rule);

@@ -1,0 +1,939 @@
+195
+a Ω r 0 statements 
+a statements s 1
+a label r 0 statements 
+a print r 0 statements 
+a mov r 0 statements 
+a cpy r 0 statements 
+a add r 0 statements 
+a sub r 0 statements 
+a mul r 0 statements 
+a div r 0 statements 
+a mod r 0 statements 
+a shl r 0 statements 
+a shr r 0 statements 
+a jmp r 0 statements 
+a cmp r 0 statements 
+a dsp r 0 statements 
+a new r 0 statements 
+a del r 0 statements 
+g statements 1
+s
+a Ω a 
+a statement s 2
+a partial_statement s 3
+a label s 4
+a print_statement s 5
+a print s 6
+a mov_statement s 7
+a mov s 8
+a cpy_statement s 9
+a cpy s 10
+a arithmetic_op s 11
+a add s 12
+a sub s 13
+a mul s 14
+a div s 15
+a mod s 16
+a arithmetic_statement s 17
+a bitwise_statement s 18
+a sop s 19
+a shl s 20
+a shr s 21
+a shift_statement s 22
+a jmp_statement s 23
+a jmp s 24
+a cmp_statement s 25
+a cmp s 26
+a display_statement s 27
+a dsp s 28
+a alloc_statement s 29
+a new s 30
+a dealloc_statement s 31
+a del s 32
+g statement 2
+g partial_statement 3
+g print_statement 5
+g mov_statement 7
+g cpy_statement 9
+g arithmetic_op 11
+g arithmetic_statement 17
+g bitwise_statement 18
+g sop 19
+g shift_statement 22
+g jmp_statement 23
+g cmp_statement 25
+g display_statement 27
+g alloc_statement 29
+g dealloc_statement 31
+s
+a Ω r 2 statements statements statement
+a label r 2 statements statements statement
+a print r 2 statements statements statement
+a mov r 2 statements statements statement
+a cpy r 2 statements statements statement
+a add r 2 statements statements statement
+a sub r 2 statements statements statement
+a mul r 2 statements statements statement
+a div r 2 statements statements statement
+a mod r 2 statements statements statement
+a shl r 2 statements statements statement
+a shr r 2 statements statements statement
+a jmp r 2 statements statements statement
+a cmp r 2 statements statements statement
+a dsp r 2 statements statements statement
+a new r 2 statements statements statement
+a del r 2 statements statements statement
+s
+a ; s 97
+s
+a label_name s 98
+s
+a ; r 1 partial_statement print_statement
+s
+a string s 99
+s
+a ; r 1 partial_statement mov_statement
+s
+a constant s 57
+a bconst s 58
+a cconst s 59
+a iconst s 60
+a fconst s 61
+a bool_location s 62
+a [ s 63
+a char_location s 64
+a int_location s 65
+a float_location s 66
+a location s 67
+a any s 68
+g constant 57
+g bool_location 62
+g char_location 64
+g int_location 65
+g float_location 66
+g location 67
+g any 68
+s
+a ; r 1 partial_statement cpy_statement
+s
+a label_name s 86
+a iconst s 87
+a [ s 88
+a int_location s 89
+a int s 90
+g int_location 89
+g int 90
+s
+a label_name s 70
+a bconst s 71
+a iconst s 72
+a fconst s 73
+a bool_location s 74
+a [ s 75
+a int_location s 76
+a float_location s 77
+a bool s 78
+a int s 79
+a float s 80
+g bool_location 74
+g int_location 76
+g float_location 77
+g bool 78
+g int 79
+g float 80
+s
+a label_name r 1 arithmetic_op add
+a bconst r 1 arithmetic_op add
+a iconst r 1 arithmetic_op add
+a fconst r 1 arithmetic_op add
+a [ r 1 arithmetic_op add
+s
+a label_name r 1 arithmetic_op sub
+a bconst r 1 arithmetic_op sub
+a iconst r 1 arithmetic_op sub
+a fconst r 1 arithmetic_op sub
+a [ r 1 arithmetic_op sub
+s
+a label_name r 1 arithmetic_op mul
+a bconst r 1 arithmetic_op mul
+a iconst r 1 arithmetic_op mul
+a fconst r 1 arithmetic_op mul
+a [ r 1 arithmetic_op mul
+s
+a label_name r 1 arithmetic_op div
+a bconst r 1 arithmetic_op div
+a iconst r 1 arithmetic_op div
+a fconst r 1 arithmetic_op div
+a [ r 1 arithmetic_op div
+s
+a label_name r 1 arithmetic_op mod
+a bconst r 1 arithmetic_op mod
+a iconst r 1 arithmetic_op mod
+a fconst r 1 arithmetic_op mod
+a [ r 1 arithmetic_op mod
+s
+a ; r 1 partial_statement arithmetic_statement
+s
+a ; r 1 partial_statement bitwise_statement
+s
+a label_name s 86
+a iconst s 87
+a [ s 88
+a int_location s 89
+a int s 91
+g int_location 89
+g int 91
+s
+a label_name r 1 sop shl
+a iconst r 1 sop shl
+a [ r 1 sop shl
+s
+a label_name r 1 sop shr
+a iconst r 1 sop shr
+a [ r 1 sop shr
+s
+a ; r 1 partial_statement shift_statement
+s
+a ; r 1 partial_statement jmp_statement
+s
+a constant s 45
+a bconst s 46
+a cconst s 47
+a iconst s 48
+a fconst s 49
+a bool_location s 50
+a [ s 51
+a char_location s 52
+a int_location s 53
+a float_location s 54
+a location s 55
+a any s 56
+g constant 45
+g bool_location 50
+g char_location 52
+g int_location 53
+g float_location 54
+g location 55
+g any 56
+s
+a ; r 1 partial_statement cmp_statement
+s
+a constant s 57
+a bconst s 58
+a cconst s 59
+a iconst s 60
+a fconst s 61
+a bool_location s 62
+a [ s 63
+a char_location s 64
+a int_location s 65
+a float_location s 66
+a location s 67
+a any s 69
+g constant 57
+g bool_location 62
+g char_location 64
+g int_location 65
+g float_location 66
+g location 67
+g any 69
+s
+a ; r 1 partial_statement display_statement
+s
+a constant s 33
+a bconst s 34
+a cconst s 35
+a iconst s 36
+a fconst s 37
+a bool_location s 38
+a [ s 39
+a char_location s 40
+a int_location s 41
+a float_location s 42
+a location s 43
+a any s 44
+g constant 33
+g bool_location 38
+g char_location 40
+g int_location 41
+g float_location 42
+g location 43
+g any 44
+s
+a ; r 1 partial_statement alloc_statement
+s
+a label_name s 92
+a iconst s 93
+a [ s 94
+a int_location s 95
+a int s 96
+g int_location 95
+g int 96
+s
+a ; r 1 partial_statement dealloc_statement
+s
+a label_name s 81
+a iconst s 82
+a [ s 83
+a int_location s 84
+a int s 85
+g int_location 84
+g int 85
+s
+a ; r 1 any constant
+s
+a ; r 1 constant bconst
+s
+a ; r 1 constant cconst
+s
+a ; r 1 constant iconst
+s
+a ; r 1 constant fconst
+s
+a ; r 1 location bool_location
+s
+a b s 122
+a c s 123
+a i s 124
+a f s 125
+s
+a ; r 1 location char_location
+s
+a ; r 1 location int_location
+s
+a ; r 1 location float_location
+s
+a ; r 1 any location
+s
+a ; r 2 display_statement dsp any
+s
+a label_name r 1 any constant
+a iconst r 1 any constant
+a [ r 1 any constant
+s
+a label_name r 1 constant bconst
+a iconst r 1 constant bconst
+a [ r 1 constant bconst
+s
+a label_name r 1 constant cconst
+a iconst r 1 constant cconst
+a [ r 1 constant cconst
+s
+a label_name r 1 constant iconst
+a iconst r 1 constant iconst
+a [ r 1 constant iconst
+s
+a label_name r 1 constant fconst
+a iconst r 1 constant fconst
+a [ r 1 constant fconst
+s
+a label_name r 1 location bool_location
+a iconst r 1 location bool_location
+a [ r 1 location bool_location
+s
+a b s 126
+a c s 127
+a i s 128
+a f s 129
+s
+a label_name r 1 location char_location
+a iconst r 1 location char_location
+a [ r 1 location char_location
+s
+a label_name r 1 location int_location
+a iconst r 1 location int_location
+a [ r 1 location int_location
+s
+a label_name r 1 location float_location
+a iconst r 1 location float_location
+a [ r 1 location float_location
+s
+a label_name r 1 any location
+a iconst r 1 any location
+a [ r 1 any location
+s
+a label_name s 107
+a iconst s 108
+a [ s 109
+a int_location s 110
+a int s 111
+g int_location 110
+g int 111
+s
+a [ r 1 any constant
+s
+a [ r 1 constant bconst
+s
+a [ r 1 constant cconst
+s
+a [ r 1 constant iconst
+s
+a [ r 1 constant fconst
+s
+a [ r 1 location bool_location
+s
+a b s 133
+a c s 134
+a i s 135
+a f s 136
+s
+a [ r 1 location char_location
+s
+a [ r 1 location int_location
+s
+a [ r 1 location float_location
+s
+a [ r 1 any location
+s
+a bool_location s 38
+a [ s 39
+a char_location s 40
+a int_location s 41
+a float_location s 42
+a location s 100
+g bool_location 38
+g char_location 40
+g int_location 41
+g float_location 42
+g location 100
+s
+a bool_location s 101
+a [ s 102
+g bool_location 101
+s
+a label_name r 1 int label_name
+a iconst r 1 int label_name
+a fconst r 1 int label_name
+a [ r 1 int label_name
+s
+a bconst r 1 bool bconst
+a [ r 1 bool bconst
+s
+a label_name r 1 int iconst
+a iconst r 1 int iconst
+a fconst r 1 int iconst
+a [ r 1 int iconst
+s
+a label_name r 1 float fconst
+a iconst r 1 float fconst
+a fconst r 1 float fconst
+a [ r 1 float fconst
+s
+a bconst r 1 bool bool_location
+a [ r 1 bool bool_location
+s
+a b s 130
+a i s 131
+a f s 132
+s
+a label_name r 1 int int_location
+a iconst r 1 int int_location
+a fconst r 1 int int_location
+a [ r 1 int int_location
+s
+a label_name r 1 float float_location
+a iconst r 1 float float_location
+a fconst r 1 float float_location
+a [ r 1 float float_location
+s
+a bconst s 103
+a bool_location s 104
+a [ s 105
+a bool s 106
+g bool_location 104
+g bool 106
+s
+a label_name s 92
+a iconst s 93
+a fconst s 114
+a [ s 115
+a int_location s 95
+a float_location s 116
+a int s 117
+a float s 118
+g int_location 95
+g float_location 116
+g int 117
+g float 118
+s
+a label_name s 92
+a iconst s 93
+a fconst s 114
+a [ s 115
+a int_location s 95
+a float_location s 116
+a int s 119
+a float s 120
+g int_location 95
+g float_location 116
+g int 119
+g float 120
+s
+a ; r 1 int label_name
+s
+a ; r 1 int iconst
+s
+a i s 124
+s
+a ; r 1 int int_location
+s
+a ; r 2 dealloc_statement del int
+s
+a label_name r 1 int label_name
+a iconst r 1 int label_name
+a [ r 1 int label_name
+s
+a label_name r 1 int iconst
+a iconst r 1 int iconst
+a [ r 1 int iconst
+s
+a i s 128
+s
+a label_name r 1 int int_location
+a iconst r 1 int int_location
+a [ r 1 int int_location
+s
+a label_name s 86
+a iconst s 87
+a [ s 88
+a int_location s 89
+a int s 113
+g int_location 89
+g int 113
+s
+a label_name s 92
+a iconst s 93
+a [ s 94
+a int_location s 95
+a int s 121
+g int_location 95
+g int 121
+s
+a [ r 1 int label_name
+s
+a [ r 1 int iconst
+s
+a i s 135
+s
+a [ r 1 int int_location
+s
+a [ s 83
+a int_location s 112
+g int_location 112
+s
+a Ω r 2 statement partial_statement ;
+a label r 2 statement partial_statement ;
+a print r 2 statement partial_statement ;
+a mov r 2 statement partial_statement ;
+a cpy r 2 statement partial_statement ;
+a add r 2 statement partial_statement ;
+a sub r 2 statement partial_statement ;
+a mul r 2 statement partial_statement ;
+a div r 2 statement partial_statement ;
+a mod r 2 statement partial_statement ;
+a shl r 2 statement partial_statement ;
+a shr r 2 statement partial_statement ;
+a jmp r 2 statement partial_statement ;
+a cmp r 2 statement partial_statement ;
+a dsp r 2 statement partial_statement ;
+a new r 2 statement partial_statement ;
+a del r 2 statement partial_statement ;
+s
+a : s 137
+s
+a ; r 2 print_statement print string
+s
+a ; r 3 mov_statement mov any location
+s
+a constant s 33
+a bconst s 34
+a cconst s 35
+a iconst s 36
+a fconst s 37
+a bool_location s 38
+a [ s 39
+a char_location s 40
+a int_location s 41
+a float_location s 42
+a location s 43
+a any s 155
+a condition s 163
+a eqz s 157
+a nez s 158
+a gtz s 159
+a ltz s 160
+a gez s 161
+a lez s 162
+g constant 33
+g bool_location 38
+g char_location 40
+g int_location 41
+g float_location 42
+g location 43
+g any 155
+g condition 163
+s
+a b s 173
+s
+a [ r 1 bool bconst
+s
+a [ r 1 bool bool_location
+s
+a b s 133
+s
+a bool_location s 164
+a [ s 165
+g bool_location 164
+s
+a bconst r 1 int label_name
+a cconst r 1 int label_name
+a iconst r 1 int label_name
+a fconst r 1 int label_name
+a [ r 1 int label_name
+a eqz r 1 int label_name
+a nez r 1 int label_name
+a gtz r 1 int label_name
+a ltz r 1 int label_name
+a gez r 1 int label_name
+a lez r 1 int label_name
+s
+a bconst r 1 int iconst
+a cconst r 1 int iconst
+a iconst r 1 int iconst
+a fconst r 1 int iconst
+a [ r 1 int iconst
+a eqz r 1 int iconst
+a nez r 1 int iconst
+a gtz r 1 int iconst
+a ltz r 1 int iconst
+a gez r 1 int iconst
+a lez r 1 int iconst
+s
+a i s 174
+s
+a bconst r 1 int int_location
+a cconst r 1 int int_location
+a iconst r 1 int int_location
+a fconst r 1 int int_location
+a [ r 1 int int_location
+a eqz r 1 int int_location
+a nez r 1 int int_location
+a gtz r 1 int int_location
+a ltz r 1 int int_location
+a gez r 1 int int_location
+a lez r 1 int int_location
+s
+a constant s 33
+a bconst s 34
+a cconst s 35
+a iconst s 36
+a fconst s 37
+a bool_location s 38
+a [ s 39
+a char_location s 40
+a int_location s 41
+a float_location s 42
+a location s 43
+a any s 155
+a condition s 156
+a eqz s 157
+a nez s 158
+a gtz s 159
+a ltz s 160
+a gez s 161
+a lez s 162
+g constant 33
+g bool_location 38
+g char_location 40
+g int_location 41
+g float_location 42
+g location 43
+g any 155
+g condition 156
+s
+a ; r 3 alloc_statement new int int_location
+s
+a label_name s 81
+a iconst s 82
+a [ s 83
+a int_location s 84
+a int s 166
+g int_location 84
+g int 166
+s
+a [ r 1 float fconst
+s
+a i s 135
+a f s 136
+s
+a [ r 1 float float_location
+s
+a [ s 83
+a int_location s 167
+g int_location 167
+s
+a [ s 169
+a float_location s 170
+g float_location 170
+s
+a [ s 169
+a float_location s 171
+g float_location 171
+s
+a [ s 169
+a float_location s 172
+g float_location 172
+s
+a [ s 83
+a int_location s 168
+g int_location 168
+s
+a raw_location s 138
+a reg s 139
+a @ s 140
+g raw_location 138
+s
+a raw_location s 144
+a reg s 139
+a @ s 140
+g raw_location 144
+s
+a raw_location s 147
+a reg s 139
+a @ s 140
+g raw_location 147
+s
+a raw_location s 151
+a reg s 139
+a @ s 140
+g raw_location 151
+s
+a raw_location s 141
+a reg s 139
+a @ s 140
+g raw_location 141
+s
+a raw_location s 145
+a reg s 139
+a @ s 140
+g raw_location 145
+s
+a raw_location s 149
+a reg s 139
+a @ s 140
+g raw_location 149
+s
+a raw_location s 153
+a reg s 139
+a @ s 140
+g raw_location 153
+s
+a raw_location s 142
+a reg s 139
+a @ s 140
+g raw_location 142
+s
+a raw_location s 148
+a reg s 139
+a @ s 140
+g raw_location 148
+s
+a raw_location s 152
+a reg s 139
+a @ s 140
+g raw_location 152
+s
+a raw_location s 143
+a reg s 139
+a @ s 140
+g raw_location 143
+s
+a raw_location s 146
+a reg s 139
+a @ s 140
+g raw_location 146
+s
+a raw_location s 150
+a reg s 139
+a @ s 140
+g raw_location 150
+s
+a raw_location s 154
+a reg s 139
+a @ s 140
+g raw_location 154
+s
+a Ω r 3 statement label label_name :
+a label r 3 statement label label_name :
+a print r 3 statement label label_name :
+a mov r 3 statement label label_name :
+a cpy r 3 statement label label_name :
+a add r 3 statement label label_name :
+a sub r 3 statement label label_name :
+a mul r 3 statement label label_name :
+a div r 3 statement label label_name :
+a mod r 3 statement label label_name :
+a shl r 3 statement label label_name :
+a shr r 3 statement label label_name :
+a jmp r 3 statement label label_name :
+a cmp r 3 statement label label_name :
+a dsp r 3 statement label label_name :
+a new r 3 statement label label_name :
+a del r 3 statement label label_name :
+s
+a ] s 178
+s
+a ] r 1 raw_location reg
+s
+a reg s 177
+s
+a ] s 179
+s
+a ] s 180
+s
+a ] s 181
+s
+a ] s 182
+s
+a ] s 183
+s
+a ] s 184
+s
+a ] s 185
+s
+a ] s 186
+s
+a ] s 187
+s
+a ] s 188
+s
+a ] s 189
+s
+a ] s 190
+s
+a ] s 191
+s
+a ] s 192
+s
+a ; r 1 condition any
+s
+a ; r 4 jmp_statement jmp any int condition
+s
+a ; r 1 condition eqz
+s
+a ; r 1 condition nez
+s
+a ; r 1 condition gtz
+s
+a ; r 1 condition ltz
+s
+a ; r 1 condition gez
+s
+a ; r 1 condition lez
+s
+a ; r 4 cmp_statement cmp any bool_location condition
+s
+a ; r 4 bitwise_statement arithmetic_op bool bool bool_location
+s
+a b s 122
+s
+a ; r 4 cpy_statement cpy int int int
+s
+a ; r 4 bitwise_statement arithmetic_op int int int_location
+s
+a ; r 4 shift_statement sop int int int_location
+s
+a f s 125
+s
+a ; r 4 arithmetic_statement arithmetic_op int float float_location
+s
+a ; r 4 arithmetic_statement arithmetic_op float int float_location
+s
+a ; r 4 arithmetic_statement arithmetic_op float float float_location
+s
+a raw_location s 175
+a reg s 139
+a @ s 140
+g raw_location 175
+s
+a raw_location s 176
+a reg s 139
+a @ s 140
+g raw_location 176
+s
+a ] s 193
+s
+a ] s 194
+s
+a ] r 2 raw_location @ reg
+s
+a ; r 4 bool_location [ b raw_location ]
+s
+a label_name r 4 bool_location [ b raw_location ]
+a iconst r 4 bool_location [ b raw_location ]
+a [ r 4 bool_location [ b raw_location ]
+s
+a bconst r 4 bool_location [ b raw_location ]
+a [ r 4 bool_location [ b raw_location ]
+s
+a [ r 4 bool_location [ b raw_location ]
+s
+a ; r 4 char_location [ c raw_location ]
+s
+a label_name r 4 char_location [ c raw_location ]
+a iconst r 4 char_location [ c raw_location ]
+a [ r 4 char_location [ c raw_location ]
+s
+a [ r 4 char_location [ c raw_location ]
+s
+a ; r 4 int_location [ i raw_location ]
+s
+a label_name r 4 int_location [ i raw_location ]
+a iconst r 4 int_location [ i raw_location ]
+a fconst r 4 int_location [ i raw_location ]
+a [ r 4 int_location [ i raw_location ]
+s
+a label_name r 4 int_location [ i raw_location ]
+a iconst r 4 int_location [ i raw_location ]
+a [ r 4 int_location [ i raw_location ]
+s
+a [ r 4 int_location [ i raw_location ]
+s
+a ; r 4 float_location [ f raw_location ]
+s
+a label_name r 4 float_location [ f raw_location ]
+a iconst r 4 float_location [ f raw_location ]
+a fconst r 4 float_location [ f raw_location ]
+a [ r 4 float_location [ f raw_location ]
+s
+a label_name r 4 float_location [ f raw_location ]
+a iconst r 4 float_location [ f raw_location ]
+a [ r 4 float_location [ f raw_location ]
+s
+a [ r 4 float_location [ f raw_location ]
+s
+a bconst r 4 bool_location [ b raw_location ]
+a cconst r 4 bool_location [ b raw_location ]
+a iconst r 4 bool_location [ b raw_location ]
+a fconst r 4 bool_location [ b raw_location ]
+a [ r 4 bool_location [ b raw_location ]
+a eqz r 4 bool_location [ b raw_location ]
+a nez r 4 bool_location [ b raw_location ]
+a gtz r 4 bool_location [ b raw_location ]
+a ltz r 4 bool_location [ b raw_location ]
+a gez r 4 bool_location [ b raw_location ]
+a lez r 4 bool_location [ b raw_location ]
+s
+a bconst r 4 int_location [ i raw_location ]
+a cconst r 4 int_location [ i raw_location ]
+a iconst r 4 int_location [ i raw_location ]
+a fconst r 4 int_location [ i raw_location ]
+a [ r 4 int_location [ i raw_location ]
+a eqz r 4 int_location [ i raw_location ]
+a nez r 4 int_location [ i raw_location ]
+a gtz r 4 int_location [ i raw_location ]
+a ltz r 4 int_location [ i raw_location ]
+a gez r 4 int_location [ i raw_location ]
+a lez r 4 int_location [ i raw_location ]
+s

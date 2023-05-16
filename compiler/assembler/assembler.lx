@@ -10,6 +10,7 @@ and
 xor
 shl
 shr
+cmp
 jmp
 any
 eqz
@@ -21,22 +22,26 @@ lez
 dsp
 new
 del
-(
-)
-*
+label
+[
+]
+@
 b
 c
 i
 f
+:
 ;
 
 print
 
-reg := rr?[0-7]|sp
+reg := r[0-7]|sp
 
 iconst := (0|-?[123456789][\d]*)
-fconst := (0|-?[123456789][\d]*)(.[\d]+)?
+fconst := (0|-?[123456789][\d]*)(\.[\d]+)?
 bconst := (true|false)
 cconst := '\\?.'
 
 string := "[^"\\]*(\\.[^"\\]*)*"
+
+label_name := [A-Z][A-Z_]+

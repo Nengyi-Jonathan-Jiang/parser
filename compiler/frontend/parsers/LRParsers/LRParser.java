@@ -29,7 +29,7 @@ public final class LRParser implements Parser{
      * @return The parse tree if the tokens were parsed successfully, otherwise null
      */
     public ParseTree parse(Token[] tokens) {
-        Parse p = getParse();
+        Parse p = start();
         for(Token token : tokens){
             p.process(token);
         }
@@ -39,11 +39,11 @@ public final class LRParser implements Parser{
         return p.getParseTree();
     }
 
-    public Parse getParse(){
+    public Parse start(){
         return new Parse(this);
     }
 
-    private static class Parse implements Parser.Parse{
+    public static class Parse implements Parser.Parse{
         private final Deque<Integer> stateStack = new ArrayDeque<>();
         private final Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
         private final ParsingTable table;
@@ -63,7 +63,9 @@ public final class LRParser implements Parser{
                 TableEntry entry = table.getAction(state, token.type);
 
                 // Parse failed
-                if(entry == null) throw new Error("Parse failed!");
+                if(entry == null) {
+                    throw new LRParsingError("Parse failed!", table.acceptableSymbolsAtState(state));
+                }
 
                 switch (entry.getAction()) {
                     case SHIFT -> {
@@ -103,6 +105,10 @@ public final class LRParser implements Parser{
         }
         public boolean isFinished(){
             return finished;
+        }
+
+        public Deque<ParseTree> getParseTreeStack() {
+            return parseTreeStack;
         }
     }
 }

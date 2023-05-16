@@ -7,22 +7,6 @@ import static compiler.jevm.Instruction.Param.ParamType.*;
 import static compiler.jevm.MemoryLocation.*;
 
 public abstract class Instruction {
-    public static final Instruction NOOP = new Instruction() { public void execute(VM jevm) {} };
-
-    public static class MOV extends Instruction {
-        private final Param source, dest;
-
-        public MOV(Param source, Param dest) {
-            this.source = source;
-            this.dest = dest;
-        }
-
-        @Override
-        public void execute(VM jevm) {
-            dest.getMem(jevm).copyFrom(source.getMem(jevm));
-        }
-    }
-
     private static class ArithmeticInstruction extends Instruction {
         private final Param p1, p2, dest;
         private final Param.ParamType t1, t2, td;
@@ -119,6 +103,21 @@ public abstract class Instruction {
         }
     }
 
+    public static final Instruction NOOP = new Instruction() { public void execute(VM jevm) {} };
+
+    public static class MOV extends Instruction {
+        private final Param source, dest;
+
+        public MOV(Param source, Param dest) {
+            this.source = source;
+            this.dest = dest;
+        }
+
+        @Override
+        public void execute(VM jevm) {
+            dest.getMem(jevm).copyFrom(source.getMem(jevm));
+        }
+    }
 
     public static class ADD extends ArithmeticInstruction {
         public ADD(Param p1, Param p2, Param dest) {
@@ -182,13 +181,14 @@ public abstract class Instruction {
 
     public static class JMP extends Instruction {
         private final Param p, dest;
-        private byte conditions;
+        private final byte condition;
 
         public static final byte GZ = 1, LZ = 2, EZ = 4;
 
-        public JMP(Param p, Param dest) {
+        public JMP(Param p, Param dest, byte condition) {
             this.p = p;
             this.dest = dest;
+            this.condition = condition;
         }
 
         @Override
@@ -204,7 +204,7 @@ public abstract class Instruction {
                 case BOOL -> ((M1) x).getBool() ? 1 : 0;
             };
 
-            if ((conditions & GZ) != 0 && comp > 0 || (conditions & LZ) != 0 && comp < 0 || (conditions & EZ) != 0 && comp == 0) {
+            if ((condition & GZ) != 0 && comp > 0 || (condition & LZ) != 0 && comp < 0 || (condition & EZ) != 0 && comp == 0) {
                 jevm.jump(((M4) dest.getMem(jevm)).getInt());
             }
         }
@@ -278,6 +278,40 @@ public abstract class Instruction {
             if(!source.type().isInt()) throw new Error("JeVM Error: Invalid parameter types to dealloc");
             M4 s = (M4) source.getMem(jevm);
             jevm.allocator.deallocate(s.getInt());
+        }
+    }
+
+    public static class CMP extends Instruction {
+        private final Param p, dest;
+        private final byte condition;
+
+        public static final byte GZ = 1, LZ = 2, EZ = 4;
+
+        public CMP(Param p, Param dest, byte condition) {
+            this.p = p;
+            this.dest = dest;
+            this.condition = condition;
+        }
+
+        @Override
+        public void execute(VM jevm) {
+            var x = p.getMem(jevm);
+            var t = p.type;
+            if (dest.type != BOOL) throw new Error("JeVM Error: Jump destination must be an integer");
+
+            int comp = switch (t) {
+                case FLOAT -> Float.compare(((M4) x).getFloat(), 0);
+                case INT -> ((M4) x).getInt();
+                case CHAR -> ((M1) x).getChar() & 0xFF;
+                case BOOL -> ((M1) x).getBool() ? 1 : 0;
+            };
+
+            boolean res = false;
+            if((condition & GZ) != 0) res |= comp > 0;
+            if((condition & LZ) != 0) res |= comp < 0;
+            if((condition & EZ) != 0) res |= comp == 0;
+
+            ((M1) dest.getMem(jevm)).setBool(res);
         }
     }
 
