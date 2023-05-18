@@ -8,7 +8,9 @@ import static compiler.jevm.MemoryLocation.*;
 
 public abstract class Instruction {
     private static class ArithmeticInstruction extends Instruction {
-        private final Param p1, p2, dest;
+        protected final Param p1;
+        protected final Param p2;
+        protected final Param dest;
         private final Param.ParamType t1, t2, td;
         private final BinaryOperator<Integer> intFunc;
         private final BinaryOperator<Float> floatFunc;
@@ -44,7 +46,9 @@ public abstract class Instruction {
     }
 
     private static class LogicalInstruction extends Instruction {
-        private final Param p1, p2, dest;
+        protected final Param p1;
+        protected final Param p2;
+        protected final Param dest;
         private final Param.ParamType t1, t2, td;
         private final BinaryOperator<Integer> intFunc;
         private final BinaryOperator<Boolean> boolFunc;
@@ -79,7 +83,9 @@ public abstract class Instruction {
     }
 
     private static class ShiftInstruction extends Instruction {
-        private final Param p1, p2, dest;
+        protected final Param p1;
+        protected final Param p2;
+        protected final Param dest;
         private final Param.ParamType t1, t2, td;
         private final BinaryOperator<Integer> func;
 
@@ -103,7 +109,14 @@ public abstract class Instruction {
         }
     }
 
-    public static final Instruction NOOP = new Instruction() { public void execute(VM jevm) {} };
+    public static final Instruction NOOP = new Instruction() {
+        public void execute(VM jevm) {}
+
+        @Override
+        public String toString() {
+            return "NOOP";
+        }
+    };
 
     public static class MOV extends Instruction {
         private final Param source, dest;
@@ -117,11 +130,21 @@ public abstract class Instruction {
         public void execute(VM jevm) {
             dest.getMem(jevm).copyFrom(source.getMem(jevm));
         }
+
+        @Override
+        public String toString() {
+            return source + " -> " + dest;
+        }
     }
 
     public static class ADD extends ArithmeticInstruction {
         public ADD(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, Integer::sum, Float::sum);
+        }
+
+        @Override
+        public String toString() {
+            return p1 + " + " + p2 + " -> " + dest;
         }
     }
 
@@ -129,11 +152,21 @@ public abstract class Instruction {
         public SUB(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a - b, (a, b) -> a - b);
         }
+
+        @Override
+        public String toString() {
+            return p1 + " - " + p2 + " -> " + dest;
+        }
     }
 
     public static class MUL extends ArithmeticInstruction {
         public MUL(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a * b, (a, b) -> a * b);
+        }
+
+        @Override
+        public String toString() {
+            return p1 + " * " + p2 + " -> " + dest;
         }
     }
 
@@ -141,11 +174,21 @@ public abstract class Instruction {
         public DIV(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a / b, (a, b) -> a / b);
         }
+
+        @Override
+        public String toString() {
+            return p1 + " / " + p2 + " -> " + dest;
+        }
     }
 
     public static class MOD extends ArithmeticInstruction {
         public MOD(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> (a % b + b) % b, (a, b) -> (a % b + b) % b);
+        }
+
+        @Override
+        public String toString() {
+            return p1 + " mod " + p2 + " -> " + dest;
         }
     }
 
@@ -153,11 +196,21 @@ public abstract class Instruction {
         public OR(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a | b, (a, b) -> a || b);
         }
+
+        @Override
+        public String toString() {
+            return p1 + " | " + p2 + " -> " + dest;
+        }
     }
 
     public static class AND extends LogicalInstruction {
         public AND(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a & b, (a, b) -> a && b);
+        }
+
+        @Override
+        public String toString() {
+            return p1 + " & " + p2 + " -> " + dest;
         }
     }
 
@@ -165,17 +218,32 @@ public abstract class Instruction {
         public XOR(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a ^ b, (a, b) -> a != b);
         }
+
+        @Override
+        public String toString() {
+            return p1 + " ^ " + p2 + " -> " + dest;
+        }
     }
 
     public static class SHL extends ShiftInstruction {
         public SHL(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a << b);
         }
+
+        @Override
+        public String toString() {
+            return p1 + " << " + p2 + " -> " + dest;
+        }
     }
 
     public static class SHR extends ShiftInstruction {
         public SHR(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a >> b);
+        }
+
+        @Override
+        public String toString() {
+            return p1 + " >> " + p2 + " -> " + dest;
         }
     }
 
@@ -208,6 +276,20 @@ public abstract class Instruction {
                 jevm.jump(((M4) dest.getMem(jevm)).getInt());
             }
         }
+
+        @Override
+        public String toString() {
+            return "jump to " + dest + " if " + p + " " + switch (condition) {
+                case GZ -> ">";
+                case LZ -> "<";
+                case GZ | LZ -> "!=";
+                case EZ -> "==";
+                case GZ | EZ -> ">=";
+                case LZ | EZ -> "<=";
+                case GZ | LZ | EZ -> "<=>";
+                default -> "??";
+            } + " 0";
+        }
     }
 
     public static class CPY extends Instruction {
@@ -230,6 +312,11 @@ public abstract class Instruction {
 
             jevm.ram.memcpy(s.getInt(), d.getInt(), l.getInt());
         }
+
+        @Override
+        public String toString() {
+            return "copy " + length + " bytes " + source + " -> " + dest;
+        }
     }
 
     public static class DSP extends Instruction {
@@ -250,23 +337,59 @@ public abstract class Instruction {
                 case BOOL -> String.valueOf(((M1) s).getBool());
             });
         }
+
+        @Override
+        public String toString() {
+            return source + " -> stdout";
+        }
     }
 
-    public static class NEW extends Instruction {
-        private final Param source, dest;
+    public static class INP extends Instruction {
+        private final Param dest;
 
-        public NEW(Param source, Param dest) {
-            this.source = source;
+        public INP(Param dest) {
             this.dest = dest;
         }
 
         @Override
         public void execute(VM jevm) {
-            if(!source.type().isInt() || !dest.type.isInt()) throw new Error("JeVM Error: Invalid parameter types to alloc");
-            M4 s = (M4) source.getMem(jevm), d = (M4) dest.getMem(jevm);
-            d.setInt(jevm.allocator.allocate(s.getInt()));
+            var m = dest.getMem(jevm);
+
+            switch (dest.type) {
+                case BOOL -> ((M1) m).setBool(jevm.readBool());
+                case CHAR -> ((M1) m).setChar(jevm.readChar());
+                case INT -> ((M4) m).setInt(jevm.readInt());
+                case FLOAT -> ((M4) m).setFloat(jevm.readFloat());
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "stdin -> " + dest;
         }
     }
+
+    public static class NEW extends Instruction {
+        private final Param size, dest;
+
+        public NEW(Param source, Param dest) {
+            this.size = source;
+            this.dest = dest;
+        }
+
+        @Override
+        public void execute(VM jevm) {
+            if(!size.type().isInt() || !dest.type.isInt()) throw new Error("JeVM Error: Invalid parameter types to alloc");
+            M4 s = (M4) size.getMem(jevm), d = (M4) dest.getMem(jevm);
+            d.setInt(jevm.allocator.allocate(s.getInt()));
+        }
+
+        @Override
+        public String toString() {
+            return dest + " <- new " + size + " bytes";
+        }
+    }
+
     public static class DEL extends Instruction {
         private final Param source;
         public DEL(Param source) {
@@ -279,24 +402,29 @@ public abstract class Instruction {
             M4 s = (M4) source.getMem(jevm);
             jevm.allocator.deallocate(s.getInt());
         }
+
+        @Override
+        public String toString() {
+            return "del " + source;
+        }
     }
 
     public static class CMP extends Instruction {
-        private final Param p, dest;
+        private final Param source, dest;
         private final byte condition;
 
         public static final byte GZ = 1, LZ = 2, EZ = 4;
 
         public CMP(Param p, Param dest, byte condition) {
-            this.p = p;
+            this.source = p;
             this.dest = dest;
             this.condition = condition;
         }
 
         @Override
         public void execute(VM jevm) {
-            var x = p.getMem(jevm);
-            var t = p.type;
+            var x = source.getMem(jevm);
+            var t = source.type;
             if (dest.type != BOOL) throw new Error("JeVM Error: Jump destination must be an integer");
 
             int comp = switch (t) {
@@ -313,49 +441,64 @@ public abstract class Instruction {
 
             ((M1) dest.getMem(jevm)).setBool(res);
         }
+
+
+        @Override
+        public String toString() {
+            return dest + " <- " + source + " " + switch (condition) {
+                case GZ -> ">";
+                case LZ -> "<";
+                case GZ | LZ -> "!=";
+                case EZ -> "==";
+                case GZ | EZ -> ">=";
+                case LZ | EZ -> "<=";
+                case GZ | LZ | EZ -> "<=>";
+                default -> " ?? ";
+            } + " 0";
+        }
     }
 
     public abstract void execute(VM jevm);
 
-    public record Param(Function<VM, MemoryLocation> location, ParamType type) {
+    public record Param(Function<VM, MemoryLocation> location, ParamType type, String inputName) {
         public static Param constant(int constVal) {
-            return new Param($ -> new Constant4(constVal), INT);
+            return new Param($ -> new Constant4(constVal), INT, String.valueOf(constVal));
         }
 
         public static Param constant(float constVal) {
-            return new Param($ -> new Constant4(constVal), FLOAT);
+            return new Param($ -> new Constant4(constVal), FLOAT, String.valueOf(constVal));
         }
 
         public static Param constant(char constVal) {
-            return new Param($ -> new Constant1(constVal), CHAR);
+            return new Param($ -> new Constant1(constVal), CHAR, "'%s'".formatted(constVal));
         }
 
         public static Param constant(boolean constVal) {
-            return new Param($ -> new Constant1(constVal), BOOL);
+            return new Param($ -> new Constant1(constVal), BOOL, String.valueOf(constVal));
         }
 
         public static Param register1(int registerId, ParamType type) {
             if (!type.isBoolOrChar())
                 throw new Error("JeVM Error: Invalid type for 1 byte register");
-            return new Param(vm -> vm.getR1(registerId, false), type);
+            return new Param(vm -> vm.getR1(registerId, false), type, "r" + registerId);
         }
 
         public static Param register4(int registerId, ParamType type) {
             if (!type.isIntOrFloat())
                 throw new Error("JeVM Error: Invalid type for 4 byte register");
-            return new Param(vm -> vm.getR4(registerId, false), type);
+            return new Param(vm -> vm.getR4(registerId, false), type, "r" + registerId);
         }
 
         public static Param mem1(int registerId, ParamType type) {
             if (!type.isBoolOrChar())
                 throw new Error("JeVM Error: Invalid type for 1 byte memory");
-            return new Param(vm -> vm.getR1(registerId, true), type);
+            return new Param(vm -> vm.getR1(registerId, true), type, "@r" + registerId);
         }
 
         public static Param mem4(int registerId, ParamType type) {
             if (!type.isIntOrFloat())
                 throw new Error("JeVM Error: Invalid type for 4 byte memory");
-            return new Param(vm -> vm.getR4(registerId, true), type);
+            return new Param(vm -> vm.getR4(registerId, true), type, "@r" + registerId);
         }
 
         public enum ParamType {
@@ -390,6 +533,11 @@ public abstract class Instruction {
 
         public MemoryLocation getMem(VM vm) {
             return location().apply(vm);
+        }
+
+        @Override
+        public String toString() {
+            return "(" + type.toString().toLowerCase() + " " + inputName.replaceAll("r-1", "sp") + ")";
         }
     }
 }

@@ -24,6 +24,10 @@ public class Lexer {
         tokenRules.add(new TokenRule(name, regex, func));
     }
 
+    public TokenRule getRuleFor(Symbol name) {
+        return tokenRules.stream().filter(i -> i.name == name).findFirst().orElse(null);
+    }
+
     public static Lexer fromScanner(Symbol.SymbolTable symbolTable, Scanner scan){
         Lexer lexer = new Lexer(symbolTable);
         while(scan.hasNextLine()){
@@ -82,17 +86,31 @@ public class Lexer {
 
     public static class Lex{
         private String s;
+        private String[] parts;
+        private int part_n = 0;
         private int index;
         private final Lexer lexer;
 
         Lex(Lexer lexer, String input){
             this.lexer = lexer;
-            s = input;
+
+            var comment_rule = lexer.getRuleFor(lexer.table.get("COMMENT"));
+            if(comment_rule != null) {
+                parts = input.split(comment_rule.regex.pattern());
+            }
+            else parts = new String[]{input};
+
+            s = "";
             index = 0;
         }
 
         public Token next(){
-            if(s.length() == 0) return new Token(lexer.table.__END__, "", index);
+            while (s.length() == 0){
+                if(part_n >= parts.length) {
+                    return new Token(lexer.table.__END__, "", index);
+                }
+                s = parts[part_n++];
+            }
 
             TokenRule rule = null;
             String sbstr = null;

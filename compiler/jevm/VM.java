@@ -1,5 +1,7 @@
 package compiler.jevm;
 
+import java.util.Scanner;
+
 public class VM {
     public final RAM ram = new RAM();
     private final Register.R1[] register1 = new Register.R1[8];
@@ -7,13 +9,22 @@ public class VM {
     private final Register.R4 stack_ptr = new Register.R4();
     private final Register.R4 instruction_ptr = new Register.R4();
     public final Allocator allocator = new Allocator();
+    public final Scanner scan = new Scanner(System.in);
+
+    public VM() {
+        for(int i = 0; i < 8; i++) register1[i] = new Register.R1();
+        for(int i = 0; i < 8; i++) register4[i] = new Register.R4();
+    }
 
     public void execute(Program program){
         instruction_ptr.setInt(0);
-        while(instruction_ptr.getInt() != -1){
+        int i = 0;
+        while(instruction_ptr.getInt() != -1 && instruction_ptr.getInt() < program.length){
             var instruction = program.get(instruction_ptr.getInt());
+//            System.out.println("Executing " + instruction_ptr.getInt() + ":\t " + instruction);
             instruction.execute(this);
             instruction_ptr.setInt(instruction_ptr.getInt() + 1);
+            if(++i > 1000) throw new Error("JeVM Error: TLE");
         }
     }
 
@@ -23,7 +34,7 @@ public class VM {
 
     private Register.R4 _getRegister4(int id){
         if(id == -1) return stack_ptr;
-        if(id > 0 && id < register4.length) return register4[id];
+        if(id >= 0 && id < register4.length) return register4[id];
         throw new IllegalAccessError("JeVM Error: Register index out of range (id=" + id + ")");
     }
 
@@ -35,7 +46,7 @@ public class VM {
 
     public MemoryLocation.M1 getR1(int id, boolean indirect){
         if(id != -1 || !indirect) // We can indirect the stack pointer to a 1 byte memory location
-            if (id <= 0 || id >= register1.length) // Otherwise do OOB error checking on register ID
+            if (id < 0 || id >= register1.length) // Otherwise do OOB error checking on register ID
                 throw new IllegalAccessError("JeVM Error: Register index out of range (id=" + id + ")");
 
         return indirect ? ram.getM1(_getRegister4(id).getInt()) : register1[id];
@@ -44,5 +55,21 @@ public class VM {
     public void display(String s){
         // TODO: add log file?
         System.out.print(s);
+    }
+
+    public boolean readBool() {
+        return scan.nextBoolean();
+    }
+
+    public char readChar() {
+        return scan.next(".").charAt(0);
+    }
+
+    public int readInt() {
+        return scan.nextInt();
+    }
+
+    public float readFloat() {
+        return scan.nextFloat();
     }
 }

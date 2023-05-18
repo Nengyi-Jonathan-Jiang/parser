@@ -6,7 +6,8 @@ statement := partial_statement ;
 
 // Label declaration
 
-statement := label label_name :
+label_declaration := label label_name
+partial_statement := label_declaration
 
 // Type Definitions
 
@@ -38,8 +39,10 @@ int := iconst
 int := label_name
 float := float_location
 float := fconst
-any := location
-any := constant
+any := bool
+any := char
+any := int
+any := float
 
 // PRINT statement (maps to multiple instructions)
 
@@ -75,8 +78,8 @@ bitwise_op := or
 bitwise_op := xor
 bitwise_op := and
 
-bitwise_statement := arithmetic_op int int int_location
-bitwise_statement := arithmetic_op bool bool bool_location
+bitwise_statement := bitwise_op int int int_location
+bitwise_statement := bitwise_op bool bool bool_location
 
 partial_statement := bitwise_statement
 
@@ -91,7 +94,7 @@ partial_statement := shift_statement
 
 // JMP and CMP
 
-condition := any
+condition := ucd
 condition := eqz
 condition := nez
 condition := gtz
@@ -105,10 +108,12 @@ cmp_statement := cmp any bool_location condition
 partial_statement := jmp_statement
 partial_statement := cmp_statement
 
-// DSP
+// DSP and INP
 
 display_statement := dsp any
+input_statement := inp location
 partial_statement := display_statement
+partial_statement := input_statement
 
 // Memory management instructions
 

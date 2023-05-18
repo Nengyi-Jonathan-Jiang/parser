@@ -9,13 +9,16 @@ import compiler.frontend.parsers.LRParsers.LRParsingError;
 import compiler.frontend.parsers.LRParsers.parsing_table.ParsingTable;
 import compiler.frontend.parsers.ParseTree;
 import compiler.frontend.parsers.Parser;
+import compiler.jevm.Instruction;
 import compiler.jevm.Program;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Assembler {
@@ -36,6 +39,7 @@ public class Assembler {
         Token tk;
         do {
             tk = lex.next();
+            if(tk.type == symbolTable.get("COMMENT")) continue;
             try {
                 parse.process(tk);
             }
@@ -70,10 +74,158 @@ public class Assembler {
             else s = null;
         }
 
-        System.out.println(statements.stream().map(ParseTree::prnt).collect(Collectors.joining("\n")));
+        // First pass: convert print to dsp
+        for(var it = statements.listIterator(); it.hasNext();){
+            var n = it.next();
+            if(n.getDescription() == symbolTable.get("print_statement")) {
+                it.remove();
+                String str = n.getChildren()[1].getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t");
+                for(char c : str.substring(1, str.length() - 1).toCharArray()) {
+                    it.add(new ParseTree(
+                        symbolTable.get("display_statement"),
+                        new ParseTree(symbolTable.get("dsp"), new Token(symbolTable.get("dsp"), "dsp", -1)),
+                        new ParseTree(
+                            symbolTable.get("cconst"),
+                            new Token(symbolTable.get("cconst"), "'%s'".formatted(c), -1)
+                        )
+                    ));
+                }
+            }
+        }
+
+        // Second pass: calculate label locations
+        Map<String, Integer> labels = new HashMap<>();
+        {
+            int instruction_number = 0;
+            for (var i : statements) {
+                if(i.getDescription() == symbolTable.get("label_declaration")) {
+                    labels.put(i.getChildren()[1].getValue().value, instruction_number);
+                }
+                else instruction_number++;
+            }
+        }
+
+        List<Instruction> instructions = new ArrayList<>();
+        for(var i : statements) {
+            if(i.getDescription() == symbolTable.get("label_declaration")) continue;
+
+            instructions.add(switch(i.getDescription().toString()){
+                case "display_statement" -> {
+                    var param1 = createParam(i.getChildren()[1], labels);
+                    yield new Instruction.DSP(param1);
+                }
+                case "input_statement" -> {
+                    var param1 = createParam(i.getChildren()[1], labels);
+                    yield new Instruction.INP(param1);
+                }
+                case "mov_statement" -> {
+                    var param1 = createParam(i.getChildren()[1], labels);
+                    var param2 = createParam(i.getChildren()[2], labels);
+                    yield new Instruction.MOV(param1, param2);
+                }
+                case "arithmetic_statement" -> {
+                    var type = i.getChildren()[0].getValue().value;
+                    var param1 = createParam(i.getChildren()[1], labels);
+                    var param2 = createParam(i.getChildren()[2], labels);
+                    var dest = createParam(i.getChildren()[3], labels);
+                    yield switch (type) {
+                        case "add" -> new Instruction.ADD(param1, param2, dest);
+                        case "sub" -> new Instruction.SUB(param1, param2, dest);
+                        case "mul" -> new Instruction.MUL(param1, param2, dest);
+                        case "div" -> new Instruction.DIV(param1, param2, dest);
+                        case "mod" -> new Instruction.MOD(param1, param2, dest);
+                        default -> Instruction.NOOP;
+                    };
+                }
+                case "bitwise_statement" -> {
+                    var type = i.getChildren()[0].getValue().value;
+                    var param1 = createParam(i.getChildren()[1], labels);
+                    var param2 = createParam(i.getChildren()[2], labels);
+                    var dest = createParam(i.getChildren()[3], labels);
+                    yield switch (type) {
+                        case "and" -> new Instruction.AND(param1, param2, dest);
+                        case "or" -> new Instruction.OR(param1, param2, dest);
+                        case "xor" -> new Instruction.XOR(param1, param2, dest);
+                        default -> Instruction.NOOP;
+                    };
+                }
+                case "shift_statement" -> {
+                    var type = i.getChildren()[0].getValue().value;
+                    var param1 = createParam(i.getChildren()[1], labels);
+                    var param2 = createParam(i.getChildren()[2], labels);
+                    var dest = createParam(i.getChildren()[3], labels);
+                    yield switch (type) {
+                        case "shl" -> new Instruction.SHL(param1, param2, dest);
+                        case "shr" -> new Instruction.SHR(param1, param2, dest);
+                        default -> Instruction.NOOP;
+                    };
+                }
+                case "jmp_statement" -> {
+                    var param = createParam(i.getChildren()[1], labels);
+                    var dest = createParam(i.getChildren()[2], labels);
+                    byte cmp = switch(i.getChildren()[3].getValue().value) {
+                        case "gtz" -> Instruction.JMP.GZ;
+                        case "ltz" -> Instruction.JMP.LZ;
+                        case "nez" -> Instruction.JMP.GZ | Instruction.JMP.LZ;
+                        case "eqz" -> Instruction.JMP.EZ;
+                        case "gez" -> Instruction.JMP.GZ | Instruction.JMP.EZ;
+                        case "lez" -> Instruction.JMP.LZ | Instruction.JMP.EZ;
+                        case "ucd" -> Instruction.JMP.GZ | Instruction.JMP.LZ | Instruction.JMP.EZ;
+                        default -> throw new Error("");
+                    };
+                    yield new Instruction.JMP(param, dest, cmp);
+                }
+                default -> Instruction.NOOP;
+            });
+        }
+
+        System.out.println("Label locations: {\n" + labels.entrySet().stream().map(e -> {
+            return e.getKey() + " -> " + instructions.get(e.getValue());
+        }).collect(Collectors.joining("\n")) + "\n}");
+
+        return new Program(instructions.toArray(Instruction[]::new));
+    }
 
 
-        return null;
+    private static Instruction.Param createParam(ParseTree tree, Map<String, Integer> label_locs) {
+        return switch (tree.getDescription().toString()) {
+            case "bconst" -> Instruction.Param.constant(Boolean.parseBoolean(tree.getValue().value));
+            case "cconst" -> Instruction.Param.constant(tree.getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t").charAt(1));
+            case "iconst" -> Instruction.Param.constant(Integer.parseInt(tree.getValue().value));
+            case "fconst" -> Instruction.Param.constant(Float.parseFloat(tree.getValue().value));
+            case "label_name" -> {
+                try {
+                    yield Instruction.Param.constant(label_locs.get(tree.getValue().value));
+                }
+                catch (NullPointerException e){
+                    throw new Error("Could not find label " + tree.getValue().value);
+                }
+            }
+            case "bool_location" -> createRegister(Instruction.Param.ParamType.BOOL, tree.getChildren()[2]);
+            case "char_location" -> createRegister(Instruction.Param.ParamType.CHAR, tree.getChildren()[2]);
+            case "int_location" -> createRegister(Instruction.Param.ParamType.INT, tree.getChildren()[2]);
+            case "float_location" -> createRegister(Instruction.Param.ParamType.FLOAT, tree.getChildren()[2]);
+            default -> Instruction.Param.constant('?');
+        };
+    }
+
+    private static Instruction.Param createRegister(Instruction.Param.ParamType type, ParseTree tree) {
+        if(tree.getDescription() == symbolTable.get("reg")) {
+            String s = tree.getValue().value.substring(1);
+            int rId = s.equals("p") ? -1 : s.charAt(0) - '0';
+            return switch (type) {
+                case CHAR, BOOL -> Instruction.Param.register1(rId, type);
+                case INT, FLOAT -> Instruction.Param.register4(rId, type);
+            };
+        }
+        else {
+            String s = tree.getChildren()[1].getValue().value.substring(1);
+            int rId = s.equals("p") ? -1 : s.charAt(0) - '0';
+            return switch (type) {
+                case CHAR, BOOL -> Instruction.Param.mem1(rId, type);
+                case INT, FLOAT -> Instruction.Param.mem4(rId, type);
+            };
+        }
     }
 
     public static Program assembleFile(String file){

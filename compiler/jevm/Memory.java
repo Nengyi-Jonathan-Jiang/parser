@@ -3,7 +3,7 @@ package compiler.jevm;
 import java.util.Arrays;
 
 class Memory {
-    private static final int MAX_MEMORY = 1 << 24;
+    private static final int MAX_MEMORY = 1 << 8;
 
     private byte[] memory = new byte[65536];
     private int used = 0;
@@ -15,7 +15,10 @@ class Memory {
             throw new Error("JeVM error: Out of memory (" + ptr + " exceeds the maximum allowed memory of " + MAX_MEMORY + " bytes)");
 
         while (ptr >= used) {
-            used *= 2;
+            if(used < 256)
+                used += 16;
+            else
+                used *= 2;
             memory = Arrays.copyOf(memory, used);
         }
     }
