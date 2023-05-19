@@ -2,15 +2,13 @@ package compiler.jevm;
 
 public class NativeVM {
     static {
-        System.load("C:\\Users\\slhscs212\\IdeaProjects\\parser\\compiler\\jevm\\native\\cmake-build-debug\\libnative.dll");
+        System.loadLibrary("native_vm");
     }
 
-    public native void helloWorld();
-    public native String helloWorldBy(String message);
+    public native void execute(byte[] array);
 
     public static void main(String[] args) {
         NativeVM helloWorld = new NativeVM();
-        helloWorld.helloWorld();
-        System.out.println(helloWorld.helloWorldBy("Jeremy"));
+        helloWorld.execute(new byte[]{0, 1, 2, 3, 4});
     }
 }
