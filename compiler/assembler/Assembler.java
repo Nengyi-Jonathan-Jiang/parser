@@ -11,6 +11,7 @@ import compiler.frontend.parsers.ParseTree;
 import compiler.frontend.parsers.Parser;
 import compiler.jevm.Instruction;
 import compiler.jevm.Program;
+import compiler.jevm.VM;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -110,6 +111,12 @@ public class Assembler {
             if(i.getDescription() == symbolTable.get("label_declaration")) continue;
 
             instructions.add(switch(i.getDescription().toString()){
+                case "dump" -> new Instruction() {
+                    @Override
+                    public void execute(VM jevm) {
+                        jevm.ram.dumpContents();
+                    }
+                };
                 case "display_statement" -> {
                     var param1 = createParam(i.getChildren()[1], labels);
                     yield new Instruction.DSP(param1);
@@ -178,10 +185,6 @@ public class Assembler {
                 default -> Instruction.NOOP;
             });
         }
-
-        System.out.println("Label locations: {\n" + labels.entrySet().stream().map(e -> {
-            return e.getKey() + " -> " + instructions.get(e.getValue());
-        }).collect(Collectors.joining("\n")) + "\n}");
 
         return new Program(instructions.toArray(Instruction[]::new));
     }

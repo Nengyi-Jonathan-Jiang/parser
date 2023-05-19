@@ -8,6 +8,7 @@ public class AssemblerTest {
         System.out.println("Compiling file...");
         var program = Assembler.assembleFile("compiler/assembler/test/fizzbuzz.jasm");
         System.out.println("Executing...");
-        new VM().execute(program);
+        var vm = new VM();
+        vm.execute(program);
     }
 }

@@ -6,16 +6,16 @@ public class Register {
     public static class R1 implements MemoryLocation.M1 {
         protected byte value;
         public void setChar(char c) {
-            value = (byte) (c & 0xFF);
+            value = charToByte(c);
         }
         public char getChar() {
-            return (char) (value & 0xFF);
+            return byteToChar(value);
         }
         public void setBool(boolean b) {
-            value = (byte) (b ? 1 : 0);
+            value = boolToByte(b);
         }
         public boolean getBool() {
-            return value != 0;
+            return byteToBool(value);
         }
     }
 

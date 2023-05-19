@@ -36,6 +36,8 @@ f
 :
 ;
 
+dump
+
 print
 
 reg := r[0-7]|sp
@@ -48,3 +50,4 @@ cconst := '\\?.'
 string := "[^"\\]*(\\.[^"\\]*)*"
 
 label_name := [A-Z][A-Za-z0-9_]*
+

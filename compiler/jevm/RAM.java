@@ -16,16 +16,16 @@ public class RAM {
     public MemoryLocation.M1 getM1(int ptr){
         return new MemoryLocation.M1() {
             public char getChar(){
-                return (char) (_get(ptr) & 0xFF);
+                return byteToChar(_get(ptr));
             }
             public void setChar(char c){
-                _set(ptr, (byte)(c & 0xFF));
+                _set(ptr, charToByte(c));
             }
             public boolean getBool(){
-                return _get(ptr) != 0;
+                return byteToBool(_get(ptr));
             }
             public void setBool(boolean b) {
-                _set(ptr, (byte)(b ? 1 : 0));
+                _set(ptr, boolToByte(b));
             }
         };
     }
@@ -33,19 +33,24 @@ public class RAM {
     public MemoryLocation.M4 getM4(int ptr){
         return new MemoryLocation.M4() {
             public int getInt(){
-                return _get(ptr) | _get(ptr + 1) << 8 | _get(ptr + 2) << 16 | _get(ptr + 3) << 24;
+                return bytesToInt(_get(ptr), _get(ptr + 1), _get(ptr + 2), _get(ptr + 3));
             }
             public void setInt(int val) {
-                _set(ptr, (byte)(val & 0xFF));
-                _set(ptr + 1, (byte)(val >> 8 & 0xFF));
-                _set(ptr + 2, (byte)(val >> 16 & 0xFF));
-                _set(ptr + 3, (byte)(val >> 24 & 0xFF));
+                byte[] bytes = intToBytes(val);
+                _set(ptr, bytes[0]);
+                _set(ptr + 1, bytes[1]);
+                _set(ptr + 2, bytes[2]);
+                _set(ptr + 3, bytes[3]);
             }
             public float getFloat(){
-                return Float.intBitsToFloat(getInt());
+                return bytesToFloat(_get(ptr), _get(ptr + 1), _get(ptr + 2), _get(ptr + 3));
             }
             public void setFloat(float val) {
-                setInt(Float.floatToRawIntBits(val));
+                byte[] bytes = floatToBytes(val);
+                _set(ptr, bytes[0]);
+                _set(ptr + 1, bytes[1]);
+                _set(ptr + 2, bytes[2]);
+                _set(ptr + 3, bytes[3]);
             }
         };
     }
@@ -57,5 +62,9 @@ public class RAM {
         for(int i = 0; i < length; i++){
             _set(dest + i, _get(source + i));
         }
+    }
+
+    public void dumpContents() {
+        stack.dumpContents();
     }
 }

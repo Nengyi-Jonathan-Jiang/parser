@@ -1,7 +1,7 @@
 package compiler.jevm;
 
 public interface MemoryLocation {
-    public interface M1 extends MemoryLocation {
+    interface M1 extends MemoryLocation {
         void setChar(char c);
         char getChar();
         void setBool(boolean b);
@@ -21,7 +21,7 @@ public interface MemoryLocation {
         }
     }
 
-    public interface M4 extends MemoryLocation  {
+    interface M4 extends MemoryLocation  {
         void setInt(int val);
         void setFloat(float val);
         int getInt();
@@ -41,15 +41,15 @@ public interface MemoryLocation {
         }
     }
 
-    public interface Constant extends MemoryLocation {}
+    interface Constant extends MemoryLocation {}
 
-    public static class Constant1 implements M1, Constant {
+    class Constant1 implements M1, Constant {
         private final byte value;
         public Constant1(char c){
-            value = (byte) (c & 0xFF);
+            value = charToByte(c);
         }
         public Constant1(boolean b){
-            value = (byte)(b ? 1 : 0);
+            value = boolToByte(b);
         }
 
         @Override
@@ -59,7 +59,7 @@ public interface MemoryLocation {
 
         @Override
         public char getChar() {
-            return (char)(value & 0xFF);
+            return byteToChar(value);
         }
 
         @Override
@@ -69,11 +69,13 @@ public interface MemoryLocation {
 
         @Override
         public boolean getBool() {
-            return value != 0;
+            return byteToBool(value);
         }
     }
 
-    public static class Constant4 implements M4, Constant {
+    class Constant4 implements M4, Constant {
+        // We don't have to store a const4 as a byte array because we only need to expose getInt and getFloat
+
         int value;
         public Constant4(int value) {
             this.value = value;
@@ -104,4 +106,30 @@ public interface MemoryLocation {
     }
 
     void copyFrom(MemoryLocation location);
+
+
+    default boolean byteToBool(byte b1) {
+        return b1 == 0;
+    }
+    default byte boolToByte(boolean val){
+        return (byte)(val ? 0 : 1);
+    }
+    default char byteToChar(byte b1) {
+        return (char)(b1 & 0xFF);
+    }
+    default byte charToByte(char val) {
+        return (byte)(val & 0xFF);
+    }
+    default int bytesToInt(byte b1, byte b2, byte b3, byte b4){
+        return (b1 & 0xFF) | (b2 & 0xFF) << 8 | (b3 & 0xFF) << 16 |(b4 & 0xFF) << 24;
+    }
+    default byte[] intToBytes(int val){
+        return new byte[]{(byte) (val & 0xFF), (byte)(val >> 8 & 0xFF), (byte)(val >> 16 & 0xFF), (byte)(val >> 24 & 0xFF)};
+    }
+    default float bytesToFloat(byte b1, byte b2, byte b3, byte b4) {
+        return Float.intBitsToFloat(bytesToInt(b1, b2, b3, b4));
+    }
+    default byte[] floatToBytes(float val) {
+        return intToBytes(Float.floatToRawIntBits(val));
+    }
 }
