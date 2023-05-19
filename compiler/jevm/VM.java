@@ -21,10 +21,9 @@ public class VM {
         int i = 0;
         while(instruction_ptr.getInt() != -1 && instruction_ptr.getInt() < program.length){
             var instruction = program.get(instruction_ptr.getInt());
-//            System.out.println("Executing " + instruction_ptr.getInt() + ":\t " + instruction);
             instruction.execute(this);
             instruction_ptr.setInt(instruction_ptr.getInt() + 1);
-            if(++i > 1000000) throw new Error("JeVM Error: TLE");
+            if(++i > 100000000) throw new Error("JeVM Error: TLE");
         }
     }
 
