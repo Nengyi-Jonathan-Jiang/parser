@@ -35,15 +35,16 @@ private:
     static jevm_byte garbage;
 };
 
+
 struct memoryLocation {
-    virtual memoryLocation& operator=(bool b) = 0;
-    virtual memoryLocation& operator=(char c) = 0;
-    virtual memoryLocation& operator=(int i) = 0;
-    virtual memoryLocation& operator=(float f) = 0;
-    virtual explicit operator jevm_b() = 0;
-    virtual explicit operator jevm_c() = 0;
-    virtual explicit operator jevm_i() = 0;
-    virtual explicit operator jevm_f() = 0;
+    virtual void set(bool b) = 0;
+    virtual void set(char c) = 0;
+    virtual void set(int i) = 0;
+    virtual void set(float f) = 0;
+    virtual jevm_b getBool() = 0;
+    virtual jevm_c getChar() = 0;
+    virtual jevm_i getInt() = 0;
+    virtual jevm_f getFloat() = 0;
 
 protected:
     static jevm_byte boolToByte(jevm_b b){
@@ -78,33 +79,59 @@ protected:
     }
 };
 
+typedef memoryLocation* loc;
+
 struct RAM {
     memory stack, heap;
 
-private:
     jevm_byte& operator[](jevm_ptr ptr) {
         return ptr < 0 ? heap[-(ptr + 1)] : stack[ptr];
     }
 };
 
-class constant : memoryLocation {
+class constant : public memoryLocation {
     const union data {
         jevm_byte data1; jevm_byte4 data4;
         data(jevm_byte data) : data1(data) {}
         data(jevm_byte4 data) : data4(data) {}
     } data;
-    constant(bool b)  : data(boolToByte(b)) {}
-    constant(char c)  : data(charToByte(c)) {}
-    constant(int i)   : data(intToBytes(i)) {}
-    constant(float f) : data(floatToBytes(f)) {}
 
-    memoryLocation& operator=(bool b)  override { return *this; }
-    memoryLocation& operator=(char c)  override { return *this; }
-    memoryLocation& operator=(int i)   override { return *this; };
-    memoryLocation& operator=(float f) override { return *this; };
+public:
+    constant(jevm_b b) : data(boolToByte(b))   {} // NOLINT(google-explicit-constructor)
+    constant(jevm_c c) : data(charToByte(c))   {} // NOLINT(google-explicit-constructor)
+    constant(jevm_i i) : data(intToBytes(i))   {} // NOLINT(google-explicit-constructor)
+    constant(jevm_f f) : data(floatToBytes(f)) {} // NOLINT(google-explicit-constructor)
 
-    explicit operator jevm_b() override { return byteToBool(data.data1); };
-    explicit operator jevm_c() override { return byteToChar(data.data1); };
-    explicit operator jevm_i() override { return bytesToInt(data.data4); };
-    explicit operator jevm_f() override { return bytesToFloat(data.data4); };
+    void set(jevm_b b) override {}
+    void set(jevm_c c) override {}
+    void set(jevm_i i) override {}
+    void set(jevm_f f) override {}
+
+    jevm_b getBool()  override { return byteToBool(data.data1); };
+    jevm_c getChar()  override { return byteToChar(data.data1); };
+    jevm_i getInt()   override { return bytesToInt(data.data4); };
+    jevm_f getFloat() override { return bytesToFloat(data.data4); };
+};
+
+class reg : public memoryLocation {
+    union data {
+        jevm_byte data1; jevm_byte4 data4;
+        data(jevm_byte data) : data1(data) {}
+        data(jevm_byte4 data) : data4(data) {}
+    } data;
+
+public:
+    reg(bool b)  : data(boolToByte(b)) {}
+    reg(char c)  : data(charToByte(c)) {}
+    reg(int i)   : data(intToBytes(i)) {}
+    reg(float f) : data(floatToBytes(f)) {}
+
+    void set(jevm_b b)  override { data.data1 = boolToByte(b); }
+    void set(jevm_c c)  override { data.data1 = charToByte(c); }
+    void set(jevm_i i)   override { data.data4 = intToBytes(i); }
+    void set(jevm_f f) override { data.data4 = floatToBytes(f); }
+    jevm_b getBool()  override { return byteToBool(data.data1); }
+    jevm_c getChar()  override { return byteToChar(data.data1); }
+    jevm_i getInt()   override { return bytesToInt(data.data4); }
+    jevm_f getFloat() override { return bytesToFloat(data.data4); }
 };
