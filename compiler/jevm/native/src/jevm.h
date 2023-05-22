@@ -13,3 +13,7 @@ typedef unsigned char jevm_byte;
 typedef unsigned jevm_size_t;
 
 typedef std::array<jevm_byte, 4> jevm_byte4;
+
+struct jevm {
+
+};

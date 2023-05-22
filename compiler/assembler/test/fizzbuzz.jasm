@@ -5,8 +5,8 @@ jmp 0 PROGRAM_START ucd;
 
 % Calling convention:
 % [start of stack frame]
-% caller location (4 bytes)
-% return value pointer (4 bytes)
+% caller location (1 bytes)
+% return value pointer (1 bytes)
 % arguments (M bytes)
 % local variables (X bytes)
 % [end of stack frame, stack pointer points here]
@@ -17,14 +17,14 @@ label POW;
 
     % First we extract the arguments
 
-    sub [i sp] 8 [i r7];        % r7 <- (sp - 8 === &arg0)
+    sub [i sp] 2 [i r7];        % r7 <- (sp - 2 === &arg0)
     mov [i @r7] [i r0];        % r0 <- (@r7 === arg0)
-    sub [i sp] 4 [i r7];        % r7 <- (sp - 4 === &arg1)
+    sub [i sp] 1 [i r7];        % r7 <- (sp - 1 === &arg1)
     mov [i @r7] [i r1];        % r1 <- (@r7 === arg1)
 
     % Point r7 to the return value
 
-    sub [i sp] 12 [i r7];       % r7 <- (sp - 12 === &&rv)
+    sub [i sp] 3 [i r7];       % r7 <- (sp - 3 === &&rv)
     mov [i @r7] [i r7];         % r7 <- (@r7 === &rv)
 
     % Initialize rv to 1
@@ -43,7 +43,7 @@ label POW;
     % Now rv has arg0 ^ arg1
     % pop the stack frame
 
-    sub [i sp] 16 [i r0];       % r0 <- (sp - 16 === &caller)
+    sub [i sp] 4 [i r0];       % r0 <- (sp - 4 === &caller)
     jmp 0 [i @r0] ucd;          % jump to (@r0 === caller)
 
 % end of function
@@ -58,12 +58,12 @@ label FIB;
 
     % First we extract the argument
 
-    sub [i sp] 12 [i r7];       % r7 <- (sp - 12 === &arg0)
+    sub [i sp] 3 [i r7];       % r7 <- (sp - 3 === &arg0)
     mov [i @r7] [i r0];        % r0 <- (@r7 === arg0)
 
     % If arg0 <= 2, return 1
 
-    sub [i sp] 16 [i r7];       % r7 <- (sp - 16 === &&rv)
+    sub [i sp] 4 [i r7];       % r7 <- (sp - 4 === &&rv)
     mov [i @r7] [i r7];         % r7 <- (@r7 === &rv)
     mov 1 [i @r7];              % (@r7 == rv) <- 1
     sub [i r0] 2 [i r0];        % r0 <- (r0 === arg0) - 2
@@ -81,20 +81,20 @@ label FIB;
     mov FIB_CALL_LOC_1 [i @r7];      % (@r7 === &caller') <- FIB_RET_LOC_1
 
     % Set return value pointer
-    add [i sp] 4 [i r7];            % r7 <- (sp + 4 === &&rv')
-    sub [i sp] 8 [i @r7];           % (@r7 === &rv') <- (sp - 8 === &l0)
+    add [i sp] 1 [i r7];            % r7 <- (sp + 1 === &&rv')
+    sub [i sp] 2 [i @r7];           % (@r7 === &rv') <- (sp - 2 === &l0)
 
     % Set arg0'
-    sub [i sp] 12 [i r7];           % r7 <- (sp - 12 === &arg0)
+    sub [i sp] 3 [i r7];           % r7 <- (sp - 3 === &arg0)
     sub [i @r7] 1 [i r0];           % r0 <- (@r7 === arg0) - 1
-    add [i sp] 8 [i r7];            % r7 <- (sp + 8 === &arg0')
+    add [i sp] 2 [i r7];            % r7 <- (sp + 2 === &arg0')
     mov [i r0] [i @r7];             % (@r7 === arg0') <- (r0 === arg0 - 1)
 
     % Call the function
-    add [i sp] 20 [i sp];           % increment the stack pointer
+    add [i sp] 5 [i sp];           % increment the stack pointer
     jmp 0 FIB ucd;                  % jump to the function "FIB"
     label FIB_CALL_LOC_1;
-    sub [i sp] 20 [i sp];           % decrement the stack pointer
+    sub [i sp] 5 [i sp];           % decrement the stack pointer
 
     % call FIB
 
@@ -105,74 +105,75 @@ label FIB;
     mov FIB_CALL_LOC_2 [i @r7];      % (@r7 === &caller') <- FIB_RET_LOC_2
 
     % Set return value pointer
-    add [i sp] 4 [i r7];            % r7 <- (sp + 4 === &&rv')
-    sub [i sp] 4 [i @r7];           % (@r7 === &rv') <- (sp - 4 === &l1)
+    add [i sp] 1 [i r7];            % r7 <- (sp + 1 === &&rv')
+    sub [i sp] 1 [i @r7];           % (@r7 === &rv') <- (sp - 1 === &l1)
 
     % Set arg0'
-    sub [i sp] 12 [i r7];           % r7 <- (sp - 12 === &arg0)
+    sub [i sp] 3 [i r7];           % r7 <- (sp - 3 === &arg0)
     sub [i @r7] 2 [i r0];           % r0 <- (@r7 === arg0) - 2
-    add [i sp] 8 [i r7];            % r7 <- (sp + 8 === &arg0')
+    add [i sp] 2 [i r7];            % r7 <- (sp + 2 === &arg0')
     mov [i r0] [i @r7];             % (@r7 === arg0') <- (r0 === arg0 - 2)
 
     % Call the function
-    add [i sp] 20 [i sp];           % increment the stack pointer
+    add [i sp] 5 [i sp];           % increment the stack pointer
     jmp 0 FIB ucd;                  % jump to the function "POW"
     label FIB_CALL_LOC_2;
-    sub [i sp] 20 [i sp];           % decrement the stack pointer
+    sub [i sp] 5 [i sp];           % decrement the stack pointer
 
     % Add the two values
 
-    sub [i sp] 8 [i r7];        % r7 <- (sp - 8 === &l0)
+    sub [i sp] 2 [i r7];        % r7 <- (sp - 2 === &l0)
     mov [i @r7] [i r0];         % r0 <- (@r7 === l0)
-    sub [i sp] 4 [i r7];        % r7 <- (sp - 4 === &l1)
+    sub [i sp] 1 [i r7];        % r7 <- (sp - 1 === &l1)
     mov [i @r7] [i r1];         % r1 <- (@r7 === l1)
-    sub [i sp] 16 [i r7];       % r7 <- (sp - 16 === &&rv)
+    sub [i sp] 4 [i r7];       % r7 <- (sp - 4 === &&rv)
     mov [i @r7] [i r7];         % r7 <- (@r7 === &rv)
     add [i r0] [i r1] [i @r7];  % (@r7 === rv) <- (r0 === l0) = (r1 === l1)
 
     label RET;
 
     % pop the stack frame
-    sub [i sp] 20 [i r0];       % caller location
+    sub [i sp] 5 [i r0];       % caller location
     jmp 0 [i @r0] ucd;           % jump to caller
 % end of function
-
-
 
 % ============================= Main Block ============================= %
 
 label PROGRAM_START;
-
-mov 12 [i sp];
 
 % Take more input
 print "c <- ";
 inp [i r0];
 
 % Store in memory
-sub [i sp] 12 [i r7];
-mov [i r0] [i @r7];
+mov [i r0] [i @sp];
+add [i sp] 1 [i sp];
+
+% Make space for return value
+add [i sp] 1 [i sp];
 
 % Prepare stack
 add [i sp] 0 [i r7];            % This is where the caller location goes
 mov CALL_LOC_2 [i @r7];         % set caller location
-add [i sp] 4 [i r7];            % This is where the rv pointer goes
-sub [i sp] 4 [i @r7];           % set rv pointer
-add [i sp] 8 [i r7];            % This is where arg0 goes
+
+add [i sp] 1 [i r7];            % This is where the rv pointer goes
+sub [i sp] 1 [i @r7];           % set rv pointer
+
+add [i sp] 2 [i r7];            % This is where arg0 goes
 mov [i r0] [i @r7];             % Since we haven't touched r0 yet, we can do this directly
 
 % Call function
-add [i sp] 20 [i sp];           % increment the stack pointer
+add [i sp] 5 [i sp];           % increment the stack pointer
 jmp 0 FIB ucd;                  % jump to the function "POW"
 label CALL_LOC_2;
-sub [i sp] 20 [i sp];           % decrement the stack pointer
+sub [i sp] 5 [i sp];           % decrement the stack pointer
 
 print "c = ";
-sub [i sp] 12 [i r7];
+sub [i sp] 1 [i r7];
 dsp [i @r7];
 print "\n";
 
 print "fib(c) = ";
-sub [i sp] 4 [i r7];
+sub [i sp] 2 [i r7];
 dsp [i @r7];
 print "\n";

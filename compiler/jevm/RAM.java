@@ -3,54 +3,29 @@ package compiler.jevm;
 public class RAM {
     private final Memory stack = new Memory(), heap = new Memory();
 
-    private byte _get(int ptr){
+    private int _get(int ptr){
         return ptr < 0 ? heap.get(-(ptr + 1)) : stack.get(ptr);
     }
-    private void _set(int ptr, byte value){
+    private void _set(int ptr, int value){
         if (ptr < 0)
             heap.set(-(ptr + 1), value);
         else
             stack.set(ptr, value);
     }
 
-    public MemoryLocation.M1 getM1(int ptr){
-        return new MemoryLocation.M1() {
-            public char getChar(){
-                return byteToChar(_get(ptr));
-            }
-            public void setChar(char c){
-                _set(ptr, charToByte(c));
-            }
-            public boolean getBool(){
-                return byteToBool(_get(ptr));
-            }
-            public void setBool(boolean b) {
-                _set(ptr, boolToByte(b));
-            }
-        };
-    }
-
-    public MemoryLocation.M4 getM4(int ptr){
-        return new MemoryLocation.M4() {
+    public MemoryLocation get(int ptr){
+        return new MemoryLocation() {
             public int getInt(){
-                return bytesToInt(_get(ptr), _get(ptr + 1), _get(ptr + 2), _get(ptr + 3));
+                return _get(ptr);
             }
             public void setInt(int val) {
-                byte[] bytes = intToBytes(val);
-                _set(ptr, bytes[0]);
-                _set(ptr + 1, bytes[1]);
-                _set(ptr + 2, bytes[2]);
-                _set(ptr + 3, bytes[3]);
+                _set(ptr, val);
             }
             public float getFloat(){
-                return bytesToFloat(_get(ptr), _get(ptr + 1), _get(ptr + 2), _get(ptr + 3));
+                return intToFloat(_get(ptr));
             }
             public void setFloat(float val) {
-                byte[] bytes = floatToBytes(val);
-                _set(ptr, bytes[0]);
-                _set(ptr + 1, bytes[1]);
-                _set(ptr + 2, bytes[2]);
-                _set(ptr + 3, bytes[3]);
+                _set(ptr, floatToInt(val));
             }
         };
     }

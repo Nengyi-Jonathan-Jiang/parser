@@ -11,7 +11,7 @@ class Allocator {
 
     int used = 0;
 
-    int useFreeBlock(int size) {
+    int useFreeBlock(jevm_size_t size) {
         std::set<jevm_ptr>& blocks = freeBlocks[size];
         jevm_ptr ptr = *blocks.begin();
         removeFreeBlock(size, ptr);
@@ -42,7 +42,7 @@ class Allocator {
         }
     }
 
-    std::pair<int, int> mergeFreeBlocks(jevm_ptr p1, jevm_size_t s1, jevm_ptr p2, jevm_size_t s2) {
+    std::pair<jevm_ptr, jevm_size_t> mergeFreeBlocks(jevm_ptr p1, jevm_size_t s1, jevm_ptr p2, jevm_size_t s2) {
         freeBlockSize.erase(p2);
         freeBlockBefore.erase(p2);
         freeBlockSize[p1] = s1 + s2;
@@ -66,9 +66,10 @@ class Allocator {
         int ptr;
 
         // Try to find a free block that works
-        size_t availableSize = freeBlocks.upper_bound(allocSize - 1)->first;
+        auto _availableSize = freeBlocks.upper_bound(allocSize - 1);
 
-        if (availableSize != null) {  // We found a block that works
+        if (_availableSize != freeBlocks.end()) {  // We found a block that works
+            size_t availableSize = _availableSize->first;
             // Get the location of the block
             ptr = useFreeBlock(availableSize);
 
@@ -86,7 +87,7 @@ class Allocator {
     }
 
     void deallocate(int ptr) {
-        if (!isValidPointer(ptr)) throw new Error("JeVM Error: Segmentation fault");
+        if (!isValidPointer(ptr)) return;
 
         int size = allocatedSizes.get(ptr);
         allocatedSizes.remove(ptr);

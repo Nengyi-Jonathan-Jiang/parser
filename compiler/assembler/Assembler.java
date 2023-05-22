@@ -23,9 +23,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Assembler {
-    public static final String lxFile = "compiler/assembler/assembler.lx",
-                               ebnfFile = "compiler/assembler/assembler.ebnf",
-                               ptblFile = "compiler/assembler/assembler.ptbl";
+    public static final String lxFile = "compiler/assembler/jasm.lx",
+                               ebnfFile = "compiler/assembler/jasm.ebnf",
+                               ptblFile = "compiler/assembler/jasm.ptbl";
     public static final Symbol.SymbolTable symbolTable = Symbol.SymbolTable.merge(
         SymbolTableReader.generateFromLexerFile(lxFile),
         SymbolTableReader.generateFromParsingTableFile(ptblFile)
@@ -75,25 +75,6 @@ public class Assembler {
             else s = null;
         }
 
-        // First pass: convert print to dsp
-        for(var it = statements.listIterator(); it.hasNext();){
-            var n = it.next();
-            if(n.getDescription() == symbolTable.get("print_statement")) {
-                it.remove();
-                String str = n.getChildren()[1].getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t");
-                for(char c : str.substring(1, str.length() - 1).toCharArray()) {
-                    it.add(new ParseTree(
-                        symbolTable.get("display_statement"),
-                        new ParseTree(symbolTable.get("dsp"), new Token(symbolTable.get("dsp"), "dsp", -1)),
-                        new ParseTree(
-                            symbolTable.get("cconst"),
-                            new Token(symbolTable.get("cconst"), "'%s'".formatted(c), -1)
-                        )
-                    ));
-                }
-            }
-        }
-
         // Second pass: calculate label locations
         Map<String, Integer> labels = new HashMap<>();
         {
@@ -120,6 +101,10 @@ public class Assembler {
                 case "display_statement" -> {
                     var param1 = createParam(i.getChildren()[1], labels);
                     yield new Instruction.DSP(param1);
+                }
+                case "print_statement" -> {
+                    String str = i.getChildren()[1].getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t");
+                    yield new Instruction.PRINT(str.substring(1, str.length() - 1));
                 }
                 case "input_statement" -> {
                     var param1 = createParam(i.getChildren()[1], labels);
@@ -189,11 +174,8 @@ public class Assembler {
         return new Program(instructions.toArray(Instruction[]::new));
     }
 
-
     private static Instruction.Param createParam(ParseTree tree, Map<String, Integer> label_locs) {
         return switch (tree.getDescription().toString()) {
-            case "bconst" -> Instruction.Param.constant(Boolean.parseBoolean(tree.getValue().value));
-            case "cconst" -> Instruction.Param.constant(tree.getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t").charAt(1));
             case "iconst" -> Instruction.Param.constant(Integer.parseInt(tree.getValue().value));
             case "fconst" -> Instruction.Param.constant(Float.parseFloat(tree.getValue().value));
             case "label_name" -> {
@@ -204,8 +186,6 @@ public class Assembler {
                     throw new Error("Could not find label " + tree.getValue().value);
                 }
             }
-            case "bool_location" -> createRegister(Instruction.Param.ParamType.BOOL, tree.getChildren()[2]);
-            case "char_location" -> createRegister(Instruction.Param.ParamType.CHAR, tree.getChildren()[2]);
             case "int_location" -> createRegister(Instruction.Param.ParamType.INT, tree.getChildren()[2]);
             case "float_location" -> createRegister(Instruction.Param.ParamType.FLOAT, tree.getChildren()[2]);
             default -> Instruction.Param.constant('?');
@@ -215,18 +195,16 @@ public class Assembler {
     private static Instruction.Param createRegister(Instruction.Param.ParamType type, ParseTree tree) {
         if(tree.getDescription() == symbolTable.get("reg")) {
             String s = tree.getValue().value.substring(1);
-            int rId = s.equals("p") ? -1 : s.charAt(0) - '0';
+            int rId = s.equals("b") ? -2 : s.equals("p") ? -1 : s.charAt(0) - '0';
             return switch (type) {
-                case CHAR, BOOL -> Instruction.Param.register1(rId, type);
-                case INT, FLOAT -> Instruction.Param.register4(rId, type);
+                case INT, FLOAT -> Instruction.Param.reg(rId, type);
             };
         }
         else {
             String s = tree.getChildren()[1].getValue().value.substring(1);
-            int rId = s.equals("p") ? -1 : s.charAt(0) - '0';
+            int rId = s.equals("b") ? -2 : s.equals("p") ? -1 : s.charAt(0) - '0';
             return switch (type) {
-                case CHAR, BOOL -> Instruction.Param.mem1(rId, type);
-                case INT, FLOAT -> Instruction.Param.mem4(rId, type);
+                case INT, FLOAT -> Instruction.Param.mem(rId, type);
             };
         }
     }

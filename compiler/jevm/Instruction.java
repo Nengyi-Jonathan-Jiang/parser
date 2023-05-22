@@ -1,47 +1,39 @@
 package compiler.jevm;
 
 import java.util.function.BinaryOperator;
-import java.util.function.Function;
 
 import static compiler.jevm.Instruction.Param.ParamType.*;
 import static compiler.jevm.MemoryLocation.*;
 
 public abstract class Instruction {
+    private interface BinOp {
+        void apply(MemoryLocation x1, MemoryLocation x2, MemoryLocation d);
+    }
+
     private static class ArithmeticInstruction extends Instruction {
         protected final Param p1;
         protected final Param p2;
         protected final Param dest;
-        private final Param.ParamType t1, t2, td;
-        private final BinaryOperator<Integer> intFunc;
-        private final BinaryOperator<Float> floatFunc;
+        private final BinOp func;
 
         public ArithmeticInstruction(Param p1, Param p2, Param dest, BinaryOperator<Integer> intFunc, BinaryOperator<Float> floatFunc) {
-            t1 = (this.p1 = p1).type;
-            t2 = (this.p2 = p2).type;
-            td = (this.dest = dest).type;
-            this.intFunc = intFunc;
-            this.floatFunc = floatFunc;
+            Param.ParamType t1 = (this.p1 = p1).type, t2 = (this.p2 = p2).type, td = (this.dest = dest).type;
+
+            if (t1.isInt() && t2.isInt() && td.isInt())
+                func = (x1, x2, d) -> d.setInt(intFunc.apply(x1.getInt(), x2.getInt()));
+            else if (t1.isInt() && t2.isFloat() && td.isFloat())
+                func = (x1, x2, d) -> d.setFloat(floatFunc.apply((float) x1.getInt(), x2.getFloat()));
+            else if (t1.isFloat() && t2.isInt() && td.isFloat())
+                func = (x1, x2, d) -> d.setFloat(floatFunc.apply(x1.getFloat(), (float) x2.getInt()));
+            else if (t1.isFloat() && t2.isFloat() && td.isFloat())
+                func = (x1, x2, d) -> d.setFloat(floatFunc.apply(x1.getFloat(), x2.getFloat()));
+            else
+                throw new Error("JeVM Error: Invalid parameters to arithmetic operation : (" + t1 + ", " + t2 + ") -> " + td);
         }
 
         @Override
         public void execute(VM jevm) {
-            if (!t1.isIntOrFloat() || !t2.isIntOrFloat() || !td.isIntOrFloat())
-                throw new Error("JeVM Error: Invalid parameters to arithmetic operation : (" + t1 + ", " + t2 + ") -> " + td);
-
-            var x1 = (M4) p1.getMem(jevm);
-            var x2 = (M4) p2.getMem(jevm);
-            var d = (M4) dest.getMem(jevm);
-
-            if (t1.isInt() && t2.isInt() && td.isInt())
-                d.setInt(intFunc.apply(x1.getInt(), x2.getInt()));
-            else if (t1.isInt() && t2.isFloat() && td.isFloat())
-                d.setFloat(floatFunc.apply((float) x1.getInt(), x2.getFloat()));
-            else if (t1.isFloat() && t2.isInt() && td.isFloat())
-                d.setFloat(floatFunc.apply(x1.getFloat(), (float) x2.getInt()));
-            else if (t1.isFloat() && t2.isFloat() && td.isFloat())
-                d.setFloat(floatFunc.apply(x1.getFloat(), x2.getFloat()));
-            else
-                throw new Error("JeVM Error: Invalid parameters to arithmetic operation : (" + t1 + ", " + t2 + ") -> " + td);
+            func.apply(p1.getMem(jevm), p2.getMem(jevm), dest.getMem(jevm));
         }
     }
 
@@ -51,14 +43,12 @@ public abstract class Instruction {
         protected final Param dest;
         private final Param.ParamType t1, t2, td;
         private final BinaryOperator<Integer> intFunc;
-        private final BinaryOperator<Boolean> boolFunc;
 
-        public LogicalInstruction(Param p1, Param p2, Param dest, BinaryOperator<Integer> intFunc, BinaryOperator<Boolean> boolFunc) {
+        public LogicalInstruction(Param p1, Param p2, Param dest, BinaryOperator<Integer> intFunc) {
             t1 = (this.p1 = p1).type;
             t2 = (this.p2 = p2).type;
             td = (this.dest = dest).type;
             this.intFunc = intFunc;
-            this.boolFunc = boolFunc;
         }
 
         @Override
@@ -68,14 +58,9 @@ public abstract class Instruction {
             var d = dest.getMem(jevm);
 
             if (t1.isInt() && t2.isInt() && td.isInt())
-                ((M4) d).setInt(intFunc.apply(
-                        ((M4) x1).getInt(),
-                        ((M4) x2).getInt()
-                ));
-            else if (t1.isBool() && t2.isBool() && td.isBool())
-                ((M1) d).setBool(boolFunc.apply(
-                        ((M1) x1).getBool(),
-                        ((M1) x2).getBool()
+                d.setInt(intFunc.apply(
+                        x1.getInt(),
+                        x2.getInt()
                 ));
             else
                 throw new Error("JeVM Error: Invalid parameters to logical operation : (" + t1 + ", " + t2 + ") -> " + td);
@@ -101,9 +86,9 @@ public abstract class Instruction {
             if (!t1.isInt() || !t2.isInt() || !td.isInt())
                 throw new Error("JeVM Error: Invalid parameters to bit shift operation : (" + t1 + ", " + t2 + ") -> " + td);
 
-            var x1 = (M4) p1.getMem(jevm);
-            var x2 = (M4) p2.getMem(jevm);
-            var d = (M4) dest.getMem(jevm);
+            var x1 =  p1.getMem(jevm);
+            var x2 =  p2.getMem(jevm);
+            var d =  dest.getMem(jevm);
 
             d.setInt(func.apply(x1.getInt(), x2.getInt()));
         }
@@ -194,7 +179,7 @@ public abstract class Instruction {
 
     public static class OR extends LogicalInstruction {
         public OR(Param p1, Param p2, Param dest) {
-            super(p1, p2, dest, (a, b) -> a | b, (a, b) -> a || b);
+            super(p1, p2, dest, (a, b) -> a | b);
         }
 
         @Override
@@ -205,7 +190,7 @@ public abstract class Instruction {
 
     public static class AND extends LogicalInstruction {
         public AND(Param p1, Param p2, Param dest) {
-            super(p1, p2, dest, (a, b) -> a & b, (a, b) -> a && b);
+            super(p1, p2, dest, (a, b) -> a & b);
         }
 
         @Override
@@ -216,7 +201,7 @@ public abstract class Instruction {
 
     public static class XOR extends LogicalInstruction {
         public XOR(Param p1, Param p2, Param dest) {
-            super(p1, p2, dest, (a, b) -> a ^ b, (a, b) -> a != b);
+            super(p1, p2, dest, (a, b) -> a ^ b);
         }
 
         @Override
@@ -266,14 +251,12 @@ public abstract class Instruction {
             if (dest.type != INT) throw new Error("JeVM Error: Jump destination must be an integer");
 
             int comp = switch (t) {
-                case FLOAT -> Float.compare(((M4) x).getFloat(), 0);
-                case INT -> ((M4) x).getInt();
-                case CHAR -> ((M1) x).getChar() & 0xFF;
-                case BOOL -> ((M1) x).getBool() ? 1 : 0;
+                case FLOAT -> Float.compare(x.getFloat(), 0);
+                case INT -> x.getInt();
             };
 
             if ((condition & GZ) != 0 && comp > 0 || (condition & LZ) != 0 && comp < 0 || (condition & EZ) != 0 && comp == 0) {
-                jevm.jump(((M4) dest.getMem(jevm)).getInt());
+                jevm.jump(dest.getMem(jevm).getInt());
             }
         }
 
@@ -306,9 +289,9 @@ public abstract class Instruction {
             if (!source.type.isInt() || !dest.type.isInt() || !length.type.isInt()) {
                 throw new Error("JeVM Error: Parameters to CPY must be integers");
             }
-            var s = (M4) source.getMem(jevm);
-            var d = (M4) dest.getMem(jevm);
-            var l = (M4) length.getMem(jevm);
+            var s =  source.getMem(jevm);
+            var d =  dest.getMem(jevm);
+            var l =  length.getMem(jevm);
 
             jevm.ram.memcpy(s.getInt(), d.getInt(), l.getInt());
         }
@@ -331,16 +314,27 @@ public abstract class Instruction {
         public void execute(VM jevm) {
             MemoryLocation s = source.getMem(jevm);
             jevm.display(switch (t) {
-                case FLOAT -> String.valueOf(((M4) s).getFloat());
-                case INT -> String.valueOf(((M4) s).getInt());
-                case CHAR -> String.valueOf(((M1) s).getChar());
-                case BOOL -> String.valueOf(((M1) s).getBool());
+                case FLOAT -> String.valueOf(s.getFloat());
+                case INT -> String.valueOf(s.getInt());
             });
         }
 
         @Override
         public String toString() {
             return source + " -> stdout";
+        }
+    }
+
+    public static class PRINT extends Instruction {
+        private final String s;
+
+        public PRINT(String s) {
+            this.s = s;
+        }
+
+        @Override
+        public void execute(VM jevm) {
+            jevm.display(s);
         }
     }
 
@@ -356,10 +350,8 @@ public abstract class Instruction {
             var m = dest.getMem(jevm);
 
             switch (dest.type) {
-                case BOOL -> ((M1) m).setBool(jevm.readBool());
-                case CHAR -> ((M1) m).setChar(jevm.readChar());
-                case INT -> ((M4) m).setInt(jevm.readInt());
-                case FLOAT -> ((M4) m).setFloat(jevm.readFloat());
+                case INT -> m.setInt(jevm.readInt());
+                case FLOAT -> m.setFloat(jevm.readFloat());
             }
         }
 
@@ -380,7 +372,7 @@ public abstract class Instruction {
         @Override
         public void execute(VM jevm) {
             if(!size.type().isInt() || !dest.type.isInt()) throw new Error("JeVM Error: Invalid parameter types to alloc");
-            M4 s = (M4) size.getMem(jevm), d = (M4) dest.getMem(jevm);
+            MemoryLocation s = size.getMem(jevm), d = dest.getMem(jevm);
             d.setInt(jevm.allocator.allocate(s.getInt()));
         }
 
@@ -399,7 +391,7 @@ public abstract class Instruction {
         @Override
         public void execute(VM jevm) {
             if(!source.type().isInt()) throw new Error("JeVM Error: Invalid parameter types to dealloc");
-            M4 s = (M4) source.getMem(jevm);
+            var s = source.getMem(jevm);
             jevm.allocator.deallocate(s.getInt());
         }
 
@@ -425,13 +417,11 @@ public abstract class Instruction {
         public void execute(VM jevm) {
             var x = source.getMem(jevm);
             var t = source.type;
-            if (dest.type != BOOL) throw new Error("JeVM Error: Jump destination must be an integer");
+            if (dest.type != INT) throw new Error("JeVM Error: Jump destination must be an integer");
 
             int comp = switch (t) {
-                case FLOAT -> Float.compare(((M4) x).getFloat(), 0);
-                case INT -> ((M4) x).getInt();
-                case CHAR -> ((M1) x).getChar() & 0xFF;
-                case BOOL -> ((M1) x).getBool() ? 1 : 0;
+                case FLOAT -> Float.compare(x.getFloat(), 0);
+                case INT -> x.getInt();
             };
 
             boolean res = false;
@@ -439,7 +429,7 @@ public abstract class Instruction {
             if((condition & LZ) != 0) res |= comp < 0;
             if((condition & EZ) != 0) res |= comp == 0;
 
-            ((M1) dest.getMem(jevm)).setBool(res);
+            dest.getMem(jevm).setInt(res ? 1 : 0);
         }
 
 
@@ -460,49 +450,32 @@ public abstract class Instruction {
 
     public abstract void execute(VM jevm);
 
-    public record Param(Function<VM, MemoryLocation> location, ParamType type, String inputName) {
+    public record Param(LocationSupplier location, ParamType type, String inputName) {
+        private interface LocationSupplier {
+            MemoryLocation in(VM vm);
+        }
+        private static LocationSupplier constantSupplier(Constant c){
+            return $ -> c;
+        }
+
         public static Param constant(int constVal) {
-            return new Param($ -> new Constant4(constVal), INT, String.valueOf(constVal));
+            return new Param(constantSupplier(new Constant(constVal)), INT, String.valueOf(constVal));
         }
 
         public static Param constant(float constVal) {
-            return new Param($ -> new Constant4(constVal), FLOAT, String.valueOf(constVal));
+            return new Param(constantSupplier(new Constant(constVal)), FLOAT, String.valueOf(constVal));
         }
 
-        public static Param constant(char constVal) {
-            return new Param($ -> new Constant1(constVal), CHAR, "'%s'".formatted(constVal));
+        public static Param reg(int registerId, ParamType type) {
+            return new Param(vm -> vm.getRegister(registerId), type, "r" + registerId);
         }
 
-        public static Param constant(boolean constVal) {
-            return new Param($ -> new Constant1(constVal), BOOL, String.valueOf(constVal));
-        }
-
-        public static Param register1(int registerId, ParamType type) {
-            if (!type.isBoolOrChar())
-                throw new Error("JeVM Error: Invalid type for 1 byte register");
-            return new Param(vm -> vm.getR1(registerId, false), type, "r" + registerId);
-        }
-
-        public static Param register4(int registerId, ParamType type) {
-            if (!type.isIntOrFloat())
-                throw new Error("JeVM Error: Invalid type for 4 byte register");
-            return new Param(vm -> vm.getR4(registerId, false), type, "r" + registerId);
-        }
-
-        public static Param mem1(int registerId, ParamType type) {
-            if (!type.isBoolOrChar())
-                throw new Error("JeVM Error: Invalid type for 1 byte memory");
-            return new Param(vm -> vm.getR1(registerId, true), type, "@r" + registerId);
-        }
-
-        public static Param mem4(int registerId, ParamType type) {
-            if (!type.isIntOrFloat())
-                throw new Error("JeVM Error: Invalid type for 4 byte memory");
-            return new Param(vm -> vm.getR4(registerId, true), type, "@r" + registerId);
+        public static Param mem(int registerId, ParamType type) {
+            return new Param(vm -> vm.getMemory(registerId), type, "@r" + registerId);
         }
 
         public enum ParamType {
-            FLOAT, INT, CHAR, BOOL;
+            FLOAT, INT;
 
             public boolean isInt() {
                 return this == INT;
@@ -511,28 +484,10 @@ public abstract class Instruction {
             public boolean isFloat() {
                 return this == FLOAT;
             }
-
-            public boolean isBool() {
-                return this == BOOL;
-            }
-
-            public boolean isChar() {
-                return this == CHAR;
-            }
-
-            @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-            public boolean isIntOrFloat() {
-                return isInt() || isFloat();
-            }
-
-            @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-            public boolean isBoolOrChar() {
-                return isBool() || isChar();
-            }
         }
 
         public MemoryLocation getMem(VM vm) {
-            return location().apply(vm);
+            return location.in(vm);
         }
 
         @Override
