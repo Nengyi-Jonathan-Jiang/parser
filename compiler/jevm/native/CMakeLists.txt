@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 
 # Add all source files to build
 file(GLOB JEVM_SRC "src/*.cpp" "src/*.h")
-add_library(native SHARED ${JEVM_SRC} src/allocator.h)
+add_library(native SHARED ${JEVM_SRC} src/allocator.h src/walloc.c)
 
 # JNI dependencies
 find_package(JNI REQUIRED)
