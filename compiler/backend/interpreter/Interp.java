@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import compiler.frontend.parsers.ParseTree;
+import compiler.frontend.parser.ParseTree;
 
 public class Interp {
     public final Deque<Value> stack;

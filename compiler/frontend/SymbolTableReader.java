@@ -1,7 +1,5 @@
 package compiler.frontend;
 
-import compiler.frontend.parsers.LRParsers.parsing_table.ParsingTable;
-
 import java.io.File;
 import java.util.Scanner;
 

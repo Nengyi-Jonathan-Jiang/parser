@@ -1,4 +1,4 @@
-package compiler.frontend.parsers;
+package compiler.frontend.parser;
 
 import compiler.frontend.Token;
 

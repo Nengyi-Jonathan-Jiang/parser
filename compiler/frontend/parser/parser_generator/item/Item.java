@@ -1,9 +1,9 @@
-package compiler.frontend.parsers.LRParsers.items;
+package compiler.frontend.parser.parser_generator.item;
 
 import compiler.util.Printable;
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 import compiler.frontend.Symbol;
-import compiler.frontend.SymbolSet;
+import compiler.frontend.parser.parser_generator.SymbolSet;
 import compiler.util.ComparableSet;
 
 public class Item implements Comparable<Item>, Printable {

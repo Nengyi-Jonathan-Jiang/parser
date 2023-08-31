@@ -3,7 +3,7 @@ package compiler.assembler;
 import compiler.frontend.SymbolTableReader;
 import compiler.frontend.grammar.Grammar;
 import compiler.frontend.grammar.GrammarReader;
-import compiler.frontend.parsers.LRParsers.LR1ParseTableBuilder;
+import compiler.frontend.parser.parser_generator.LR1ParseTableBuilder;
 
 public class genparser {
     public static void main(String[] args){

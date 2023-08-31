@@ -1,4 +1,4 @@
-package compiler.frontend.parsers.LRParsers;
+package compiler.frontend.parser.lr_parser;
 
 import compiler.frontend.Symbol;
 

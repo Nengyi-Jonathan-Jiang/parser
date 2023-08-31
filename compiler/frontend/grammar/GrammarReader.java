@@ -1,6 +1,6 @@
 package compiler.frontend.grammar;
 
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 import compiler.frontend.Symbol;
 
 import java.io.*;

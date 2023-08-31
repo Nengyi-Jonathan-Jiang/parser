@@ -18,7 +18,10 @@ public class Encoder {
             }
             buffer.add(b);
         }
-        return buffer.toArray(byte[]::new);
+
+        byte[] res = new byte[buffer.size()];
+        for(int i = 0; i < buffer.size(); i++) res[i] = buffer.get(i);
+        return res;
     }
 
     /*

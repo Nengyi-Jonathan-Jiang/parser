@@ -1,5 +1,6 @@
-package compiler.frontend;
+package compiler.frontend.parser.parser_generator;
 
+import compiler.frontend.Symbol;
 import compiler.util.ComparableHashSet;
 
 import java.util.Collection;

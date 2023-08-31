@@ -1,10 +1,10 @@
-package compiler.frontend.parsers.LRParsers.parsing_table;
+package compiler.frontend.parser.lr_parser.parsing_table;
 
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.*;
 
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 import compiler.frontend.Symbol;
 
 public class ParsingTable{

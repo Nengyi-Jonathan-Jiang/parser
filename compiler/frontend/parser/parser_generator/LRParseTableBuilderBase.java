@@ -1,10 +1,10 @@
-package compiler.frontend.parsers.LRParsers;
+package compiler.frontend.parser.parser_generator;
 
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 import compiler.frontend.Symbol;
 import compiler.frontend.grammar.Grammar;
-import compiler.frontend.parsers.LRParsers.parsing_table.*;
-import compiler.frontend.parsers.LRParsers.items.*;
+import compiler.frontend.parser.lr_parser.parsing_table.*;
+import compiler.frontend.parser.parser_generator.item.*;
 
 import java.util.*;
 

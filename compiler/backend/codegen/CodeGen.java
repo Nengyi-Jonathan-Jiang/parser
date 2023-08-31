@@ -139,6 +139,6 @@ public class CodeGen {
     }
 
     static byte[] encodeLocal(int count, valueType type){
-
+        return null;
     }
 }

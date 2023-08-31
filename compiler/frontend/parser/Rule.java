@@ -1,4 +1,5 @@
-package compiler.frontend;
+package compiler.frontend.parser;
+import compiler.frontend.Symbol;
 import compiler.util.Printable;
 
 import java.util.*;

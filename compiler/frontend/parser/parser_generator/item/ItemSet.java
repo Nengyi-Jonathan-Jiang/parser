@@ -1,4 +1,4 @@
-package compiler.frontend.parsers.LRParsers.items;
+package compiler.frontend.parser.parser_generator.item;
 
 import compiler.util.Printable;
 import compiler.util.ComparableTreeSet;

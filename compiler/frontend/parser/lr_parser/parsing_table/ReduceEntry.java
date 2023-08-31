@@ -1,6 +1,6 @@
-package compiler.frontend.parsers.LRParsers.parsing_table;
+package compiler.frontend.parser.lr_parser.parsing_table;
 
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 
 public record ReduceEntry(Rule rule) implements TableEntry {
     public Action getAction() {

@@ -1,13 +1,13 @@
-package compiler.frontend.parsers.LRParsers;
+package compiler.frontend.parser.lr_parser;
 
 import java.util.*;
 
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 import compiler.frontend.Symbol;
 import compiler.frontend.Token;
-import compiler.frontend.parsers.ParseTree;
-import compiler.frontend.parsers.Parser;
-import compiler.frontend.parsers.LRParsers.parsing_table.*;
+import compiler.frontend.parser.ParseTree;
+import compiler.frontend.parser.Parser;
+import compiler.frontend.parser.lr_parser.parsing_table.*;
 
 /**
  * An table-driven parser implementing the LR parsing algorithm. Parses input in O(N) time

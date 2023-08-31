@@ -3,6 +3,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import compiler.frontend.*;
+import compiler.frontend.parser.Rule;
+import compiler.frontend.parser.SymbolString;
+import compiler.frontend.parser.parser_generator.SymbolSet;
 import compiler.util.*;
 
 public class Grammar implements Printable {
@@ -12,7 +15,7 @@ public class Grammar implements Printable {
     private final Map<Symbol, List<Rule>> startsWith;
     private final SymbolSet allSymbols, terminals, nonTerminals, nullableComparableSet;
     private final Map<Symbol, SymbolSet> firstComparableSets, followComparableSets;
-    private final Cache<SymbolString, SymbolSet> firstCache = new HashCompareCache<>(), followCache = new HashCompareCache<>();
+    private final Cache<SymbolString, SymbolSet> firstCache = new CompareCache<>(), followCache = new CompareCache<>();
 
     public final Symbol.SymbolTable symbolTable;
 
@@ -151,7 +154,7 @@ public class Grammar implements Printable {
 
         // If last token is nullable, then also add the follow set of the rest
         // of the token string
-        if(isNullable(tkns.lastTkn())) res.addAll(follow(tkns.substr(0, tkns.size() - 1)));
+        if(isNullable(tkns.lastTkn())) res.addAll(follow(tkns.substring(0, tkns.size() - 1)));
 
         // Cache result
         followCache.cache(tkns, res);
@@ -178,7 +181,7 @@ public class Grammar implements Printable {
         SymbolSet res = new SymbolSet(first(tkns.firstTkn()));
         // If the first token of the token string is nullable, then also add the
         // first set of the rest of the token string
-        if(isNullable(tkns.firstTkn())) res.addAll(first(tkns.substr(1)));
+        if(isNullable(tkns.firstTkn())) res.addAll(first(tkns.substring(1)));
 
         // Cache result
         firstCache.cache(tkns, res);

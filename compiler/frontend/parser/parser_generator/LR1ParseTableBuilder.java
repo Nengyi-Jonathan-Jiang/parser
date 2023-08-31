@@ -1,11 +1,11 @@
-package compiler.frontend.parsers.LRParsers;
+package compiler.frontend.parser.parser_generator;
 
-import compiler.frontend.Rule;
+import compiler.frontend.parser.Rule;
 import compiler.frontend.Symbol;
-import compiler.frontend.SymbolString;
+import compiler.frontend.parser.SymbolString;
 import compiler.frontend.grammar.Grammar;
-import compiler.frontend.parsers.LRParsers.items.Item;
-import compiler.frontend.parsers.LRParsers.items.ItemSet;
+import compiler.frontend.parser.parser_generator.item.Item;
+import compiler.frontend.parser.parser_generator.item.ItemSet;
 import compiler.util.Cache;
 import compiler.util.CompareCache;
 
@@ -43,11 +43,11 @@ public class LR1ParseTableBuilder extends LRParseTableBuilderBase {
 
                 if(itm.isFinished() || !grammar.isNonTerminal(symbol)) continue;
 
-                SymbolString rest = itm.getRule().getRhs().substr(itm.getPos() + 1);
+                SymbolString rest = itm.getRule().getRhs().substring(itm.getPos() + 1);
 
                 for(Rule r : grammar.getRules(symbol)){
                     for(Symbol lookahead : itm.getLookahead()){
-                        Item newItem = new Item(r, 0, grammar.first(rest.append(lookahead)));
+                        Item newItem = new Item(r, 0, grammar.first(rest.concat(lookahead)));
 
                         updated |= res.add(newItem);
                         newEdge.add(newItem);
