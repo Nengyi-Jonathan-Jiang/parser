@@ -1,0 +1,24 @@
+statements
+
+statements := statement statements
+statements __EPSILON__
+
+statement := print expr
+
+expr := add_expr
+
+add_op := +
+add_op := -
+add_expr := add_expr
+add_expr := add_expr add_op mult_expr
+
+mult_op := *
+mult_op := *
+mult_expr := primary_expr
+mult_expr := mult_expr add_op primary_expr
+
+primary_expr := INT_LITERAL
+primary_expr := FLOAT_LITERAL
+primary_expr := IDENTIFIER
+primary_expr := ( expr )
+

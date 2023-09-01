@@ -1,6 +1,7 @@
 import compiler.Symbol;
 import compiler.SymbolTableReader;
 import compiler.Token;
+import compiler.parser.parser_generator.item.Item;
 import jpp.interpreter.Interp;
 import compiler.lexer.Lexer;
 import compiler.parser.*;
@@ -17,16 +18,16 @@ public class Main {
 		System.out.println("Generating Symbol Table...");
 
 		var symbolTable = Symbol.SymbolTable.merge(
-			SymbolTableReader.generateFromLexerFile("Code.lx"),
-			SymbolTableReader.generateFromGrammarFile("Crab.ebnf")
+			SymbolTableReader.generateFromLexerFile("/Code.lx"),
+			SymbolTableReader.generateFromGrammarFile("/Crab.ebnf")
 		);
 
 		System.out.println(symbolTable);
 
 		System.out.println("Lexing...");
 
-		Lexer lexer = Lexer.fromFile(symbolTable, "Code.lx");
-		Lexer.Lex lex = lexer.lex(new String(Files.readAllBytes(Path.of("input.txt"))));
+		Lexer lexer = Lexer.fromFile(symbolTable, "/Code.lx");
+		Lexer.Lex lex = lexer.lex(new String(Files.readAllBytes(Path.of("/input.txt"))));
 
 		PrintWriter tokenStreamFile = new PrintWriter("TokenStream.txt");
 

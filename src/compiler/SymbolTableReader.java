@@ -76,10 +76,10 @@ public class SymbolTableReader {
 
         Scanner scan;
         try {
-            scan = new Scanner(new File(filename));
+            scan = new Scanner(SymbolTableReader.class.getResourceAsStream(filename));
         }
         catch(Exception e){
-            throw new Error("Could not read file!");
+            throw new RuntimeException(e);
         }
         while(scan.hasNextLine()){
             Scanner s = new Scanner(scan.nextLine());
