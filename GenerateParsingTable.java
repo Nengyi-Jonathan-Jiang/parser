@@ -1,7 +1,7 @@
-import compiler.frontend.SymbolTableReader;
-import compiler.frontend.grammar.Grammar;
-import compiler.frontend.grammar.GrammarReader;
-import compiler.frontend.parser.parser_generator.LR1ParseTableBuilder;
+import compiler.SymbolTableReader;
+import compiler.grammar.Grammar;
+import compiler.grammar.GrammarReader;
+import compiler.parser.parser_generator.LR1ParseTableBuilder;
 
 public class GenerateParsingTable {
     public static void main(String[] args){

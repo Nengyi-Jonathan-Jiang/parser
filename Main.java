@@ -1,11 +1,11 @@
-import compiler.frontend.Symbol;
-import compiler.frontend.SymbolTableReader;
-import compiler.frontend.Token;
-import compiler.backend.interpreter.Interp;
-import compiler.frontend.lexer.Lexer;
-import compiler.frontend.parser.*;
-import compiler.frontend.parser.lr_parser.LRParser;
-import compiler.frontend.parser.lr_parser.parsing_table.ParsingTable;
+import compiler.Symbol;
+import compiler.SymbolTableReader;
+import compiler.Token;
+import jpp.interpreter.Interp;
+import compiler.lexer.Lexer;
+import compiler.parser.*;
+import compiler.parser.lr_parser.LRParser;
+import compiler.parser.lr_parser.parsing_table.ParsingTable;
 
 import java.io.*;
 import java.nio.file.*;

@@ -1,0 +1,56 @@
+package jpp.jevm;
+
+import java.util.Scanner;
+
+public class VM {
+    public final RAM ram = new RAM();
+    private final Register registers[] = new Register[10];
+    private int instruction_ptr;
+    public final Allocator allocator = new Allocator();
+    public final Scanner scan = new Scanner(System.in);
+
+    public VM() {
+        for(int i = 0; i < registers.length; i++) registers[i] = new Register();
+    }
+
+    public void execute(Program program){
+        instruction_ptr = 0;
+        int i = 0;
+        while(instruction_ptr != -1 && instruction_ptr < program.length){
+            var instruction = program.get(instruction_ptr);
+            instruction.execute(this);
+            instruction_ptr++;
+            if(++i > 1000000000) throw new JeVMError("TLE (Executed more than 1e9 instructions)");
+        }
+    }
+
+    public void jump(int location){
+        instruction_ptr = location - 1;
+    }
+
+    public Register getRegister(int id){
+        try {
+            return registers[id + 2];
+        }
+        catch(IndexOutOfBoundsException e){
+            throw new JeVMError("Register index out of range (id=" + id + ")");
+        }
+    }
+
+    public MemoryLocation getMemory(int id){
+        return ram.get(getRegister(id).getInt());
+    }
+
+    public void display(String s){
+        // TODO: add log file?
+        System.out.print(s);
+    }
+
+    public int readInt() {
+        return scan.nextInt();
+    }
+
+    public float readFloat() {
+        return scan.nextFloat();
+    }
+}
