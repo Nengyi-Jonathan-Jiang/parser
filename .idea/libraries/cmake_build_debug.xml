@@ -3,7 +3,7 @@
     <CLASSES />
     <JAVADOC />
     <NATIVE>
-      <root url="file://$PROJECT_DIR$/src/jpp/jevm/native/lib" />
+      <root url="file://$PROJECT_DIR$/src/jepp/jevm/native/lib" />
     </NATIVE>
     <SOURCES />
   </library>

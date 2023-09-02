@@ -12,9 +12,13 @@ public class Symbol implements Comparable<Symbol> {
 
         public final Symbol __START__ = create("§"), __END__ = create("Ω");
 
-        public Symbol create(String string){
+        private Symbol createNewSymbol(String string) {
             if(locked) throw new Error("Cannot create new symbol after table is locked");
-            return store.containsKey(string) ? get(string) : new Symbol(this, string, ++size);
+            return new Symbol(this, string, ++size);
+        }
+
+        public Symbol create(String string){
+            return store.containsKey(string) ? get(string) : createNewSymbol(string);
         }
 
         public Symbol get(String string) {

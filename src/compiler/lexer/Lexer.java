@@ -48,7 +48,7 @@ public class Lexer {
     public static Lexer fromFile(Symbol.SymbolTable symbolTable, String filename){
         Scanner scan;
         try {
-            scan = new Scanner(new File(filename));
+            scan = new Scanner(Lexer.class.getResourceAsStream(filename));
         }
         catch(Exception e){
             throw new Error("Could not read file!");

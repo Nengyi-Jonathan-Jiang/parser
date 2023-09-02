@@ -1,11 +1,12 @@
 package compiler.parser.lr_parser;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import compiler.parser.Rule;
 import compiler.Symbol;
 import compiler.Token;
-import compiler.parser.ParseTree;
+import compiler.parser.ParseTreeNode;
 import compiler.parser.Parser;
 import compiler.parser.lr_parser.parsing_table.*;
 
@@ -28,7 +29,7 @@ public final class LRParser implements Parser{
      * @param tokens A string of tokens to be parsed
      * @return The parse tree if the tokens were parsed successfully, otherwise null
      */
-    public ParseTree parse(Token[] tokens) {
+    public ParseTreeNode parse(Token[] tokens) {
         Parse p = start();
         for(Token token : tokens){
             p.process(token);
@@ -45,7 +46,7 @@ public final class LRParser implements Parser{
 
     public static class Parse implements Parser.Parse{
         private final Deque<Integer> stateStack = new ArrayDeque<>();
-        private final Deque<ParseTree> parseTreeStack = new ArrayDeque<>();
+        private final Deque<ParseTreeNode> parseTreeNodeStack = new ArrayDeque<>();
         private final ParsingTable table;
         private boolean finished;
 
@@ -64,7 +65,10 @@ public final class LRParser implements Parser{
 
                 // Parse failed
                 if(entry == null) {
-                    throw new LRParsingError("Parse failed!", table.acceptableSymbolsAtState(state));
+                    throw new LRParsingError("Parse failed on token " + token + ": expected one of "
+                        + table.acceptableSymbolsAtState(state).stream().map(Symbol::toString).collect(Collectors.joining(" ")),
+                        table.acceptableSymbolsAtState(state)
+                    );
                 }
 
                 switch (entry.getAction()) {
@@ -73,7 +77,7 @@ public final class LRParser implements Parser{
                         stateStack.push(((ShiftEntry) entry).nextState());
 
                         // Update parse tree -- add new leaf node to stack
-                        parseTreeStack.push(new ParseTree(token.type, token));
+                        parseTreeNodeStack.push(new ParseTreeNode(token.type, token));
                         return;
                     }
                     case ACCEPT -> { //Parse successful -- return parse tree
@@ -92,23 +96,23 @@ public final class LRParser implements Parser{
                         // Update parse tree - merge nodes into parent node
 
                         if (reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
-                        ParseTree[] children = new ParseTree[reduceRule.getRhsSize()];
-                        for (int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeStack.pop();
-                        parseTreeStack.push(new ParseTree(lhs, children));
+                        ParseTreeNode[] children = new ParseTreeNode[reduceRule.getRhsSize()];
+                        for (int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeNodeStack.pop();
+                        parseTreeNodeStack.push(new ParseTreeNode(lhs, children));
                     }
                 }
             }
         }
 
-        public ParseTree getParseTree(){
-            return parseTreeStack.getLast();
+        public ParseTreeNode getParseTree(){
+            return parseTreeNodeStack.getLast();
         }
         public boolean isFinished(){
             return finished;
         }
 
-        public Deque<ParseTree> getParseTreeStack() {
-            return parseTreeStack;
+        public Deque<ParseTreeNode> getParseTreeStack() {
+            return parseTreeNodeStack;
         }
     }
 }

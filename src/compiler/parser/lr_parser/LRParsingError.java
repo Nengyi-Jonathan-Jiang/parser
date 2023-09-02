@@ -4,7 +4,7 @@ import compiler.Symbol;
 
 import java.util.Set;
 
-public class LRParsingError extends Error {
+public class LRParsingError extends RuntimeException {
     private final Set<Symbol> expected;
 
     public LRParsingError(String message, Set<Symbol> expected) {

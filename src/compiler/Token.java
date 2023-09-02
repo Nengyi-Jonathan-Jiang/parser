@@ -11,6 +11,9 @@ public class Token {
         this.index = index;
     }
     public String toString(){
-        return this.type.name.equals(this.value) ? this.value : this.type + "<" + this.value + ">";
+        return type.name.equals(value) ? value : value.isEmpty() ? type.toString() : type + "<" + value + ">";
+    }
+    public boolean isEOF() {
+        return type == type.getTable().__END__;
     }
 }

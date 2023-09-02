@@ -1,7 +1,10 @@
 package compiler.parser.lr_parser.parsing_table;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 import compiler.parser.Rule;
@@ -48,56 +51,64 @@ public class ParsingTable{
     }
 
     public void saveToFile(String filename){
+        try {
+            //noinspection ResultOfMethodCallIgnored
+            new File(filename).createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to create file " + filename, e);
+        }
         try(PrintWriter printWriter = new PrintWriter(filename)) {
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.append(numStates);
-
-            for(int state = 0; state < numStates; state++){
-                for(Map.Entry<Symbol, TableEntry> mapEntry : actionTable.get(state).entrySet()){
-                    Symbol symbol = mapEntry.getKey();
-                    TableEntry entry = mapEntry.getValue();
-                    sb.append("\na ");
-                    sb.append(symbol);
-                    switch (entry.getAction()) {
-                        case SHIFT -> {
-                            sb.append(" s ");
-                            sb.append(((ShiftEntry) entry).nextState());
-                        }
-                        case ACCEPT -> sb.append(" a ");
-                        case REDUCE -> {
-                            sb.append(" r ");
-                            Rule rule = ((ReduceEntry) entry).rule();
-                            sb.append(rule.getRhsSize());
-                            sb.append(" ");
-                            sb.append(rule.getLhs());
-                            sb.append(" ");
-                            sb.append(rule.getRhs().toString());
-                        }
-                    }
-                }
-                for(Map.Entry<Symbol, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
-                    Symbol symbol = mapEntry.getKey();
-                    GotoEntry entry = (GotoEntry) mapEntry.getValue();
-                    sb.append("\ng ");
-                    sb.append(symbol);
-                    sb.append(" ");
-                    sb.append(entry.nextState());
-                }
-                sb.append("\ns");
-            }
-
-            printWriter.print(sb);
-            printWriter.flush();
+            printWriter.write(dataAsString(printWriter));
         }
         catch(Exception e){
-            System.out.println("Error saving LR parse table to file");
+            throw new RuntimeException("Error saving LR parse table to file", e);
         }
     }
 
+    private String dataAsString(PrintWriter printWriter) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(numStates);
+
+        for(int state = 0; state < numStates; state++){
+            for(Map.Entry<Symbol, TableEntry> mapEntry : actionTable.get(state).entrySet()){
+                Symbol symbol = mapEntry.getKey();
+                TableEntry entry = mapEntry.getValue();
+                sb.append("\na ");
+                sb.append(symbol);
+                switch (entry.getAction()) {
+                    case SHIFT -> {
+                        sb.append(" s ");
+                        sb.append(((ShiftEntry) entry).nextState());
+                    }
+                    case ACCEPT -> sb.append(" a ");
+                    case REDUCE -> {
+                        sb.append(" r ");
+                        Rule rule = ((ReduceEntry) entry).rule();
+                        sb.append(rule.getRhsSize());
+                        sb.append(" ");
+                        sb.append(rule.getLhs());
+                        sb.append(" ");
+                        sb.append(rule.getRhs().toString());
+                    }
+                }
+            }
+            for(Map.Entry<Symbol, TableEntry> mapEntry : gotoTable.get(state).entrySet()){
+                Symbol symbol = mapEntry.getKey();
+                GotoEntry entry = (GotoEntry) mapEntry.getValue();
+                sb.append("\ng ");
+                sb.append(symbol);
+                sb.append(" ");
+                sb.append(entry.nextState());
+            }
+            sb.append("\ns");
+        }
+
+        return sb.toString();
+    }
+
     public static ParsingTable loadFromFile(Symbol.SymbolTable symbolTable, String filename){
-        try(Scanner scan = new Scanner(new File(filename))){
+        try(Scanner scan = new Scanner(ParsingTable.class.getResourceAsStream(filename))){
             int size = scan.nextInt();
             ParsingTable table = new ParsingTable(size);
             for(int state = 0; state < size; state++){

@@ -2,7 +2,7 @@
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="19" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <option name="MAIN_CLASS_NAME" value="Main" />
+    <option name="MAIN_CLASS_NAME" value="TestJeppParse" />
     <module name="parser" />
     <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     <method v="2">

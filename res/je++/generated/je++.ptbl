@@ -1,0 +1,273 @@
+39
+a Ω r 0 statements 
+a print s 2
+a print_statement s 3
+a statement s 4
+a statements s 1
+g print_statement 3
+g statement 4
+g statements 1
+s
+a Ω a 
+s
+a ( s 8
+a FLOAT_LITERAL s 6
+a IDENTIFIER s 7
+a INT_LITERAL s 9
+a STRING_LITERAL s 10
+a add_expr s 11
+a expr s 12
+a mult_expr s 13
+a primary_expr s 14
+g add_expr 11
+g expr 12
+g mult_expr 13
+g primary_expr 14
+s
+a Ω r 1 statement print_statement
+a print r 1 statement print_statement
+s
+a Ω r 0 statements 
+a print s 2
+a print_statement s 3
+a statement s 4
+a statements s 5
+g print_statement 3
+g statement 4
+g statements 5
+s
+a Ω r 2 statements statement statements
+s
+a Ω r 1 primary_expr FLOAT_LITERAL
+a * r 1 primary_expr FLOAT_LITERAL
+a + r 1 primary_expr FLOAT_LITERAL
+a - r 1 primary_expr FLOAT_LITERAL
+a / r 1 primary_expr FLOAT_LITERAL
+a print r 1 primary_expr FLOAT_LITERAL
+s
+a Ω r 1 primary_expr IDENTIFIER
+a * r 1 primary_expr IDENTIFIER
+a + r 1 primary_expr IDENTIFIER
+a - r 1 primary_expr IDENTIFIER
+a / r 1 primary_expr IDENTIFIER
+a print r 1 primary_expr IDENTIFIER
+s
+a ( s 17
+a FLOAT_LITERAL s 15
+a IDENTIFIER s 16
+a INT_LITERAL s 18
+a STRING_LITERAL s 19
+a add_expr s 20
+a expr s 21
+a mult_expr s 22
+a primary_expr s 23
+g add_expr 20
+g expr 21
+g mult_expr 22
+g primary_expr 23
+s
+a Ω r 1 primary_expr INT_LITERAL
+a * r 1 primary_expr INT_LITERAL
+a + r 1 primary_expr INT_LITERAL
+a - r 1 primary_expr INT_LITERAL
+a / r 1 primary_expr INT_LITERAL
+a print r 1 primary_expr INT_LITERAL
+s
+a Ω r 1 primary_expr STRING_LITERAL
+a * r 1 primary_expr STRING_LITERAL
+a + r 1 primary_expr STRING_LITERAL
+a - r 1 primary_expr STRING_LITERAL
+a / r 1 primary_expr STRING_LITERAL
+a print r 1 primary_expr STRING_LITERAL
+s
+a Ω r 1 expr add_expr
+a + s 24
+a - s 25
+a print r 1 expr add_expr
+a add_op s 26
+g add_op 26
+s
+a Ω r 2 print_statement print expr
+a print r 2 print_statement print expr
+s
+a Ω r 1 add_expr mult_expr
+a * s 27
+a + r 1 add_expr mult_expr
+a - r 1 add_expr mult_expr
+a / s 28
+a print r 1 add_expr mult_expr
+a mult_op s 29
+g mult_op 29
+s
+a Ω r 1 mult_expr primary_expr
+a * r 1 mult_expr primary_expr
+a + r 1 mult_expr primary_expr
+a - r 1 mult_expr primary_expr
+a / r 1 mult_expr primary_expr
+a print r 1 mult_expr primary_expr
+s
+a ) r 1 primary_expr FLOAT_LITERAL
+a * r 1 primary_expr FLOAT_LITERAL
+a + r 1 primary_expr FLOAT_LITERAL
+a - r 1 primary_expr FLOAT_LITERAL
+a / r 1 primary_expr FLOAT_LITERAL
+s
+a ) r 1 primary_expr IDENTIFIER
+a * r 1 primary_expr IDENTIFIER
+a + r 1 primary_expr IDENTIFIER
+a - r 1 primary_expr IDENTIFIER
+a / r 1 primary_expr IDENTIFIER
+s
+a ( s 17
+a FLOAT_LITERAL s 15
+a IDENTIFIER s 16
+a INT_LITERAL s 18
+a STRING_LITERAL s 19
+a add_expr s 20
+a expr s 30
+a mult_expr s 22
+a primary_expr s 23
+g add_expr 20
+g expr 30
+g mult_expr 22
+g primary_expr 23
+s
+a ) r 1 primary_expr INT_LITERAL
+a * r 1 primary_expr INT_LITERAL
+a + r 1 primary_expr INT_LITERAL
+a - r 1 primary_expr INT_LITERAL
+a / r 1 primary_expr INT_LITERAL
+s
+a ) r 1 primary_expr STRING_LITERAL
+a * r 1 primary_expr STRING_LITERAL
+a + r 1 primary_expr STRING_LITERAL
+a - r 1 primary_expr STRING_LITERAL
+a / r 1 primary_expr STRING_LITERAL
+s
+a ) r 1 expr add_expr
+a + s 24
+a - s 25
+a add_op s 31
+g add_op 31
+s
+a ) s 35
+s
+a ) r 1 add_expr mult_expr
+a * s 27
+a + r 1 add_expr mult_expr
+a - r 1 add_expr mult_expr
+a / s 28
+a mult_op s 32
+g mult_op 32
+s
+a ) r 1 mult_expr primary_expr
+a * r 1 mult_expr primary_expr
+a + r 1 mult_expr primary_expr
+a - r 1 mult_expr primary_expr
+a / r 1 mult_expr primary_expr
+s
+a ( r 1 add_op +
+a FLOAT_LITERAL r 1 add_op +
+a IDENTIFIER r 1 add_op +
+a INT_LITERAL r 1 add_op +
+a STRING_LITERAL r 1 add_op +
+s
+a ( r 1 add_op -
+a FLOAT_LITERAL r 1 add_op -
+a IDENTIFIER r 1 add_op -
+a INT_LITERAL r 1 add_op -
+a STRING_LITERAL r 1 add_op -
+s
+a ( s 8
+a FLOAT_LITERAL s 6
+a IDENTIFIER s 7
+a INT_LITERAL s 9
+a STRING_LITERAL s 10
+a mult_expr s 33
+a primary_expr s 14
+g mult_expr 33
+g primary_expr 14
+s
+a ( r 1 mult_op *
+a FLOAT_LITERAL r 1 mult_op *
+a IDENTIFIER r 1 mult_op *
+a INT_LITERAL r 1 mult_op *
+a STRING_LITERAL r 1 mult_op *
+s
+a ( r 1 mult_op /
+a FLOAT_LITERAL r 1 mult_op /
+a IDENTIFIER r 1 mult_op /
+a INT_LITERAL r 1 mult_op /
+a STRING_LITERAL r 1 mult_op /
+s
+a ( s 8
+a FLOAT_LITERAL s 6
+a IDENTIFIER s 7
+a INT_LITERAL s 9
+a STRING_LITERAL s 10
+a primary_expr s 34
+g primary_expr 34
+s
+a ) s 38
+s
+a ( s 17
+a FLOAT_LITERAL s 15
+a IDENTIFIER s 16
+a INT_LITERAL s 18
+a STRING_LITERAL s 19
+a mult_expr s 36
+a primary_expr s 23
+g mult_expr 36
+g primary_expr 23
+s
+a ( s 17
+a FLOAT_LITERAL s 15
+a IDENTIFIER s 16
+a INT_LITERAL s 18
+a STRING_LITERAL s 19
+a primary_expr s 37
+g primary_expr 37
+s
+a Ω r 3 add_expr add_expr add_op mult_expr
+a * s 27
+a + r 3 add_expr add_expr add_op mult_expr
+a - r 3 add_expr add_expr add_op mult_expr
+a / s 28
+a print r 3 add_expr add_expr add_op mult_expr
+a mult_op s 29
+g mult_op 29
+s
+a Ω r 3 mult_expr mult_expr mult_op primary_expr
+a * r 3 mult_expr mult_expr mult_op primary_expr
+a + r 3 mult_expr mult_expr mult_op primary_expr
+a - r 3 mult_expr mult_expr mult_op primary_expr
+a / r 3 mult_expr mult_expr mult_op primary_expr
+a print r 3 mult_expr mult_expr mult_op primary_expr
+s
+a Ω r 3 primary_expr ( expr )
+a * r 3 primary_expr ( expr )
+a + r 3 primary_expr ( expr )
+a - r 3 primary_expr ( expr )
+a / r 3 primary_expr ( expr )
+a print r 3 primary_expr ( expr )
+s
+a ) r 3 add_expr add_expr add_op mult_expr
+a * s 27
+a + r 3 add_expr add_expr add_op mult_expr
+a - r 3 add_expr add_expr add_op mult_expr
+a / s 28
+a mult_op s 32
+g mult_op 32
+s
+a ) r 3 mult_expr mult_expr mult_op primary_expr
+a * r 3 mult_expr mult_expr mult_op primary_expr
+a + r 3 mult_expr mult_expr mult_op primary_expr
+a - r 3 mult_expr mult_expr mult_op primary_expr
+a / r 3 mult_expr mult_expr mult_op primary_expr
+s
+a ) r 3 primary_expr ( expr )
+a * r 3 primary_expr ( expr )
+a + r 3 primary_expr ( expr )
+a - r 3 primary_expr ( expr )
+a / r 3 primary_expr ( expr )
+s

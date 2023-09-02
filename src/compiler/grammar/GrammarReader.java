@@ -1,5 +1,6 @@
 package compiler.grammar;
 
+import compiler.SymbolTableReader;
 import compiler.parser.Rule;
 import compiler.Symbol;
 
@@ -37,7 +38,7 @@ public class GrammarReader {
     public static Grammar readFromFile(Symbol.SymbolTable table, String filename){
         Scanner scan;
         try{
-            scan = new Scanner(new File(filename));
+            scan = new Scanner(GrammarReader.class.getResourceAsStream(filename));
         }
         catch(Exception e){
             System.out.println("Could not read file!");

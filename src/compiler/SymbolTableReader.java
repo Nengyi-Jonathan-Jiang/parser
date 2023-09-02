@@ -47,7 +47,7 @@ public class SymbolTableReader {
 
         Scanner sc;
         try {
-            sc = new Scanner(new File(filename));
+            sc = new Scanner(SymbolTableReader.class.getResourceAsStream(filename));
         }
         catch(Exception e){
             throw new Error("Could not read file!");
