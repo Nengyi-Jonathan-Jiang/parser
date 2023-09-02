@@ -6,17 +6,18 @@ import java.io.PrintWriter;
 import java.util.*;
 
 import compiler.parser.ParseTreeNode;
-import jepp.language.JeppValue;
-import jepp.language.PrimitiveJeppType;
-import jepp.language.PrimitiveJeppValue;
+import jepp.language.*;
 
 public class Interpreter {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintWriter out = new PrintWriter(new BufferedOutputStream(output));
     private final Scanner scan;
 
+    private final Stack<JeppScope> scopeStack = new Stack<>();
+
     public Interpreter(){
         scan = new Scanner(System.in);
+        scopeStack.push(new JeppBaseScope());
     }
 
     public void run(ParseTreeNode pTree){

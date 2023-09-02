@@ -16,6 +16,7 @@ add_expr := add_expr add_op mult_expr
 
 mult_op := *
 mult_op := /
+mult_op := %
 mult_expr := primary_expr
 mult_expr := mult_expr mult_op primary_expr
 

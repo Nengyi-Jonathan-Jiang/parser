@@ -1,4 +1,4 @@
-39
+40
 a Ω r 0 statements 
 a print s 2
 a print_statement s 3
@@ -39,6 +39,7 @@ s
 a Ω r 2 statements statement statements
 s
 a Ω r 1 primary_expr FLOAT_LITERAL
+a % r 1 primary_expr FLOAT_LITERAL
 a * r 1 primary_expr FLOAT_LITERAL
 a + r 1 primary_expr FLOAT_LITERAL
 a - r 1 primary_expr FLOAT_LITERAL
@@ -46,6 +47,7 @@ a / r 1 primary_expr FLOAT_LITERAL
 a print r 1 primary_expr FLOAT_LITERAL
 s
 a Ω r 1 primary_expr IDENTIFIER
+a % r 1 primary_expr IDENTIFIER
 a * r 1 primary_expr IDENTIFIER
 a + r 1 primary_expr IDENTIFIER
 a - r 1 primary_expr IDENTIFIER
@@ -67,6 +69,7 @@ g mult_expr 22
 g primary_expr 23
 s
 a Ω r 1 primary_expr INT_LITERAL
+a % r 1 primary_expr INT_LITERAL
 a * r 1 primary_expr INT_LITERAL
 a + r 1 primary_expr INT_LITERAL
 a - r 1 primary_expr INT_LITERAL
@@ -74,6 +77,7 @@ a / r 1 primary_expr INT_LITERAL
 a print r 1 primary_expr INT_LITERAL
 s
 a Ω r 1 primary_expr STRING_LITERAL
+a % r 1 primary_expr STRING_LITERAL
 a * r 1 primary_expr STRING_LITERAL
 a + r 1 primary_expr STRING_LITERAL
 a - r 1 primary_expr STRING_LITERAL
@@ -91,27 +95,31 @@ a Ω r 2 print_statement print expr
 a print r 2 print_statement print expr
 s
 a Ω r 1 add_expr mult_expr
-a * s 27
+a % s 27
+a * s 28
 a + r 1 add_expr mult_expr
 a - r 1 add_expr mult_expr
-a / s 28
+a / s 29
 a print r 1 add_expr mult_expr
-a mult_op s 29
-g mult_op 29
+a mult_op s 30
+g mult_op 30
 s
 a Ω r 1 mult_expr primary_expr
+a % r 1 mult_expr primary_expr
 a * r 1 mult_expr primary_expr
 a + r 1 mult_expr primary_expr
 a - r 1 mult_expr primary_expr
 a / r 1 mult_expr primary_expr
 a print r 1 mult_expr primary_expr
 s
+a % r 1 primary_expr FLOAT_LITERAL
 a ) r 1 primary_expr FLOAT_LITERAL
 a * r 1 primary_expr FLOAT_LITERAL
 a + r 1 primary_expr FLOAT_LITERAL
 a - r 1 primary_expr FLOAT_LITERAL
 a / r 1 primary_expr FLOAT_LITERAL
 s
+a % r 1 primary_expr IDENTIFIER
 a ) r 1 primary_expr IDENTIFIER
 a * r 1 primary_expr IDENTIFIER
 a + r 1 primary_expr IDENTIFIER
@@ -124,20 +132,22 @@ a IDENTIFIER s 16
 a INT_LITERAL s 18
 a STRING_LITERAL s 19
 a add_expr s 20
-a expr s 30
+a expr s 31
 a mult_expr s 22
 a primary_expr s 23
 g add_expr 20
-g expr 30
+g expr 31
 g mult_expr 22
 g primary_expr 23
 s
+a % r 1 primary_expr INT_LITERAL
 a ) r 1 primary_expr INT_LITERAL
 a * r 1 primary_expr INT_LITERAL
 a + r 1 primary_expr INT_LITERAL
 a - r 1 primary_expr INT_LITERAL
 a / r 1 primary_expr INT_LITERAL
 s
+a % r 1 primary_expr STRING_LITERAL
 a ) r 1 primary_expr STRING_LITERAL
 a * r 1 primary_expr STRING_LITERAL
 a + r 1 primary_expr STRING_LITERAL
@@ -147,19 +157,21 @@ s
 a ) r 1 expr add_expr
 a + s 24
 a - s 25
-a add_op s 31
-g add_op 31
+a add_op s 32
+g add_op 32
 s
-a ) s 35
+a ) s 36
 s
+a % s 27
 a ) r 1 add_expr mult_expr
-a * s 27
+a * s 28
 a + r 1 add_expr mult_expr
 a - r 1 add_expr mult_expr
-a / s 28
-a mult_op s 32
-g mult_op 32
+a / s 29
+a mult_op s 33
+g mult_op 33
 s
+a % r 1 mult_expr primary_expr
 a ) r 1 mult_expr primary_expr
 a * r 1 mult_expr primary_expr
 a + r 1 mult_expr primary_expr
@@ -183,10 +195,16 @@ a FLOAT_LITERAL s 6
 a IDENTIFIER s 7
 a INT_LITERAL s 9
 a STRING_LITERAL s 10
-a mult_expr s 33
+a mult_expr s 34
 a primary_expr s 14
-g mult_expr 33
+g mult_expr 34
 g primary_expr 14
+s
+a ( r 1 mult_op %
+a FLOAT_LITERAL r 1 mult_op %
+a IDENTIFIER r 1 mult_op %
+a INT_LITERAL r 1 mult_op %
+a STRING_LITERAL r 1 mult_op %
 s
 a ( r 1 mult_op *
 a FLOAT_LITERAL r 1 mult_op *
@@ -205,19 +223,19 @@ a FLOAT_LITERAL s 6
 a IDENTIFIER s 7
 a INT_LITERAL s 9
 a STRING_LITERAL s 10
-a primary_expr s 34
-g primary_expr 34
+a primary_expr s 35
+g primary_expr 35
 s
-a ) s 38
+a ) s 39
 s
 a ( s 17
 a FLOAT_LITERAL s 15
 a IDENTIFIER s 16
 a INT_LITERAL s 18
 a STRING_LITERAL s 19
-a mult_expr s 36
+a mult_expr s 37
 a primary_expr s 23
-g mult_expr 36
+g mult_expr 37
 g primary_expr 23
 s
 a ( s 17
@@ -225,19 +243,21 @@ a FLOAT_LITERAL s 15
 a IDENTIFIER s 16
 a INT_LITERAL s 18
 a STRING_LITERAL s 19
-a primary_expr s 37
-g primary_expr 37
+a primary_expr s 38
+g primary_expr 38
 s
 a Ω r 3 add_expr add_expr add_op mult_expr
-a * s 27
+a % s 27
+a * s 28
 a + r 3 add_expr add_expr add_op mult_expr
 a - r 3 add_expr add_expr add_op mult_expr
-a / s 28
+a / s 29
 a print r 3 add_expr add_expr add_op mult_expr
-a mult_op s 29
-g mult_op 29
+a mult_op s 30
+g mult_op 30
 s
 a Ω r 3 mult_expr mult_expr mult_op primary_expr
+a % r 3 mult_expr mult_expr mult_op primary_expr
 a * r 3 mult_expr mult_expr mult_op primary_expr
 a + r 3 mult_expr mult_expr mult_op primary_expr
 a - r 3 mult_expr mult_expr mult_op primary_expr
@@ -245,26 +265,30 @@ a / r 3 mult_expr mult_expr mult_op primary_expr
 a print r 3 mult_expr mult_expr mult_op primary_expr
 s
 a Ω r 3 primary_expr ( expr )
+a % r 3 primary_expr ( expr )
 a * r 3 primary_expr ( expr )
 a + r 3 primary_expr ( expr )
 a - r 3 primary_expr ( expr )
 a / r 3 primary_expr ( expr )
 a print r 3 primary_expr ( expr )
 s
+a % s 27
 a ) r 3 add_expr add_expr add_op mult_expr
-a * s 27
+a * s 28
 a + r 3 add_expr add_expr add_op mult_expr
 a - r 3 add_expr add_expr add_op mult_expr
-a / s 28
-a mult_op s 32
-g mult_op 32
+a / s 29
+a mult_op s 33
+g mult_op 33
 s
+a % r 3 mult_expr mult_expr mult_op primary_expr
 a ) r 3 mult_expr mult_expr mult_op primary_expr
 a * r 3 mult_expr mult_expr mult_op primary_expr
 a + r 3 mult_expr mult_expr mult_op primary_expr
 a - r 3 mult_expr mult_expr mult_op primary_expr
 a / r 3 mult_expr mult_expr mult_op primary_expr
 s
+a % r 3 primary_expr ( expr )
 a ) r 3 primary_expr ( expr )
 a * r 3 primary_expr ( expr )
 a + r 3 primary_expr ( expr )
