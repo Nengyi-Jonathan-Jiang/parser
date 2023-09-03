@@ -7,4 +7,9 @@ public record JeppMethodSignature(PrimitiveJeppType... types) implements Compara
     public int compareTo(JeppMethodSignature o) {
         return Arrays.compare(types, o.types);
     }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(types);
+    }
 }

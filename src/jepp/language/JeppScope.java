@@ -3,7 +3,9 @@ package jepp.language;
 import jepp.interpreter.JeppInterpreterException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class JeppScope {
     private final Map<String, JeppValue> variables;
@@ -45,7 +47,17 @@ public class JeppScope {
     public JeppMethod getMethod(String name, JeppMethodSignature signature){
         // Woo, overload resolution! Fun times...
         if (hasMethod(name, signature)) return methods.get(name).get(signature);
-        if (parentScope != null) return parentScope.getMethod(name);
+        if (parentScope != null) return parentScope.getMethod(name, signature);
+        return null;
+    }
+
+    private List<JeppMethod> allMethodsForName(String name){
+        return null
+    }
+
+    public JeppMethod getMethodForArgs(String name, JeppType... types) {
+        Map<JeppMethodSignature, JeppMethod> methods = new TreeMap<>();
+
         return null;
     }
 
@@ -62,8 +74,11 @@ public class JeppScope {
     }
 
     public void registerMethod(JeppMethod method) {
-        if(hasOwnMethod(method.name(), signature)) throw new JeppInterpreterException("Method " + method.name() + " already exists in scope");
-        else methods.put(method.name(), method);
+        if(hasOwnMethod(method.name(), method.signature())) throw new JeppInterpreterException("Method " + method.name() + "(" + method.signature() + ") already exists in scope");
+        else {
+            methods.put(method.name(), new TreeMap<>());
+            methods.get(method.name()).put(method.signature(), method);
+        }
     }
 
     public void defineType(JeppType type) {
