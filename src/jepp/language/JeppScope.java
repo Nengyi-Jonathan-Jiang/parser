@@ -2,10 +2,9 @@ package jepp.language;
 
 import jepp.interpreter.JeppInterpreterException;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JeppScope {
     private final Map<String, JeppValue> variables;
@@ -51,12 +50,19 @@ public class JeppScope {
         return null;
     }
 
-    private List<JeppMethod> allMethodsForName(String name){
-        return null
+    private Map<JeppMethodSignature, JeppMethod> allMethodsForName(String name){
+        Map<JeppMethodSignature, JeppMethod> res = ownMethodsForName(name);
+        if(parentScope != null) parentScope.allMethodsForName(name).forEach(res::putIfAbsent);
+        return res;
+    }
+
+    private Map<JeppMethodSignature, JeppMethod> ownMethodsForName(String name) {
+        return methods.get(name);
     }
 
     public JeppMethod getMethodForArgs(String name, JeppType... types) {
-        Map<JeppMethodSignature, JeppMethod> methods = new TreeMap<>();
+        Map<JeppMethodSignature, JeppMethod> methods = allMethodsForName(name);
+        if(methods.containsKey(new JeppMethodSignature(types))) return methods.get(new JeppMethodSignature(types));
 
         return null;
     }
