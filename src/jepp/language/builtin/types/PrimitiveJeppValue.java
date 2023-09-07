@@ -1,4 +1,6 @@
-package jepp.language;
+package jepp.language.builtin.types;
+
+import jepp.language.JeppValue;
 
 public abstract class PrimitiveJeppValue implements JeppValue {
     private final PrimitiveJeppType type;
@@ -58,13 +60,24 @@ public abstract class PrimitiveJeppValue implements JeppValue {
     public static final class JBoolean extends PrimitiveJeppValue {
         public final boolean value;
         public JBoolean(boolean value) {
-            super(PrimitiveJeppType.JBoolT);
+            super(PrimitiveJeppType.JBooleanT);
             this.value = value;
         }
 
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+    }
+
+    public static final class JCompare extends PrimitiveJeppValue {
+        public enum CompareResult {
+            LESS, GREATER, LEQ, GEQ
+        };
+        public final int value;
+        public JCompare(int compareResult) {
+            super(PrimitiveJeppType.JCompareT);
+            this.value = compareResult;
         }
     }
 

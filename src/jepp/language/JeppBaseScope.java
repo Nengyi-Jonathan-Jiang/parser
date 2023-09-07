@@ -1,10 +1,20 @@
 package jepp.language;
 
+import jepp.language.builtin.methods.BuiltinJeppMethod;
+import jepp.language.builtin.methods.BuiltinMethods;
+
 public final class JeppBaseScope extends jepp.language.JeppScope {
-    public JeppBaseScope() {
+    private JeppBaseScope() {
         super(null);
-        registerMethod(JeppLanguageMethod.add_int_int);
-        registerMethod(JeppLanguageMethod.add_double_double);
-        registerMethod(JeppLanguageMethod.cast_int_double);
+        for (BuiltinJeppMethod method : BuiltinMethods.methods) {
+            registerMethod(method);
+        }
+    }
+
+    private static JeppBaseScope instance;
+
+    public static JeppBaseScope getInstance() {
+        if(instance == null) instance = new JeppBaseScope();
+        return instance;
     }
 }

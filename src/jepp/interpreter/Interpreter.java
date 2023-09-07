@@ -7,6 +7,8 @@ import java.util.*;
 
 import compiler.parser.ParseTreeNode;
 import jepp.language.*;
+import jepp.language.builtin.types.PrimitiveJeppType;
+import jepp.language.builtin.types.PrimitiveJeppValue;
 
 public class Interpreter {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -17,7 +19,7 @@ public class Interpreter {
 
     public Interpreter(){
         scan = new Scanner(System.in);
-        scopeStack.push(new JeppBaseScope());
+        scopeStack.push(new JeppScope(JeppBaseScope.getInstance()));
     }
 
     public void run(ParseTreeNode pTree){
