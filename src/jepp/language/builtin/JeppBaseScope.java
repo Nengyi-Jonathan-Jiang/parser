@@ -8,6 +8,6 @@ import java.util.List;
 public final class JeppBaseScope extends JeppScope {
     public JeppBaseScope() {
         super(null);
-        List.of(_Methods.methods).forEach(this::registerMethod);
+        List.of(_Methods.arithmetic_methods).forEach(this::registerMethod);
     }
 }

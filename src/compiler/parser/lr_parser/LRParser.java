@@ -34,9 +34,7 @@ public final class LRParser implements Parser{
         for(Token token : tokens){
             p.process(token);
         }
-        if(!p.isFinished()){
-            return null;
-        }
+        if(!p.isFinished()) return null;
         return p.getParseTree();
     }
 
@@ -107,6 +105,7 @@ public final class LRParser implements Parser{
         public ParseTreeNode getParseTree(){
             return parseTreeNodeStack.getLast();
         }
+
         public boolean isFinished(){
             return finished;
         }

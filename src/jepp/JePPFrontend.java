@@ -34,4 +34,8 @@ public class JePPFrontend {
     public static ParseTreeNode parse(Token[] tokens) {
         return parser.parse(tokens);
     }
+
+    public static Parser.Parse startParse() {
+        return parser.start();
+    }
 }

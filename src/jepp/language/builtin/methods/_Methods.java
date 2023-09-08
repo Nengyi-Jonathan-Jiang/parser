@@ -4,13 +4,55 @@ import static jepp.language.builtin.types.PrimitiveJeppType.*;
 import static jepp.language.builtin.types.PrimitiveJeppValue.*;
 
 public class _Methods {
-    public static final BuiltinMethod[] methods = {
-            // String concatenation
+    public static final BuiltinMethod[] concat = {
+            // Integer + String
             new BinaryOp<JInteger, JString>(JIntegerT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // Double + String
             new BinaryOp<JDouble, JString>(JDoubleT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // Boolean + String
+            new BinaryOp<JBoolean, JString>(JBooleanT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // Compare + String
+            new BinaryOp<JCompare, JString>(JCompareT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // String + Integer
             new BinaryOp<JString, JInteger>(JStringT, JIntegerT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // String + Double
             new BinaryOp<JString, JDouble>(JStringT, JDoubleT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // String + Boolean
+            new BinaryOp<JString, JBoolean>(JStringT, JBooleanT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // String + Compare
+            new BinaryOp<JString, JCompare>(JStringT, JCompareT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+            // String + String
             new BinaryOp<JString, JString>(JStringT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
+    };
+
+    public static final BuiltinMethod[] casts = {
+            // Cast Int <-> Double
+            new UnaryOp<JInteger>(JIntegerT, JDoubleT, " as", a -> new JDouble(a.value)),
+            new UnaryOp<JDouble>(JDoubleT, JIntegerT, " as", a -> new JInteger((int)(Math.floor(a.value)))),
+            // Cast Boolean <-> Double
+            new UnaryOp<JDouble>(JDoubleT, JBooleanT, " as", a -> new JBoolean(a.value != 0)),
+            new UnaryOp<JBoolean>(JBooleanT, JDoubleT, " as", a -> new JDouble(a.value ? 1 : 0)),
+            // Cast Int <-> Boolean
+            new UnaryOp<JInteger>(JIntegerT, JBooleanT, " as", a -> new JBoolean(a.value != 0)),
+            new UnaryOp<JBoolean>(JBooleanT, JIntegerT, " as", a -> new JInteger(a.value ? 1 : 0)),
+            // Cast Compare --> Boolean
+            new UnaryOp<JCompare>(JCompareT, JBooleanT, " as", a -> new JBoolean(a.asNumber() == 0)),
+            // Cast Compare --> Int
+            new UnaryOp<JCompare>(JCompareT, JIntegerT, " as", a -> new JInteger(a.asNumber())),
+            // Cast Compare --> Double
+            new UnaryOp<JCompare>(JCompareT, JDoubleT, " as", a -> new JDouble(a.asNumber())),
+            // Cast Int <-> String
+            new UnaryOp<JInteger>(JIntegerT, JStringT, " as", a -> new JString(String.valueOf(a))),
+            new UnaryOp<JString>(JStringT, JIntegerT, " as", a -> new JInteger(Integer.parseInt(a.value))),
+            // Cast Double <-> String
+            new UnaryOp<JDouble>(JDoubleT, JStringT, " as", a -> new JString(String.valueOf(a))),
+            new UnaryOp<JString>(JStringT, JDoubleT, " as", a -> new JDouble(Double.parseDouble(a.value))),
+            // Cast Boolean <-> String
+            new UnaryOp<JBoolean>(JBooleanT, JStringT, " as", a -> new JString(String.valueOf(a))),
+            new UnaryOp<JString>(JStringT, JBooleanT, " as", a -> new JBoolean(Boolean.parseBoolean(a.value))),
+    };
+
+    public static final BuiltinMethod[] arithmetic = {
             // Addition
             new BinaryOp<JInteger, JInteger>(JIntegerT, JIntegerT, JIntegerT, "+", (a, b) -> new JInteger(a.value + b.value)),
             new BinaryOp<JInteger, JDouble>(JIntegerT, JDoubleT, JDoubleT, "+", (a, b) -> new JDouble(a.value + b.value)),
@@ -36,7 +78,9 @@ public class _Methods {
             new BinaryOp<JInteger, JDouble>(JIntegerT, JDoubleT, JDoubleT, "%", (a, b) -> new JDouble((a.value % b.value + b.value) % b.value)),
             new BinaryOp<JDouble, JInteger>(JDoubleT, JIntegerT, JDoubleT, "%", (a, b) -> new JDouble((a.value % b.value + b.value) % b.value)),
             new BinaryOp<JDouble, JDouble>(JDoubleT, JDoubleT, JDoubleT, "%", (a, b) -> new JDouble((a.value % b.value + b.value) % b.value)),
+    };
 
+    public static final BuiltinMethod[] arithmetic_methods = {
             // Absolute Value
             new UnaryFunc<JInteger>(JIntegerT, JIntegerT, "abs", a -> new JInteger(Math.abs(a.value))),
             new UnaryFunc<JDouble>(JDoubleT, JDoubleT, "abs", a -> new JDouble(Math.abs(a.value))),

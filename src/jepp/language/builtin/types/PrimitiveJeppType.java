@@ -45,7 +45,7 @@ public abstract class PrimitiveJeppType implements JeppType {
             return "string";
         }
     };
-    public static final PrimitiveJeppType JBoolT = new PrimitiveJeppType() {
+    public static final PrimitiveJeppType JBooleanT = new PrimitiveJeppType() {
         @Override
         public String simpleName() {
             return "bool";
