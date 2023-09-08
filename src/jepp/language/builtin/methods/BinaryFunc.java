@@ -1,7 +1,7 @@
 package jepp.language.builtin.methods;
 
+import jepp.interpreter.JeppInterpreter;
 import jepp.language.JeppMethodSignature;
-import jepp.language.JeppScope;
 import jepp.language.JeppType;
 import jepp.language.JeppValue;
 
@@ -39,7 +39,7 @@ public class BinaryFunc<A extends JeppValue, B extends JeppValue> implements Bui
 
     @Override
     @SuppressWarnings("unchecked")
-    public final JeppValue apply(JeppScope scope, JeppValue... values) {
+    public final JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         return func.apply((A) values[0], (B) values[1]);
     }
 }

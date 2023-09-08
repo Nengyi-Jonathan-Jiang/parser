@@ -25,32 +25,32 @@ public class _Methods {
             new BinaryOp<JString, JString>(JStringT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
     };
 
-    public static final BuiltinMethod[] casts = {
-            // Cast Int <-> Double
-            new UnaryOp<JInteger>(JIntegerT, JDoubleT, " as", a -> new JDouble(a.value)),
-            new UnaryOp<JDouble>(JDoubleT, JIntegerT, " as", a -> new JInteger((int)(Math.floor(a.value)))),
-            // Cast Boolean <-> Double
-            new UnaryOp<JDouble>(JDoubleT, JBooleanT, " as", a -> new JBoolean(a.value != 0)),
-            new UnaryOp<JBoolean>(JBooleanT, JDoubleT, " as", a -> new JDouble(a.value ? 1 : 0)),
-            // Cast Int <-> Boolean
-            new UnaryOp<JInteger>(JIntegerT, JBooleanT, " as", a -> new JBoolean(a.value != 0)),
-            new UnaryOp<JBoolean>(JBooleanT, JIntegerT, " as", a -> new JInteger(a.value ? 1 : 0)),
-            // Cast Compare --> Boolean
-            new UnaryOp<JCompare>(JCompareT, JBooleanT, " as", a -> new JBoolean(a.asNumber() == 0)),
-            // Cast Compare --> Int
-            new UnaryOp<JCompare>(JCompareT, JIntegerT, " as", a -> new JInteger(a.asNumber())),
-            // Cast Compare --> Double
-            new UnaryOp<JCompare>(JCompareT, JDoubleT, " as", a -> new JDouble(a.asNumber())),
-            // Cast Int <-> String
-            new UnaryOp<JInteger>(JIntegerT, JStringT, " as", a -> new JString(String.valueOf(a))),
-            new UnaryOp<JString>(JStringT, JIntegerT, " as", a -> new JInteger(Integer.parseInt(a.value))),
-            // Cast Double <-> String
-            new UnaryOp<JDouble>(JDoubleT, JStringT, " as", a -> new JString(String.valueOf(a))),
-            new UnaryOp<JString>(JStringT, JDoubleT, " as", a -> new JDouble(Double.parseDouble(a.value))),
-            // Cast Boolean <-> String
-            new UnaryOp<JBoolean>(JBooleanT, JStringT, " as", a -> new JString(String.valueOf(a))),
-            new UnaryOp<JString>(JStringT, JBooleanT, " as", a -> new JBoolean(Boolean.parseBoolean(a.value))),
-    };
+//    public static final BuiltinMethod[] casts = {
+//            // Cast Int <-> Double
+//            new UnaryOp<JInteger>(JIntegerT, JDoubleT, " as", a -> new JDouble(a.value)),
+//            new UnaryOp<JDouble>(JDoubleT, JIntegerT, " as", a -> new JInteger((int)(Math.floor(a.value)))),
+//            // Cast Boolean <-> Double
+//            new UnaryOp<JDouble>(JDoubleT, JBooleanT, " as", a -> new JBoolean(a.value != 0)),
+//            new UnaryOp<JBoolean>(JBooleanT, JDoubleT, " as", a -> new JDouble(a.value ? 1 : 0)),
+//            // Cast Int <-> Boolean
+//            new UnaryOp<JInteger>(JIntegerT, JBooleanT, " as", a -> new JBoolean(a.value != 0)),
+//            new UnaryOp<JBoolean>(JBooleanT, JIntegerT, " as", a -> new JInteger(a.value ? 1 : 0)),
+//            // Cast Compare --> Boolean
+//            new UnaryOp<JCompare>(JCompareT, JBooleanT, " as", a -> new JBoolean(a.asNumber() == 0)),
+//            // Cast Compare --> Int
+//            new UnaryOp<JCompare>(JCompareT, JIntegerT, " as", a -> new JInteger(a.asNumber())),
+//            // Cast Compare --> Double
+//            new UnaryOp<JCompare>(JCompareT, JDoubleT, " as", a -> new JDouble(a.asNumber())),
+//            // Cast Int <-> String
+//            new UnaryOp<JInteger>(JIntegerT, JStringT, " as", a -> new JString(String.valueOf(a))),
+//            new UnaryOp<JString>(JStringT, JIntegerT, " as", a -> new JInteger(Integer.parseInt(a.value))),
+//            // Cast Double <-> String
+//            new UnaryOp<JDouble>(JDoubleT, JStringT, " as", a -> new JString(String.valueOf(a))),
+//            new UnaryOp<JString>(JStringT, JDoubleT, " as", a -> new JDouble(Double.parseDouble(a.value))),
+//            // Cast Boolean <-> String
+//            new UnaryOp<JBoolean>(JBooleanT, JStringT, " as", a -> new JString(String.valueOf(a))),
+//            new UnaryOp<JString>(JStringT, JBooleanT, " as", a -> new JBoolean(Boolean.parseBoolean(a.value))),
+//    };
 
     public static final BuiltinMethod[] arithmetic = {
             // Addition

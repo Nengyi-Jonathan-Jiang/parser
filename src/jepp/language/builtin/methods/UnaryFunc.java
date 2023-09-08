@@ -1,10 +1,9 @@
 package jepp.language.builtin.methods;
 
+import jepp.interpreter.JeppInterpreter;
 import jepp.language.JeppMethodSignature;
-import jepp.language.JeppScope;
 import jepp.language.JeppType;
 import jepp.language.JeppValue;
-import jepp.language.builtin.methods.BuiltinMethod;
 
 public class UnaryFunc<X extends JeppValue> implements BuiltinMethod {
     private final JeppType x, r;
@@ -39,7 +38,7 @@ public class UnaryFunc<X extends JeppValue> implements BuiltinMethod {
 
     @Override
     @SuppressWarnings("unchecked")
-    public final JeppValue apply(JeppScope scope, JeppValue... values) {
+    public final JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         return func.apply((X) values[0]);
     }
 }

@@ -1,33 +1,58 @@
 statements
 
 statements := statement statements
-statements __EPSILON__
+statements --EPSILON--
 
-statement := print_statement
+statement := print-statement
+statement := block-statement
+statement := return-statement
+statement := expression-statement
 
-print_statement := print expr
+expression-statement := expr ;
+return-statement := return expr ;
+block-statement := { statements }
 
-expr := add_expr
+print-statement := print expr
 
-add_op := +
-add_op := -
-add_expr := mult_expr
-add_expr := add_expr add_op mult_expr
+expr := assignment-expr
 
-mult_op := *
-mult_op := /
-mult_op := %
-mult_expr := primary_expr
-mult_expr := mult_expr mult_op primary_expr
+assignment-op := =
+assignment-op := +=
+assignment-op := -=
+assignment-op := *=
+assignment-op := /=
+assignment-op := %=
+assignment-expr := add-expr
+assignment-expr := IDENTIFIER assignment-op assignment-expr
 
-primary_expr := INT_LITERAL
-primary_expr := FLOAT_LITERAL
-primary_expr := STRING_LITERAL
-primary_expr := IDENTIFIER
-primary_expr := ( expr )
-primary_expr := call_expr
+add-op := +
+add-op := -
+add-expr := mult-expr
+add-expr := add-expr add-op mult-expr
 
-call_expr := IDENTIFIER ( )
-call_expr := IDENTIFIER ( call-arguments )
+mult-op := *
+mult-op := /
+mult-op := %
+mult-expr := primary-expr
+mult-expr := mult-expr mult-op primary-expr
+
+primary-expr := INT-LITERAL
+primary-expr := FLOAT-LITERAL
+primary-expr := STRING-LITERAL
+primary-expr := IDENTIFIER
+primary-expr := ( expr )
+primary-expr := call-expr
+
+call-expr := IDENTIFIER ( )
+call-expr := IDENTIFIER ( call-arguments )
 call-arguments := expr
 call-arguments := expr , call-arguments
+
+function-definition := def IDENTIFIER parameter-list -> statement
+parameter-list := ( )
+parameter-list := ( parameters )
+parameters := parameter
+parameters := parameter , parameters
+parameter := type IDENTIFIER
+
+type := IDENTIFIER

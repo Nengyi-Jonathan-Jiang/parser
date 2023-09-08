@@ -31,10 +31,6 @@ public class JePPFrontend {
         parser = new LRParser(ParsingTable.loadFromFile(symbolTable, "/je++/generated/je++.ptbl"));
     }
 
-    public static ParseTreeNode parse(Token[] tokens) {
-        return parser.parse(tokens);
-    }
-
     public static Parser.Parse startParse() {
         return parser.start();
     }

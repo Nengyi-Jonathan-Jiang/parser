@@ -26,7 +26,9 @@ public class TestJeppParse {
 		do {
 			tk = lex.next();
 			parse.process(tk);
+			System.out.print(tk + " ");
 		} while(!tk.isEOF());
+		System.out.println();
 
 		ParseTreeNode pTree;
 		pTree = parse.getParseTree();

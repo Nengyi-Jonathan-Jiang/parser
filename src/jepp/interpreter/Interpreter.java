@@ -4,13 +4,11 @@ import compiler.parser.ParseTreeNode;
 
 import java.util.stream.Stream;
 
-import static java.util.Arrays.*;
-
 public class Interpreter {
-    private final JeppParseTreeRunner runner;
+    private final JeppInterpreter runner;
 
     public Interpreter() {
-        this.runner = new JeppParseTreeRunner();
+        this.runner = new JeppInterpreter();
     }
 
     public ParseTreeNode flattenStatements(ParseTreeNode parse) {

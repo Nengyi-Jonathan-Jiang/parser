@@ -1,8 +1,8 @@
 COMMENT := (//[^\n]*|/\*([^*]|\*[^/])*?\*?\*/)
-STRING_LITERAL := "[^"\\]*(\\.[^"\\]*)*"
-INT_LITERAL := (0|-?[123456789][\d]*)
-FLOAT_LITERAL := (0|-?[123456789][\d]*)(.[\d]+)?
-BOOL_LITERAL := (true|false)
+STRING-LITERAL := "[^"\\]*(\\.[^"\\]*)*"
+INT-LITERAL := (0|-?[123456789][\d]*)
+FLOAT-LITERAL := (0|-?[123456789][\d]*)(.[\d]+)?
+BOOL-LITERAL := (true|false)
 
 const
 
@@ -104,4 +104,6 @@ as
 ?
 :
 
-IDENTIFIER := [$\w_][$\w\d_]*
+->
+
+IDENTIFIER := [a-zA-Z_]\w*

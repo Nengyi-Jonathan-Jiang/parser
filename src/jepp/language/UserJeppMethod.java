@@ -1,6 +1,7 @@
 package jepp.language;
 
 import compiler.parser.ParseTreeNode;
+import jepp.interpreter.JeppInterpreter;
 
 public class UserJeppMethod implements JeppMethod {
     private final String name;
@@ -29,7 +30,11 @@ public class UserJeppMethod implements JeppMethod {
     }
 
     @Override
-    public JeppValue apply(JeppScope scope, JeppValue... values) {
+    public JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
+        JeppScope s = interpreter.pushNewScope();
+        for(int i = 0; i < signature().types().length; i++) {
+
+        }
         return null;
     }
 }
