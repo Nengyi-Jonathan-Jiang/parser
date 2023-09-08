@@ -25,3 +25,9 @@ primary_expr := FLOAT_LITERAL
 primary_expr := STRING_LITERAL
 primary_expr := IDENTIFIER
 primary_expr := ( expr )
+primary_expr := call_expr
+
+call_expr := IDENTIFIER ( )
+call_expr := IDENTIFIER ( call-arguments )
+call-arguments := expr
+call-arguments := expr , call-arguments

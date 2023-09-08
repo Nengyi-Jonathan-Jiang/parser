@@ -10,6 +10,6 @@ public record JeppMethodSignature(JeppType... types) implements Comparable<JeppM
 
     @Override
     public String toString() {
-        return Arrays.toString(types);
+        return Arrays.stream(types).map(JeppType::simpleName).toList().toString();
     }
 }

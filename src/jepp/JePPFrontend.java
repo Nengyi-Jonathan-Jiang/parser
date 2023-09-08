@@ -23,7 +23,7 @@ public class JePPFrontend {
             SymbolTableReader.generateFromLexerFile("/je++/je++.lex"),
             SymbolTableReader.generateFromGrammarFile("/je++/je++.bnf")
         );
-//        symbolTable.lock();
+        symbolTable.lock();
 
         System.out.println("Loading Je++ lexer ...");
         lexer = Lexer.fromFile(symbolTable, "/je++/je++.lex");

@@ -1,5 +1,4 @@
 import compiler.Token;
-import compiler.parser.lr_parser.LRParsingError;
 import jepp.JePPFrontend;
 import jepp.interpreter.Interpreter;
 import compiler.lexer.Lexer;
@@ -29,7 +28,6 @@ public class TestJeppParse {
 		ParseTreeNode pTree;
 		pTree = JePPFrontend.parse(tkns.toArray(Token[]::new));
 		if(pTree == null) throw new Error("ERROR PARSING STRING");
-		System.out.println(pTree.prnt());
 
 		Interpreter interpreter = new Interpreter();
 		interpreter.run(pTree);

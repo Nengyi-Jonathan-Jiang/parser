@@ -43,8 +43,11 @@ public class JeppScope {
         return hasVariable(name) ? variables.get(name) : parentScope != null ? parentScope.getVariable(name) : null;
     }
 
+    public JeppMethod getMethod(String name, JeppType... signature){
+        return getMethod(name, new JeppMethodSignature(signature));
+    }
+
     public JeppMethod getMethod(String name, JeppMethodSignature signature){
-        // Woo, overload resolution! Fun times...
         if (hasMethod(name, signature)) return methods.get(name).get(signature);
         if (parentScope != null) return parentScope.getMethod(name, signature);
         return null;
@@ -62,7 +65,10 @@ public class JeppScope {
 
     public JeppMethod getMethodForArgs(String name, JeppType... types) {
         Map<JeppMethodSignature, JeppMethod> methods = allMethodsForName(name);
+        if(methods.isEmpty()) return null;
         if(methods.containsKey(new JeppMethodSignature(types))) return methods.get(new JeppMethodSignature(types));
+
+        // TODO: (much later) Implement stuff
 
         return null;
     }
@@ -82,7 +88,7 @@ public class JeppScope {
     public void registerMethod(JeppMethod method) {
         if(hasOwnMethod(method.name(), method.signature())) throw new JeppInterpreterException("Method " + method.name() + "(" + method.signature() + ") already exists in scope");
         else {
-            methods.put(method.name(), new TreeMap<>());
+            if(!methods.containsKey(method.name())) methods.put(method.name(), new TreeMap<>());
             methods.get(method.name()).put(method.signature(), method);
         }
     }

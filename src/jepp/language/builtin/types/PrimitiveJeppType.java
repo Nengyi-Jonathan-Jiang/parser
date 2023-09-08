@@ -7,15 +7,17 @@ import java.util.Map;
 
 public abstract class PrimitiveJeppType implements JeppType {
     @Override
-    public final String namespace() {
+    public String namespace() {
         return "jepp.lang.primitives";
     }
+
     @Override
-    public final Map<String, JeppType> memberVariableTypes() {
+    public Map<String, JeppType> memberVariableTypes() {
         return Collections.emptyMap();
     }
+
     @Override
-    public final String toString() {
+    public String toString() {
         return simpleName();
     }
 
@@ -43,7 +45,7 @@ public abstract class PrimitiveJeppType implements JeppType {
             return "string";
         }
     };
-    public static final PrimitiveJeppType JBooleanT = new PrimitiveJeppType() {
+    public static final PrimitiveJeppType JBoolT = new PrimitiveJeppType() {
         @Override
         public String simpleName() {
             return "bool";
@@ -52,7 +54,7 @@ public abstract class PrimitiveJeppType implements JeppType {
     public static final PrimitiveJeppType JCompareT = new PrimitiveJeppType() {
         @Override
         public String simpleName() {
-            return "comparison";
+            return "compare";
         }
     };
 }

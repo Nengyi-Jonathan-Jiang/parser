@@ -4,19 +4,19 @@ import jepp.language.JeppMethodSignature;
 import jepp.language.JeppScope;
 import jepp.language.JeppType;
 import jepp.language.JeppValue;
+import jepp.language.builtin.methods.BuiltinMethod;
 
-public class BinaryFunc<A extends JeppValue, B extends JeppValue> implements BuiltinMethod {
-    private final JeppType t, u, r;
+public class UnaryFunc<X extends JeppValue> implements BuiltinMethod {
+    private final JeppType x, r;
     private final String name;
-    private final apply<A, B> func;
+    private final unaryFunc<X> func;
 
-    public interface apply<A extends JeppValue, B extends JeppValue> {
-        JeppValue apply(A a, B b);
+    public interface unaryFunc<X extends JeppValue> {
+        JeppValue apply(X x);
     }
 
-    BinaryFunc(JeppType a, JeppType b, JeppType r, String name, apply<A, B> func) {
-        this.t = a;
-        this.u = b;
+    public UnaryFunc(JeppType x, JeppType r, String name, unaryFunc<X> func) {
+        this.x = x;
         this.r = r;
         this.name = name;
         this.func = func;
@@ -29,7 +29,7 @@ public class BinaryFunc<A extends JeppValue, B extends JeppValue> implements Bui
 
     @Override
     public final JeppMethodSignature signature() {
-        return new JeppMethodSignature(t, u);
+        return new JeppMethodSignature(x);
     }
 
     @Override
@@ -40,6 +40,6 @@ public class BinaryFunc<A extends JeppValue, B extends JeppValue> implements Bui
     @Override
     @SuppressWarnings("unchecked")
     public final JeppValue apply(JeppScope scope, JeppValue... values) {
-        return func.apply((A) values[0], (B) values[1]);
+        return func.apply((X) values[0]);
     }
 }

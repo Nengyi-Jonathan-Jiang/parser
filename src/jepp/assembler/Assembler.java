@@ -69,7 +69,7 @@ public class Assembler {
         while(s != null) {
             var children = s.getChildren();
             if(children.length > 0) {
-                statements.add(0, children[1].getChildren()[0]);
+                statements.add(0, children[1].getChild(0));
                 s = children[0];
             }
             else s = null;
@@ -81,7 +81,7 @@ public class Assembler {
             int instruction_number = 0;
             for (var i : statements) {
                 if(i.getDescription() == symbolTable.get("label_declaration")) {
-                    labels.put(i.getChildren()[1].getValue().value, instruction_number);
+                    labels.put(i.getChild(1).getValue().value, instruction_number);
                 }
                 else instruction_number++;
             }
@@ -99,27 +99,27 @@ public class Assembler {
                     }
                 };
                 case "display_statement" -> {
-                    var param1 = createParam(i.getChildren()[1], labels);
+                    var param1 = createParam(i.getChild(1), labels);
                     yield new Instruction.DSP(param1);
                 }
                 case "print_statement" -> {
-                    String str = i.getChildren()[1].getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t");
+                    String str = i.getChild(1).getValue().value.replaceAll("\\\\n", "\n").replaceAll("\\\\t", "\t");
                     yield new Instruction.PRINT(str.substring(1, str.length() - 1));
                 }
                 case "input_statement" -> {
-                    var param1 = createParam(i.getChildren()[1], labels);
+                    var param1 = createParam(i.getChild(1), labels);
                     yield new Instruction.INP(param1);
                 }
                 case "mov_statement" -> {
-                    var param1 = createParam(i.getChildren()[1], labels);
-                    var param2 = createParam(i.getChildren()[2], labels);
+                    var param1 = createParam(i.getChild(1), labels);
+                    var param2 = createParam(i.getChild(2), labels);
                     yield new Instruction.MOV(param1, param2);
                 }
                 case "arithmetic_statement" -> {
-                    var type = i.getChildren()[0].getValue().value;
-                    var param1 = createParam(i.getChildren()[1], labels);
-                    var param2 = createParam(i.getChildren()[2], labels);
-                    var dest = createParam(i.getChildren()[3], labels);
+                    var type = i.getChild(0).getValue().value;
+                    var param1 = createParam(i.getChild(1), labels);
+                    var param2 = createParam(i.getChild(2), labels);
+                    var dest = createParam(i.getChild(3), labels);
                     yield switch (type) {
                         case "add" -> new Instruction.ADD(param1, param2, dest);
                         case "sub" -> new Instruction.SUB(param1, param2, dest);
@@ -130,10 +130,10 @@ public class Assembler {
                     };
                 }
                 case "bitwise_statement" -> {
-                    var type = i.getChildren()[0].getValue().value;
-                    var param1 = createParam(i.getChildren()[1], labels);
-                    var param2 = createParam(i.getChildren()[2], labels);
-                    var dest = createParam(i.getChildren()[3], labels);
+                    var type = i.getChild(0).getValue().value;
+                    var param1 = createParam(i.getChild(1), labels);
+                    var param2 = createParam(i.getChild(2), labels);
+                    var dest = createParam(i.getChild(3), labels);
                     yield switch (type) {
                         case "and" -> new Instruction.AND(param1, param2, dest);
                         case "or" -> new Instruction.OR(param1, param2, dest);
@@ -142,10 +142,10 @@ public class Assembler {
                     };
                 }
                 case "shift_statement" -> {
-                    var type = i.getChildren()[0].getValue().value;
-                    var param1 = createParam(i.getChildren()[1], labels);
-                    var param2 = createParam(i.getChildren()[2], labels);
-                    var dest = createParam(i.getChildren()[3], labels);
+                    var type = i.getChild(0).getValue().value;
+                    var param1 = createParam(i.getChild(1), labels);
+                    var param2 = createParam(i.getChild(2), labels);
+                    var dest = createParam(i.getChild(3), labels);
                     yield switch (type) {
                         case "shl" -> new Instruction.SHL(param1, param2, dest);
                         case "shr" -> new Instruction.SHR(param1, param2, dest);
@@ -153,9 +153,9 @@ public class Assembler {
                     };
                 }
                 case "jmp_statement" -> {
-                    var param = createParam(i.getChildren()[1], labels);
-                    var dest = createParam(i.getChildren()[2], labels);
-                    byte cmp = switch(i.getChildren()[3].getValue().value) {
+                    var param = createParam(i.getChild(1), labels);
+                    var dest = createParam(i.getChild(2), labels);
+                    byte cmp = switch(i.getChild(3).getValue().value) {
                         case "gtz" -> Instruction.JMP.GZ;
                         case "ltz" -> Instruction.JMP.LZ;
                         case "nez" -> Instruction.JMP.GZ | Instruction.JMP.LZ;
@@ -186,8 +186,8 @@ public class Assembler {
                     throw new Error("Could not find label " + tree.getValue().value);
                 }
             }
-            case "int_location" -> createRegister(Instruction.Param.ParamType.INT, tree.getChildren()[2]);
-            case "float_location" -> createRegister(Instruction.Param.ParamType.FLOAT, tree.getChildren()[2]);
+            case "int_location" -> createRegister(Instruction.Param.ParamType.INT, tree.getChild(2));
+            case "float_location" -> createRegister(Instruction.Param.ParamType.FLOAT, tree.getChild(2));
             default -> Instruction.Param.constant('?');
         };
     }
@@ -201,7 +201,7 @@ public class Assembler {
             };
         }
         else {
-            String s = tree.getChildren()[1].getValue().value.substring(1);
+            String s = tree.getChild(1).getValue().value.substring(1);
             int rId = s.equals("b") ? -2 : s.equals("p") ? -1 : s.charAt(0) - '0';
             return switch (type) {
                 case INT, FLOAT -> Instruction.Param.mem(rId, type);
