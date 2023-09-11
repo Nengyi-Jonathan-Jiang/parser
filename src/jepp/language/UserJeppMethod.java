@@ -33,8 +33,8 @@ public class UserJeppMethod implements JeppMethod {
     public JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         JeppScope s = interpreter.pushNewScope();
         for(int i = 0; i < signature().types().length; i++) {
-
+            s.setVariable(prototype.argNames()[i], values[i]);
         }
-        return null;
+        return interpreter.evaluate(code);
     }
 }

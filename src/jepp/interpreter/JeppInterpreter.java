@@ -8,6 +8,7 @@ import java.util.*;
 import compiler.parser.ParseTreeNode;
 import jepp.language.*;
 import jepp.language.builtin.JeppBaseScope;
+import jepp.language.builtin.types.PrimitiveJeppType;
 import jepp.language.builtin.types.PrimitiveJeppValue;
 
 public class JeppInterpreter {
@@ -28,10 +29,18 @@ public class JeppInterpreter {
 
     public JeppValue evaluate(ParseTreeNode node) {
         switch (node.getDescription().name) {
-            case "expression-statement" -> {
-                evaluate(node.getChild(0));
+            case "return-statement" -> {
+                return evaluate(node.getChild(1));
             }
-            case "statements" -> node.children().forEach(this::evaluate);
+            case "expression-statement" -> evaluate(node.getChild(0));
+            case "statements" -> {
+                for (ParseTreeNode statement : node.getChildren()) {
+                    JeppValue value = evaluate(statement);
+                    if (value.getType() != PrimitiveJeppType.JVoidT) {
+                        return value;
+                    }
+                }
+            }
             case "call-expr" -> {
                 String methodName = node.getChild(0).getValue().value;
 
@@ -68,7 +77,7 @@ public class JeppInterpreter {
                 JeppValue val = evaluate(node.getChild(2));
                 String op = node.getChild(1).getValue().value;
 
-                if(!op.equals("=")) {
+                if (!op.equals("=")) {
                     // compound assignment operator
                     JeppValue prevVal = currentScope().getVariable(variableName);
                     op = op.substring(0, op.length() - 1);
@@ -118,8 +127,8 @@ public class JeppInterpreter {
         return s;
     }
 
-    public void popScope(JeppScope s){
-        if(currentScope() == s) scopeStack.pop();
+    public void popScope(JeppScope s) {
+        if (currentScope() == s) scopeStack.pop();
         else throw new JeppInterpreterPanic("Bad scope unwinding");
     }
 
