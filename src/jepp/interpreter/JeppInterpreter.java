@@ -5,7 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
 import java.util.*;
 
-import compiler.parser.ParseTreeNode;
+import frontend.parser.ParseTreeNode;
 import jepp.language.*;
 import jepp.language.builtin.JeppBaseScope;
 import jepp.language.builtin.types.PrimitiveJeppType;
@@ -97,10 +97,6 @@ public class JeppInterpreter {
             case "primary-expr" -> {
                 return evaluate(node.getChild(1));
             }
-            case "STRING-LITERAL" -> {
-                String tok_val = node.getValue().value;
-                return new PrimitiveJeppValue.JString(tok_val.substring(1, tok_val.length() - 1));
-            }
             case "INT-LITERAL" -> {
                 String tok_val = node.getValue().value;
                 return new PrimitiveJeppValue.JInteger(Integer.parseInt(tok_val));
@@ -110,7 +106,16 @@ public class JeppInterpreter {
                 return new PrimitiveJeppValue.JDouble(Double.parseDouble(tok_val));
             }
             case "print-statement" -> {
-                out.println(evaluate(node.getChild(1)));
+                Object value;
+                if (node.getChild(1).getDescription().name.equals("STRING-LITERAL")) {
+                    String val = node.getChild(1).getValue().value;
+                    value = val.substring(1, val.length() - 1);
+                } else value = evaluate(node.getChild(1));
+
+                switch(node.getChild(0).getValue().value) {
+                    case "print" -> out.print(value);
+                    case "println" -> out.println(value);
+                }
             }
             default -> System.out.println("Got " + node.getDescription());
         }

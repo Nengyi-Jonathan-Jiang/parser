@@ -39,12 +39,6 @@ public abstract class PrimitiveJeppType implements JeppType {
             return "double";
         }
     };
-    public static final PrimitiveJeppType JStringT = new PrimitiveJeppType() {
-        @Override
-        public String simpleName() {
-            return "string";
-        }
-    };
     public static final PrimitiveJeppType JBooleanT = new PrimitiveJeppType() {
         @Override
         public String simpleName() {

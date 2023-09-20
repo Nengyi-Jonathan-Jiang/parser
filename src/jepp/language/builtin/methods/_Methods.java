@@ -4,27 +4,6 @@ import static jepp.language.builtin.types.PrimitiveJeppType.*;
 import static jepp.language.builtin.types.PrimitiveJeppValue.*;
 
 public class _Methods {
-    public static final BuiltinMethod[] concat = {
-            // Integer + String
-            new BinaryOp<JInteger, JString>(JIntegerT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // Double + String
-            new BinaryOp<JDouble, JString>(JDoubleT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // Boolean + String
-            new BinaryOp<JBoolean, JString>(JBooleanT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // Compare + String
-            new BinaryOp<JCompare, JString>(JCompareT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // String + Integer
-            new BinaryOp<JString, JInteger>(JStringT, JIntegerT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // String + Double
-            new BinaryOp<JString, JDouble>(JStringT, JDoubleT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // String + Boolean
-            new BinaryOp<JString, JBoolean>(JStringT, JBooleanT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // String + Compare
-            new BinaryOp<JString, JCompare>(JStringT, JCompareT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-            // String + String
-            new BinaryOp<JString, JString>(JStringT, JStringT, JStringT, "+", (a, b) -> new JString(a.value + b.value)),
-    };
-
 //    public static final BuiltinMethod[] casts = {
 //            // Cast Int <-> Double
 //            new UnaryOp<JInteger>(JIntegerT, JDoubleT, " as", a -> new JDouble(a.value)),

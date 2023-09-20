@@ -1,18 +1,22 @@
 statements
 
 statements := statement statements
-statements --EPSILON--
+statements __EPSILON__
 
 statement := print-statement
 statement := block-statement
 statement := return-statement
 statement := expression-statement
+statement := function-definition
 
 expression-statement := expr ;
 return-statement := return expr ;
 block-statement := { statements }
 
-print-statement := print expr
+print-statement := print expr ;
+print-statement := println expr ;
+print-statement := print STRING-LITERAL ;
+print-statement := println STRING-LITERAL;
 
 expr := assignment-expr
 
@@ -38,7 +42,6 @@ mult-expr := mult-expr mult-op primary-expr
 
 primary-expr := INT-LITERAL
 primary-expr := FLOAT-LITERAL
-primary-expr := STRING-LITERAL
 primary-expr := IDENTIFIER
 primary-expr := ( expr )
 primary-expr := call-expr
@@ -48,7 +51,7 @@ call-expr := IDENTIFIER ( call-arguments )
 call-arguments := expr
 call-arguments := expr , call-arguments
 
-function-definition := def IDENTIFIER parameter-list -> statement
+function-definition := func IDENTIFIER parameter-list -> statement
 parameter-list := ( )
 parameter-list := ( parameters )
 parameters := parameter

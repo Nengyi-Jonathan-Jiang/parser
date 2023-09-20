@@ -1,6 +1,6 @@
 package jepp.language;
 
-import compiler.parser.ParseTreeNode;
+import frontend.parser.ParseTreeNode;
 import jepp.interpreter.JeppInterpreter;
 
 public class UserJeppMethod implements JeppMethod {

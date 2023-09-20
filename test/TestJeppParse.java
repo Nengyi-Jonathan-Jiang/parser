@@ -1,14 +1,11 @@
-import compiler.Token;
-import compiler.parser.lr_parser.LRParsingError;
-import jepp.JePPFrontend;
+import frontend.Token;
+import jepp.frontend.JePPFrontend;
 import jepp.interpreter.Interpreter;
-import compiler.lexer.Lexer;
-import compiler.parser.*;
+import frontend.lexer.Lexer;
+import frontend.parser.*;
 import org.junit.Test;
 
 import java.io.*;
-import java.text.ParseException;
-import java.util.*;
 
 public class TestJeppParse {
 	@Test

@@ -1,21 +1,19 @@
 package jepp.assembler;
 
-import compiler.Symbol;
-import compiler.SymbolTableReader;
-import compiler.Token;
-import compiler.lexer.Lexer;
-import compiler.parser.lr_parser.LRParser;
-import compiler.parser.lr_parser.LRParsingError;
-import compiler.parser.lr_parser.parsing_table.ParsingTable;
-import compiler.parser.ParseTreeNode;
-import compiler.parser.Parser;
+import frontend.Symbol;
+import frontend.SymbolTableReader;
+import frontend.Token;
+import frontend.lexer.Lexer;
+import frontend.parser.lr_parser.LRParser;
+import frontend.parser.lr_parser.LRParsingError;
+import frontend.parser.lr_parser.parsing_table.ParsingTable;
+import frontend.parser.ParseTreeNode;
+import frontend.parser.Parser;
 import jepp.jevm.Instruction;
 import jepp.jevm.Program;
 import jepp.jevm.VM;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,9 +21,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Assembler {
-    public static final String lxFile = "compiler/assembler/jasm.lx",
-                               ebnfFile = "compiler/assembler/jasm.ebnf",
-                               ptblFile = "compiler/assembler/jasm.ptbl";
+    public static final String lxFile = "jasm/jasm.lx",
+                               ebnfFile = "jasm/jasm.bnf",
+                               ptblFile = "jasm/jasm.ptbl";
     public static final Symbol.SymbolTable symbolTable = Symbol.SymbolTable.merge(
         SymbolTableReader.generateFromLexerFile(lxFile),
         SymbolTableReader.generateFromParsingTableFile(ptblFile)
@@ -211,7 +209,7 @@ public class Assembler {
 
     public static Program assembleFile(String file){
         try {
-            return assemble(new String(Files.readAllBytes(Paths.get(file))));
+            return assemble(new String(SymbolTableReader.class.getResourceAsStream("/" + file).readAllBytes()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,8 +1,8 @@
-import compiler.Symbol;
-import compiler.SymbolTableReader;
-import compiler.grammar.Grammar;
-import compiler.grammar.GrammarReader;
-import compiler.parser.parser_generator.LR1ParseTableBuilder;
+import frontend.Symbol;
+import frontend.SymbolTableReader;
+import frontend.grammar.Grammar;
+import frontend.grammar.GrammarReader;
+import frontend.parser.parser_generator.LR1ParseTableBuilder;
 
 import java.io.File;
 
@@ -13,14 +13,14 @@ public class BuildJppParser {
         System.out.println("Generating Symbol Table...");
 
         var symbolTable = Symbol.SymbolTable.merge(
-            SymbolTableReader.generateFromLexerFile("/je++/je++.lex"),
-            SymbolTableReader.generateFromGrammarFile("/je++/je++.bnf")
+            SymbolTableReader.generateFromLexerFile("je++/je++.lex"),
+            SymbolTableReader.generateFromGrammarFile("je++/je++.bnf")
         );
 
         System.out.println(symbolTable);
 
         System.out.println("Generating Je++ Grammar ...");
-        Grammar grammar = GrammarReader.readFromFile(symbolTable, "/je++/je++.bnf");
+        Grammar grammar = GrammarReader.readFromFile(symbolTable, "je++/je++.bnf");
 
         System.out.println("===================");
         System.out.println(grammar);

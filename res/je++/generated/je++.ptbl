@@ -1,131 +1,185 @@
-163
+160
 a Ω r 0 statements 
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a print s 1
-a return s 3
-a { s 4
-a add-expr s 5
-a assignment-expr s 6
-a block-statement s 7
-a call-expr s 8
-a expr s 9
-a expression-statement s 10
-a mult-expr s 11
-a primary-expr s 12
-a print-statement s 13
-a return-statement s 14
-a statement s 15
-a statements s 17
-g add-expr 5
-g assignment-expr 6
-g block-statement 7
-g call-expr 8
-g expr 9
-g expression-statement 10
-g mult-expr 11
-g primary-expr 12
-g print-statement 13
-g return-statement 14
-g statement 15
-g statements 17
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 5
+a print s 6
+a println s 7
+a return s 8
+a { s 9
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 12
+a call-expr s 13
+a expr s 14
+a expression-statement s 15
+a function-definition s 16
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 19
+a return-statement s 20
+a statement s 21
+a statements s 22
+g add-expr 10
+g assignment-expr 11
+g block-statement 12
+g call-expr 13
+g expr 14
+g expression-statement 15
+g function-definition 16
+g mult-expr 17
+g primary-expr 18
+g print-statement 19
+g return-statement 20
+g statement 21
+g statements 22
 s
-a ( s 32
-a FLOAT-LITERAL s 39
-a IDENTIFIER s 40
-a INT-LITERAL s 41
-a STRING-LITERAL s 42
-a add-expr s 33
-a assignment-expr s 34
-a call-expr s 35
-a expr s 36
-a mult-expr s 37
-a primary-expr s 38
-g add-expr 33
-g assignment-expr 34
-g call-expr 35
-g expr 36
-g mult-expr 37
-g primary-expr 38
+a ( s 37
+a FLOAT-LITERAL s 38
+a IDENTIFIER s 39
+a INT-LITERAL s 40
+a add-expr s 41
+a assignment-expr s 42
+a call-expr s 43
+a expr s 44
+a mult-expr s 45
+a primary-expr s 46
+g add-expr 41
+g assignment-expr 42
+g call-expr 43
+g expr 44
+g mult-expr 45
+g primary-expr 46
 s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 51
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a add-expr s 44
-a assignment-expr s 45
-a call-expr s 46
+a % r 1 primary-expr FLOAT-LITERAL
+a * r 1 primary-expr FLOAT-LITERAL
+a + r 1 primary-expr FLOAT-LITERAL
+a - r 1 primary-expr FLOAT-LITERAL
+a / r 1 primary-expr FLOAT-LITERAL
+a ; r 1 primary-expr FLOAT-LITERAL
+s
+a % r 1 primary-expr IDENTIFIER
+a %= s 52
+a ( s 53
+a * r 1 primary-expr IDENTIFIER
+a *= s 54
+a + r 1 primary-expr IDENTIFIER
+a += s 55
+a - r 1 primary-expr IDENTIFIER
+a -= s 56
+a / r 1 primary-expr IDENTIFIER
+a /= s 57
+a ; r 1 primary-expr IDENTIFIER
+a = s 58
+a assignment-op s 59
+g assignment-op 59
+s
+a % r 1 primary-expr INT-LITERAL
+a * r 1 primary-expr INT-LITERAL
+a + r 1 primary-expr INT-LITERAL
+a - r 1 primary-expr INT-LITERAL
+a / r 1 primary-expr INT-LITERAL
+a ; r 1 primary-expr INT-LITERAL
+s
+a IDENTIFIER s 68
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 48
+a add-expr s 10
+a assignment-expr s 11
+a call-expr s 13
+a expr s 49
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 11
+g call-expr 13
+g expr 49
+g mult-expr 17
+g primary-expr 18
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL; s 50
+a add-expr s 10
+a assignment-expr s 11
+a call-expr s 13
+a expr s 51
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 11
+g call-expr 13
+g expr 51
+g mult-expr 17
+g primary-expr 18
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a add-expr s 10
+a assignment-expr s 11
+a call-expr s 13
 a expr s 47
-a mult-expr s 48
-a primary-expr s 49
-g add-expr 44
-g assignment-expr 45
-g call-expr 46
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 11
+g call-expr 13
 g expr 47
-g mult-expr 48
-g primary-expr 49
+g mult-expr 17
+g primary-expr 18
 s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a add-expr s 5
-a assignment-expr s 6
-a call-expr s 8
-a expr s 54
-a mult-expr s 11
-a primary-expr s 12
-g add-expr 5
-g assignment-expr 6
-g call-expr 8
-g expr 54
-g mult-expr 11
-g primary-expr 12
-s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a print s 22
-a return s 23
-a { s 24
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 24
+a print s 25
+a println s 26
+a return s 27
+a { s 28
 a } r 0 statements 
-a add-expr s 5
-a assignment-expr s 6
-a block-statement s 25
-a call-expr s 8
-a expr s 26
-a expression-statement s 27
-a mult-expr s 11
-a primary-expr s 12
-a print-statement s 28
-a return-statement s 29
-a statement s 30
-a statements s 31
-g add-expr 5
-g assignment-expr 6
-g block-statement 25
-g call-expr 8
-g expr 26
-g expression-statement 27
-g mult-expr 11
-g primary-expr 12
-g print-statement 28
-g return-statement 29
-g statement 30
-g statements 31
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 29
+a call-expr s 13
+a expr s 30
+a expression-statement s 31
+a function-definition s 32
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 33
+a return-statement s 34
+a statement s 35
+a statements s 36
+g add-expr 10
+g assignment-expr 11
+g block-statement 29
+g call-expr 13
+g expr 30
+g expression-statement 31
+g function-definition 32
+g mult-expr 17
+g primary-expr 18
+g print-statement 33
+g return-statement 34
+g statement 35
+g statements 36
 s
-a + s 63
-a - s 64
+a + s 60
+a - s 61
 a ; r 1 assignment-expr add-expr
-a add-op s 65
-g add-op 65
+a add-op s 62
+g add-op 62
 s
 a ; r 1 expr assignment-expr
 s
@@ -134,8 +188,9 @@ a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
 a IDENTIFIER r 1 statement block-statement
 a INT-LITERAL r 1 statement block-statement
-a STRING-LITERAL r 1 statement block-statement
+a func r 1 statement block-statement
 a print r 1 statement block-statement
+a println r 1 statement block-statement
 a return r 1 statement block-statement
 a { r 1 statement block-statement
 s
@@ -146,26 +201,38 @@ a - r 1 primary-expr call-expr
 a / r 1 primary-expr call-expr
 a ; r 1 primary-expr call-expr
 s
-a ; s 70
+a ; s 67
 s
 a Ω r 1 statement expression-statement
 a ( r 1 statement expression-statement
 a FLOAT-LITERAL r 1 statement expression-statement
 a IDENTIFIER r 1 statement expression-statement
 a INT-LITERAL r 1 statement expression-statement
-a STRING-LITERAL r 1 statement expression-statement
+a func r 1 statement expression-statement
 a print r 1 statement expression-statement
+a println r 1 statement expression-statement
 a return r 1 statement expression-statement
 a { r 1 statement expression-statement
 s
-a % s 66
-a * s 67
+a Ω r 1 statement function-definition
+a ( r 1 statement function-definition
+a FLOAT-LITERAL r 1 statement function-definition
+a IDENTIFIER r 1 statement function-definition
+a INT-LITERAL r 1 statement function-definition
+a func r 1 statement function-definition
+a print r 1 statement function-definition
+a println r 1 statement function-definition
+a return r 1 statement function-definition
+a { r 1 statement function-definition
+s
+a % s 63
+a * s 64
 a + r 1 add-expr mult-expr
 a - r 1 add-expr mult-expr
-a / s 68
+a / s 65
 a ; r 1 add-expr mult-expr
-a mult-op s 69
-g mult-op 69
+a mult-op s 66
+g mult-op 66
 s
 a % r 1 mult-expr primary-expr
 a * r 1 mult-expr primary-expr
@@ -179,8 +246,9 @@ a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
 a INT-LITERAL r 1 statement print-statement
-a STRING-LITERAL r 1 statement print-statement
+a func r 1 statement print-statement
 a print r 1 statement print-statement
+a println r 1 statement print-statement
 a return r 1 statement print-statement
 a { r 1 statement print-statement
 s
@@ -189,184 +257,187 @@ a ( r 1 statement return-statement
 a FLOAT-LITERAL r 1 statement return-statement
 a IDENTIFIER r 1 statement return-statement
 a INT-LITERAL r 1 statement return-statement
-a STRING-LITERAL r 1 statement return-statement
+a func r 1 statement return-statement
 a print r 1 statement return-statement
+a println r 1 statement return-statement
 a return r 1 statement return-statement
 a { r 1 statement return-statement
 s
 a Ω r 0 statements 
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a print s 1
-a return s 3
-a { s 4
-a add-expr s 5
-a assignment-expr s 6
-a block-statement s 7
-a call-expr s 8
-a expr s 9
-a expression-statement s 10
-a mult-expr s 11
-a primary-expr s 12
-a print-statement s 13
-a return-statement s 14
-a statement s 15
-a statements s 21
-g add-expr 5
-g assignment-expr 6
-g block-statement 7
-g call-expr 8
-g expr 9
-g expression-statement 10
-g mult-expr 11
-g primary-expr 12
-g print-statement 13
-g return-statement 14
-g statement 15
-g statements 21
-s
-a % r 1 primary-expr FLOAT-LITERAL
-a * r 1 primary-expr FLOAT-LITERAL
-a + r 1 primary-expr FLOAT-LITERAL
-a - r 1 primary-expr FLOAT-LITERAL
-a / r 1 primary-expr FLOAT-LITERAL
-a ; r 1 primary-expr FLOAT-LITERAL
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 5
+a print s 6
+a println s 7
+a return s 8
+a { s 9
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 12
+a call-expr s 13
+a expr s 14
+a expression-statement s 15
+a function-definition s 16
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 19
+a return-statement s 20
+a statement s 21
+a statements s 23
+g add-expr 10
+g assignment-expr 11
+g block-statement 12
+g call-expr 13
+g expr 14
+g expression-statement 15
+g function-definition 16
+g mult-expr 17
+g primary-expr 18
+g print-statement 19
+g return-statement 20
+g statement 21
+g statements 23
 s
 a Ω a 
 s
-a % r 1 primary-expr IDENTIFIER
-a %= s 55
-a ( s 56
-a * r 1 primary-expr IDENTIFIER
-a *= s 57
-a + r 1 primary-expr IDENTIFIER
-a += s 58
-a - r 1 primary-expr IDENTIFIER
-a -= s 59
-a / r 1 primary-expr IDENTIFIER
-a /= s 60
-a ; r 1 primary-expr IDENTIFIER
-a = s 62
-a assignment-op s 61
-g assignment-op 61
-s
-a % r 1 primary-expr INT-LITERAL
-a * r 1 primary-expr INT-LITERAL
-a + r 1 primary-expr INT-LITERAL
-a - r 1 primary-expr INT-LITERAL
-a / r 1 primary-expr INT-LITERAL
-a ; r 1 primary-expr INT-LITERAL
-s
-a % r 1 primary-expr STRING-LITERAL
-a * r 1 primary-expr STRING-LITERAL
-a + r 1 primary-expr STRING-LITERAL
-a - r 1 primary-expr STRING-LITERAL
-a / r 1 primary-expr STRING-LITERAL
-a ; r 1 primary-expr STRING-LITERAL
-s
 a Ω r 2 statements statement statements
 s
-a ( s 73
-a FLOAT-LITERAL s 80
-a IDENTIFIER s 81
-a INT-LITERAL s 82
-a STRING-LITERAL s 83
-a add-expr s 74
-a assignment-expr s 75
-a call-expr s 76
-a expr s 77
-a mult-expr s 78
-a primary-expr s 79
-g add-expr 74
-g assignment-expr 75
-g call-expr 76
-g expr 77
-g mult-expr 78
-g primary-expr 79
+a IDENTIFIER s 100
 s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a add-expr s 5
-a assignment-expr s 6
-a call-expr s 8
-a expr s 99
-a mult-expr s 11
-a primary-expr s 12
-g add-expr 5
-g assignment-expr 6
-g call-expr 8
-g expr 99
-g mult-expr 11
-g primary-expr 12
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 85
+a add-expr s 10
+a assignment-expr s 11
+a call-expr s 13
+a expr s 86
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 11
+g call-expr 13
+g expr 86
+g mult-expr 17
+g primary-expr 18
 s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a print s 22
-a return s 23
-a { s 24
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL; s 87
+a add-expr s 10
+a assignment-expr s 11
+a call-expr s 13
+a expr s 88
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 11
+g call-expr 13
+g expr 88
+g mult-expr 17
+g primary-expr 18
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a add-expr s 10
+a assignment-expr s 11
+a call-expr s 13
+a expr s 84
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 11
+g call-expr 13
+g expr 84
+g mult-expr 17
+g primary-expr 18
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 24
+a print s 25
+a println s 26
+a return s 27
+a { s 28
 a } r 0 statements 
-a add-expr s 5
-a assignment-expr s 6
-a block-statement s 25
-a call-expr s 8
-a expr s 26
-a expression-statement s 27
-a mult-expr s 11
-a primary-expr s 12
-a print-statement s 28
-a return-statement s 29
-a statement s 30
-a statements s 72
-g add-expr 5
-g assignment-expr 6
-g block-statement 25
-g call-expr 8
-g expr 26
-g expression-statement 27
-g mult-expr 11
-g primary-expr 12
-g print-statement 28
-g return-statement 29
-g statement 30
-g statements 72
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 29
+a call-expr s 13
+a expr s 30
+a expression-statement s 31
+a function-definition s 32
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 33
+a return-statement s 34
+a statement s 35
+a statements s 70
+g add-expr 10
+g assignment-expr 11
+g block-statement 29
+g call-expr 13
+g expr 30
+g expression-statement 31
+g function-definition 32
+g mult-expr 17
+g primary-expr 18
+g print-statement 33
+g return-statement 34
+g statement 35
+g statements 70
 s
 a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
 a IDENTIFIER r 1 statement block-statement
 a INT-LITERAL r 1 statement block-statement
-a STRING-LITERAL r 1 statement block-statement
+a func r 1 statement block-statement
 a print r 1 statement block-statement
+a println r 1 statement block-statement
 a return r 1 statement block-statement
 a { r 1 statement block-statement
 a } r 1 statement block-statement
 s
-a ; s 112
+a ; s 99
 s
 a ( r 1 statement expression-statement
 a FLOAT-LITERAL r 1 statement expression-statement
 a IDENTIFIER r 1 statement expression-statement
 a INT-LITERAL r 1 statement expression-statement
-a STRING-LITERAL r 1 statement expression-statement
+a func r 1 statement expression-statement
 a print r 1 statement expression-statement
+a println r 1 statement expression-statement
 a return r 1 statement expression-statement
 a { r 1 statement expression-statement
 a } r 1 statement expression-statement
+s
+a ( r 1 statement function-definition
+a FLOAT-LITERAL r 1 statement function-definition
+a IDENTIFIER r 1 statement function-definition
+a INT-LITERAL r 1 statement function-definition
+a func r 1 statement function-definition
+a print r 1 statement function-definition
+a println r 1 statement function-definition
+a return r 1 statement function-definition
+a { r 1 statement function-definition
+a } r 1 statement function-definition
 s
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
 a INT-LITERAL r 1 statement print-statement
-a STRING-LITERAL r 1 statement print-statement
+a func r 1 statement print-statement
 a print r 1 statement print-statement
+a println r 1 statement print-statement
 a return r 1 statement print-statement
 a { r 1 statement print-statement
 a } r 1 statement print-statement
@@ -375,265 +446,68 @@ a ( r 1 statement return-statement
 a FLOAT-LITERAL r 1 statement return-statement
 a IDENTIFIER r 1 statement return-statement
 a INT-LITERAL r 1 statement return-statement
-a STRING-LITERAL r 1 statement return-statement
+a func r 1 statement return-statement
 a print r 1 statement return-statement
+a println r 1 statement return-statement
 a return r 1 statement return-statement
 a { r 1 statement return-statement
 a } r 1 statement return-statement
 s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a print s 22
-a return s 23
-a { s 24
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 24
+a print s 25
+a println s 26
+a return s 27
+a { s 28
 a } r 0 statements 
-a add-expr s 5
-a assignment-expr s 6
-a block-statement s 25
-a call-expr s 8
-a expr s 26
-a expression-statement s 27
-a mult-expr s 11
-a primary-expr s 12
-a print-statement s 28
-a return-statement s 29
-a statement s 30
-a statements s 71
-g add-expr 5
-g assignment-expr 6
-g block-statement 25
-g call-expr 8
-g expr 26
-g expression-statement 27
-g mult-expr 11
-g primary-expr 12
-g print-statement 28
-g return-statement 29
-g statement 30
-g statements 71
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 29
+a call-expr s 13
+a expr s 30
+a expression-statement s 31
+a function-definition s 32
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 33
+a return-statement s 34
+a statement s 35
+a statements s 69
+g add-expr 10
+g assignment-expr 11
+g block-statement 29
+g call-expr 13
+g expr 30
+g expression-statement 31
+g function-definition 32
+g mult-expr 17
+g primary-expr 18
+g print-statement 33
+g return-statement 34
+g statement 35
+g statements 69
 s
-a } s 114
+a } s 102
 s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 51
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a add-expr s 44
-a assignment-expr s 45
-a call-expr s 46
-a expr s 97
-a mult-expr s 48
-a primary-expr s 49
-g add-expr 44
-g assignment-expr 45
-g call-expr 46
-g expr 97
-g mult-expr 48
-g primary-expr 49
-s
-a Ω r 1 assignment-expr add-expr
-a ( r 1 assignment-expr add-expr
-a + s 63
-a - s 64
-a FLOAT-LITERAL r 1 assignment-expr add-expr
-a IDENTIFIER r 1 assignment-expr add-expr
-a INT-LITERAL r 1 assignment-expr add-expr
-a STRING-LITERAL r 1 assignment-expr add-expr
-a print r 1 assignment-expr add-expr
-a return r 1 assignment-expr add-expr
-a { r 1 assignment-expr add-expr
-a add-op s 105
-g add-op 105
-s
-a Ω r 1 expr assignment-expr
-a ( r 1 expr assignment-expr
-a FLOAT-LITERAL r 1 expr assignment-expr
-a IDENTIFIER r 1 expr assignment-expr
-a INT-LITERAL r 1 expr assignment-expr
-a STRING-LITERAL r 1 expr assignment-expr
-a print r 1 expr assignment-expr
-a return r 1 expr assignment-expr
-a { r 1 expr assignment-expr
-s
-a Ω r 1 primary-expr call-expr
-a % r 1 primary-expr call-expr
-a ( r 1 primary-expr call-expr
-a * r 1 primary-expr call-expr
-a + r 1 primary-expr call-expr
-a - r 1 primary-expr call-expr
-a / r 1 primary-expr call-expr
-a FLOAT-LITERAL r 1 primary-expr call-expr
-a IDENTIFIER r 1 primary-expr call-expr
-a INT-LITERAL r 1 primary-expr call-expr
-a STRING-LITERAL r 1 primary-expr call-expr
-a print r 1 primary-expr call-expr
-a return r 1 primary-expr call-expr
-a { r 1 primary-expr call-expr
-s
-a Ω r 2 print-statement print expr
-a ( r 2 print-statement print expr
-a FLOAT-LITERAL r 2 print-statement print expr
-a IDENTIFIER r 2 print-statement print expr
-a INT-LITERAL r 2 print-statement print expr
-a STRING-LITERAL r 2 print-statement print expr
-a print r 2 print-statement print expr
-a return r 2 print-statement print expr
-a { r 2 print-statement print expr
-s
-a Ω r 1 add-expr mult-expr
-a % s 66
-a ( r 1 add-expr mult-expr
-a * s 67
-a + r 1 add-expr mult-expr
-a - r 1 add-expr mult-expr
-a / s 68
-a FLOAT-LITERAL r 1 add-expr mult-expr
-a IDENTIFIER r 1 add-expr mult-expr
-a INT-LITERAL r 1 add-expr mult-expr
-a STRING-LITERAL r 1 add-expr mult-expr
-a print r 1 add-expr mult-expr
-a return r 1 add-expr mult-expr
-a { r 1 add-expr mult-expr
-a mult-op s 107
-g mult-op 107
-s
-a Ω r 1 mult-expr primary-expr
-a % r 1 mult-expr primary-expr
-a ( r 1 mult-expr primary-expr
-a * r 1 mult-expr primary-expr
-a + r 1 mult-expr primary-expr
-a - r 1 mult-expr primary-expr
-a / r 1 mult-expr primary-expr
-a FLOAT-LITERAL r 1 mult-expr primary-expr
-a IDENTIFIER r 1 mult-expr primary-expr
-a INT-LITERAL r 1 mult-expr primary-expr
-a STRING-LITERAL r 1 mult-expr primary-expr
-a print r 1 mult-expr primary-expr
-a return r 1 mult-expr primary-expr
-a { r 1 mult-expr primary-expr
-s
-a Ω r 1 primary-expr FLOAT-LITERAL
-a % r 1 primary-expr FLOAT-LITERAL
-a ( r 1 primary-expr FLOAT-LITERAL
-a * r 1 primary-expr FLOAT-LITERAL
-a + r 1 primary-expr FLOAT-LITERAL
-a - r 1 primary-expr FLOAT-LITERAL
-a / r 1 primary-expr FLOAT-LITERAL
-a FLOAT-LITERAL r 1 primary-expr FLOAT-LITERAL
-a IDENTIFIER r 1 primary-expr FLOAT-LITERAL
-a INT-LITERAL r 1 primary-expr FLOAT-LITERAL
-a STRING-LITERAL r 1 primary-expr FLOAT-LITERAL
-a print r 1 primary-expr FLOAT-LITERAL
-a return r 1 primary-expr FLOAT-LITERAL
-a { r 1 primary-expr FLOAT-LITERAL
-s
-a Ω r 1 primary-expr IDENTIFIER
-a % r 1 primary-expr IDENTIFIER
-a %= s 55
-a ( s 100
-a * r 1 primary-expr IDENTIFIER
-a *= s 57
-a + r 1 primary-expr IDENTIFIER
-a += s 58
-a - r 1 primary-expr IDENTIFIER
-a -= s 59
-a / r 1 primary-expr IDENTIFIER
-a /= s 60
-a = s 62
-a FLOAT-LITERAL r 1 primary-expr IDENTIFIER
-a IDENTIFIER r 1 primary-expr IDENTIFIER
-a INT-LITERAL r 1 primary-expr IDENTIFIER
-a STRING-LITERAL r 1 primary-expr IDENTIFIER
-a print r 1 primary-expr IDENTIFIER
-a return r 1 primary-expr IDENTIFIER
-a { r 1 primary-expr IDENTIFIER
-a assignment-op s 101
-g assignment-op 101
-s
-a Ω r 1 primary-expr INT-LITERAL
-a % r 1 primary-expr INT-LITERAL
-a ( r 1 primary-expr INT-LITERAL
-a * r 1 primary-expr INT-LITERAL
-a + r 1 primary-expr INT-LITERAL
-a - r 1 primary-expr INT-LITERAL
-a / r 1 primary-expr INT-LITERAL
-a FLOAT-LITERAL r 1 primary-expr INT-LITERAL
-a IDENTIFIER r 1 primary-expr INT-LITERAL
-a INT-LITERAL r 1 primary-expr INT-LITERAL
-a STRING-LITERAL r 1 primary-expr INT-LITERAL
-a print r 1 primary-expr INT-LITERAL
-a return r 1 primary-expr INT-LITERAL
-a { r 1 primary-expr INT-LITERAL
-s
-a Ω r 1 primary-expr STRING-LITERAL
-a % r 1 primary-expr STRING-LITERAL
-a ( r 1 primary-expr STRING-LITERAL
-a * r 1 primary-expr STRING-LITERAL
-a + r 1 primary-expr STRING-LITERAL
-a - r 1 primary-expr STRING-LITERAL
-a / r 1 primary-expr STRING-LITERAL
-a FLOAT-LITERAL r 1 primary-expr STRING-LITERAL
-a IDENTIFIER r 1 primary-expr STRING-LITERAL
-a INT-LITERAL r 1 primary-expr STRING-LITERAL
-a STRING-LITERAL r 1 primary-expr STRING-LITERAL
-a print r 1 primary-expr STRING-LITERAL
-a return r 1 primary-expr STRING-LITERAL
-a { r 1 primary-expr STRING-LITERAL
-s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 51
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a add-expr s 44
-a assignment-expr s 45
-a call-expr s 46
-a expr s 98
-a mult-expr s 48
-a primary-expr s 49
-g add-expr 44
-g assignment-expr 45
-g call-expr 46
-g expr 98
-g mult-expr 48
-g primary-expr 49
-s
-a ) r 1 assignment-expr add-expr
-a + s 63
-a - s 64
-a add-op s 106
-g add-op 106
-s
-a ) r 1 expr assignment-expr
-s
-a % r 1 primary-expr call-expr
-a ) r 1 primary-expr call-expr
-a * r 1 primary-expr call-expr
-a + r 1 primary-expr call-expr
-a - r 1 primary-expr call-expr
-a / r 1 primary-expr call-expr
-s
-a ) s 115
-s
-a % s 66
-a ) r 1 add-expr mult-expr
-a * s 67
-a + r 1 add-expr mult-expr
-a - r 1 add-expr mult-expr
-a / s 68
-a mult-op s 108
-g mult-op 108
-s
-a % r 1 mult-expr primary-expr
-a ) r 1 mult-expr primary-expr
-a * r 1 mult-expr primary-expr
-a + r 1 mult-expr primary-expr
-a - r 1 mult-expr primary-expr
-a / r 1 mult-expr primary-expr
+a ( s 37
+a FLOAT-LITERAL s 38
+a IDENTIFIER s 39
+a INT-LITERAL s 40
+a add-expr s 41
+a assignment-expr s 42
+a call-expr s 43
+a expr s 83
+a mult-expr s 45
+a primary-expr s 46
+g add-expr 41
+g assignment-expr 42
+g call-expr 43
+g expr 83
+g mult-expr 45
+g primary-expr 46
 s
 a % r 1 primary-expr FLOAT-LITERAL
 a ) r 1 primary-expr FLOAT-LITERAL
@@ -643,20 +517,20 @@ a - r 1 primary-expr FLOAT-LITERAL
 a / r 1 primary-expr FLOAT-LITERAL
 s
 a % r 1 primary-expr IDENTIFIER
-a %= s 55
-a ( s 102
+a %= s 52
+a ( s 89
 a ) r 1 primary-expr IDENTIFIER
 a * r 1 primary-expr IDENTIFIER
-a *= s 57
+a *= s 54
 a + r 1 primary-expr IDENTIFIER
-a += s 58
+a += s 55
 a - r 1 primary-expr IDENTIFIER
-a -= s 59
+a -= s 56
 a / r 1 primary-expr IDENTIFIER
-a /= s 60
-a = s 62
-a assignment-op s 103
-g assignment-op 103
+a /= s 57
+a = s 58
+a assignment-op s 90
+g assignment-op 90
 s
 a % r 1 primary-expr INT-LITERAL
 a ) r 1 primary-expr INT-LITERAL
@@ -665,338 +539,203 @@ a + r 1 primary-expr INT-LITERAL
 a - r 1 primary-expr INT-LITERAL
 a / r 1 primary-expr INT-LITERAL
 s
-a % r 1 primary-expr STRING-LITERAL
-a ) r 1 primary-expr STRING-LITERAL
-a * r 1 primary-expr STRING-LITERAL
-a + r 1 primary-expr STRING-LITERAL
-a - r 1 primary-expr STRING-LITERAL
-a / r 1 primary-expr STRING-LITERAL
+a ) r 1 assignment-expr add-expr
+a + s 60
+a - s 61
+a add-op s 92
+g add-op 92
 s
-a ; s 113
+a ) r 1 expr assignment-expr
+s
+a % r 1 primary-expr call-expr
+a ) r 1 primary-expr call-expr
+a * r 1 primary-expr call-expr
+a + r 1 primary-expr call-expr
+a - r 1 primary-expr call-expr
+a / r 1 primary-expr call-expr
+s
+a ) s 106
+s
+a % s 63
+a ) r 1 add-expr mult-expr
+a * s 64
+a + r 1 add-expr mult-expr
+a - r 1 add-expr mult-expr
+a / s 65
+a mult-op s 93
+g mult-op 93
+s
+a % r 1 mult-expr primary-expr
+a ) r 1 mult-expr primary-expr
+a * r 1 mult-expr primary-expr
+a + r 1 mult-expr primary-expr
+a - r 1 mult-expr primary-expr
+a / r 1 mult-expr primary-expr
+s
+a ; s 101
+s
+a ; s 105
+s
+a ; s 103
+s
+a Ω r 2 print-statement println STRING-LITERAL;
+a ( r 2 print-statement println STRING-LITERAL;
+a FLOAT-LITERAL r 2 print-statement println STRING-LITERAL;
+a IDENTIFIER r 2 print-statement println STRING-LITERAL;
+a INT-LITERAL r 2 print-statement println STRING-LITERAL;
+a func r 2 print-statement println STRING-LITERAL;
+a print r 2 print-statement println STRING-LITERAL;
+a println r 2 print-statement println STRING-LITERAL;
+a return r 2 print-statement println STRING-LITERAL;
+a { r 2 print-statement println STRING-LITERAL;
+s
+a ; s 104
 s
 a ( r 1 assignment-op %=
 a FLOAT-LITERAL r 1 assignment-op %=
 a IDENTIFIER r 1 assignment-op %=
 a INT-LITERAL r 1 assignment-op %=
-a STRING-LITERAL r 1 assignment-op %=
 s
-a ( s 84
-a ) s 85
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 87
-a call-arguments s 88
-a call-expr s 89
-a expr s 90
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 87
-g call-arguments 88
-g call-expr 89
-g expr 90
-g mult-expr 91
-g primary-expr 92
+a ( s 71
+a ) s 72
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 74
+a INT-LITERAL s 75
+a add-expr s 76
+a assignment-expr s 77
+a call-arguments s 78
+a call-expr s 79
+a expr s 80
+a mult-expr s 81
+a primary-expr s 82
+g add-expr 76
+g assignment-expr 77
+g call-arguments 78
+g call-expr 79
+g expr 80
+g mult-expr 81
+g primary-expr 82
 s
 a ( r 1 assignment-op *=
 a FLOAT-LITERAL r 1 assignment-op *=
 a IDENTIFIER r 1 assignment-op *=
 a INT-LITERAL r 1 assignment-op *=
-a STRING-LITERAL r 1 assignment-op *=
 s
 a ( r 1 assignment-op +=
 a FLOAT-LITERAL r 1 assignment-op +=
 a IDENTIFIER r 1 assignment-op +=
 a INT-LITERAL r 1 assignment-op +=
-a STRING-LITERAL r 1 assignment-op +=
 s
 a ( r 1 assignment-op -=
 a FLOAT-LITERAL r 1 assignment-op -=
 a IDENTIFIER r 1 assignment-op -=
 a INT-LITERAL r 1 assignment-op -=
-a STRING-LITERAL r 1 assignment-op -=
 s
 a ( r 1 assignment-op /=
 a FLOAT-LITERAL r 1 assignment-op /=
 a IDENTIFIER r 1 assignment-op /=
 a INT-LITERAL r 1 assignment-op /=
-a STRING-LITERAL r 1 assignment-op /=
-s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 18
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a add-expr s 5
-a assignment-expr s 104
-a call-expr s 8
-a mult-expr s 11
-a primary-expr s 12
-g add-expr 5
-g assignment-expr 104
-g call-expr 8
-g mult-expr 11
-g primary-expr 12
 s
 a ( r 1 assignment-op =
 a FLOAT-LITERAL r 1 assignment-op =
 a IDENTIFIER r 1 assignment-op =
 a INT-LITERAL r 1 assignment-op =
-a STRING-LITERAL r 1 assignment-op =
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a add-expr s 10
+a assignment-expr s 91
+a call-expr s 13
+a mult-expr s 17
+a primary-expr s 18
+g add-expr 10
+g assignment-expr 91
+g call-expr 13
+g mult-expr 17
+g primary-expr 18
 s
 a ( r 1 add-op +
 a FLOAT-LITERAL r 1 add-op +
 a IDENTIFIER r 1 add-op +
 a INT-LITERAL r 1 add-op +
-a STRING-LITERAL r 1 add-op +
 s
 a ( r 1 add-op -
 a FLOAT-LITERAL r 1 add-op -
 a IDENTIFIER r 1 add-op -
 a INT-LITERAL r 1 add-op -
-a STRING-LITERAL r 1 add-op -
 s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 110
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a call-expr s 8
-a mult-expr s 109
-a primary-expr s 12
-g call-expr 8
-g mult-expr 109
-g primary-expr 12
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 94
+a INT-LITERAL s 4
+a call-expr s 13
+a mult-expr s 95
+a primary-expr s 18
+g call-expr 13
+g mult-expr 95
+g primary-expr 18
 s
 a ( r 1 mult-op %
 a FLOAT-LITERAL r 1 mult-op %
 a IDENTIFIER r 1 mult-op %
 a INT-LITERAL r 1 mult-op %
-a STRING-LITERAL r 1 mult-op %
 s
 a ( r 1 mult-op *
 a FLOAT-LITERAL r 1 mult-op *
 a IDENTIFIER r 1 mult-op *
 a INT-LITERAL r 1 mult-op *
-a STRING-LITERAL r 1 mult-op *
 s
 a ( r 1 mult-op /
 a FLOAT-LITERAL r 1 mult-op /
 a IDENTIFIER r 1 mult-op /
 a INT-LITERAL r 1 mult-op /
-a STRING-LITERAL r 1 mult-op /
 s
-a ( s 2
-a FLOAT-LITERAL s 16
-a IDENTIFIER s 110
-a INT-LITERAL s 19
-a STRING-LITERAL s 20
-a call-expr s 8
-a primary-expr s 111
-g call-expr 8
-g primary-expr 111
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 94
+a INT-LITERAL s 4
+a call-expr s 13
+a primary-expr s 96
+g call-expr 13
+g primary-expr 96
 s
 a Ω r 2 expression-statement expr ;
 a ( r 2 expression-statement expr ;
 a FLOAT-LITERAL r 2 expression-statement expr ;
 a IDENTIFIER r 2 expression-statement expr ;
 a INT-LITERAL r 2 expression-statement expr ;
-a STRING-LITERAL r 2 expression-statement expr ;
+a func r 2 expression-statement expr ;
 a print r 2 expression-statement expr ;
+a println r 2 expression-statement expr ;
 a return r 2 expression-statement expr ;
 a { r 2 expression-statement expr ;
 s
+a ( s 97
+a parameter-list s 98
+g parameter-list 98
+s
 a } r 2 statements statement statements
 s
-a } s 140
+a } s 126
 s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 51
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a add-expr s 44
-a assignment-expr s 45
-a call-expr s 46
-a expr s 120
-a mult-expr s 48
-a primary-expr s 49
-g add-expr 44
-g assignment-expr 45
-g call-expr 46
-g expr 120
-g mult-expr 48
-g primary-expr 49
-s
-a ( r 1 assignment-expr add-expr
-a + s 63
-a - s 64
-a FLOAT-LITERAL r 1 assignment-expr add-expr
-a IDENTIFIER r 1 assignment-expr add-expr
-a INT-LITERAL r 1 assignment-expr add-expr
-a STRING-LITERAL r 1 assignment-expr add-expr
-a print r 1 assignment-expr add-expr
-a return r 1 assignment-expr add-expr
-a { r 1 assignment-expr add-expr
-a } r 1 assignment-expr add-expr
-a add-op s 128
-g add-op 128
-s
-a ( r 1 expr assignment-expr
-a FLOAT-LITERAL r 1 expr assignment-expr
-a IDENTIFIER r 1 expr assignment-expr
-a INT-LITERAL r 1 expr assignment-expr
-a STRING-LITERAL r 1 expr assignment-expr
-a print r 1 expr assignment-expr
-a return r 1 expr assignment-expr
-a { r 1 expr assignment-expr
-a } r 1 expr assignment-expr
-s
-a % r 1 primary-expr call-expr
-a ( r 1 primary-expr call-expr
-a * r 1 primary-expr call-expr
-a + r 1 primary-expr call-expr
-a - r 1 primary-expr call-expr
-a / r 1 primary-expr call-expr
-a FLOAT-LITERAL r 1 primary-expr call-expr
-a IDENTIFIER r 1 primary-expr call-expr
-a INT-LITERAL r 1 primary-expr call-expr
-a STRING-LITERAL r 1 primary-expr call-expr
-a print r 1 primary-expr call-expr
-a return r 1 primary-expr call-expr
-a { r 1 primary-expr call-expr
-a } r 1 primary-expr call-expr
-s
-a ( r 2 print-statement print expr
-a FLOAT-LITERAL r 2 print-statement print expr
-a IDENTIFIER r 2 print-statement print expr
-a INT-LITERAL r 2 print-statement print expr
-a STRING-LITERAL r 2 print-statement print expr
-a print r 2 print-statement print expr
-a return r 2 print-statement print expr
-a { r 2 print-statement print expr
-a } r 2 print-statement print expr
-s
-a % s 66
-a ( r 1 add-expr mult-expr
-a * s 67
-a + r 1 add-expr mult-expr
-a - r 1 add-expr mult-expr
-a / s 68
-a FLOAT-LITERAL r 1 add-expr mult-expr
-a IDENTIFIER r 1 add-expr mult-expr
-a INT-LITERAL r 1 add-expr mult-expr
-a STRING-LITERAL r 1 add-expr mult-expr
-a print r 1 add-expr mult-expr
-a return r 1 add-expr mult-expr
-a { r 1 add-expr mult-expr
-a } r 1 add-expr mult-expr
-a mult-op s 130
-g mult-op 130
-s
-a % r 1 mult-expr primary-expr
-a ( r 1 mult-expr primary-expr
-a * r 1 mult-expr primary-expr
-a + r 1 mult-expr primary-expr
-a - r 1 mult-expr primary-expr
-a / r 1 mult-expr primary-expr
-a FLOAT-LITERAL r 1 mult-expr primary-expr
-a IDENTIFIER r 1 mult-expr primary-expr
-a INT-LITERAL r 1 mult-expr primary-expr
-a STRING-LITERAL r 1 mult-expr primary-expr
-a print r 1 mult-expr primary-expr
-a return r 1 mult-expr primary-expr
-a { r 1 mult-expr primary-expr
-a } r 1 mult-expr primary-expr
-s
-a % r 1 primary-expr FLOAT-LITERAL
-a ( r 1 primary-expr FLOAT-LITERAL
-a * r 1 primary-expr FLOAT-LITERAL
-a + r 1 primary-expr FLOAT-LITERAL
-a - r 1 primary-expr FLOAT-LITERAL
-a / r 1 primary-expr FLOAT-LITERAL
-a FLOAT-LITERAL r 1 primary-expr FLOAT-LITERAL
-a IDENTIFIER r 1 primary-expr FLOAT-LITERAL
-a INT-LITERAL r 1 primary-expr FLOAT-LITERAL
-a STRING-LITERAL r 1 primary-expr FLOAT-LITERAL
-a print r 1 primary-expr FLOAT-LITERAL
-a return r 1 primary-expr FLOAT-LITERAL
-a { r 1 primary-expr FLOAT-LITERAL
-a } r 1 primary-expr FLOAT-LITERAL
-s
-a % r 1 primary-expr IDENTIFIER
-a %= s 55
-a ( s 122
-a * r 1 primary-expr IDENTIFIER
-a *= s 57
-a + r 1 primary-expr IDENTIFIER
-a += s 58
-a - r 1 primary-expr IDENTIFIER
-a -= s 59
-a / r 1 primary-expr IDENTIFIER
-a /= s 60
-a = s 62
-a FLOAT-LITERAL r 1 primary-expr IDENTIFIER
-a IDENTIFIER r 1 primary-expr IDENTIFIER
-a INT-LITERAL r 1 primary-expr IDENTIFIER
-a STRING-LITERAL r 1 primary-expr IDENTIFIER
-a print r 1 primary-expr IDENTIFIER
-a return r 1 primary-expr IDENTIFIER
-a { r 1 primary-expr IDENTIFIER
-a } r 1 primary-expr IDENTIFIER
-a assignment-op s 123
-g assignment-op 123
-s
-a % r 1 primary-expr INT-LITERAL
-a ( r 1 primary-expr INT-LITERAL
-a * r 1 primary-expr INT-LITERAL
-a + r 1 primary-expr INT-LITERAL
-a - r 1 primary-expr INT-LITERAL
-a / r 1 primary-expr INT-LITERAL
-a FLOAT-LITERAL r 1 primary-expr INT-LITERAL
-a IDENTIFIER r 1 primary-expr INT-LITERAL
-a INT-LITERAL r 1 primary-expr INT-LITERAL
-a STRING-LITERAL r 1 primary-expr INT-LITERAL
-a print r 1 primary-expr INT-LITERAL
-a return r 1 primary-expr INT-LITERAL
-a { r 1 primary-expr INT-LITERAL
-a } r 1 primary-expr INT-LITERAL
-s
-a % r 1 primary-expr STRING-LITERAL
-a ( r 1 primary-expr STRING-LITERAL
-a * r 1 primary-expr STRING-LITERAL
-a + r 1 primary-expr STRING-LITERAL
-a - r 1 primary-expr STRING-LITERAL
-a / r 1 primary-expr STRING-LITERAL
-a FLOAT-LITERAL r 1 primary-expr STRING-LITERAL
-a IDENTIFIER r 1 primary-expr STRING-LITERAL
-a INT-LITERAL r 1 primary-expr STRING-LITERAL
-a STRING-LITERAL r 1 primary-expr STRING-LITERAL
-a print r 1 primary-expr STRING-LITERAL
-a return r 1 primary-expr STRING-LITERAL
-a { r 1 primary-expr STRING-LITERAL
-a } r 1 primary-expr STRING-LITERAL
-s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 51
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a add-expr s 44
-a assignment-expr s 45
-a call-expr s 46
-a expr s 121
-a mult-expr s 48
-a primary-expr s 49
-g add-expr 44
-g assignment-expr 45
-g call-expr 46
-g expr 121
-g mult-expr 48
-g primary-expr 49
+a ( s 37
+a FLOAT-LITERAL s 38
+a IDENTIFIER s 39
+a INT-LITERAL s 40
+a add-expr s 41
+a assignment-expr s 42
+a call-expr s 43
+a expr s 109
+a mult-expr s 45
+a primary-expr s 46
+g add-expr 41
+g assignment-expr 42
+g call-expr 43
+g expr 109
+g mult-expr 45
+g primary-expr 46
 s
 a % r 3 call-expr IDENTIFIER ( )
 a * r 3 call-expr IDENTIFIER ( )
@@ -1004,47 +743,6 @@ a + r 3 call-expr IDENTIFIER ( )
 a - r 3 call-expr IDENTIFIER ( )
 a / r 3 call-expr IDENTIFIER ( )
 a ; r 3 call-expr IDENTIFIER ( )
-s
-a ) r 1 assignment-expr add-expr
-a + s 63
-a , r 1 assignment-expr add-expr
-a - s 64
-a add-op s 129
-g add-op 129
-s
-a ) r 1 expr assignment-expr
-a , r 1 expr assignment-expr
-s
-a ) s 143
-s
-a % r 1 primary-expr call-expr
-a ) r 1 primary-expr call-expr
-a * r 1 primary-expr call-expr
-a + r 1 primary-expr call-expr
-a , r 1 primary-expr call-expr
-a - r 1 primary-expr call-expr
-a / r 1 primary-expr call-expr
-s
-a ) r 1 call-arguments expr
-a , s 138
-s
-a % s 66
-a ) r 1 add-expr mult-expr
-a * s 67
-a + r 1 add-expr mult-expr
-a , r 1 add-expr mult-expr
-a - r 1 add-expr mult-expr
-a / s 68
-a mult-op s 131
-g mult-op 131
-s
-a % r 1 mult-expr primary-expr
-a ) r 1 mult-expr primary-expr
-a * r 1 mult-expr primary-expr
-a + r 1 mult-expr primary-expr
-a , r 1 mult-expr primary-expr
-a - r 1 mult-expr primary-expr
-a / r 1 mult-expr primary-expr
 s
 a % r 1 primary-expr FLOAT-LITERAL
 a ) r 1 primary-expr FLOAT-LITERAL
@@ -1055,21 +753,21 @@ a - r 1 primary-expr FLOAT-LITERAL
 a / r 1 primary-expr FLOAT-LITERAL
 s
 a % r 1 primary-expr IDENTIFIER
-a %= s 55
-a ( s 124
+a %= s 52
+a ( s 110
 a ) r 1 primary-expr IDENTIFIER
 a * r 1 primary-expr IDENTIFIER
-a *= s 57
+a *= s 54
 a + r 1 primary-expr IDENTIFIER
-a += s 58
+a += s 55
 a , r 1 primary-expr IDENTIFIER
 a - r 1 primary-expr IDENTIFIER
-a -= s 59
+a -= s 56
 a / r 1 primary-expr IDENTIFIER
-a /= s 60
-a = s 62
-a assignment-op s 125
-g assignment-op 125
+a /= s 57
+a = s 58
+a assignment-op s 111
+g assignment-op 111
 s
 a % r 1 primary-expr INT-LITERAL
 a ) r 1 primary-expr INT-LITERAL
@@ -1079,156 +777,141 @@ a , r 1 primary-expr INT-LITERAL
 a - r 1 primary-expr INT-LITERAL
 a / r 1 primary-expr INT-LITERAL
 s
-a % r 1 primary-expr STRING-LITERAL
-a ) r 1 primary-expr STRING-LITERAL
-a * r 1 primary-expr STRING-LITERAL
-a + r 1 primary-expr STRING-LITERAL
-a , r 1 primary-expr STRING-LITERAL
-a - r 1 primary-expr STRING-LITERAL
-a / r 1 primary-expr STRING-LITERAL
+a ) r 1 assignment-expr add-expr
+a + s 60
+a , r 1 assignment-expr add-expr
+a - s 61
+a add-op s 113
+g add-op 113
 s
-a ) s 141
+a ) r 1 expr assignment-expr
+a , r 1 expr assignment-expr
 s
-a ) s 142
+a ) s 131
 s
-a ; s 139
+a % r 1 primary-expr call-expr
+a ) r 1 primary-expr call-expr
+a * r 1 primary-expr call-expr
+a + r 1 primary-expr call-expr
+a , r 1 primary-expr call-expr
+a - r 1 primary-expr call-expr
+a / r 1 primary-expr call-expr
 s
-a ( s 84
-a ) s 116
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 87
-a call-arguments s 117
-a call-expr s 89
-a expr s 90
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 87
-g call-arguments 117
-g call-expr 89
-g expr 90
-g mult-expr 91
-g primary-expr 92
+a ) r 1 call-arguments expr
+a , s 124
 s
-a ( s 32
-a FLOAT-LITERAL s 39
-a IDENTIFIER s 40
-a INT-LITERAL s 41
-a STRING-LITERAL s 42
-a add-expr s 33
-a assignment-expr s 126
-a call-expr s 35
-a mult-expr s 37
-a primary-expr s 38
-g add-expr 33
-g assignment-expr 126
-g call-expr 35
-g mult-expr 37
-g primary-expr 38
+a % s 63
+a ) r 1 add-expr mult-expr
+a * s 64
+a + r 1 add-expr mult-expr
+a , r 1 add-expr mult-expr
+a - r 1 add-expr mult-expr
+a / s 65
+a mult-op s 114
+g mult-op 114
 s
-a ( s 84
-a ) s 118
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 87
-a call-arguments s 119
-a call-expr s 89
-a expr s 90
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 87
-g call-arguments 119
-g call-expr 89
-g expr 90
-g mult-expr 91
-g primary-expr 92
+a % r 1 mult-expr primary-expr
+a ) r 1 mult-expr primary-expr
+a * r 1 mult-expr primary-expr
+a + r 1 mult-expr primary-expr
+a , r 1 mult-expr primary-expr
+a - r 1 mult-expr primary-expr
+a / r 1 mult-expr primary-expr
 s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 51
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a add-expr s 44
-a assignment-expr s 127
-a call-expr s 46
-a mult-expr s 48
-a primary-expr s 49
-g add-expr 44
-g assignment-expr 127
-g call-expr 46
-g mult-expr 48
-g primary-expr 49
+a ) s 130
+s
+a ; s 125
+s
+a ; s 129
+s
+a ; s 127
+s
+a ( r 2 print-statement println STRING-LITERAL;
+a FLOAT-LITERAL r 2 print-statement println STRING-LITERAL;
+a IDENTIFIER r 2 print-statement println STRING-LITERAL;
+a INT-LITERAL r 2 print-statement println STRING-LITERAL;
+a func r 2 print-statement println STRING-LITERAL;
+a print r 2 print-statement println STRING-LITERAL;
+a println r 2 print-statement println STRING-LITERAL;
+a return r 2 print-statement println STRING-LITERAL;
+a { r 2 print-statement println STRING-LITERAL;
+a } r 2 print-statement println STRING-LITERAL;
+s
+a ; s 128
+s
+a ( s 71
+a ) s 107
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 74
+a INT-LITERAL s 75
+a add-expr s 76
+a assignment-expr s 77
+a call-arguments s 108
+a call-expr s 79
+a expr s 80
+a mult-expr s 81
+a primary-expr s 82
+g add-expr 76
+g assignment-expr 77
+g call-arguments 108
+g call-expr 79
+g expr 80
+g mult-expr 81
+g primary-expr 82
+s
+a ( s 37
+a FLOAT-LITERAL s 38
+a IDENTIFIER s 39
+a INT-LITERAL s 40
+a add-expr s 41
+a assignment-expr s 112
+a call-expr s 43
+a mult-expr s 45
+a primary-expr s 46
+g add-expr 41
+g assignment-expr 112
+g call-expr 43
+g mult-expr 45
+g primary-expr 46
 s
 a ; r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
 s
-a ( s 32
-a FLOAT-LITERAL s 39
-a IDENTIFIER s 133
-a INT-LITERAL s 41
-a STRING-LITERAL s 42
-a call-expr s 35
-a mult-expr s 132
-a primary-expr s 38
-g call-expr 35
-g mult-expr 132
-g primary-expr 38
+a ( s 37
+a FLOAT-LITERAL s 38
+a IDENTIFIER s 115
+a INT-LITERAL s 40
+a call-expr s 43
+a mult-expr s 116
+a primary-expr s 46
+g call-expr 43
+g mult-expr 116
+g primary-expr 46
 s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 135
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a call-expr s 46
-a mult-expr s 134
-a primary-expr s 49
-g call-expr 46
-g mult-expr 134
-g primary-expr 49
-s
-a ( s 32
-a FLOAT-LITERAL s 39
-a IDENTIFIER s 133
-a INT-LITERAL s 41
-a STRING-LITERAL s 42
-a call-expr s 35
-a primary-expr s 136
-g call-expr 35
-g primary-expr 136
-s
-a ( s 43
-a FLOAT-LITERAL s 50
-a IDENTIFIER s 135
-a INT-LITERAL s 52
-a STRING-LITERAL s 53
-a call-expr s 46
-a primary-expr s 137
-g call-expr 46
-g primary-expr 137
-s
-a % s 66
-a * s 67
-a + r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 68
-a ; r 3 add-expr add-expr add-op mult-expr
-a mult-op s 69
-g mult-op 69
+a ( s 37
+a FLOAT-LITERAL s 38
+a IDENTIFIER s 115
+a INT-LITERAL s 40
+a call-expr s 43
+a primary-expr s 117
+g call-expr 43
+g primary-expr 117
 s
 a % r 1 primary-expr IDENTIFIER
-a ( s 56
+a ( s 53
 a * r 1 primary-expr IDENTIFIER
 a + r 1 primary-expr IDENTIFIER
 a - r 1 primary-expr IDENTIFIER
 a / r 1 primary-expr IDENTIFIER
 a ; r 1 primary-expr IDENTIFIER
+s
+a % s 63
+a * s 64
+a + r 3 add-expr add-expr add-op mult-expr
+a - r 3 add-expr add-expr add-op mult-expr
+a / s 65
+a ; r 3 add-expr add-expr add-op mult-expr
+a mult-op s 66
+g mult-op 66
 s
 a % r 3 mult-expr mult-expr mult-op primary-expr
 a * r 3 mult-expr mult-expr mult-op primary-expr
@@ -1237,23 +920,40 @@ a - r 3 mult-expr mult-expr mult-op primary-expr
 a / r 3 mult-expr mult-expr mult-op primary-expr
 a ; r 3 mult-expr mult-expr mult-op primary-expr
 s
+a ) s 119
+a IDENTIFIER s 120
+a parameter s 121
+a parameters s 122
+a type s 123
+g parameter 121
+g parameters 122
+g type 123
+s
+a -> s 132
+s
 a ( r 2 expression-statement expr ;
 a FLOAT-LITERAL r 2 expression-statement expr ;
 a IDENTIFIER r 2 expression-statement expr ;
 a INT-LITERAL r 2 expression-statement expr ;
-a STRING-LITERAL r 2 expression-statement expr ;
+a func r 2 expression-statement expr ;
 a print r 2 expression-statement expr ;
+a println r 2 expression-statement expr ;
 a return r 2 expression-statement expr ;
 a { r 2 expression-statement expr ;
 a } r 2 expression-statement expr ;
+s
+a ( s 97
+a parameter-list s 118
+g parameter-list 118
 s
 a Ω r 3 return-statement return expr ;
 a ( r 3 return-statement return expr ;
 a FLOAT-LITERAL r 3 return-statement return expr ;
 a IDENTIFIER r 3 return-statement return expr ;
 a INT-LITERAL r 3 return-statement return expr ;
-a STRING-LITERAL r 3 return-statement return expr ;
+a func r 3 return-statement return expr ;
 a print r 3 return-statement return expr ;
+a println r 3 return-statement return expr ;
 a return r 3 return-statement return expr ;
 a { r 3 return-statement return expr ;
 s
@@ -1262,10 +962,44 @@ a ( r 3 block-statement { statements }
 a FLOAT-LITERAL r 3 block-statement { statements }
 a IDENTIFIER r 3 block-statement { statements }
 a INT-LITERAL r 3 block-statement { statements }
-a STRING-LITERAL r 3 block-statement { statements }
+a func r 3 block-statement { statements }
 a print r 3 block-statement { statements }
+a println r 3 block-statement { statements }
 a return r 3 block-statement { statements }
 a { r 3 block-statement { statements }
+s
+a Ω r 3 print-statement print expr ;
+a ( r 3 print-statement print expr ;
+a FLOAT-LITERAL r 3 print-statement print expr ;
+a IDENTIFIER r 3 print-statement print expr ;
+a INT-LITERAL r 3 print-statement print expr ;
+a func r 3 print-statement print expr ;
+a print r 3 print-statement print expr ;
+a println r 3 print-statement print expr ;
+a return r 3 print-statement print expr ;
+a { r 3 print-statement print expr ;
+s
+a Ω r 3 print-statement println expr ;
+a ( r 3 print-statement println expr ;
+a FLOAT-LITERAL r 3 print-statement println expr ;
+a IDENTIFIER r 3 print-statement println expr ;
+a INT-LITERAL r 3 print-statement println expr ;
+a func r 3 print-statement println expr ;
+a print r 3 print-statement println expr ;
+a println r 3 print-statement println expr ;
+a return r 3 print-statement println expr ;
+a { r 3 print-statement println expr ;
+s
+a Ω r 3 print-statement print STRING-LITERAL ;
+a ( r 3 print-statement print STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a func r 3 print-statement print STRING-LITERAL ;
+a print r 3 print-statement print STRING-LITERAL ;
+a println r 3 print-statement print STRING-LITERAL ;
+a return r 3 print-statement print STRING-LITERAL ;
+a { r 3 print-statement print STRING-LITERAL ;
 s
 a % r 3 primary-expr ( expr )
 a * r 3 primary-expr ( expr )
@@ -1274,23 +1008,6 @@ a - r 3 primary-expr ( expr )
 a / r 3 primary-expr ( expr )
 a ; r 3 primary-expr ( expr )
 s
-a Ω r 3 call-expr IDENTIFIER ( )
-a % r 3 call-expr IDENTIFIER ( )
-a ( r 3 call-expr IDENTIFIER ( )
-a * r 3 call-expr IDENTIFIER ( )
-a + r 3 call-expr IDENTIFIER ( )
-a - r 3 call-expr IDENTIFIER ( )
-a / r 3 call-expr IDENTIFIER ( )
-a FLOAT-LITERAL r 3 call-expr IDENTIFIER ( )
-a IDENTIFIER r 3 call-expr IDENTIFIER ( )
-a INT-LITERAL r 3 call-expr IDENTIFIER ( )
-a STRING-LITERAL r 3 call-expr IDENTIFIER ( )
-a print r 3 call-expr IDENTIFIER ( )
-a return r 3 call-expr IDENTIFIER ( )
-a { r 3 call-expr IDENTIFIER ( )
-s
-a ) s 159
-s
 a % r 3 call-expr IDENTIFIER ( )
 a ) r 3 call-expr IDENTIFIER ( )
 a * r 3 call-expr IDENTIFIER ( )
@@ -1298,205 +1015,83 @@ a + r 3 call-expr IDENTIFIER ( )
 a - r 3 call-expr IDENTIFIER ( )
 a / r 3 call-expr IDENTIFIER ( )
 s
-a ) s 160
+a ) s 150
 s
-a ) s 157
+a ) s 148
 s
-a ) s 158
+a ( s 71
+a ) s 139
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 74
+a INT-LITERAL s 75
+a add-expr s 76
+a assignment-expr s 77
+a call-arguments s 140
+a call-expr s 79
+a expr s 80
+a mult-expr s 81
+a primary-expr s 82
+g add-expr 76
+g assignment-expr 77
+g call-arguments 140
+g call-expr 79
+g expr 80
+g mult-expr 81
+g primary-expr 82
 s
-a ( s 84
-a ) s 144
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 87
-a call-arguments s 145
-a call-expr s 89
-a expr s 90
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 87
-g call-arguments 145
-g call-expr 89
-g expr 90
-g mult-expr 91
-g primary-expr 92
-s
-a ( s 73
-a FLOAT-LITERAL s 80
-a IDENTIFIER s 81
-a INT-LITERAL s 82
-a STRING-LITERAL s 83
-a add-expr s 74
-a assignment-expr s 149
-a call-expr s 76
-a mult-expr s 78
-a primary-expr s 79
-g add-expr 74
-g assignment-expr 149
-g call-expr 76
-g mult-expr 78
-g primary-expr 79
-s
-a ( s 84
-a ) s 146
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 87
-a call-arguments s 147
-a call-expr s 89
-a expr s 90
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 87
-g call-arguments 147
-g call-expr 89
-g expr 90
-g mult-expr 91
-g primary-expr 92
-s
-a ( s 84
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 150
-a call-expr s 89
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 150
-g call-expr 89
-g mult-expr 91
-g primary-expr 92
-s
-a Ω r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a ( r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a FLOAT-LITERAL r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a IDENTIFIER r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a INT-LITERAL r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a STRING-LITERAL r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a print r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a return r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a { r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
+a ( s 71
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 74
+a INT-LITERAL s 75
+a add-expr s 76
+a assignment-expr s 142
+a call-expr s 79
+a mult-expr s 81
+a primary-expr s 82
+g add-expr 76
+g assignment-expr 142
+g call-expr 79
+g mult-expr 81
+g primary-expr 82
 s
 a ) r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
 s
-a ( s 73
-a FLOAT-LITERAL s 80
-a IDENTIFIER s 152
-a INT-LITERAL s 82
-a STRING-LITERAL s 83
-a call-expr s 76
-a mult-expr s 151
-a primary-expr s 79
-g call-expr 76
-g mult-expr 151
-g primary-expr 79
+a ( s 71
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 143
+a INT-LITERAL s 75
+a call-expr s 79
+a mult-expr s 144
+a primary-expr s 82
+g call-expr 79
+g mult-expr 144
+g primary-expr 82
 s
-a ( s 84
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 154
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a call-expr s 89
-a mult-expr s 153
-a primary-expr s 92
-g call-expr 89
-g mult-expr 153
-g primary-expr 92
-s
-a ( s 73
-a FLOAT-LITERAL s 80
-a IDENTIFIER s 152
-a INT-LITERAL s 82
-a STRING-LITERAL s 83
-a call-expr s 76
-a primary-expr s 155
-g call-expr 76
-g primary-expr 155
-s
-a ( s 84
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 154
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a call-expr s 89
-a primary-expr s 156
-g call-expr 89
-g primary-expr 156
-s
-a Ω r 3 add-expr add-expr add-op mult-expr
-a % s 66
-a ( r 3 add-expr add-expr add-op mult-expr
-a * s 67
-a + r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 68
-a FLOAT-LITERAL r 3 add-expr add-expr add-op mult-expr
-a IDENTIFIER r 3 add-expr add-expr add-op mult-expr
-a INT-LITERAL r 3 add-expr add-expr add-op mult-expr
-a STRING-LITERAL r 3 add-expr add-expr add-op mult-expr
-a print r 3 add-expr add-expr add-op mult-expr
-a return r 3 add-expr add-expr add-op mult-expr
-a { r 3 add-expr add-expr add-op mult-expr
-a mult-op s 107
-g mult-op 107
-s
-a Ω r 1 primary-expr IDENTIFIER
-a % r 1 primary-expr IDENTIFIER
-a ( s 100
-a * r 1 primary-expr IDENTIFIER
-a + r 1 primary-expr IDENTIFIER
-a - r 1 primary-expr IDENTIFIER
-a / r 1 primary-expr IDENTIFIER
-a FLOAT-LITERAL r 1 primary-expr IDENTIFIER
-a IDENTIFIER r 1 primary-expr IDENTIFIER
-a INT-LITERAL r 1 primary-expr IDENTIFIER
-a STRING-LITERAL r 1 primary-expr IDENTIFIER
-a print r 1 primary-expr IDENTIFIER
-a return r 1 primary-expr IDENTIFIER
-a { r 1 primary-expr IDENTIFIER
-s
-a % s 66
-a ) r 3 add-expr add-expr add-op mult-expr
-a * s 67
-a + r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 68
-a mult-op s 108
-g mult-op 108
+a ( s 71
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 143
+a INT-LITERAL s 75
+a call-expr s 79
+a primary-expr s 145
+g call-expr 79
+g primary-expr 145
 s
 a % r 1 primary-expr IDENTIFIER
-a ( s 102
+a ( s 89
 a ) r 1 primary-expr IDENTIFIER
 a * r 1 primary-expr IDENTIFIER
 a + r 1 primary-expr IDENTIFIER
 a - r 1 primary-expr IDENTIFIER
 a / r 1 primary-expr IDENTIFIER
 s
-a Ω r 3 mult-expr mult-expr mult-op primary-expr
-a % r 3 mult-expr mult-expr mult-op primary-expr
-a ( r 3 mult-expr mult-expr mult-op primary-expr
-a * r 3 mult-expr mult-expr mult-op primary-expr
-a + r 3 mult-expr mult-expr mult-op primary-expr
-a - r 3 mult-expr mult-expr mult-op primary-expr
-a / r 3 mult-expr mult-expr mult-op primary-expr
-a FLOAT-LITERAL r 3 mult-expr mult-expr mult-op primary-expr
-a IDENTIFIER r 3 mult-expr mult-expr mult-op primary-expr
-a INT-LITERAL r 3 mult-expr mult-expr mult-op primary-expr
-a STRING-LITERAL r 3 mult-expr mult-expr mult-op primary-expr
-a print r 3 mult-expr mult-expr mult-op primary-expr
-a return r 3 mult-expr mult-expr mult-op primary-expr
-a { r 3 mult-expr mult-expr mult-op primary-expr
+a % s 63
+a ) r 3 add-expr add-expr add-op mult-expr
+a * s 64
+a + r 3 add-expr add-expr add-op mult-expr
+a - r 3 add-expr add-expr add-op mult-expr
+a / s 65
+a mult-op s 93
+g mult-op 93
 s
 a % r 3 mult-expr mult-expr mult-op primary-expr
 a ) r 3 mult-expr mult-expr mult-op primary-expr
@@ -1505,32 +1100,45 @@ a + r 3 mult-expr mult-expr mult-op primary-expr
 a - r 3 mult-expr mult-expr mult-op primary-expr
 a / r 3 mult-expr mult-expr mult-op primary-expr
 s
-a ( s 84
-a FLOAT-LITERAL s 93
-a IDENTIFIER s 94
-a INT-LITERAL s 95
-a STRING-LITERAL s 96
-a add-expr s 86
-a assignment-expr s 87
-a call-arguments s 148
-a call-expr s 89
-a expr s 90
-a mult-expr s 91
-a primary-expr s 92
-g add-expr 86
-g assignment-expr 87
-g call-arguments 148
-g call-expr 89
-g expr 90
-g mult-expr 91
-g primary-expr 92
+a -> s 151
+s
+a -> r 2 parameter-list ( )
+s
+a IDENTIFIER r 1 type IDENTIFIER
+s
+a ) r 1 parameters parameter
+a , s 146
+s
+a ) s 149
+s
+a IDENTIFIER s 147
+s
+a ( s 71
+a FLOAT-LITERAL s 73
+a IDENTIFIER s 74
+a INT-LITERAL s 75
+a add-expr s 76
+a assignment-expr s 77
+a call-arguments s 141
+a call-expr s 79
+a expr s 80
+a mult-expr s 81
+a primary-expr s 82
+g add-expr 76
+g assignment-expr 77
+g call-arguments 141
+g call-expr 79
+g expr 80
+g mult-expr 81
+g primary-expr 82
 s
 a ( r 3 return-statement return expr ;
 a FLOAT-LITERAL r 3 return-statement return expr ;
 a IDENTIFIER r 3 return-statement return expr ;
 a INT-LITERAL r 3 return-statement return expr ;
-a STRING-LITERAL r 3 return-statement return expr ;
+a func r 3 return-statement return expr ;
 a print r 3 return-statement return expr ;
+a println r 3 return-statement return expr ;
 a return r 3 return-statement return expr ;
 a { r 3 return-statement return expr ;
 a } r 3 return-statement return expr ;
@@ -1539,26 +1147,45 @@ a ( r 3 block-statement { statements }
 a FLOAT-LITERAL r 3 block-statement { statements }
 a IDENTIFIER r 3 block-statement { statements }
 a INT-LITERAL r 3 block-statement { statements }
-a STRING-LITERAL r 3 block-statement { statements }
+a func r 3 block-statement { statements }
 a print r 3 block-statement { statements }
+a println r 3 block-statement { statements }
 a return r 3 block-statement { statements }
 a { r 3 block-statement { statements }
 a } r 3 block-statement { statements }
 s
-a Ω r 3 primary-expr ( expr )
-a % r 3 primary-expr ( expr )
-a ( r 3 primary-expr ( expr )
-a * r 3 primary-expr ( expr )
-a + r 3 primary-expr ( expr )
-a - r 3 primary-expr ( expr )
-a / r 3 primary-expr ( expr )
-a FLOAT-LITERAL r 3 primary-expr ( expr )
-a IDENTIFIER r 3 primary-expr ( expr )
-a INT-LITERAL r 3 primary-expr ( expr )
-a STRING-LITERAL r 3 primary-expr ( expr )
-a print r 3 primary-expr ( expr )
-a return r 3 primary-expr ( expr )
-a { r 3 primary-expr ( expr )
+a ( r 3 print-statement print expr ;
+a FLOAT-LITERAL r 3 print-statement print expr ;
+a IDENTIFIER r 3 print-statement print expr ;
+a INT-LITERAL r 3 print-statement print expr ;
+a func r 3 print-statement print expr ;
+a print r 3 print-statement print expr ;
+a println r 3 print-statement print expr ;
+a return r 3 print-statement print expr ;
+a { r 3 print-statement print expr ;
+a } r 3 print-statement print expr ;
+s
+a ( r 3 print-statement println expr ;
+a FLOAT-LITERAL r 3 print-statement println expr ;
+a IDENTIFIER r 3 print-statement println expr ;
+a INT-LITERAL r 3 print-statement println expr ;
+a func r 3 print-statement println expr ;
+a print r 3 print-statement println expr ;
+a println r 3 print-statement println expr ;
+a return r 3 print-statement println expr ;
+a { r 3 print-statement println expr ;
+a } r 3 print-statement println expr ;
+s
+a ( r 3 print-statement print STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a func r 3 print-statement print STRING-LITERAL ;
+a print r 3 print-statement print STRING-LITERAL ;
+a println r 3 print-statement print STRING-LITERAL ;
+a return r 3 print-statement print STRING-LITERAL ;
+a { r 3 print-statement print STRING-LITERAL ;
+a } r 3 print-statement print STRING-LITERAL ;
 s
 a % r 3 primary-expr ( expr )
 a ) r 3 primary-expr ( expr )
@@ -1574,22 +1201,105 @@ a - r 4 call-expr IDENTIFIER ( call-arguments )
 a / r 4 call-expr IDENTIFIER ( call-arguments )
 a ; r 4 call-expr IDENTIFIER ( call-arguments )
 s
-a % r 3 call-expr IDENTIFIER ( )
-a ( r 3 call-expr IDENTIFIER ( )
-a * r 3 call-expr IDENTIFIER ( )
-a + r 3 call-expr IDENTIFIER ( )
-a - r 3 call-expr IDENTIFIER ( )
-a / r 3 call-expr IDENTIFIER ( )
-a FLOAT-LITERAL r 3 call-expr IDENTIFIER ( )
-a IDENTIFIER r 3 call-expr IDENTIFIER ( )
-a INT-LITERAL r 3 call-expr IDENTIFIER ( )
-a STRING-LITERAL r 3 call-expr IDENTIFIER ( )
-a print r 3 call-expr IDENTIFIER ( )
-a return r 3 call-expr IDENTIFIER ( )
-a { r 3 call-expr IDENTIFIER ( )
-a } r 3 call-expr IDENTIFIER ( )
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 5
+a print s 6
+a println s 7
+a return s 8
+a { s 9
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 133
+a call-expr s 13
+a expr s 14
+a expression-statement s 134
+a function-definition s 135
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 136
+a return-statement s 137
+a statement s 138
+g add-expr 10
+g assignment-expr 11
+g block-statement 133
+g call-expr 13
+g expr 14
+g expression-statement 134
+g function-definition 135
+g mult-expr 17
+g primary-expr 18
+g print-statement 136
+g return-statement 137
+g statement 138
 s
-a ) s 161
+a Ω r 1 statement block-statement
+a ( r 1 statement block-statement
+a FLOAT-LITERAL r 1 statement block-statement
+a IDENTIFIER r 1 statement block-statement
+a INT-LITERAL r 1 statement block-statement
+a func r 1 statement block-statement
+a print r 1 statement block-statement
+a println r 1 statement block-statement
+a return r 1 statement block-statement
+a { r 1 statement block-statement
+s
+a Ω r 1 statement expression-statement
+a ( r 1 statement expression-statement
+a FLOAT-LITERAL r 1 statement expression-statement
+a IDENTIFIER r 1 statement expression-statement
+a INT-LITERAL r 1 statement expression-statement
+a func r 1 statement expression-statement
+a print r 1 statement expression-statement
+a println r 1 statement expression-statement
+a return r 1 statement expression-statement
+a { r 1 statement expression-statement
+s
+a Ω r 1 statement function-definition
+a ( r 1 statement function-definition
+a FLOAT-LITERAL r 1 statement function-definition
+a IDENTIFIER r 1 statement function-definition
+a INT-LITERAL r 1 statement function-definition
+a func r 1 statement function-definition
+a print r 1 statement function-definition
+a println r 1 statement function-definition
+a return r 1 statement function-definition
+a { r 1 statement function-definition
+s
+a Ω r 1 statement print-statement
+a ( r 1 statement print-statement
+a FLOAT-LITERAL r 1 statement print-statement
+a IDENTIFIER r 1 statement print-statement
+a INT-LITERAL r 1 statement print-statement
+a func r 1 statement print-statement
+a print r 1 statement print-statement
+a println r 1 statement print-statement
+a return r 1 statement print-statement
+a { r 1 statement print-statement
+s
+a Ω r 1 statement return-statement
+a ( r 1 statement return-statement
+a FLOAT-LITERAL r 1 statement return-statement
+a IDENTIFIER r 1 statement return-statement
+a INT-LITERAL r 1 statement return-statement
+a func r 1 statement return-statement
+a print r 1 statement return-statement
+a println r 1 statement return-statement
+a return r 1 statement return-statement
+a { r 1 statement return-statement
+s
+a Ω r 5 function-definition func IDENTIFIER parameter-list -> statement
+a ( r 5 function-definition func IDENTIFIER parameter-list -> statement
+a FLOAT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
+a IDENTIFIER r 5 function-definition func IDENTIFIER parameter-list -> statement
+a INT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
+a func r 5 function-definition func IDENTIFIER parameter-list -> statement
+a print r 5 function-definition func IDENTIFIER parameter-list -> statement
+a println r 5 function-definition func IDENTIFIER parameter-list -> statement
+a return r 5 function-definition func IDENTIFIER parameter-list -> statement
+a { r 5 function-definition func IDENTIFIER parameter-list -> statement
 s
 a % r 3 call-expr IDENTIFIER ( )
 a ) r 3 call-expr IDENTIFIER ( )
@@ -1599,67 +1309,15 @@ a , r 3 call-expr IDENTIFIER ( )
 a - r 3 call-expr IDENTIFIER ( )
 a / r 3 call-expr IDENTIFIER ( )
 s
-a ) s 162
+a ) s 159
 s
 a ) r 3 call-arguments expr , call-arguments
-s
-a ( r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a FLOAT-LITERAL r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a IDENTIFIER r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a INT-LITERAL r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a STRING-LITERAL r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a print r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a return r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a { r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a } r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
 s
 a ) r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
 a , r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
 s
-a % s 66
-a ( r 3 add-expr add-expr add-op mult-expr
-a * s 67
-a + r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 68
-a FLOAT-LITERAL r 3 add-expr add-expr add-op mult-expr
-a IDENTIFIER r 3 add-expr add-expr add-op mult-expr
-a INT-LITERAL r 3 add-expr add-expr add-op mult-expr
-a STRING-LITERAL r 3 add-expr add-expr add-op mult-expr
-a print r 3 add-expr add-expr add-op mult-expr
-a return r 3 add-expr add-expr add-op mult-expr
-a { r 3 add-expr add-expr add-op mult-expr
-a } r 3 add-expr add-expr add-op mult-expr
-a mult-op s 130
-g mult-op 130
-s
 a % r 1 primary-expr IDENTIFIER
-a ( s 122
-a * r 1 primary-expr IDENTIFIER
-a + r 1 primary-expr IDENTIFIER
-a - r 1 primary-expr IDENTIFIER
-a / r 1 primary-expr IDENTIFIER
-a FLOAT-LITERAL r 1 primary-expr IDENTIFIER
-a IDENTIFIER r 1 primary-expr IDENTIFIER
-a INT-LITERAL r 1 primary-expr IDENTIFIER
-a STRING-LITERAL r 1 primary-expr IDENTIFIER
-a print r 1 primary-expr IDENTIFIER
-a return r 1 primary-expr IDENTIFIER
-a { r 1 primary-expr IDENTIFIER
-a } r 1 primary-expr IDENTIFIER
-s
-a % s 66
-a ) r 3 add-expr add-expr add-op mult-expr
-a * s 67
-a + r 3 add-expr add-expr add-op mult-expr
-a , r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 68
-a mult-op s 131
-g mult-op 131
-s
-a % r 1 primary-expr IDENTIFIER
-a ( s 124
+a ( s 110
 a ) r 1 primary-expr IDENTIFIER
 a * r 1 primary-expr IDENTIFIER
 a + r 1 primary-expr IDENTIFIER
@@ -1667,20 +1325,15 @@ a , r 1 primary-expr IDENTIFIER
 a - r 1 primary-expr IDENTIFIER
 a / r 1 primary-expr IDENTIFIER
 s
-a % r 3 mult-expr mult-expr mult-op primary-expr
-a ( r 3 mult-expr mult-expr mult-op primary-expr
-a * r 3 mult-expr mult-expr mult-op primary-expr
-a + r 3 mult-expr mult-expr mult-op primary-expr
-a - r 3 mult-expr mult-expr mult-op primary-expr
-a / r 3 mult-expr mult-expr mult-op primary-expr
-a FLOAT-LITERAL r 3 mult-expr mult-expr mult-op primary-expr
-a IDENTIFIER r 3 mult-expr mult-expr mult-op primary-expr
-a INT-LITERAL r 3 mult-expr mult-expr mult-op primary-expr
-a STRING-LITERAL r 3 mult-expr mult-expr mult-op primary-expr
-a print r 3 mult-expr mult-expr mult-op primary-expr
-a return r 3 mult-expr mult-expr mult-op primary-expr
-a { r 3 mult-expr mult-expr mult-op primary-expr
-a } r 3 mult-expr mult-expr mult-op primary-expr
+a % s 63
+a ) r 3 add-expr add-expr add-op mult-expr
+a * s 64
+a + r 3 add-expr add-expr add-op mult-expr
+a , r 3 add-expr add-expr add-op mult-expr
+a - r 3 add-expr add-expr add-op mult-expr
+a / s 65
+a mult-op s 114
+g mult-op 114
 s
 a % r 3 mult-expr mult-expr mult-op primary-expr
 a ) r 3 mult-expr mult-expr mult-op primary-expr
@@ -1690,20 +1343,16 @@ a , r 3 mult-expr mult-expr mult-op primary-expr
 a - r 3 mult-expr mult-expr mult-op primary-expr
 a / r 3 mult-expr mult-expr mult-op primary-expr
 s
-a % r 3 primary-expr ( expr )
-a ( r 3 primary-expr ( expr )
-a * r 3 primary-expr ( expr )
-a + r 3 primary-expr ( expr )
-a - r 3 primary-expr ( expr )
-a / r 3 primary-expr ( expr )
-a FLOAT-LITERAL r 3 primary-expr ( expr )
-a IDENTIFIER r 3 primary-expr ( expr )
-a INT-LITERAL r 3 primary-expr ( expr )
-a STRING-LITERAL r 3 primary-expr ( expr )
-a print r 3 primary-expr ( expr )
-a return r 3 primary-expr ( expr )
-a { r 3 primary-expr ( expr )
-a } r 3 primary-expr ( expr )
+a IDENTIFIER s 120
+a parameter s 121
+a parameters s 158
+a type s 123
+g parameter 121
+g parameters 158
+g type 123
+s
+a ) r 2 parameter type IDENTIFIER
+a , r 2 parameter type IDENTIFIER
 s
 a % r 3 primary-expr ( expr )
 a ) r 3 primary-expr ( expr )
@@ -1713,20 +1362,7 @@ a , r 3 primary-expr ( expr )
 a - r 3 primary-expr ( expr )
 a / r 3 primary-expr ( expr )
 s
-a Ω r 4 call-expr IDENTIFIER ( call-arguments )
-a % r 4 call-expr IDENTIFIER ( call-arguments )
-a ( r 4 call-expr IDENTIFIER ( call-arguments )
-a * r 4 call-expr IDENTIFIER ( call-arguments )
-a + r 4 call-expr IDENTIFIER ( call-arguments )
-a - r 4 call-expr IDENTIFIER ( call-arguments )
-a / r 4 call-expr IDENTIFIER ( call-arguments )
-a FLOAT-LITERAL r 4 call-expr IDENTIFIER ( call-arguments )
-a IDENTIFIER r 4 call-expr IDENTIFIER ( call-arguments )
-a INT-LITERAL r 4 call-expr IDENTIFIER ( call-arguments )
-a STRING-LITERAL r 4 call-expr IDENTIFIER ( call-arguments )
-a print r 4 call-expr IDENTIFIER ( call-arguments )
-a return r 4 call-expr IDENTIFIER ( call-arguments )
-a { r 4 call-expr IDENTIFIER ( call-arguments )
+a -> r 3 parameter-list ( parameters )
 s
 a % r 4 call-expr IDENTIFIER ( call-arguments )
 a ) r 4 call-expr IDENTIFIER ( call-arguments )
@@ -1735,20 +1371,107 @@ a + r 4 call-expr IDENTIFIER ( call-arguments )
 a - r 4 call-expr IDENTIFIER ( call-arguments )
 a / r 4 call-expr IDENTIFIER ( call-arguments )
 s
-a % r 4 call-expr IDENTIFIER ( call-arguments )
-a ( r 4 call-expr IDENTIFIER ( call-arguments )
-a * r 4 call-expr IDENTIFIER ( call-arguments )
-a + r 4 call-expr IDENTIFIER ( call-arguments )
-a - r 4 call-expr IDENTIFIER ( call-arguments )
-a / r 4 call-expr IDENTIFIER ( call-arguments )
-a FLOAT-LITERAL r 4 call-expr IDENTIFIER ( call-arguments )
-a IDENTIFIER r 4 call-expr IDENTIFIER ( call-arguments )
-a INT-LITERAL r 4 call-expr IDENTIFIER ( call-arguments )
-a STRING-LITERAL r 4 call-expr IDENTIFIER ( call-arguments )
-a print r 4 call-expr IDENTIFIER ( call-arguments )
-a return r 4 call-expr IDENTIFIER ( call-arguments )
-a { r 4 call-expr IDENTIFIER ( call-arguments )
-a } r 4 call-expr IDENTIFIER ( call-arguments )
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a func s 24
+a print s 25
+a println s 26
+a return s 27
+a { s 28
+a add-expr s 10
+a assignment-expr s 11
+a block-statement s 152
+a call-expr s 13
+a expr s 30
+a expression-statement s 153
+a function-definition s 154
+a mult-expr s 17
+a primary-expr s 18
+a print-statement s 155
+a return-statement s 156
+a statement s 157
+g add-expr 10
+g assignment-expr 11
+g block-statement 152
+g call-expr 13
+g expr 30
+g expression-statement 153
+g function-definition 154
+g mult-expr 17
+g primary-expr 18
+g print-statement 155
+g return-statement 156
+g statement 157
+s
+a ( r 1 statement block-statement
+a FLOAT-LITERAL r 1 statement block-statement
+a IDENTIFIER r 1 statement block-statement
+a INT-LITERAL r 1 statement block-statement
+a func r 1 statement block-statement
+a print r 1 statement block-statement
+a println r 1 statement block-statement
+a return r 1 statement block-statement
+a { r 1 statement block-statement
+a } r 1 statement block-statement
+s
+a ( r 1 statement expression-statement
+a FLOAT-LITERAL r 1 statement expression-statement
+a IDENTIFIER r 1 statement expression-statement
+a INT-LITERAL r 1 statement expression-statement
+a func r 1 statement expression-statement
+a print r 1 statement expression-statement
+a println r 1 statement expression-statement
+a return r 1 statement expression-statement
+a { r 1 statement expression-statement
+a } r 1 statement expression-statement
+s
+a ( r 1 statement function-definition
+a FLOAT-LITERAL r 1 statement function-definition
+a IDENTIFIER r 1 statement function-definition
+a INT-LITERAL r 1 statement function-definition
+a func r 1 statement function-definition
+a print r 1 statement function-definition
+a println r 1 statement function-definition
+a return r 1 statement function-definition
+a { r 1 statement function-definition
+a } r 1 statement function-definition
+s
+a ( r 1 statement print-statement
+a FLOAT-LITERAL r 1 statement print-statement
+a IDENTIFIER r 1 statement print-statement
+a INT-LITERAL r 1 statement print-statement
+a func r 1 statement print-statement
+a print r 1 statement print-statement
+a println r 1 statement print-statement
+a return r 1 statement print-statement
+a { r 1 statement print-statement
+a } r 1 statement print-statement
+s
+a ( r 1 statement return-statement
+a FLOAT-LITERAL r 1 statement return-statement
+a IDENTIFIER r 1 statement return-statement
+a INT-LITERAL r 1 statement return-statement
+a func r 1 statement return-statement
+a print r 1 statement return-statement
+a println r 1 statement return-statement
+a return r 1 statement return-statement
+a { r 1 statement return-statement
+a } r 1 statement return-statement
+s
+a ( r 5 function-definition func IDENTIFIER parameter-list -> statement
+a FLOAT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
+a IDENTIFIER r 5 function-definition func IDENTIFIER parameter-list -> statement
+a INT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
+a func r 5 function-definition func IDENTIFIER parameter-list -> statement
+a print r 5 function-definition func IDENTIFIER parameter-list -> statement
+a println r 5 function-definition func IDENTIFIER parameter-list -> statement
+a return r 5 function-definition func IDENTIFIER parameter-list -> statement
+a { r 5 function-definition func IDENTIFIER parameter-list -> statement
+a } r 5 function-definition func IDENTIFIER parameter-list -> statement
+s
+a ) r 3 parameters parameter , parameters
 s
 a % r 4 call-expr IDENTIFIER ( call-arguments )
 a ) r 4 call-expr IDENTIFIER ( call-arguments )

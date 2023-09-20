@@ -47,20 +47,6 @@ public abstract class PrimitiveJeppValue implements JeppValue {
         }
     }
 
-    public static final class JString extends PrimitiveJeppValue {
-        public final String value;
-
-        public JString(String value) {
-            super(PrimitiveJeppType.JStringT);
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
-
     public static final class JBoolean extends PrimitiveJeppValue {
         public final boolean value;
 

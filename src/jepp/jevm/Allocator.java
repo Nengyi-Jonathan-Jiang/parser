@@ -1,6 +1,6 @@
 package jepp.jevm;
 
-import compiler.util.Pair;
+import frontend.util.Pair;
 
 import java.util.*;
 

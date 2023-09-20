@@ -1,14 +1,24 @@
-print 3 + 5 * 7 + 4
-print (3 + 5) * 7.5 + 4
-print "Hello World" + " " + (5 - 3)
-print abs(3 - 5)
-print min(2, 6)
+println "Hello World"
+print "Hello, "
+print "world"
+
+/*
+println 3 + 5 * 7 + 4;
+println (3 + 5) * 7.5 + 4;
+print "Hello World ";
+println (5 - 3);
+println abs(3 - 5);
+println min(2, 6);
 
 a = 5;
 
-print a
-print a + 3
+print a;
+print a + 3;
 
 a += 2;
 
-print a
+print a;
+
+func sum(int a, int b, int c) -> return a + b + c;
+func cantor(int a, int b) -> return (a + b) / 2 + (a + b + 1) / 2 + a;
+*/
