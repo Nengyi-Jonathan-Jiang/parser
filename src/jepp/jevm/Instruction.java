@@ -10,14 +10,25 @@ public abstract class Instruction {
         void apply(MemoryLocation x1, MemoryLocation x2, MemoryLocation d);
     }
 
-    private static class ArithmeticInstruction extends Instruction {
+    public static sealed abstract class BinaryInstruction extends Instruction
+            permits ArithmeticInstruction, LogicalInstruction, ShiftInstruction {
         protected final Param p1;
         protected final Param p2;
         protected final Param dest;
+        protected final Param.ParamType t1, t2, td;
+        public BinaryInstruction(Param p1, Param p2, Param dest) {
+            t1 = (this.p1 = p1).type;
+            t2 = (this.p2 = p2).type;
+            td = (this.dest = dest).type;
+        }
+    }
+
+    public static sealed abstract class ArithmeticInstruction extends BinaryInstruction permits ADD, SUB, MUL, DIV, MOD {
+
         private final BinOp func;
 
         public ArithmeticInstruction(Param p1, Param p2, Param dest, BinaryOperator<Integer> intFunc, BinaryOperator<Float> floatFunc) {
-            Param.ParamType t1 = (this.p1 = p1).type, t2 = (this.p2 = p2).type, td = (this.dest = dest).type;
+            super(p1, p2, dest);
 
             if (t1.isInt() && t2.isInt() && td.isInt())
                 func = (x1, x2, d) -> d.setInt(intFunc.apply(x1.getInt(), x2.getInt()));
@@ -37,18 +48,15 @@ public abstract class Instruction {
         }
     }
 
-    private static class LogicalInstruction extends Instruction {
-        protected final Param p1;
-        protected final Param p2;
-        protected final Param dest;
-        private final Param.ParamType t1, t2, td;
+    public static abstract sealed class LogicalInstruction extends BinaryInstruction permits AND, OR, XOR {
         private final BinaryOperator<Integer> intFunc;
 
         public LogicalInstruction(Param p1, Param p2, Param dest, BinaryOperator<Integer> intFunc) {
-            t1 = (this.p1 = p1).type;
-            t2 = (this.p2 = p2).type;
-            td = (this.dest = dest).type;
+            super(p1, p2, dest);
             this.intFunc = intFunc;
+
+            if (!t1.isInt() || !t2.isInt() || !td.isInt())
+                throw new Error("JeVM Error: Invalid parameters to logical operation : (" + t1 + ", " + t2 + ") -> " + td);
         }
 
         @Override
@@ -57,35 +65,23 @@ public abstract class Instruction {
             var x2 = p2.getMem(jevm);
             var d = dest.getMem(jevm);
 
-            if (t1.isInt() && t2.isInt() && td.isInt())
-                d.setInt(intFunc.apply(
-                        x1.getInt(),
-                        x2.getInt()
-                ));
-            else
-                throw new Error("JeVM Error: Invalid parameters to logical operation : (" + t1 + ", " + t2 + ") -> " + td);
+            d.setInt(intFunc.apply(x1.getInt(), x2.getInt()));
         }
     }
 
-    private static class ShiftInstruction extends Instruction {
-        protected final Param p1;
-        protected final Param p2;
-        protected final Param dest;
-        private final Param.ParamType t1, t2, td;
+    private static abstract sealed class ShiftInstruction extends BinaryInstruction permits SHL, SHR {
         private final BinaryOperator<Integer> func;
 
         public ShiftInstruction(Param p1, Param p2, Param dest, BinaryOperator<Integer> func) {
-            t1 = (this.p1 = p1).type;
-            t2 = (this.p2 = p2).type;
-            td = (this.dest = dest).type;
+            super(p1, p2, dest);
+            if (!t1.isInt() || !t2.isInt() || !td.isInt())
+                throw new Error("JeVM Error: Invalid parameters to bit shift operation : (" + t1 + ", " + t2 + ") -> " + td);
+
             this.func = func;
         }
 
         @Override
         public void execute(VM jevm) {
-            if (!t1.isInt() || !t2.isInt() || !td.isInt())
-                throw new Error("JeVM Error: Invalid parameters to bit shift operation : (" + t1 + ", " + t2 + ") -> " + td);
-
             var x1 =  p1.getMem(jevm);
             var x2 =  p2.getMem(jevm);
             var d =  dest.getMem(jevm);
@@ -122,7 +118,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class ADD extends ArithmeticInstruction {
+    public static final class ADD extends ArithmeticInstruction {
         public ADD(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, Integer::sum, Float::sum);
         }
@@ -133,7 +129,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class SUB extends ArithmeticInstruction {
+    public static final class SUB extends ArithmeticInstruction {
         public SUB(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a - b, (a, b) -> a - b);
         }
@@ -144,7 +140,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class MUL extends ArithmeticInstruction {
+    public static final class MUL extends ArithmeticInstruction {
         public MUL(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a * b, (a, b) -> a * b);
         }
@@ -155,7 +151,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class DIV extends ArithmeticInstruction {
+    public static final class DIV extends ArithmeticInstruction {
         public DIV(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a / b, (a, b) -> a / b);
         }
@@ -166,7 +162,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class MOD extends ArithmeticInstruction {
+    public static final class MOD extends ArithmeticInstruction {
         public MOD(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> (a % b + b) % b, (a, b) -> (a % b + b) % b);
         }
@@ -177,7 +173,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class OR extends LogicalInstruction {
+    public static non-sealed class OR extends LogicalInstruction {
         public OR(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a | b);
         }
@@ -188,7 +184,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class AND extends LogicalInstruction {
+    public static non-sealed class AND extends LogicalInstruction {
         public AND(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a & b);
         }
@@ -199,7 +195,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class XOR extends LogicalInstruction {
+    public static non-sealed class XOR extends LogicalInstruction {
         public XOR(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a ^ b);
         }
@@ -210,7 +206,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class SHL extends ShiftInstruction {
+    public static final class SHL extends ShiftInstruction {
         public SHL(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a << b);
         }
@@ -221,7 +217,7 @@ public abstract class Instruction {
         }
     }
 
-    public static class SHR extends ShiftInstruction {
+    public static final class SHR extends ShiftInstruction {
         public SHR(Param p1, Param p2, Param dest) {
             super(p1, p2, dest, (a, b) -> a >> b);
         }
