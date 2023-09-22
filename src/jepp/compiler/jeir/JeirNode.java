@@ -1,22 +1,26 @@
 package jepp.compiler.jeir;
 
 import jepp.jevm.Instruction;
+import jepp.language.JeppMethodPrototype;
+import jepp.language.JeppMethodSignature;
 
-public interface JeirNode {
+public sealed interface JeirNode permits JeirNode.JeirArithmeticStatement, JeirNode.JeirHeapAllocateStatement, JeirNode.JeirMoveStatement, JeirNode.JeirPrintStatement, JeirNode.JeirPrintVarStatement, JeirNode.JeirStatements, JeirNode.JeirStaticHeapAllocateStatement, JeirNode.JeirStoreStatement {
 
-    class JeirStatements implements JeirNode {
+    record JeirStatements(JeirNode... children) implements JeirNode {}
+
+    record JeirPrintStatement(String value) implements JeirNode {}
+
+    record JeirPrintVarStatement(String var) implements JeirNode {}
+
+    record JeirMoveStatement(String from, String to) implements JeirNode {}
+    record JeirStoreStatement(Object value, String to) implements JeirNode{}
+
+    record JeirHeapAllocateStatement(String size, String to) implements JeirNode {}
+    record JeirStaticHeapAllocateStatement(int size, String to) implements JeirNode {}
+
+    record JeirArithmeticStatement(Instruction.BinaryInstruction instruction) implements JeirNode {
 
     }
 
-    class JeirPrintStatement implements JeirNode {
-
-    }
-
-    abstract class JeirArithmeticStatement implements JeirNode {
-        public final Instruction.LogicalInstruction instruction;
-
-        protected JeirArithmeticStatement(Instruction.LogicalInstruction instruction) {
-            this.instruction = instruction;
-        }
-    }
+    record JeirFunctionDeclaration(JeppMethodPrototype prototype, JeirStatements body) {}
 }
