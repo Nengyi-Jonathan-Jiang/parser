@@ -33,11 +33,11 @@ public abstract class PrimitiveJeppValue implements JeppValue {
         }
     }
 
-    public static final class JDouble extends PrimitiveJeppValue {
+    public static final class JFloat extends PrimitiveJeppValue {
         public final double value;
 
-        public JDouble(double value) {
-            super(PrimitiveJeppType.JDoubleT);
+        public JFloat(double value) {
+            super(PrimitiveJeppType.JFloatT);
             this.value = value;
         }
 

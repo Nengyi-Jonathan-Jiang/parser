@@ -24,7 +24,7 @@ public class ParseTreeNode implements Iterable<ParseTreeNode> {
     }
 
     public Stream<ParseTreeNode> children() {
-        assert children != null;
+        if (isLeaf()) throw new Error("Cannot access children of leaf node");
         return Arrays.stream(children);
     }
     public ParseTreeNode[] getChildren() {

@@ -33,7 +33,7 @@ public abstract class PrimitiveJeppType implements JeppType {
             return "int";
         }
     };
-    public static final PrimitiveJeppType JDoubleT = new PrimitiveJeppType() {
+    public static final PrimitiveJeppType JFloatT = new PrimitiveJeppType() {
         @Override
         public String simpleName() {
             return "double";

@@ -11,7 +11,7 @@ public interface Parser {
     Parse start();
 
     interface Parse{
-        void process(Token tok);
+        boolean process(Token tok);
         boolean isFinished();
         ParseTreeNode getParseTree();
     }

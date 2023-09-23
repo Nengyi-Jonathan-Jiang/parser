@@ -10,7 +10,7 @@ import frontend.parser.lr_parser.parsing_table.ParsingTable;
 public class JePPFrontend {
     private static final Lexer lexer;
     private static final Parser parser;
-    private static final Symbol.SymbolTable symbolTable;
+    public static final Symbol.SymbolTable symbolTable;
 
     public static Lexer.Lex tokenize(String input) {
         return lexer.lex(input);

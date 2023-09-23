@@ -32,11 +32,6 @@ public class UnaryFunc<X extends JeppValue> implements BuiltinMethod {
     }
 
     @Override
-    public final JeppType returnType() {
-        return r;
-    }
-
-    @Override
     @SuppressWarnings("unchecked")
     public final JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         return func.apply((X) values[0]);

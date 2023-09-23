@@ -25,16 +25,12 @@ public class UserJeppMethod implements JeppMethod {
     }
 
     @Override
-    public JeppType returnType() {
-        return prototype.returnType();
-    }
-
-    @Override
     public JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         JeppScope s = interpreter.pushNewScope();
-        for(int i = 0; i < signature().types().length; i++) {
+        for(int i = 0; i < signature().types().length; i++)
             s.setVariable(prototype.argNames()[i], values[i]);
-        }
-        return interpreter.evaluate(code);
+        JeppValue res = interpreter.evaluate(code);
+        interpreter.popScope(s);
+        return res;
     }
 }

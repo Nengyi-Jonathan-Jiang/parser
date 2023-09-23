@@ -8,6 +8,18 @@ statement := block-statement
 statement := return-statement
 statement := expression-statement
 statement := function-definition
+statement := decl-statement
+statement := if-else-statement
+
+if-else-statement := if-clause
+if-else-statement := if-clause else-clause
+if-else-statement := if-clause elif-clauses else-clause
+
+if-clause := if ( expr ) statement
+elif-clauses := elif-clause
+elif-clauses := elif-clause elif-clauses
+elif-clause := elif ( expr ) statement
+else-clause := else statement
 
 expression-statement := expr ;
 return-statement := return expr ;
@@ -16,7 +28,9 @@ block-statement := { statements }
 print-statement := print expr ;
 print-statement := println expr ;
 print-statement := print STRING-LITERAL ;
-print-statement := println STRING-LITERAL;
+print-statement := println STRING-LITERAL ;
+
+decl-statement := type IDENTIFIER = assignment-expr ;
 
 expr := assignment-expr
 
@@ -26,8 +40,17 @@ assignment-op := -=
 assignment-op := *=
 assignment-op := /=
 assignment-op := %=
-assignment-expr := add-expr
+assignment-expr := compare-expr
 assignment-expr := IDENTIFIER assignment-op assignment-expr
+
+compare-op := <=
+compare-op := <
+compare-op := >=
+compare-op := >
+compare-op := ==
+compare-op := !=
+compare-expr := add-expr
+compare-expr := compare-expr compare-op add-expr
 
 add-op := +
 add-op := -
@@ -45,17 +68,27 @@ primary-expr := FLOAT-LITERAL
 primary-expr := IDENTIFIER
 primary-expr := ( expr )
 primary-expr := call-expr
+primary-expr := input-expr
+
+input-expr := input type
 
 call-expr := IDENTIFIER ( )
 call-expr := IDENTIFIER ( call-arguments )
-call-arguments := expr
-call-arguments := expr , call-arguments
+call-arguments := call-argument
+call-arguments := call-argument , call-arguments
+call-arguments := call-argument
+call-argument := expr
 
-function-definition := func IDENTIFIER parameter-list -> statement
+function-definition := func IDENTIFIER parameter-list -> return type expr ;
+function-definition := func IDENTIFIER parameter-list -> type block-statement
 parameter-list := ( )
 parameter-list := ( parameters )
 parameters := parameter
 parameters := parameter , parameters
 parameter := type IDENTIFIER
+parameter := ref type IDENTIFIER
+parameter := mut type IDENTIFIER
 
-type := IDENTIFIER
+type := void
+type := int
+type := float

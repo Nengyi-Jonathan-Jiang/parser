@@ -76,6 +76,10 @@ public class Symbol implements Comparable<Symbol> {
         return this.name;
     }
 
+    public boolean equals(String s) {
+        return name.equals(s);
+    }
+
     @Override
     public int compareTo(Symbol o) {
         return id - o.id;

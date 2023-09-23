@@ -33,11 +33,6 @@ public class BinaryFunc<A extends JeppValue, B extends JeppValue> implements Bui
     }
 
     @Override
-    public final JeppType returnType() {
-        return r;
-    }
-
-    @Override
     @SuppressWarnings("unchecked")
     public final JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         return func.apply((A) values[0], (B) values[1]);

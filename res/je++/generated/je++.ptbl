@@ -1,185 +1,277 @@
-160
+410
 a Ω r 0 statements 
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a func s 5
-a print s 6
-a println s 7
-a return s 8
-a { s 9
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 12
-a call-expr s 13
-a expr s 14
-a expression-statement s 15
-a function-definition s 16
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 19
-a return-statement s 20
-a statement s 21
-a statements s 22
-g add-expr 10
-g assignment-expr 11
-g block-statement 12
-g call-expr 13
-g expr 14
-g expression-statement 15
-g function-definition 16
-g mult-expr 17
-g primary-expr 18
-g print-statement 19
-g return-statement 20
-g statement 21
-g statements 22
+a float s 5
+a func s 6
+a if s 7
+a input s 8
+a int s 9
+a print s 10
+a println s 11
+a return s 12
+a void s 13
+a { s 14
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 17
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 20
+a expr s 21
+a expression-statement s 22
+a function-definition s 23
+a if-clause s 24
+a if-else-statement s 25
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 29
+a return-statement s 30
+a statement s 31
+a statements s 32
+a type s 33
+g add-expr 15
+g assignment-expr 16
+g block-statement 17
+g call-expr 18
+g compare-expr 19
+g decl-statement 20
+g expr 21
+g expression-statement 22
+g function-definition 23
+g if-clause 24
+g if-else-statement 25
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 29
+g return-statement 30
+g statement 31
+g statements 32
+g type 33
 s
-a ( s 37
-a FLOAT-LITERAL s 38
-a IDENTIFIER s 39
-a INT-LITERAL s 40
-a add-expr s 41
-a assignment-expr s 42
-a call-expr s 43
-a expr s 44
-a mult-expr s 45
-a primary-expr s 46
-g add-expr 41
-g assignment-expr 42
-g call-expr 43
-g expr 44
-g mult-expr 45
-g primary-expr 46
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 67
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 67
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
 s
+a != r 1 primary-expr FLOAT-LITERAL
 a % r 1 primary-expr FLOAT-LITERAL
 a * r 1 primary-expr FLOAT-LITERAL
 a + r 1 primary-expr FLOAT-LITERAL
 a - r 1 primary-expr FLOAT-LITERAL
 a / r 1 primary-expr FLOAT-LITERAL
 a ; r 1 primary-expr FLOAT-LITERAL
+a < r 1 primary-expr FLOAT-LITERAL
+a <= r 1 primary-expr FLOAT-LITERAL
+a == r 1 primary-expr FLOAT-LITERAL
+a > r 1 primary-expr FLOAT-LITERAL
+a >= r 1 primary-expr FLOAT-LITERAL
 s
+a != r 1 primary-expr IDENTIFIER
 a % r 1 primary-expr IDENTIFIER
-a %= s 52
-a ( s 53
+a %= s 76
+a ( s 77
 a * r 1 primary-expr IDENTIFIER
-a *= s 54
+a *= s 78
 a + r 1 primary-expr IDENTIFIER
-a += s 55
+a += s 79
 a - r 1 primary-expr IDENTIFIER
-a -= s 56
+a -= s 80
 a / r 1 primary-expr IDENTIFIER
-a /= s 57
+a /= s 81
 a ; r 1 primary-expr IDENTIFIER
-a = s 58
-a assignment-op s 59
-g assignment-op 59
+a < r 1 primary-expr IDENTIFIER
+a <= r 1 primary-expr IDENTIFIER
+a = s 82
+a == r 1 primary-expr IDENTIFIER
+a > r 1 primary-expr IDENTIFIER
+a >= r 1 primary-expr IDENTIFIER
+a assignment-op s 83
+g assignment-op 83
 s
+a != r 1 primary-expr INT-LITERAL
 a % r 1 primary-expr INT-LITERAL
 a * r 1 primary-expr INT-LITERAL
 a + r 1 primary-expr INT-LITERAL
 a - r 1 primary-expr INT-LITERAL
 a / r 1 primary-expr INT-LITERAL
 a ; r 1 primary-expr INT-LITERAL
+a < r 1 primary-expr INT-LITERAL
+a <= r 1 primary-expr INT-LITERAL
+a == r 1 primary-expr INT-LITERAL
+a > r 1 primary-expr INT-LITERAL
+a >= r 1 primary-expr INT-LITERAL
 s
-a IDENTIFIER s 68
+a IDENTIFIER r 1 type float
 s
-a ( s 1
-a FLOAT-LITERAL s 2
-a IDENTIFIER s 3
-a INT-LITERAL s 4
-a STRING-LITERAL s 48
-a add-expr s 10
-a assignment-expr s 11
-a call-expr s 13
-a expr s 49
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 11
-g call-expr 13
-g expr 49
-g mult-expr 17
-g primary-expr 18
+a IDENTIFIER s 105
 s
-a ( s 1
-a FLOAT-LITERAL s 2
-a IDENTIFIER s 3
-a INT-LITERAL s 4
-a STRING-LITERAL; s 50
-a add-expr s 10
-a assignment-expr s 11
-a call-expr s 13
-a expr s 51
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 11
-g call-expr 13
-g expr 51
-g mult-expr 17
-g primary-expr 18
+a ( s 102
+s
+a float s 98
+a int s 99
+a void s 100
+a type s 101
+g type 101
+s
+a IDENTIFIER r 1 type int
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a add-expr s 10
-a assignment-expr s 11
-a call-expr s 13
-a expr s 47
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 11
-g call-expr 13
-g expr 47
-g mult-expr 17
-g primary-expr 18
+a STRING-LITERAL s 72
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 73
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 73
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a func s 24
-a print s 25
-a println s 26
-a return s 27
-a { s 28
+a STRING-LITERAL s 74
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 75
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 75
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 71
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 71
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a IDENTIFIER r 1 type void
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
 a } r 0 statements 
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 29
-a call-expr s 13
-a expr s 30
-a expression-statement s 31
-a function-definition s 32
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 33
-a return-statement s 34
-a statement s 35
-a statements s 36
-g add-expr 10
-g assignment-expr 11
-g block-statement 29
-g call-expr 13
-g expr 30
-g expression-statement 31
-g function-definition 32
-g mult-expr 17
-g primary-expr 18
-g print-statement 33
-g return-statement 34
-g statement 35
-g statements 36
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 41
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 42
+a expr s 43
+a expression-statement s 44
+a function-definition s 45
+a if-clause s 46
+a if-else-statement s 47
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 48
+a return-statement s 49
+a statement s 50
+a statements s 51
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 41
+g call-expr 18
+g compare-expr 19
+g decl-statement 42
+g expr 43
+g expression-statement 44
+g function-definition 45
+g if-clause 46
+g if-else-statement 47
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 48
+g return-statement 49
+g statement 50
+g statements 51
+g type 52
 s
-a + s 60
-a - s 61
-a ; r 1 assignment-expr add-expr
-a add-op s 62
-g add-op 62
+a != r 1 compare-expr add-expr
+a + s 91
+a - s 92
+a ; r 1 compare-expr add-expr
+a < r 1 compare-expr add-expr
+a <= r 1 compare-expr add-expr
+a == r 1 compare-expr add-expr
+a > r 1 compare-expr add-expr
+a >= r 1 compare-expr add-expr
+a add-op s 93
+g add-op 93
 s
 a ; r 1 expr assignment-expr
 s
@@ -188,30 +280,72 @@ a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
 a IDENTIFIER r 1 statement block-statement
 a INT-LITERAL r 1 statement block-statement
+a float r 1 statement block-statement
 a func r 1 statement block-statement
+a if r 1 statement block-statement
+a input r 1 statement block-statement
+a int r 1 statement block-statement
 a print r 1 statement block-statement
 a println r 1 statement block-statement
 a return r 1 statement block-statement
+a void r 1 statement block-statement
 a { r 1 statement block-statement
 s
+a != r 1 primary-expr call-expr
 a % r 1 primary-expr call-expr
 a * r 1 primary-expr call-expr
 a + r 1 primary-expr call-expr
 a - r 1 primary-expr call-expr
 a / r 1 primary-expr call-expr
 a ; r 1 primary-expr call-expr
+a < r 1 primary-expr call-expr
+a <= r 1 primary-expr call-expr
+a == r 1 primary-expr call-expr
+a > r 1 primary-expr call-expr
+a >= r 1 primary-expr call-expr
 s
-a ; s 67
+a != s 84
+a ; r 1 assignment-expr compare-expr
+a < s 85
+a <= s 86
+a == s 87
+a > s 88
+a >= s 89
+a compare-op s 90
+g compare-op 90
+s
+a Ω r 1 statement decl-statement
+a ( r 1 statement decl-statement
+a FLOAT-LITERAL r 1 statement decl-statement
+a IDENTIFIER r 1 statement decl-statement
+a INT-LITERAL r 1 statement decl-statement
+a float r 1 statement decl-statement
+a func r 1 statement decl-statement
+a if r 1 statement decl-statement
+a input r 1 statement decl-statement
+a int r 1 statement decl-statement
+a print r 1 statement decl-statement
+a println r 1 statement decl-statement
+a return r 1 statement decl-statement
+a void r 1 statement decl-statement
+a { r 1 statement decl-statement
+s
+a ; s 103
 s
 a Ω r 1 statement expression-statement
 a ( r 1 statement expression-statement
 a FLOAT-LITERAL r 1 statement expression-statement
 a IDENTIFIER r 1 statement expression-statement
 a INT-LITERAL r 1 statement expression-statement
+a float r 1 statement expression-statement
 a func r 1 statement expression-statement
+a if r 1 statement expression-statement
+a input r 1 statement expression-statement
+a int r 1 statement expression-statement
 a print r 1 statement expression-statement
 a println r 1 statement expression-statement
 a return r 1 statement expression-statement
+a void r 1 statement expression-statement
 a { r 1 statement expression-statement
 s
 a Ω r 1 statement function-definition
@@ -219,37 +353,112 @@ a ( r 1 statement function-definition
 a FLOAT-LITERAL r 1 statement function-definition
 a IDENTIFIER r 1 statement function-definition
 a INT-LITERAL r 1 statement function-definition
+a float r 1 statement function-definition
 a func r 1 statement function-definition
+a if r 1 statement function-definition
+a input r 1 statement function-definition
+a int r 1 statement function-definition
 a print r 1 statement function-definition
 a println r 1 statement function-definition
 a return r 1 statement function-definition
+a void r 1 statement function-definition
 a { r 1 statement function-definition
 s
-a % s 63
-a * s 64
+a Ω r 1 if-else-statement if-clause
+a ( r 1 if-else-statement if-clause
+a FLOAT-LITERAL r 1 if-else-statement if-clause
+a IDENTIFIER r 1 if-else-statement if-clause
+a INT-LITERAL r 1 if-else-statement if-clause
+a elif s 53
+a else s 54
+a float r 1 if-else-statement if-clause
+a func r 1 if-else-statement if-clause
+a if r 1 if-else-statement if-clause
+a input r 1 if-else-statement if-clause
+a int r 1 if-else-statement if-clause
+a print r 1 if-else-statement if-clause
+a println r 1 if-else-statement if-clause
+a return r 1 if-else-statement if-clause
+a void r 1 if-else-statement if-clause
+a { r 1 if-else-statement if-clause
+a elif-clause s 55
+a elif-clauses s 56
+a else-clause s 57
+g elif-clause 55
+g elif-clauses 56
+g else-clause 57
+s
+a Ω r 1 statement if-else-statement
+a ( r 1 statement if-else-statement
+a FLOAT-LITERAL r 1 statement if-else-statement
+a IDENTIFIER r 1 statement if-else-statement
+a INT-LITERAL r 1 statement if-else-statement
+a float r 1 statement if-else-statement
+a func r 1 statement if-else-statement
+a if r 1 statement if-else-statement
+a input r 1 statement if-else-statement
+a int r 1 statement if-else-statement
+a print r 1 statement if-else-statement
+a println r 1 statement if-else-statement
+a return r 1 statement if-else-statement
+a void r 1 statement if-else-statement
+a { r 1 statement if-else-statement
+s
+a != r 1 primary-expr input-expr
+a % r 1 primary-expr input-expr
+a * r 1 primary-expr input-expr
+a + r 1 primary-expr input-expr
+a - r 1 primary-expr input-expr
+a / r 1 primary-expr input-expr
+a ; r 1 primary-expr input-expr
+a < r 1 primary-expr input-expr
+a <= r 1 primary-expr input-expr
+a == r 1 primary-expr input-expr
+a > r 1 primary-expr input-expr
+a >= r 1 primary-expr input-expr
+s
+a != r 1 add-expr mult-expr
+a % s 94
+a * s 95
 a + r 1 add-expr mult-expr
 a - r 1 add-expr mult-expr
-a / s 65
+a / s 96
 a ; r 1 add-expr mult-expr
-a mult-op s 66
-g mult-op 66
+a < r 1 add-expr mult-expr
+a <= r 1 add-expr mult-expr
+a == r 1 add-expr mult-expr
+a > r 1 add-expr mult-expr
+a >= r 1 add-expr mult-expr
+a mult-op s 97
+g mult-op 97
 s
+a != r 1 mult-expr primary-expr
 a % r 1 mult-expr primary-expr
 a * r 1 mult-expr primary-expr
 a + r 1 mult-expr primary-expr
 a - r 1 mult-expr primary-expr
 a / r 1 mult-expr primary-expr
 a ; r 1 mult-expr primary-expr
+a < r 1 mult-expr primary-expr
+a <= r 1 mult-expr primary-expr
+a == r 1 mult-expr primary-expr
+a > r 1 mult-expr primary-expr
+a >= r 1 mult-expr primary-expr
 s
 a Ω r 1 statement print-statement
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
 a INT-LITERAL r 1 statement print-statement
+a float r 1 statement print-statement
 a func r 1 statement print-statement
+a if r 1 statement print-statement
+a input r 1 statement print-statement
+a int r 1 statement print-statement
 a print r 1 statement print-statement
 a println r 1 statement print-statement
 a return r 1 statement print-statement
+a void r 1 statement print-statement
 a { r 1 statement print-statement
 s
 a Ω r 1 statement return-statement
@@ -257,10 +466,15 @@ a ( r 1 statement return-statement
 a FLOAT-LITERAL r 1 statement return-statement
 a IDENTIFIER r 1 statement return-statement
 a INT-LITERAL r 1 statement return-statement
+a float r 1 statement return-statement
 a func r 1 statement return-statement
+a if r 1 statement return-statement
+a input r 1 statement return-statement
+a int r 1 statement return-statement
 a print r 1 statement return-statement
 a println r 1 statement return-statement
 a return r 1 statement return-statement
+a void r 1 statement return-statement
 a { r 1 statement return-statement
 s
 a Ω r 0 statements 
@@ -268,155 +482,234 @@ a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a func s 5
-a print s 6
-a println s 7
-a return s 8
-a { s 9
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 12
-a call-expr s 13
-a expr s 14
-a expression-statement s 15
-a function-definition s 16
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 19
-a return-statement s 20
-a statement s 21
-a statements s 23
-g add-expr 10
-g assignment-expr 11
-g block-statement 12
-g call-expr 13
-g expr 14
-g expression-statement 15
-g function-definition 16
-g mult-expr 17
-g primary-expr 18
-g print-statement 19
-g return-statement 20
-g statement 21
-g statements 23
+a float s 5
+a func s 6
+a if s 7
+a input s 8
+a int s 9
+a print s 10
+a println s 11
+a return s 12
+a void s 13
+a { s 14
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 17
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 20
+a expr s 21
+a expression-statement s 22
+a function-definition s 23
+a if-clause s 24
+a if-else-statement s 25
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 29
+a return-statement s 30
+a statement s 31
+a statements s 34
+a type s 33
+g add-expr 15
+g assignment-expr 16
+g block-statement 17
+g call-expr 18
+g compare-expr 19
+g decl-statement 20
+g expr 21
+g expression-statement 22
+g function-definition 23
+g if-clause 24
+g if-else-statement 25
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 29
+g return-statement 30
+g statement 31
+g statements 34
+g type 33
 s
 a Ω a 
 s
+a IDENTIFIER s 104
+s
 a Ω r 2 statements statement statements
 s
-a IDENTIFIER s 100
+a IDENTIFIER s 164
+s
+a ( s 160
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a STRING-LITERAL s 85
-a add-expr s 10
-a assignment-expr s 11
-a call-expr s 13
-a expr s 86
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 11
-g call-expr 13
-g expr 86
-g mult-expr 17
-g primary-expr 18
+a STRING-LITERAL s 140
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 141
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 141
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a STRING-LITERAL; s 87
-a add-expr s 10
-a assignment-expr s 11
-a call-expr s 13
-a expr s 88
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 11
-g call-expr 13
-g expr 88
-g mult-expr 17
-g primary-expr 18
+a STRING-LITERAL s 142
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 143
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 143
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a add-expr s 10
-a assignment-expr s 11
-a call-expr s 13
-a expr s 84
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 11
-g call-expr 13
-g expr 84
-g mult-expr 17
-g primary-expr 18
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 139
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 139
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a func s 24
-a print s 25
-a println s 26
-a return s 27
-a { s 28
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
 a } r 0 statements 
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 29
-a call-expr s 13
-a expr s 30
-a expression-statement s 31
-a function-definition s 32
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 33
-a return-statement s 34
-a statement s 35
-a statements s 70
-g add-expr 10
-g assignment-expr 11
-g block-statement 29
-g call-expr 13
-g expr 30
-g expression-statement 31
-g function-definition 32
-g mult-expr 17
-g primary-expr 18
-g print-statement 33
-g return-statement 34
-g statement 35
-g statements 70
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 41
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 42
+a expr s 43
+a expression-statement s 44
+a function-definition s 45
+a if-clause s 46
+a if-else-statement s 47
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 48
+a return-statement s 49
+a statement s 50
+a statements s 107
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 41
+g call-expr 18
+g compare-expr 19
+g decl-statement 42
+g expr 43
+g expression-statement 44
+g function-definition 45
+g if-clause 46
+g if-else-statement 47
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 48
+g return-statement 49
+g statement 50
+g statements 107
+g type 52
 s
 a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
 a IDENTIFIER r 1 statement block-statement
 a INT-LITERAL r 1 statement block-statement
+a float r 1 statement block-statement
 a func r 1 statement block-statement
+a if r 1 statement block-statement
+a input r 1 statement block-statement
+a int r 1 statement block-statement
 a print r 1 statement block-statement
 a println r 1 statement block-statement
 a return r 1 statement block-statement
+a void r 1 statement block-statement
 a { r 1 statement block-statement
 a } r 1 statement block-statement
 s
-a ; s 99
+a ( r 1 statement decl-statement
+a FLOAT-LITERAL r 1 statement decl-statement
+a IDENTIFIER r 1 statement decl-statement
+a INT-LITERAL r 1 statement decl-statement
+a float r 1 statement decl-statement
+a func r 1 statement decl-statement
+a if r 1 statement decl-statement
+a input r 1 statement decl-statement
+a int r 1 statement decl-statement
+a print r 1 statement decl-statement
+a println r 1 statement decl-statement
+a return r 1 statement decl-statement
+a void r 1 statement decl-statement
+a { r 1 statement decl-statement
+a } r 1 statement decl-statement
+s
+a ; s 162
 s
 a ( r 1 statement expression-statement
 a FLOAT-LITERAL r 1 statement expression-statement
 a IDENTIFIER r 1 statement expression-statement
 a INT-LITERAL r 1 statement expression-statement
+a float r 1 statement expression-statement
 a func r 1 statement expression-statement
+a if r 1 statement expression-statement
+a input r 1 statement expression-statement
+a int r 1 statement expression-statement
 a print r 1 statement expression-statement
 a println r 1 statement expression-statement
 a return r 1 statement expression-statement
+a void r 1 statement expression-statement
 a { r 1 statement expression-statement
 a } r 1 statement expression-statement
 s
@@ -424,21 +717,71 @@ a ( r 1 statement function-definition
 a FLOAT-LITERAL r 1 statement function-definition
 a IDENTIFIER r 1 statement function-definition
 a INT-LITERAL r 1 statement function-definition
+a float r 1 statement function-definition
 a func r 1 statement function-definition
+a if r 1 statement function-definition
+a input r 1 statement function-definition
+a int r 1 statement function-definition
 a print r 1 statement function-definition
 a println r 1 statement function-definition
 a return r 1 statement function-definition
+a void r 1 statement function-definition
 a { r 1 statement function-definition
 a } r 1 statement function-definition
+s
+a ( r 1 if-else-statement if-clause
+a FLOAT-LITERAL r 1 if-else-statement if-clause
+a IDENTIFIER r 1 if-else-statement if-clause
+a INT-LITERAL r 1 if-else-statement if-clause
+a elif s 53
+a else s 116
+a float r 1 if-else-statement if-clause
+a func r 1 if-else-statement if-clause
+a if r 1 if-else-statement if-clause
+a input r 1 if-else-statement if-clause
+a int r 1 if-else-statement if-clause
+a print r 1 if-else-statement if-clause
+a println r 1 if-else-statement if-clause
+a return r 1 if-else-statement if-clause
+a void r 1 if-else-statement if-clause
+a { r 1 if-else-statement if-clause
+a } r 1 if-else-statement if-clause
+a elif-clause s 55
+a elif-clauses s 117
+a else-clause s 118
+g elif-clause 55
+g elif-clauses 117
+g else-clause 118
+s
+a ( r 1 statement if-else-statement
+a FLOAT-LITERAL r 1 statement if-else-statement
+a IDENTIFIER r 1 statement if-else-statement
+a INT-LITERAL r 1 statement if-else-statement
+a float r 1 statement if-else-statement
+a func r 1 statement if-else-statement
+a if r 1 statement if-else-statement
+a input r 1 statement if-else-statement
+a int r 1 statement if-else-statement
+a print r 1 statement if-else-statement
+a println r 1 statement if-else-statement
+a return r 1 statement if-else-statement
+a void r 1 statement if-else-statement
+a { r 1 statement if-else-statement
+a } r 1 statement if-else-statement
 s
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
 a INT-LITERAL r 1 statement print-statement
+a float r 1 statement print-statement
 a func r 1 statement print-statement
+a if r 1 statement print-statement
+a input r 1 statement print-statement
+a int r 1 statement print-statement
 a print r 1 statement print-statement
 a println r 1 statement print-statement
 a return r 1 statement print-statement
+a void r 1 statement print-statement
 a { r 1 statement print-statement
 a } r 1 statement print-statement
 s
@@ -446,10 +789,15 @@ a ( r 1 statement return-statement
 a FLOAT-LITERAL r 1 statement return-statement
 a IDENTIFIER r 1 statement return-statement
 a INT-LITERAL r 1 statement return-statement
+a float r 1 statement return-statement
 a func r 1 statement return-statement
+a if r 1 statement return-statement
+a input r 1 statement return-statement
+a int r 1 statement return-statement
 a print r 1 statement return-statement
 a println r 1 statement return-statement
 a return r 1 statement return-statement
+a void r 1 statement return-statement
 a { r 1 statement return-statement
 a } r 1 statement return-statement
 s
@@ -457,804 +805,643 @@ a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a func s 24
-a print s 25
-a println s 26
-a return s 27
-a { s 28
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
 a } r 0 statements 
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 29
-a call-expr s 13
-a expr s 30
-a expression-statement s 31
-a function-definition s 32
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 33
-a return-statement s 34
-a statement s 35
-a statements s 69
-g add-expr 10
-g assignment-expr 11
-g block-statement 29
-g call-expr 13
-g expr 30
-g expression-statement 31
-g function-definition 32
-g mult-expr 17
-g primary-expr 18
-g print-statement 33
-g return-statement 34
-g statement 35
-g statements 69
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 41
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 42
+a expr s 43
+a expression-statement s 44
+a function-definition s 45
+a if-clause s 46
+a if-else-statement s 47
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 48
+a return-statement s 49
+a statement s 50
+a statements s 106
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 41
+g call-expr 18
+g compare-expr 19
+g decl-statement 42
+g expr 43
+g expression-statement 44
+g function-definition 45
+g if-clause 46
+g if-else-statement 47
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 48
+g return-statement 49
+g statement 50
+g statements 106
+g type 52
 s
-a } s 102
+a } s 166
 s
-a ( s 37
-a FLOAT-LITERAL s 38
-a IDENTIFIER s 39
-a INT-LITERAL s 40
-a add-expr s 41
-a assignment-expr s 42
-a call-expr s 43
-a expr s 83
-a mult-expr s 45
-a primary-expr s 46
-g add-expr 41
-g assignment-expr 42
-g call-expr 43
-g expr 83
-g mult-expr 45
-g primary-expr 46
+a IDENTIFIER s 163
 s
+a ( s 161
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 6
+a if s 7
+a input s 8
+a int s 9
+a print s 10
+a println s 11
+a return s 12
+a void s 13
+a { s 14
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 108
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 109
+a expr s 21
+a expression-statement s 110
+a function-definition s 111
+a if-clause s 24
+a if-else-statement s 112
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 113
+a return-statement s 114
+a statement s 115
+a type s 33
+g add-expr 15
+g assignment-expr 16
+g block-statement 108
+g call-expr 18
+g compare-expr 19
+g decl-statement 109
+g expr 21
+g expression-statement 110
+g function-definition 111
+g if-clause 24
+g if-else-statement 112
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 113
+g return-statement 114
+g statement 115
+g type 33
+s
+a elif s 53
+a else r 1 elif-clauses elif-clause
+a elif-clause s 55
+a elif-clauses s 119
+g elif-clause 55
+g elif-clauses 119
+s
+a else s 54
+a else-clause s 120
+g else-clause 120
+s
+a Ω r 2 if-else-statement if-clause else-clause
+a ( r 2 if-else-statement if-clause else-clause
+a FLOAT-LITERAL r 2 if-else-statement if-clause else-clause
+a IDENTIFIER r 2 if-else-statement if-clause else-clause
+a INT-LITERAL r 2 if-else-statement if-clause else-clause
+a float r 2 if-else-statement if-clause else-clause
+a func r 2 if-else-statement if-clause else-clause
+a if r 2 if-else-statement if-clause else-clause
+a input r 2 if-else-statement if-clause else-clause
+a int r 2 if-else-statement if-clause else-clause
+a print r 2 if-else-statement if-clause else-clause
+a println r 2 if-else-statement if-clause else-clause
+a return r 2 if-else-statement if-clause else-clause
+a void r 2 if-else-statement if-clause else-clause
+a { r 2 if-else-statement if-clause else-clause
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 137
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 137
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a != r 1 primary-expr FLOAT-LITERAL
 a % r 1 primary-expr FLOAT-LITERAL
 a ) r 1 primary-expr FLOAT-LITERAL
 a * r 1 primary-expr FLOAT-LITERAL
 a + r 1 primary-expr FLOAT-LITERAL
 a - r 1 primary-expr FLOAT-LITERAL
 a / r 1 primary-expr FLOAT-LITERAL
+a < r 1 primary-expr FLOAT-LITERAL
+a <= r 1 primary-expr FLOAT-LITERAL
+a == r 1 primary-expr FLOAT-LITERAL
+a > r 1 primary-expr FLOAT-LITERAL
+a >= r 1 primary-expr FLOAT-LITERAL
 s
+a != r 1 primary-expr IDENTIFIER
 a % r 1 primary-expr IDENTIFIER
-a %= s 52
-a ( s 89
+a %= s 76
+a ( s 144
 a ) r 1 primary-expr IDENTIFIER
 a * r 1 primary-expr IDENTIFIER
-a *= s 54
+a *= s 78
 a + r 1 primary-expr IDENTIFIER
-a += s 55
+a += s 79
 a - r 1 primary-expr IDENTIFIER
-a -= s 56
+a -= s 80
 a / r 1 primary-expr IDENTIFIER
-a /= s 57
-a = s 58
-a assignment-op s 90
-g assignment-op 90
+a /= s 81
+a < r 1 primary-expr IDENTIFIER
+a <= r 1 primary-expr IDENTIFIER
+a = s 82
+a == r 1 primary-expr IDENTIFIER
+a > r 1 primary-expr IDENTIFIER
+a >= r 1 primary-expr IDENTIFIER
+a assignment-op s 145
+g assignment-op 145
 s
+a != r 1 primary-expr INT-LITERAL
 a % r 1 primary-expr INT-LITERAL
 a ) r 1 primary-expr INT-LITERAL
 a * r 1 primary-expr INT-LITERAL
 a + r 1 primary-expr INT-LITERAL
 a - r 1 primary-expr INT-LITERAL
 a / r 1 primary-expr INT-LITERAL
+a < r 1 primary-expr INT-LITERAL
+a <= r 1 primary-expr INT-LITERAL
+a == r 1 primary-expr INT-LITERAL
+a > r 1 primary-expr INT-LITERAL
+a >= r 1 primary-expr INT-LITERAL
 s
-a ) r 1 assignment-expr add-expr
-a + s 60
-a - s 61
-a add-op s 92
-g add-op 92
+a float s 156
+a int s 157
+a void s 158
+a type s 159
+g type 159
+s
+a != r 1 compare-expr add-expr
+a ) r 1 compare-expr add-expr
+a + s 91
+a - s 92
+a < r 1 compare-expr add-expr
+a <= r 1 compare-expr add-expr
+a == r 1 compare-expr add-expr
+a > r 1 compare-expr add-expr
+a >= r 1 compare-expr add-expr
+a add-op s 148
+g add-op 148
 s
 a ) r 1 expr assignment-expr
 s
+a != r 1 primary-expr call-expr
 a % r 1 primary-expr call-expr
 a ) r 1 primary-expr call-expr
 a * r 1 primary-expr call-expr
 a + r 1 primary-expr call-expr
 a - r 1 primary-expr call-expr
 a / r 1 primary-expr call-expr
+a < r 1 primary-expr call-expr
+a <= r 1 primary-expr call-expr
+a == r 1 primary-expr call-expr
+a > r 1 primary-expr call-expr
+a >= r 1 primary-expr call-expr
 s
-a ) s 106
+a != s 84
+a ) r 1 assignment-expr compare-expr
+a < s 85
+a <= s 86
+a == s 87
+a > s 88
+a >= s 89
+a compare-op s 147
+g compare-op 147
 s
-a % s 63
+a ) s 172
+s
+a != r 1 primary-expr input-expr
+a % r 1 primary-expr input-expr
+a ) r 1 primary-expr input-expr
+a * r 1 primary-expr input-expr
+a + r 1 primary-expr input-expr
+a - r 1 primary-expr input-expr
+a / r 1 primary-expr input-expr
+a < r 1 primary-expr input-expr
+a <= r 1 primary-expr input-expr
+a == r 1 primary-expr input-expr
+a > r 1 primary-expr input-expr
+a >= r 1 primary-expr input-expr
+s
+a != r 1 add-expr mult-expr
+a % s 94
 a ) r 1 add-expr mult-expr
-a * s 64
+a * s 95
 a + r 1 add-expr mult-expr
 a - r 1 add-expr mult-expr
-a / s 65
-a mult-op s 93
-g mult-op 93
+a / s 96
+a < r 1 add-expr mult-expr
+a <= r 1 add-expr mult-expr
+a == r 1 add-expr mult-expr
+a > r 1 add-expr mult-expr
+a >= r 1 add-expr mult-expr
+a mult-op s 151
+g mult-op 151
 s
+a != r 1 mult-expr primary-expr
 a % r 1 mult-expr primary-expr
 a ) r 1 mult-expr primary-expr
 a * r 1 mult-expr primary-expr
 a + r 1 mult-expr primary-expr
 a - r 1 mult-expr primary-expr
 a / r 1 mult-expr primary-expr
+a < r 1 mult-expr primary-expr
+a <= r 1 mult-expr primary-expr
+a == r 1 mult-expr primary-expr
+a > r 1 mult-expr primary-expr
+a >= r 1 mult-expr primary-expr
 s
-a ; s 101
+a ; s 165
 s
-a ; s 105
+a ; s 169
 s
-a ; s 103
+a ; s 167
 s
-a Ω r 2 print-statement println STRING-LITERAL;
-a ( r 2 print-statement println STRING-LITERAL;
-a FLOAT-LITERAL r 2 print-statement println STRING-LITERAL;
-a IDENTIFIER r 2 print-statement println STRING-LITERAL;
-a INT-LITERAL r 2 print-statement println STRING-LITERAL;
-a func r 2 print-statement println STRING-LITERAL;
-a print r 2 print-statement println STRING-LITERAL;
-a println r 2 print-statement println STRING-LITERAL;
-a return r 2 print-statement println STRING-LITERAL;
-a { r 2 print-statement println STRING-LITERAL;
+a ; s 170
 s
-a ; s 104
+a ; s 168
 s
 a ( r 1 assignment-op %=
 a FLOAT-LITERAL r 1 assignment-op %=
 a IDENTIFIER r 1 assignment-op %=
 a INT-LITERAL r 1 assignment-op %=
+a input r 1 assignment-op %=
 s
-a ( s 71
-a ) s 72
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 74
-a INT-LITERAL s 75
-a add-expr s 76
-a assignment-expr s 77
-a call-arguments s 78
-a call-expr s 79
-a expr s 80
-a mult-expr s 81
-a primary-expr s 82
-g add-expr 76
-g assignment-expr 77
-g call-arguments 78
-g call-expr 79
-g expr 80
-g mult-expr 81
-g primary-expr 82
+a ( s 121
+a ) s 122
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 124
+a INT-LITERAL s 125
+a input s 126
+a add-expr s 127
+a assignment-expr s 128
+a call-argument s 129
+a call-arguments s 130
+a call-expr s 131
+a compare-expr s 132
+a expr s 133
+a input-expr s 134
+a mult-expr s 135
+a primary-expr s 136
+g add-expr 127
+g assignment-expr 128
+g call-argument 129
+g call-arguments 130
+g call-expr 131
+g compare-expr 132
+g expr 133
+g input-expr 134
+g mult-expr 135
+g primary-expr 136
 s
 a ( r 1 assignment-op *=
 a FLOAT-LITERAL r 1 assignment-op *=
 a IDENTIFIER r 1 assignment-op *=
 a INT-LITERAL r 1 assignment-op *=
+a input r 1 assignment-op *=
 s
 a ( r 1 assignment-op +=
 a FLOAT-LITERAL r 1 assignment-op +=
 a IDENTIFIER r 1 assignment-op +=
 a INT-LITERAL r 1 assignment-op +=
+a input r 1 assignment-op +=
 s
 a ( r 1 assignment-op -=
 a FLOAT-LITERAL r 1 assignment-op -=
 a IDENTIFIER r 1 assignment-op -=
 a INT-LITERAL r 1 assignment-op -=
+a input r 1 assignment-op -=
 s
 a ( r 1 assignment-op /=
 a FLOAT-LITERAL r 1 assignment-op /=
 a IDENTIFIER r 1 assignment-op /=
 a INT-LITERAL r 1 assignment-op /=
+a input r 1 assignment-op /=
 s
 a ( r 1 assignment-op =
 a FLOAT-LITERAL r 1 assignment-op =
 a IDENTIFIER r 1 assignment-op =
 a INT-LITERAL r 1 assignment-op =
+a input r 1 assignment-op =
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a add-expr s 10
-a assignment-expr s 91
-a call-expr s 13
-a mult-expr s 17
-a primary-expr s 18
-g add-expr 10
-g assignment-expr 91
-g call-expr 13
-g mult-expr 17
-g primary-expr 18
+a input s 8
+a add-expr s 15
+a assignment-expr s 146
+a call-expr s 18
+a compare-expr s 19
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 146
+g call-expr 18
+g compare-expr 19
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( r 1 compare-op !=
+a FLOAT-LITERAL r 1 compare-op !=
+a IDENTIFIER r 1 compare-op !=
+a INT-LITERAL r 1 compare-op !=
+a input r 1 compare-op !=
+s
+a ( r 1 compare-op <
+a FLOAT-LITERAL r 1 compare-op <
+a IDENTIFIER r 1 compare-op <
+a INT-LITERAL r 1 compare-op <
+a input r 1 compare-op <
+s
+a ( r 1 compare-op <=
+a FLOAT-LITERAL r 1 compare-op <=
+a IDENTIFIER r 1 compare-op <=
+a INT-LITERAL r 1 compare-op <=
+a input r 1 compare-op <=
+s
+a ( r 1 compare-op ==
+a FLOAT-LITERAL r 1 compare-op ==
+a IDENTIFIER r 1 compare-op ==
+a INT-LITERAL r 1 compare-op ==
+a input r 1 compare-op ==
+s
+a ( r 1 compare-op >
+a FLOAT-LITERAL r 1 compare-op >
+a IDENTIFIER r 1 compare-op >
+a INT-LITERAL r 1 compare-op >
+a input r 1 compare-op >
+s
+a ( r 1 compare-op >=
+a FLOAT-LITERAL r 1 compare-op >=
+a IDENTIFIER r 1 compare-op >=
+a INT-LITERAL r 1 compare-op >=
+a input r 1 compare-op >=
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 149
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 150
+a call-expr s 18
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 150
+g call-expr 18
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
 s
 a ( r 1 add-op +
 a FLOAT-LITERAL r 1 add-op +
 a IDENTIFIER r 1 add-op +
 a INT-LITERAL r 1 add-op +
+a input r 1 add-op +
 s
 a ( r 1 add-op -
 a FLOAT-LITERAL r 1 add-op -
 a IDENTIFIER r 1 add-op -
 a INT-LITERAL r 1 add-op -
+a input r 1 add-op -
 s
 a ( s 1
 a FLOAT-LITERAL s 2
-a IDENTIFIER s 94
+a IDENTIFIER s 149
 a INT-LITERAL s 4
-a call-expr s 13
-a mult-expr s 95
-a primary-expr s 18
-g call-expr 13
-g mult-expr 95
-g primary-expr 18
+a input s 8
+a call-expr s 18
+a input-expr s 26
+a mult-expr s 152
+a primary-expr s 28
+g call-expr 18
+g input-expr 26
+g mult-expr 152
+g primary-expr 28
 s
 a ( r 1 mult-op %
 a FLOAT-LITERAL r 1 mult-op %
 a IDENTIFIER r 1 mult-op %
 a INT-LITERAL r 1 mult-op %
+a input r 1 mult-op %
 s
 a ( r 1 mult-op *
 a FLOAT-LITERAL r 1 mult-op *
 a IDENTIFIER r 1 mult-op *
 a INT-LITERAL r 1 mult-op *
+a input r 1 mult-op *
 s
 a ( r 1 mult-op /
 a FLOAT-LITERAL r 1 mult-op /
 a IDENTIFIER r 1 mult-op /
 a INT-LITERAL r 1 mult-op /
+a input r 1 mult-op /
 s
 a ( s 1
 a FLOAT-LITERAL s 2
-a IDENTIFIER s 94
+a IDENTIFIER s 149
 a INT-LITERAL s 4
-a call-expr s 13
-a primary-expr s 96
-g call-expr 13
-g primary-expr 96
+a input s 8
+a call-expr s 18
+a input-expr s 26
+a primary-expr s 153
+g call-expr 18
+g input-expr 26
+g primary-expr 153
+s
+a != r 1 type float
+a % r 1 type float
+a * r 1 type float
+a + r 1 type float
+a - r 1 type float
+a / r 1 type float
+a ; r 1 type float
+a < r 1 type float
+a <= r 1 type float
+a == r 1 type float
+a > r 1 type float
+a >= r 1 type float
+s
+a != r 1 type int
+a % r 1 type int
+a * r 1 type int
+a + r 1 type int
+a - r 1 type int
+a / r 1 type int
+a ; r 1 type int
+a < r 1 type int
+a <= r 1 type int
+a == r 1 type int
+a > r 1 type int
+a >= r 1 type int
+s
+a != r 1 type void
+a % r 1 type void
+a * r 1 type void
+a + r 1 type void
+a - r 1 type void
+a / r 1 type void
+a ; r 1 type void
+a < r 1 type void
+a <= r 1 type void
+a == r 1 type void
+a > r 1 type void
+a >= r 1 type void
+s
+a != r 2 input-expr input type
+a % r 2 input-expr input type
+a * r 2 input-expr input type
+a + r 2 input-expr input type
+a - r 2 input-expr input type
+a / r 2 input-expr input type
+a ; r 2 input-expr input type
+a < r 2 input-expr input type
+a <= r 2 input-expr input type
+a == r 2 input-expr input type
+a > r 2 input-expr input type
+a >= r 2 input-expr input type
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 138
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 138
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
 s
 a Ω r 2 expression-statement expr ;
 a ( r 2 expression-statement expr ;
 a FLOAT-LITERAL r 2 expression-statement expr ;
 a IDENTIFIER r 2 expression-statement expr ;
 a INT-LITERAL r 2 expression-statement expr ;
+a float r 2 expression-statement expr ;
 a func r 2 expression-statement expr ;
+a if r 2 expression-statement expr ;
+a input r 2 expression-statement expr ;
+a int r 2 expression-statement expr ;
 a print r 2 expression-statement expr ;
 a println r 2 expression-statement expr ;
 a return r 2 expression-statement expr ;
+a void r 2 expression-statement expr ;
 a { r 2 expression-statement expr ;
 s
-a ( s 97
-a parameter-list s 98
-g parameter-list 98
+a = s 171
+s
+a ( s 154
+a parameter-list s 155
+g parameter-list 155
 s
 a } r 2 statements statement statements
 s
-a } s 126
-s
-a ( s 37
-a FLOAT-LITERAL s 38
-a IDENTIFIER s 39
-a INT-LITERAL s 40
-a add-expr s 41
-a assignment-expr s 42
-a call-expr s 43
-a expr s 109
-a mult-expr s 45
-a primary-expr s 46
-g add-expr 41
-g assignment-expr 42
-g call-expr 43
-g expr 109
-g mult-expr 45
-g primary-expr 46
-s
-a % r 3 call-expr IDENTIFIER ( )
-a * r 3 call-expr IDENTIFIER ( )
-a + r 3 call-expr IDENTIFIER ( )
-a - r 3 call-expr IDENTIFIER ( )
-a / r 3 call-expr IDENTIFIER ( )
-a ; r 3 call-expr IDENTIFIER ( )
-s
-a % r 1 primary-expr FLOAT-LITERAL
-a ) r 1 primary-expr FLOAT-LITERAL
-a * r 1 primary-expr FLOAT-LITERAL
-a + r 1 primary-expr FLOAT-LITERAL
-a , r 1 primary-expr FLOAT-LITERAL
-a - r 1 primary-expr FLOAT-LITERAL
-a / r 1 primary-expr FLOAT-LITERAL
-s
-a % r 1 primary-expr IDENTIFIER
-a %= s 52
-a ( s 110
-a ) r 1 primary-expr IDENTIFIER
-a * r 1 primary-expr IDENTIFIER
-a *= s 54
-a + r 1 primary-expr IDENTIFIER
-a += s 55
-a , r 1 primary-expr IDENTIFIER
-a - r 1 primary-expr IDENTIFIER
-a -= s 56
-a / r 1 primary-expr IDENTIFIER
-a /= s 57
-a = s 58
-a assignment-op s 111
-g assignment-op 111
-s
-a % r 1 primary-expr INT-LITERAL
-a ) r 1 primary-expr INT-LITERAL
-a * r 1 primary-expr INT-LITERAL
-a + r 1 primary-expr INT-LITERAL
-a , r 1 primary-expr INT-LITERAL
-a - r 1 primary-expr INT-LITERAL
-a / r 1 primary-expr INT-LITERAL
-s
-a ) r 1 assignment-expr add-expr
-a + s 60
-a , r 1 assignment-expr add-expr
-a - s 61
-a add-op s 113
-g add-op 113
-s
-a ) r 1 expr assignment-expr
-a , r 1 expr assignment-expr
-s
-a ) s 131
-s
-a % r 1 primary-expr call-expr
-a ) r 1 primary-expr call-expr
-a * r 1 primary-expr call-expr
-a + r 1 primary-expr call-expr
-a , r 1 primary-expr call-expr
-a - r 1 primary-expr call-expr
-a / r 1 primary-expr call-expr
-s
-a ) r 1 call-arguments expr
-a , s 124
-s
-a % s 63
-a ) r 1 add-expr mult-expr
-a * s 64
-a + r 1 add-expr mult-expr
-a , r 1 add-expr mult-expr
-a - r 1 add-expr mult-expr
-a / s 65
-a mult-op s 114
-g mult-op 114
-s
-a % r 1 mult-expr primary-expr
-a ) r 1 mult-expr primary-expr
-a * r 1 mult-expr primary-expr
-a + r 1 mult-expr primary-expr
-a , r 1 mult-expr primary-expr
-a - r 1 mult-expr primary-expr
-a / r 1 mult-expr primary-expr
-s
-a ) s 130
-s
-a ; s 125
-s
-a ; s 129
-s
-a ; s 127
-s
-a ( r 2 print-statement println STRING-LITERAL;
-a FLOAT-LITERAL r 2 print-statement println STRING-LITERAL;
-a IDENTIFIER r 2 print-statement println STRING-LITERAL;
-a INT-LITERAL r 2 print-statement println STRING-LITERAL;
-a func r 2 print-statement println STRING-LITERAL;
-a print r 2 print-statement println STRING-LITERAL;
-a println r 2 print-statement println STRING-LITERAL;
-a return r 2 print-statement println STRING-LITERAL;
-a { r 2 print-statement println STRING-LITERAL;
-a } r 2 print-statement println STRING-LITERAL;
-s
-a ; s 128
-s
-a ( s 71
-a ) s 107
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 74
-a INT-LITERAL s 75
-a add-expr s 76
-a assignment-expr s 77
-a call-arguments s 108
-a call-expr s 79
-a expr s 80
-a mult-expr s 81
-a primary-expr s 82
-g add-expr 76
-g assignment-expr 77
-g call-arguments 108
-g call-expr 79
-g expr 80
-g mult-expr 81
-g primary-expr 82
-s
-a ( s 37
-a FLOAT-LITERAL s 38
-a IDENTIFIER s 39
-a INT-LITERAL s 40
-a add-expr s 41
-a assignment-expr s 112
-a call-expr s 43
-a mult-expr s 45
-a primary-expr s 46
-g add-expr 41
-g assignment-expr 112
-g call-expr 43
-g mult-expr 45
-g primary-expr 46
-s
-a ; r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-s
-a ( s 37
-a FLOAT-LITERAL s 38
-a IDENTIFIER s 115
-a INT-LITERAL s 40
-a call-expr s 43
-a mult-expr s 116
-a primary-expr s 46
-g call-expr 43
-g mult-expr 116
-g primary-expr 46
-s
-a ( s 37
-a FLOAT-LITERAL s 38
-a IDENTIFIER s 115
-a INT-LITERAL s 40
-a call-expr s 43
-a primary-expr s 117
-g call-expr 43
-g primary-expr 117
-s
-a % r 1 primary-expr IDENTIFIER
-a ( s 53
-a * r 1 primary-expr IDENTIFIER
-a + r 1 primary-expr IDENTIFIER
-a - r 1 primary-expr IDENTIFIER
-a / r 1 primary-expr IDENTIFIER
-a ; r 1 primary-expr IDENTIFIER
-s
-a % s 63
-a * s 64
-a + r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 65
-a ; r 3 add-expr add-expr add-op mult-expr
-a mult-op s 66
-g mult-op 66
-s
-a % r 3 mult-expr mult-expr mult-op primary-expr
-a * r 3 mult-expr mult-expr mult-op primary-expr
-a + r 3 mult-expr mult-expr mult-op primary-expr
-a - r 3 mult-expr mult-expr mult-op primary-expr
-a / r 3 mult-expr mult-expr mult-op primary-expr
-a ; r 3 mult-expr mult-expr mult-op primary-expr
-s
-a ) s 119
-a IDENTIFIER s 120
-a parameter s 121
-a parameters s 122
-a type s 123
-g parameter 121
-g parameters 122
-g type 123
-s
-a -> s 132
-s
-a ( r 2 expression-statement expr ;
-a FLOAT-LITERAL r 2 expression-statement expr ;
-a IDENTIFIER r 2 expression-statement expr ;
-a INT-LITERAL r 2 expression-statement expr ;
-a func r 2 expression-statement expr ;
-a print r 2 expression-statement expr ;
-a println r 2 expression-statement expr ;
-a return r 2 expression-statement expr ;
-a { r 2 expression-statement expr ;
-a } r 2 expression-statement expr ;
-s
-a ( s 97
-a parameter-list s 118
-g parameter-list 118
-s
-a Ω r 3 return-statement return expr ;
-a ( r 3 return-statement return expr ;
-a FLOAT-LITERAL r 3 return-statement return expr ;
-a IDENTIFIER r 3 return-statement return expr ;
-a INT-LITERAL r 3 return-statement return expr ;
-a func r 3 return-statement return expr ;
-a print r 3 return-statement return expr ;
-a println r 3 return-statement return expr ;
-a return r 3 return-statement return expr ;
-a { r 3 return-statement return expr ;
-s
-a Ω r 3 block-statement { statements }
-a ( r 3 block-statement { statements }
-a FLOAT-LITERAL r 3 block-statement { statements }
-a IDENTIFIER r 3 block-statement { statements }
-a INT-LITERAL r 3 block-statement { statements }
-a func r 3 block-statement { statements }
-a print r 3 block-statement { statements }
-a println r 3 block-statement { statements }
-a return r 3 block-statement { statements }
-a { r 3 block-statement { statements }
-s
-a Ω r 3 print-statement print expr ;
-a ( r 3 print-statement print expr ;
-a FLOAT-LITERAL r 3 print-statement print expr ;
-a IDENTIFIER r 3 print-statement print expr ;
-a INT-LITERAL r 3 print-statement print expr ;
-a func r 3 print-statement print expr ;
-a print r 3 print-statement print expr ;
-a println r 3 print-statement print expr ;
-a return r 3 print-statement print expr ;
-a { r 3 print-statement print expr ;
-s
-a Ω r 3 print-statement println expr ;
-a ( r 3 print-statement println expr ;
-a FLOAT-LITERAL r 3 print-statement println expr ;
-a IDENTIFIER r 3 print-statement println expr ;
-a INT-LITERAL r 3 print-statement println expr ;
-a func r 3 print-statement println expr ;
-a print r 3 print-statement println expr ;
-a println r 3 print-statement println expr ;
-a return r 3 print-statement println expr ;
-a { r 3 print-statement println expr ;
-s
-a Ω r 3 print-statement print STRING-LITERAL ;
-a ( r 3 print-statement print STRING-LITERAL ;
-a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
-a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
-a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
-a func r 3 print-statement print STRING-LITERAL ;
-a print r 3 print-statement print STRING-LITERAL ;
-a println r 3 print-statement print STRING-LITERAL ;
-a return r 3 print-statement print STRING-LITERAL ;
-a { r 3 print-statement print STRING-LITERAL ;
-s
-a % r 3 primary-expr ( expr )
-a * r 3 primary-expr ( expr )
-a + r 3 primary-expr ( expr )
-a - r 3 primary-expr ( expr )
-a / r 3 primary-expr ( expr )
-a ; r 3 primary-expr ( expr )
-s
-a % r 3 call-expr IDENTIFIER ( )
-a ) r 3 call-expr IDENTIFIER ( )
-a * r 3 call-expr IDENTIFIER ( )
-a + r 3 call-expr IDENTIFIER ( )
-a - r 3 call-expr IDENTIFIER ( )
-a / r 3 call-expr IDENTIFIER ( )
-s
-a ) s 150
-s
-a ) s 148
-s
-a ( s 71
-a ) s 139
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 74
-a INT-LITERAL s 75
-a add-expr s 76
-a assignment-expr s 77
-a call-arguments s 140
-a call-expr s 79
-a expr s 80
-a mult-expr s 81
-a primary-expr s 82
-g add-expr 76
-g assignment-expr 77
-g call-arguments 140
-g call-expr 79
-g expr 80
-g mult-expr 81
-g primary-expr 82
-s
-a ( s 71
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 74
-a INT-LITERAL s 75
-a add-expr s 76
-a assignment-expr s 142
-a call-expr s 79
-a mult-expr s 81
-a primary-expr s 82
-g add-expr 76
-g assignment-expr 142
-g call-expr 79
-g mult-expr 81
-g primary-expr 82
-s
-a ) r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-s
-a ( s 71
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 143
-a INT-LITERAL s 75
-a call-expr s 79
-a mult-expr s 144
-a primary-expr s 82
-g call-expr 79
-g mult-expr 144
-g primary-expr 82
-s
-a ( s 71
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 143
-a INT-LITERAL s 75
-a call-expr s 79
-a primary-expr s 145
-g call-expr 79
-g primary-expr 145
-s
-a % r 1 primary-expr IDENTIFIER
-a ( s 89
-a ) r 1 primary-expr IDENTIFIER
-a * r 1 primary-expr IDENTIFIER
-a + r 1 primary-expr IDENTIFIER
-a - r 1 primary-expr IDENTIFIER
-a / r 1 primary-expr IDENTIFIER
-s
-a % s 63
-a ) r 3 add-expr add-expr add-op mult-expr
-a * s 64
-a + r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 65
-a mult-op s 93
-g mult-op 93
-s
-a % r 3 mult-expr mult-expr mult-op primary-expr
-a ) r 3 mult-expr mult-expr mult-op primary-expr
-a * r 3 mult-expr mult-expr mult-op primary-expr
-a + r 3 mult-expr mult-expr mult-op primary-expr
-a - r 3 mult-expr mult-expr mult-op primary-expr
-a / r 3 mult-expr mult-expr mult-op primary-expr
-s
-a -> s 151
-s
-a -> r 2 parameter-list ( )
-s
-a IDENTIFIER r 1 type IDENTIFIER
-s
-a ) r 1 parameters parameter
-a , s 146
-s
-a ) s 149
-s
-a IDENTIFIER s 147
-s
-a ( s 71
-a FLOAT-LITERAL s 73
-a IDENTIFIER s 74
-a INT-LITERAL s 75
-a add-expr s 76
-a assignment-expr s 77
-a call-arguments s 141
-a call-expr s 79
-a expr s 80
-a mult-expr s 81
-a primary-expr s 82
-g add-expr 76
-g assignment-expr 77
-g call-arguments 141
-g call-expr 79
-g expr 80
-g mult-expr 81
-g primary-expr 82
-s
-a ( r 3 return-statement return expr ;
-a FLOAT-LITERAL r 3 return-statement return expr ;
-a IDENTIFIER r 3 return-statement return expr ;
-a INT-LITERAL r 3 return-statement return expr ;
-a func r 3 return-statement return expr ;
-a print r 3 return-statement return expr ;
-a println r 3 return-statement return expr ;
-a return r 3 return-statement return expr ;
-a { r 3 return-statement return expr ;
-a } r 3 return-statement return expr ;
-s
-a ( r 3 block-statement { statements }
-a FLOAT-LITERAL r 3 block-statement { statements }
-a IDENTIFIER r 3 block-statement { statements }
-a INT-LITERAL r 3 block-statement { statements }
-a func r 3 block-statement { statements }
-a print r 3 block-statement { statements }
-a println r 3 block-statement { statements }
-a return r 3 block-statement { statements }
-a { r 3 block-statement { statements }
-a } r 3 block-statement { statements }
-s
-a ( r 3 print-statement print expr ;
-a FLOAT-LITERAL r 3 print-statement print expr ;
-a IDENTIFIER r 3 print-statement print expr ;
-a INT-LITERAL r 3 print-statement print expr ;
-a func r 3 print-statement print expr ;
-a print r 3 print-statement print expr ;
-a println r 3 print-statement print expr ;
-a return r 3 print-statement print expr ;
-a { r 3 print-statement print expr ;
-a } r 3 print-statement print expr ;
-s
-a ( r 3 print-statement println expr ;
-a FLOAT-LITERAL r 3 print-statement println expr ;
-a IDENTIFIER r 3 print-statement println expr ;
-a INT-LITERAL r 3 print-statement println expr ;
-a func r 3 print-statement println expr ;
-a print r 3 print-statement println expr ;
-a println r 3 print-statement println expr ;
-a return r 3 print-statement println expr ;
-a { r 3 print-statement println expr ;
-a } r 3 print-statement println expr ;
-s
-a ( r 3 print-statement print STRING-LITERAL ;
-a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
-a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
-a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
-a func r 3 print-statement print STRING-LITERAL ;
-a print r 3 print-statement print STRING-LITERAL ;
-a println r 3 print-statement print STRING-LITERAL ;
-a return r 3 print-statement print STRING-LITERAL ;
-a { r 3 print-statement print STRING-LITERAL ;
-a } r 3 print-statement print STRING-LITERAL ;
-s
-a % r 3 primary-expr ( expr )
-a ) r 3 primary-expr ( expr )
-a * r 3 primary-expr ( expr )
-a + r 3 primary-expr ( expr )
-a - r 3 primary-expr ( expr )
-a / r 3 primary-expr ( expr )
-s
-a % r 4 call-expr IDENTIFIER ( call-arguments )
-a * r 4 call-expr IDENTIFIER ( call-arguments )
-a + r 4 call-expr IDENTIFIER ( call-arguments )
-a - r 4 call-expr IDENTIFIER ( call-arguments )
-a / r 4 call-expr IDENTIFIER ( call-arguments )
-a ; r 4 call-expr IDENTIFIER ( call-arguments )
-s
-a ( s 1
-a FLOAT-LITERAL s 2
-a IDENTIFIER s 3
-a INT-LITERAL s 4
-a func s 5
-a print s 6
-a println s 7
-a return s 8
-a { s 9
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 133
-a call-expr s 13
-a expr s 14
-a expression-statement s 134
-a function-definition s 135
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 136
-a return-statement s 137
-a statement s 138
-g add-expr 10
-g assignment-expr 11
-g block-statement 133
-g call-expr 13
-g expr 14
-g expression-statement 134
-g function-definition 135
-g mult-expr 17
-g primary-expr 18
-g print-statement 136
-g return-statement 137
-g statement 138
+a } s 211
 s
 a Ω r 1 statement block-statement
 a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
 a IDENTIFIER r 1 statement block-statement
 a INT-LITERAL r 1 statement block-statement
+a float r 1 statement block-statement
 a func r 1 statement block-statement
+a if r 1 statement block-statement
+a input r 1 statement block-statement
+a int r 1 statement block-statement
 a print r 1 statement block-statement
 a println r 1 statement block-statement
 a return r 1 statement block-statement
+a void r 1 statement block-statement
 a { r 1 statement block-statement
+s
+a Ω r 1 statement decl-statement
+a ( r 1 statement decl-statement
+a FLOAT-LITERAL r 1 statement decl-statement
+a IDENTIFIER r 1 statement decl-statement
+a INT-LITERAL r 1 statement decl-statement
+a float r 1 statement decl-statement
+a func r 1 statement decl-statement
+a if r 1 statement decl-statement
+a input r 1 statement decl-statement
+a int r 1 statement decl-statement
+a print r 1 statement decl-statement
+a println r 1 statement decl-statement
+a return r 1 statement decl-statement
+a void r 1 statement decl-statement
+a { r 1 statement decl-statement
 s
 a Ω r 1 statement expression-statement
 a ( r 1 statement expression-statement
 a FLOAT-LITERAL r 1 statement expression-statement
 a IDENTIFIER r 1 statement expression-statement
 a INT-LITERAL r 1 statement expression-statement
+a float r 1 statement expression-statement
 a func r 1 statement expression-statement
+a if r 1 statement expression-statement
+a input r 1 statement expression-statement
+a int r 1 statement expression-statement
 a print r 1 statement expression-statement
 a println r 1 statement expression-statement
 a return r 1 statement expression-statement
+a void r 1 statement expression-statement
 a { r 1 statement expression-statement
 s
 a Ω r 1 statement function-definition
@@ -1262,21 +1449,47 @@ a ( r 1 statement function-definition
 a FLOAT-LITERAL r 1 statement function-definition
 a IDENTIFIER r 1 statement function-definition
 a INT-LITERAL r 1 statement function-definition
+a float r 1 statement function-definition
 a func r 1 statement function-definition
+a if r 1 statement function-definition
+a input r 1 statement function-definition
+a int r 1 statement function-definition
 a print r 1 statement function-definition
 a println r 1 statement function-definition
 a return r 1 statement function-definition
+a void r 1 statement function-definition
 a { r 1 statement function-definition
+s
+a Ω r 1 statement if-else-statement
+a ( r 1 statement if-else-statement
+a FLOAT-LITERAL r 1 statement if-else-statement
+a IDENTIFIER r 1 statement if-else-statement
+a INT-LITERAL r 1 statement if-else-statement
+a float r 1 statement if-else-statement
+a func r 1 statement if-else-statement
+a if r 1 statement if-else-statement
+a input r 1 statement if-else-statement
+a int r 1 statement if-else-statement
+a print r 1 statement if-else-statement
+a println r 1 statement if-else-statement
+a return r 1 statement if-else-statement
+a void r 1 statement if-else-statement
+a { r 1 statement if-else-statement
 s
 a Ω r 1 statement print-statement
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
 a INT-LITERAL r 1 statement print-statement
+a float r 1 statement print-statement
 a func r 1 statement print-statement
+a if r 1 statement print-statement
+a input r 1 statement print-statement
+a int r 1 statement print-statement
 a print r 1 statement print-statement
 a println r 1 statement print-statement
 a return r 1 statement print-statement
+a void r 1 statement print-statement
 a { r 1 statement print-statement
 s
 a Ω r 1 statement return-statement
@@ -1284,146 +1497,773 @@ a ( r 1 statement return-statement
 a FLOAT-LITERAL r 1 statement return-statement
 a IDENTIFIER r 1 statement return-statement
 a INT-LITERAL r 1 statement return-statement
+a float r 1 statement return-statement
 a func r 1 statement return-statement
+a if r 1 statement return-statement
+a input r 1 statement return-statement
+a int r 1 statement return-statement
 a print r 1 statement return-statement
 a println r 1 statement return-statement
 a return r 1 statement return-statement
+a void r 1 statement return-statement
 a { r 1 statement return-statement
 s
-a Ω r 5 function-definition func IDENTIFIER parameter-list -> statement
-a ( r 5 function-definition func IDENTIFIER parameter-list -> statement
-a FLOAT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
-a IDENTIFIER r 5 function-definition func IDENTIFIER parameter-list -> statement
-a INT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
-a func r 5 function-definition func IDENTIFIER parameter-list -> statement
-a print r 5 function-definition func IDENTIFIER parameter-list -> statement
-a println r 5 function-definition func IDENTIFIER parameter-list -> statement
-a return r 5 function-definition func IDENTIFIER parameter-list -> statement
-a { r 5 function-definition func IDENTIFIER parameter-list -> statement
-s
-a % r 3 call-expr IDENTIFIER ( )
-a ) r 3 call-expr IDENTIFIER ( )
-a * r 3 call-expr IDENTIFIER ( )
-a + r 3 call-expr IDENTIFIER ( )
-a , r 3 call-expr IDENTIFIER ( )
-a - r 3 call-expr IDENTIFIER ( )
-a / r 3 call-expr IDENTIFIER ( )
-s
-a ) s 159
-s
-a ) r 3 call-arguments expr , call-arguments
-s
-a ) r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-a , r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
-s
-a % r 1 primary-expr IDENTIFIER
-a ( s 110
-a ) r 1 primary-expr IDENTIFIER
-a * r 1 primary-expr IDENTIFIER
-a + r 1 primary-expr IDENTIFIER
-a , r 1 primary-expr IDENTIFIER
-a - r 1 primary-expr IDENTIFIER
-a / r 1 primary-expr IDENTIFIER
-s
-a % s 63
-a ) r 3 add-expr add-expr add-op mult-expr
-a * s 64
-a + r 3 add-expr add-expr add-op mult-expr
-a , r 3 add-expr add-expr add-op mult-expr
-a - r 3 add-expr add-expr add-op mult-expr
-a / s 65
-a mult-op s 114
-g mult-op 114
-s
-a % r 3 mult-expr mult-expr mult-op primary-expr
-a ) r 3 mult-expr mult-expr mult-op primary-expr
-a * r 3 mult-expr mult-expr mult-op primary-expr
-a + r 3 mult-expr mult-expr mult-op primary-expr
-a , r 3 mult-expr mult-expr mult-op primary-expr
-a - r 3 mult-expr mult-expr mult-op primary-expr
-a / r 3 mult-expr mult-expr mult-op primary-expr
-s
-a IDENTIFIER s 120
-a parameter s 121
-a parameters s 158
-a type s 123
-g parameter 121
-g parameters 158
-g type 123
-s
-a ) r 2 parameter type IDENTIFIER
-a , r 2 parameter type IDENTIFIER
-s
-a % r 3 primary-expr ( expr )
-a ) r 3 primary-expr ( expr )
-a * r 3 primary-expr ( expr )
-a + r 3 primary-expr ( expr )
-a , r 3 primary-expr ( expr )
-a - r 3 primary-expr ( expr )
-a / r 3 primary-expr ( expr )
-s
-a -> r 3 parameter-list ( parameters )
-s
-a % r 4 call-expr IDENTIFIER ( call-arguments )
-a ) r 4 call-expr IDENTIFIER ( call-arguments )
-a * r 4 call-expr IDENTIFIER ( call-arguments )
-a + r 4 call-expr IDENTIFIER ( call-arguments )
-a - r 4 call-expr IDENTIFIER ( call-arguments )
-a / r 4 call-expr IDENTIFIER ( call-arguments )
+a Ω r 2 else-clause else statement
+a ( r 2 else-clause else statement
+a FLOAT-LITERAL r 2 else-clause else statement
+a IDENTIFIER r 2 else-clause else statement
+a INT-LITERAL r 2 else-clause else statement
+a float r 2 else-clause else statement
+a func r 2 else-clause else statement
+a if r 2 else-clause else statement
+a input r 2 else-clause else statement
+a int r 2 else-clause else statement
+a print r 2 else-clause else statement
+a println r 2 else-clause else statement
+a return r 2 else-clause else statement
+a void r 2 else-clause else statement
+a { r 2 else-clause else statement
 s
 a ( s 1
 a FLOAT-LITERAL s 2
 a IDENTIFIER s 3
 a INT-LITERAL s 4
-a func s 24
-a print s 25
-a println s 26
-a return s 27
-a { s 28
-a add-expr s 10
-a assignment-expr s 11
-a block-statement s 152
-a call-expr s 13
-a expr s 30
-a expression-statement s 153
-a function-definition s 154
-a mult-expr s 17
-a primary-expr s 18
-a print-statement s 155
-a return-statement s 156
-a statement s 157
-g add-expr 10
-g assignment-expr 11
-g block-statement 152
-g call-expr 13
-g expr 30
-g expression-statement 153
-g function-definition 154
-g mult-expr 17
-g primary-expr 18
-g print-statement 155
-g return-statement 156
-g statement 157
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 173
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 174
+a expr s 43
+a expression-statement s 175
+a function-definition s 176
+a if-clause s 46
+a if-else-statement s 177
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 178
+a return-statement s 179
+a statement s 180
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 173
+g call-expr 18
+g compare-expr 19
+g decl-statement 174
+g expr 43
+g expression-statement 175
+g function-definition 176
+g if-clause 46
+g if-else-statement 177
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 178
+g return-statement 179
+g statement 180
+g type 52
+s
+a else s 116
+a else-clause s 181
+g else-clause 181
+s
+a ( r 2 if-else-statement if-clause else-clause
+a FLOAT-LITERAL r 2 if-else-statement if-clause else-clause
+a IDENTIFIER r 2 if-else-statement if-clause else-clause
+a INT-LITERAL r 2 if-else-statement if-clause else-clause
+a float r 2 if-else-statement if-clause else-clause
+a func r 2 if-else-statement if-clause else-clause
+a if r 2 if-else-statement if-clause else-clause
+a input r 2 if-else-statement if-clause else-clause
+a int r 2 if-else-statement if-clause else-clause
+a print r 2 if-else-statement if-clause else-clause
+a println r 2 if-else-statement if-clause else-clause
+a return r 2 if-else-statement if-clause else-clause
+a void r 2 if-else-statement if-clause else-clause
+a { r 2 if-else-statement if-clause else-clause
+a } r 2 if-else-statement if-clause else-clause
+s
+a else r 2 elif-clauses elif-clause elif-clauses
+s
+a Ω r 3 if-else-statement if-clause elif-clauses else-clause
+a ( r 3 if-else-statement if-clause elif-clauses else-clause
+a FLOAT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a IDENTIFIER r 3 if-else-statement if-clause elif-clauses else-clause
+a INT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a float r 3 if-else-statement if-clause elif-clauses else-clause
+a func r 3 if-else-statement if-clause elif-clauses else-clause
+a if r 3 if-else-statement if-clause elif-clauses else-clause
+a input r 3 if-else-statement if-clause elif-clauses else-clause
+a int r 3 if-else-statement if-clause elif-clauses else-clause
+a print r 3 if-else-statement if-clause elif-clauses else-clause
+a println r 3 if-else-statement if-clause elif-clauses else-clause
+a return r 3 if-else-statement if-clause elif-clauses else-clause
+a void r 3 if-else-statement if-clause elif-clauses else-clause
+a { r 3 if-else-statement if-clause elif-clauses else-clause
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 184
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 184
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a != r 3 call-expr IDENTIFIER ( )
+a % r 3 call-expr IDENTIFIER ( )
+a * r 3 call-expr IDENTIFIER ( )
+a + r 3 call-expr IDENTIFIER ( )
+a - r 3 call-expr IDENTIFIER ( )
+a / r 3 call-expr IDENTIFIER ( )
+a ; r 3 call-expr IDENTIFIER ( )
+a < r 3 call-expr IDENTIFIER ( )
+a <= r 3 call-expr IDENTIFIER ( )
+a == r 3 call-expr IDENTIFIER ( )
+a > r 3 call-expr IDENTIFIER ( )
+a >= r 3 call-expr IDENTIFIER ( )
+s
+a != r 1 primary-expr FLOAT-LITERAL
+a % r 1 primary-expr FLOAT-LITERAL
+a ) r 1 primary-expr FLOAT-LITERAL
+a * r 1 primary-expr FLOAT-LITERAL
+a + r 1 primary-expr FLOAT-LITERAL
+a , r 1 primary-expr FLOAT-LITERAL
+a - r 1 primary-expr FLOAT-LITERAL
+a / r 1 primary-expr FLOAT-LITERAL
+a < r 1 primary-expr FLOAT-LITERAL
+a <= r 1 primary-expr FLOAT-LITERAL
+a == r 1 primary-expr FLOAT-LITERAL
+a > r 1 primary-expr FLOAT-LITERAL
+a >= r 1 primary-expr FLOAT-LITERAL
+s
+a != r 1 primary-expr IDENTIFIER
+a % r 1 primary-expr IDENTIFIER
+a %= s 76
+a ( s 187
+a ) r 1 primary-expr IDENTIFIER
+a * r 1 primary-expr IDENTIFIER
+a *= s 78
+a + r 1 primary-expr IDENTIFIER
+a += s 79
+a , r 1 primary-expr IDENTIFIER
+a - r 1 primary-expr IDENTIFIER
+a -= s 80
+a / r 1 primary-expr IDENTIFIER
+a /= s 81
+a < r 1 primary-expr IDENTIFIER
+a <= r 1 primary-expr IDENTIFIER
+a = s 82
+a == r 1 primary-expr IDENTIFIER
+a > r 1 primary-expr IDENTIFIER
+a >= r 1 primary-expr IDENTIFIER
+a assignment-op s 188
+g assignment-op 188
+s
+a != r 1 primary-expr INT-LITERAL
+a % r 1 primary-expr INT-LITERAL
+a ) r 1 primary-expr INT-LITERAL
+a * r 1 primary-expr INT-LITERAL
+a + r 1 primary-expr INT-LITERAL
+a , r 1 primary-expr INT-LITERAL
+a - r 1 primary-expr INT-LITERAL
+a / r 1 primary-expr INT-LITERAL
+a < r 1 primary-expr INT-LITERAL
+a <= r 1 primary-expr INT-LITERAL
+a == r 1 primary-expr INT-LITERAL
+a > r 1 primary-expr INT-LITERAL
+a >= r 1 primary-expr INT-LITERAL
+s
+a float s 205
+a int s 206
+a void s 207
+a type s 208
+g type 208
+s
+a != r 1 compare-expr add-expr
+a ) r 1 compare-expr add-expr
+a + s 91
+a , r 1 compare-expr add-expr
+a - s 92
+a < r 1 compare-expr add-expr
+a <= r 1 compare-expr add-expr
+a == r 1 compare-expr add-expr
+a > r 1 compare-expr add-expr
+a >= r 1 compare-expr add-expr
+a add-op s 192
+g add-op 192
+s
+a ) r 1 expr assignment-expr
+a , r 1 expr assignment-expr
+s
+a ) r 1 call-arguments call-argument
+a , s 209
+s
+a ) s 219
+s
+a != r 1 primary-expr call-expr
+a % r 1 primary-expr call-expr
+a ) r 1 primary-expr call-expr
+a * r 1 primary-expr call-expr
+a + r 1 primary-expr call-expr
+a , r 1 primary-expr call-expr
+a - r 1 primary-expr call-expr
+a / r 1 primary-expr call-expr
+a < r 1 primary-expr call-expr
+a <= r 1 primary-expr call-expr
+a == r 1 primary-expr call-expr
+a > r 1 primary-expr call-expr
+a >= r 1 primary-expr call-expr
+s
+a != s 84
+a ) r 1 assignment-expr compare-expr
+a , r 1 assignment-expr compare-expr
+a < s 85
+a <= s 86
+a == s 87
+a > s 88
+a >= s 89
+a compare-op s 191
+g compare-op 191
+s
+a ) r 1 call-argument expr
+a , r 1 call-argument expr
+s
+a != r 1 primary-expr input-expr
+a % r 1 primary-expr input-expr
+a ) r 1 primary-expr input-expr
+a * r 1 primary-expr input-expr
+a + r 1 primary-expr input-expr
+a , r 1 primary-expr input-expr
+a - r 1 primary-expr input-expr
+a / r 1 primary-expr input-expr
+a < r 1 primary-expr input-expr
+a <= r 1 primary-expr input-expr
+a == r 1 primary-expr input-expr
+a > r 1 primary-expr input-expr
+a >= r 1 primary-expr input-expr
+s
+a != r 1 add-expr mult-expr
+a % s 94
+a ) r 1 add-expr mult-expr
+a * s 95
+a + r 1 add-expr mult-expr
+a , r 1 add-expr mult-expr
+a - r 1 add-expr mult-expr
+a / s 96
+a < r 1 add-expr mult-expr
+a <= r 1 add-expr mult-expr
+a == r 1 add-expr mult-expr
+a > r 1 add-expr mult-expr
+a >= r 1 add-expr mult-expr
+a mult-op s 195
+g mult-op 195
+s
+a != r 1 mult-expr primary-expr
+a % r 1 mult-expr primary-expr
+a ) r 1 mult-expr primary-expr
+a * r 1 mult-expr primary-expr
+a + r 1 mult-expr primary-expr
+a , r 1 mult-expr primary-expr
+a - r 1 mult-expr primary-expr
+a / r 1 mult-expr primary-expr
+a < r 1 mult-expr primary-expr
+a <= r 1 mult-expr primary-expr
+a == r 1 mult-expr primary-expr
+a > r 1 mult-expr primary-expr
+a >= r 1 mult-expr primary-expr
+s
+a ) s 217
+s
+a ) s 218
+s
+a ; s 210
+s
+a ; s 214
+s
+a ; s 212
+s
+a ; s 215
+s
+a ; s 213
+s
+a ( s 121
+a ) s 182
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 124
+a INT-LITERAL s 125
+a input s 126
+a add-expr s 127
+a assignment-expr s 128
+a call-argument s 129
+a call-arguments s 183
+a call-expr s 131
+a compare-expr s 132
+a expr s 133
+a input-expr s 134
+a mult-expr s 135
+a primary-expr s 136
+g add-expr 127
+g assignment-expr 128
+g call-argument 129
+g call-arguments 183
+g call-expr 131
+g compare-expr 132
+g expr 133
+g input-expr 134
+g mult-expr 135
+g primary-expr 136
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 189
+a call-expr s 65
+a compare-expr s 66
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 189
+g call-expr 65
+g compare-expr 66
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a ; r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 193
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 194
+a call-expr s 65
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 194
+g call-expr 65
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 193
+a INT-LITERAL s 61
+a input s 62
+a call-expr s 65
+a input-expr s 68
+a mult-expr s 196
+a primary-expr s 70
+g call-expr 65
+g input-expr 68
+g mult-expr 196
+g primary-expr 70
+s
+a != r 1 primary-expr IDENTIFIER
+a % r 1 primary-expr IDENTIFIER
+a ( s 77
+a * r 1 primary-expr IDENTIFIER
+a + r 1 primary-expr IDENTIFIER
+a - r 1 primary-expr IDENTIFIER
+a / r 1 primary-expr IDENTIFIER
+a ; r 1 primary-expr IDENTIFIER
+a < r 1 primary-expr IDENTIFIER
+a <= r 1 primary-expr IDENTIFIER
+a == r 1 primary-expr IDENTIFIER
+a > r 1 primary-expr IDENTIFIER
+a >= r 1 primary-expr IDENTIFIER
+s
+a != r 3 compare-expr compare-expr compare-op add-expr
+a + s 91
+a - s 92
+a ; r 3 compare-expr compare-expr compare-op add-expr
+a < r 3 compare-expr compare-expr compare-op add-expr
+a <= r 3 compare-expr compare-expr compare-op add-expr
+a == r 3 compare-expr compare-expr compare-op add-expr
+a > r 3 compare-expr compare-expr compare-op add-expr
+a >= r 3 compare-expr compare-expr compare-op add-expr
+a add-op s 93
+g add-op 93
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 193
+a INT-LITERAL s 61
+a input s 62
+a call-expr s 65
+a input-expr s 68
+a primary-expr s 197
+g call-expr 65
+g input-expr 68
+g primary-expr 197
+s
+a != r 3 add-expr add-expr add-op mult-expr
+a % s 94
+a * s 95
+a + r 3 add-expr add-expr add-op mult-expr
+a - r 3 add-expr add-expr add-op mult-expr
+a / s 96
+a ; r 3 add-expr add-expr add-op mult-expr
+a < r 3 add-expr add-expr add-op mult-expr
+a <= r 3 add-expr add-expr add-op mult-expr
+a == r 3 add-expr add-expr add-op mult-expr
+a > r 3 add-expr add-expr add-op mult-expr
+a >= r 3 add-expr add-expr add-op mult-expr
+a mult-op s 97
+g mult-op 97
+s
+a != r 3 mult-expr mult-expr mult-op primary-expr
+a % r 3 mult-expr mult-expr mult-op primary-expr
+a * r 3 mult-expr mult-expr mult-op primary-expr
+a + r 3 mult-expr mult-expr mult-op primary-expr
+a - r 3 mult-expr mult-expr mult-op primary-expr
+a / r 3 mult-expr mult-expr mult-op primary-expr
+a ; r 3 mult-expr mult-expr mult-op primary-expr
+a < r 3 mult-expr mult-expr mult-op primary-expr
+a <= r 3 mult-expr mult-expr mult-op primary-expr
+a == r 3 mult-expr mult-expr mult-op primary-expr
+a > r 3 mult-expr mult-expr mult-op primary-expr
+a >= r 3 mult-expr mult-expr mult-op primary-expr
+s
+a ) s 199
+a float s 5
+a int s 9
+a mut s 200
+a ref s 201
+a void s 13
+a parameter s 202
+a parameters s 203
+a type s 204
+g parameter 202
+g parameters 203
+g type 204
+s
+a -> s 220
+s
+a != r 1 type float
+a % r 1 type float
+a ) r 1 type float
+a * r 1 type float
+a + r 1 type float
+a - r 1 type float
+a / r 1 type float
+a < r 1 type float
+a <= r 1 type float
+a == r 1 type float
+a > r 1 type float
+a >= r 1 type float
+s
+a != r 1 type int
+a % r 1 type int
+a ) r 1 type int
+a * r 1 type int
+a + r 1 type int
+a - r 1 type int
+a / r 1 type int
+a < r 1 type int
+a <= r 1 type int
+a == r 1 type int
+a > r 1 type int
+a >= r 1 type int
+s
+a != r 1 type void
+a % r 1 type void
+a ) r 1 type void
+a * r 1 type void
+a + r 1 type void
+a - r 1 type void
+a / r 1 type void
+a < r 1 type void
+a <= r 1 type void
+a == r 1 type void
+a > r 1 type void
+a >= r 1 type void
+s
+a != r 2 input-expr input type
+a % r 2 input-expr input type
+a ) r 2 input-expr input type
+a * r 2 input-expr input type
+a + r 2 input-expr input type
+a - r 2 input-expr input type
+a / r 2 input-expr input type
+a < r 2 input-expr input type
+a <= r 2 input-expr input type
+a == r 2 input-expr input type
+a > r 2 input-expr input type
+a >= r 2 input-expr input type
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 185
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 185
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 186
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 186
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a ( r 2 expression-statement expr ;
+a FLOAT-LITERAL r 2 expression-statement expr ;
+a IDENTIFIER r 2 expression-statement expr ;
+a INT-LITERAL r 2 expression-statement expr ;
+a float r 2 expression-statement expr ;
+a func r 2 expression-statement expr ;
+a if r 2 expression-statement expr ;
+a input r 2 expression-statement expr ;
+a int r 2 expression-statement expr ;
+a print r 2 expression-statement expr ;
+a println r 2 expression-statement expr ;
+a return r 2 expression-statement expr ;
+a void r 2 expression-statement expr ;
+a { r 2 expression-statement expr ;
+a } r 2 expression-statement expr ;
+s
+a = s 216
+s
+a ( s 154
+a parameter-list s 198
+g parameter-list 198
+s
+a Ω r 3 return-statement return expr ;
+a ( r 3 return-statement return expr ;
+a FLOAT-LITERAL r 3 return-statement return expr ;
+a IDENTIFIER r 3 return-statement return expr ;
+a INT-LITERAL r 3 return-statement return expr ;
+a float r 3 return-statement return expr ;
+a func r 3 return-statement return expr ;
+a if r 3 return-statement return expr ;
+a input r 3 return-statement return expr ;
+a int r 3 return-statement return expr ;
+a print r 3 return-statement return expr ;
+a println r 3 return-statement return expr ;
+a return r 3 return-statement return expr ;
+a void r 3 return-statement return expr ;
+a { r 3 return-statement return expr ;
+s
+a Ω r 3 block-statement { statements }
+a ( r 3 block-statement { statements }
+a FLOAT-LITERAL r 3 block-statement { statements }
+a IDENTIFIER r 3 block-statement { statements }
+a INT-LITERAL r 3 block-statement { statements }
+a float r 3 block-statement { statements }
+a func r 3 block-statement { statements }
+a if r 3 block-statement { statements }
+a input r 3 block-statement { statements }
+a int r 3 block-statement { statements }
+a print r 3 block-statement { statements }
+a println r 3 block-statement { statements }
+a return r 3 block-statement { statements }
+a void r 3 block-statement { statements }
+a { r 3 block-statement { statements }
+s
+a Ω r 3 print-statement print expr ;
+a ( r 3 print-statement print expr ;
+a FLOAT-LITERAL r 3 print-statement print expr ;
+a IDENTIFIER r 3 print-statement print expr ;
+a INT-LITERAL r 3 print-statement print expr ;
+a float r 3 print-statement print expr ;
+a func r 3 print-statement print expr ;
+a if r 3 print-statement print expr ;
+a input r 3 print-statement print expr ;
+a int r 3 print-statement print expr ;
+a print r 3 print-statement print expr ;
+a println r 3 print-statement print expr ;
+a return r 3 print-statement print expr ;
+a void r 3 print-statement print expr ;
+a { r 3 print-statement print expr ;
+s
+a Ω r 3 print-statement println expr ;
+a ( r 3 print-statement println expr ;
+a FLOAT-LITERAL r 3 print-statement println expr ;
+a IDENTIFIER r 3 print-statement println expr ;
+a INT-LITERAL r 3 print-statement println expr ;
+a float r 3 print-statement println expr ;
+a func r 3 print-statement println expr ;
+a if r 3 print-statement println expr ;
+a input r 3 print-statement println expr ;
+a int r 3 print-statement println expr ;
+a print r 3 print-statement println expr ;
+a println r 3 print-statement println expr ;
+a return r 3 print-statement println expr ;
+a void r 3 print-statement println expr ;
+a { r 3 print-statement println expr ;
+s
+a Ω r 3 print-statement print STRING-LITERAL ;
+a ( r 3 print-statement print STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a float r 3 print-statement print STRING-LITERAL ;
+a func r 3 print-statement print STRING-LITERAL ;
+a if r 3 print-statement print STRING-LITERAL ;
+a input r 3 print-statement print STRING-LITERAL ;
+a int r 3 print-statement print STRING-LITERAL ;
+a print r 3 print-statement print STRING-LITERAL ;
+a println r 3 print-statement print STRING-LITERAL ;
+a return r 3 print-statement print STRING-LITERAL ;
+a void r 3 print-statement print STRING-LITERAL ;
+a { r 3 print-statement print STRING-LITERAL ;
+s
+a Ω r 3 print-statement println STRING-LITERAL ;
+a ( r 3 print-statement println STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement println STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a float r 3 print-statement println STRING-LITERAL ;
+a func r 3 print-statement println STRING-LITERAL ;
+a if r 3 print-statement println STRING-LITERAL ;
+a input r 3 print-statement println STRING-LITERAL ;
+a int r 3 print-statement println STRING-LITERAL ;
+a print r 3 print-statement println STRING-LITERAL ;
+a println r 3 print-statement println STRING-LITERAL ;
+a return r 3 print-statement println STRING-LITERAL ;
+a void r 3 print-statement println STRING-LITERAL ;
+a { r 3 print-statement println STRING-LITERAL ;
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 190
+a call-expr s 18
+a compare-expr s 19
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 190
+g call-expr 18
+g compare-expr 19
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a != r 3 primary-expr ( expr )
+a % r 3 primary-expr ( expr )
+a * r 3 primary-expr ( expr )
+a + r 3 primary-expr ( expr )
+a - r 3 primary-expr ( expr )
+a / r 3 primary-expr ( expr )
+a ; r 3 primary-expr ( expr )
+a < r 3 primary-expr ( expr )
+a <= r 3 primary-expr ( expr )
+a == r 3 primary-expr ( expr )
+a > r 3 primary-expr ( expr )
+a >= r 3 primary-expr ( expr )
 s
 a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
 a IDENTIFIER r 1 statement block-statement
 a INT-LITERAL r 1 statement block-statement
+a float r 1 statement block-statement
 a func r 1 statement block-statement
+a if r 1 statement block-statement
+a input r 1 statement block-statement
+a int r 1 statement block-statement
 a print r 1 statement block-statement
 a println r 1 statement block-statement
 a return r 1 statement block-statement
+a void r 1 statement block-statement
 a { r 1 statement block-statement
 a } r 1 statement block-statement
+s
+a ( r 1 statement decl-statement
+a FLOAT-LITERAL r 1 statement decl-statement
+a IDENTIFIER r 1 statement decl-statement
+a INT-LITERAL r 1 statement decl-statement
+a float r 1 statement decl-statement
+a func r 1 statement decl-statement
+a if r 1 statement decl-statement
+a input r 1 statement decl-statement
+a int r 1 statement decl-statement
+a print r 1 statement decl-statement
+a println r 1 statement decl-statement
+a return r 1 statement decl-statement
+a void r 1 statement decl-statement
+a { r 1 statement decl-statement
+a } r 1 statement decl-statement
 s
 a ( r 1 statement expression-statement
 a FLOAT-LITERAL r 1 statement expression-statement
 a IDENTIFIER r 1 statement expression-statement
 a INT-LITERAL r 1 statement expression-statement
+a float r 1 statement expression-statement
 a func r 1 statement expression-statement
+a if r 1 statement expression-statement
+a input r 1 statement expression-statement
+a int r 1 statement expression-statement
 a print r 1 statement expression-statement
 a println r 1 statement expression-statement
 a return r 1 statement expression-statement
+a void r 1 statement expression-statement
 a { r 1 statement expression-statement
 a } r 1 statement expression-statement
 s
@@ -1431,21 +2271,47 @@ a ( r 1 statement function-definition
 a FLOAT-LITERAL r 1 statement function-definition
 a IDENTIFIER r 1 statement function-definition
 a INT-LITERAL r 1 statement function-definition
+a float r 1 statement function-definition
 a func r 1 statement function-definition
+a if r 1 statement function-definition
+a input r 1 statement function-definition
+a int r 1 statement function-definition
 a print r 1 statement function-definition
 a println r 1 statement function-definition
 a return r 1 statement function-definition
+a void r 1 statement function-definition
 a { r 1 statement function-definition
 a } r 1 statement function-definition
+s
+a ( r 1 statement if-else-statement
+a FLOAT-LITERAL r 1 statement if-else-statement
+a IDENTIFIER r 1 statement if-else-statement
+a INT-LITERAL r 1 statement if-else-statement
+a float r 1 statement if-else-statement
+a func r 1 statement if-else-statement
+a if r 1 statement if-else-statement
+a input r 1 statement if-else-statement
+a int r 1 statement if-else-statement
+a print r 1 statement if-else-statement
+a println r 1 statement if-else-statement
+a return r 1 statement if-else-statement
+a void r 1 statement if-else-statement
+a { r 1 statement if-else-statement
+a } r 1 statement if-else-statement
 s
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
 a INT-LITERAL r 1 statement print-statement
+a float r 1 statement print-statement
 a func r 1 statement print-statement
+a if r 1 statement print-statement
+a input r 1 statement print-statement
+a int r 1 statement print-statement
 a print r 1 statement print-statement
 a println r 1 statement print-statement
 a return r 1 statement print-statement
+a void r 1 statement print-statement
 a { r 1 statement print-statement
 a } r 1 statement print-statement
 s
@@ -1453,26 +2319,1732 @@ a ( r 1 statement return-statement
 a FLOAT-LITERAL r 1 statement return-statement
 a IDENTIFIER r 1 statement return-statement
 a INT-LITERAL r 1 statement return-statement
+a float r 1 statement return-statement
 a func r 1 statement return-statement
+a if r 1 statement return-statement
+a input r 1 statement return-statement
+a int r 1 statement return-statement
 a print r 1 statement return-statement
 a println r 1 statement return-statement
 a return r 1 statement return-statement
+a void r 1 statement return-statement
 a { r 1 statement return-statement
 a } r 1 statement return-statement
 s
-a ( r 5 function-definition func IDENTIFIER parameter-list -> statement
-a FLOAT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
-a IDENTIFIER r 5 function-definition func IDENTIFIER parameter-list -> statement
-a INT-LITERAL r 5 function-definition func IDENTIFIER parameter-list -> statement
-a func r 5 function-definition func IDENTIFIER parameter-list -> statement
-a print r 5 function-definition func IDENTIFIER parameter-list -> statement
-a println r 5 function-definition func IDENTIFIER parameter-list -> statement
-a return r 5 function-definition func IDENTIFIER parameter-list -> statement
-a { r 5 function-definition func IDENTIFIER parameter-list -> statement
-a } r 5 function-definition func IDENTIFIER parameter-list -> statement
+a ( r 2 else-clause else statement
+a FLOAT-LITERAL r 2 else-clause else statement
+a IDENTIFIER r 2 else-clause else statement
+a INT-LITERAL r 2 else-clause else statement
+a float r 2 else-clause else statement
+a func r 2 else-clause else statement
+a if r 2 else-clause else statement
+a input r 2 else-clause else statement
+a int r 2 else-clause else statement
+a print r 2 else-clause else statement
+a println r 2 else-clause else statement
+a return r 2 else-clause else statement
+a void r 2 else-clause else statement
+a { r 2 else-clause else statement
+a } r 2 else-clause else statement
+s
+a ( r 3 if-else-statement if-clause elif-clauses else-clause
+a FLOAT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a IDENTIFIER r 3 if-else-statement if-clause elif-clauses else-clause
+a INT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a float r 3 if-else-statement if-clause elif-clauses else-clause
+a func r 3 if-else-statement if-clause elif-clauses else-clause
+a if r 3 if-else-statement if-clause elif-clauses else-clause
+a input r 3 if-else-statement if-clause elif-clauses else-clause
+a int r 3 if-else-statement if-clause elif-clauses else-clause
+a print r 3 if-else-statement if-clause elif-clauses else-clause
+a println r 3 if-else-statement if-clause elif-clauses else-clause
+a return r 3 if-else-statement if-clause elif-clauses else-clause
+a void r 3 if-else-statement if-clause elif-clauses else-clause
+a { r 3 if-else-statement if-clause elif-clauses else-clause
+a } r 3 if-else-statement if-clause elif-clauses else-clause
+s
+a != r 3 call-expr IDENTIFIER ( )
+a % r 3 call-expr IDENTIFIER ( )
+a ) r 3 call-expr IDENTIFIER ( )
+a * r 3 call-expr IDENTIFIER ( )
+a + r 3 call-expr IDENTIFIER ( )
+a - r 3 call-expr IDENTIFIER ( )
+a / r 3 call-expr IDENTIFIER ( )
+a < r 3 call-expr IDENTIFIER ( )
+a <= r 3 call-expr IDENTIFIER ( )
+a == r 3 call-expr IDENTIFIER ( )
+a > r 3 call-expr IDENTIFIER ( )
+a >= r 3 call-expr IDENTIFIER ( )
+s
+a ) s 259
+s
+a ) s 255
+s
+a ) s 257
+s
+a ) s 258
+s
+a ( s 121
+a ) s 237
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 124
+a INT-LITERAL s 125
+a input s 126
+a add-expr s 127
+a assignment-expr s 128
+a call-argument s 129
+a call-arguments s 238
+a call-expr s 131
+a compare-expr s 132
+a expr s 133
+a input-expr s 134
+a mult-expr s 135
+a primary-expr s 136
+g add-expr 127
+g assignment-expr 128
+g call-argument 129
+g call-arguments 238
+g call-expr 131
+g compare-expr 132
+g expr 133
+g input-expr 134
+g mult-expr 135
+g primary-expr 136
+s
+a ( s 121
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 124
+a INT-LITERAL s 125
+a input s 126
+a add-expr s 127
+a assignment-expr s 240
+a call-expr s 131
+a compare-expr s 132
+a input-expr s 134
+a mult-expr s 135
+a primary-expr s 136
+g add-expr 127
+g assignment-expr 240
+g call-expr 131
+g compare-expr 132
+g input-expr 134
+g mult-expr 135
+g primary-expr 136
+s
+a ) r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
+s
+a ; s 261
+s
+a ( s 121
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 242
+a INT-LITERAL s 125
+a input s 126
+a add-expr s 243
+a call-expr s 131
+a input-expr s 134
+a mult-expr s 135
+a primary-expr s 136
+g add-expr 243
+g call-expr 131
+g input-expr 134
+g mult-expr 135
+g primary-expr 136
+s
+a ( s 121
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 242
+a INT-LITERAL s 125
+a input s 126
+a call-expr s 131
+a input-expr s 134
+a mult-expr s 244
+a primary-expr s 136
+g call-expr 131
+g input-expr 134
+g mult-expr 244
+g primary-expr 136
+s
+a != r 1 primary-expr IDENTIFIER
+a % r 1 primary-expr IDENTIFIER
+a ( s 144
+a ) r 1 primary-expr IDENTIFIER
+a * r 1 primary-expr IDENTIFIER
+a + r 1 primary-expr IDENTIFIER
+a - r 1 primary-expr IDENTIFIER
+a / r 1 primary-expr IDENTIFIER
+a < r 1 primary-expr IDENTIFIER
+a <= r 1 primary-expr IDENTIFIER
+a == r 1 primary-expr IDENTIFIER
+a > r 1 primary-expr IDENTIFIER
+a >= r 1 primary-expr IDENTIFIER
+s
+a != r 3 compare-expr compare-expr compare-op add-expr
+a ) r 3 compare-expr compare-expr compare-op add-expr
+a + s 91
+a - s 92
+a < r 3 compare-expr compare-expr compare-op add-expr
+a <= r 3 compare-expr compare-expr compare-op add-expr
+a == r 3 compare-expr compare-expr compare-op add-expr
+a > r 3 compare-expr compare-expr compare-op add-expr
+a >= r 3 compare-expr compare-expr compare-op add-expr
+a add-op s 148
+g add-op 148
+s
+a ( s 121
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 242
+a INT-LITERAL s 125
+a input s 126
+a call-expr s 131
+a input-expr s 134
+a primary-expr s 245
+g call-expr 131
+g input-expr 134
+g primary-expr 245
+s
+a != r 3 add-expr add-expr add-op mult-expr
+a % s 94
+a ) r 3 add-expr add-expr add-op mult-expr
+a * s 95
+a + r 3 add-expr add-expr add-op mult-expr
+a - r 3 add-expr add-expr add-op mult-expr
+a / s 96
+a < r 3 add-expr add-expr add-op mult-expr
+a <= r 3 add-expr add-expr add-op mult-expr
+a == r 3 add-expr add-expr add-op mult-expr
+a > r 3 add-expr add-expr add-op mult-expr
+a >= r 3 add-expr add-expr add-op mult-expr
+a mult-op s 151
+g mult-op 151
+s
+a != r 3 mult-expr mult-expr mult-op primary-expr
+a % r 3 mult-expr mult-expr mult-op primary-expr
+a ) r 3 mult-expr mult-expr mult-op primary-expr
+a * r 3 mult-expr mult-expr mult-op primary-expr
+a + r 3 mult-expr mult-expr mult-op primary-expr
+a - r 3 mult-expr mult-expr mult-op primary-expr
+a / r 3 mult-expr mult-expr mult-op primary-expr
+a < r 3 mult-expr mult-expr mult-op primary-expr
+a <= r 3 mult-expr mult-expr mult-op primary-expr
+a == r 3 mult-expr mult-expr mult-op primary-expr
+a > r 3 mult-expr mult-expr mult-op primary-expr
+a >= r 3 mult-expr mult-expr mult-op primary-expr
+s
+a -> s 260
+s
+a -> r 2 parameter-list ( )
+s
+a float s 5
+a int s 9
+a void s 13
+a type s 247
+g type 247
+s
+a float s 5
+a int s 9
+a void s 13
+a type s 246
+g type 246
+s
+a ) r 1 parameters parameter
+a , s 253
+s
+a ) s 256
+s
+a IDENTIFIER s 254
+s
+a != r 1 type float
+a % r 1 type float
+a ) r 1 type float
+a * r 1 type float
+a + r 1 type float
+a , r 1 type float
+a - r 1 type float
+a / r 1 type float
+a < r 1 type float
+a <= r 1 type float
+a == r 1 type float
+a > r 1 type float
+a >= r 1 type float
+s
+a != r 1 type int
+a % r 1 type int
+a ) r 1 type int
+a * r 1 type int
+a + r 1 type int
+a , r 1 type int
+a - r 1 type int
+a / r 1 type int
+a < r 1 type int
+a <= r 1 type int
+a == r 1 type int
+a > r 1 type int
+a >= r 1 type int
+s
+a != r 1 type void
+a % r 1 type void
+a ) r 1 type void
+a * r 1 type void
+a + r 1 type void
+a , r 1 type void
+a - r 1 type void
+a / r 1 type void
+a < r 1 type void
+a <= r 1 type void
+a == r 1 type void
+a > r 1 type void
+a >= r 1 type void
+s
+a != r 2 input-expr input type
+a % r 2 input-expr input type
+a ) r 2 input-expr input type
+a * r 2 input-expr input type
+a + r 2 input-expr input type
+a , r 2 input-expr input type
+a - r 2 input-expr input type
+a / r 2 input-expr input type
+a < r 2 input-expr input type
+a <= r 2 input-expr input type
+a == r 2 input-expr input type
+a > r 2 input-expr input type
+a >= r 2 input-expr input type
+s
+a ( s 121
+a FLOAT-LITERAL s 123
+a IDENTIFIER s 124
+a INT-LITERAL s 125
+a input s 126
+a add-expr s 127
+a assignment-expr s 128
+a call-argument s 129
+a call-arguments s 239
+a call-expr s 131
+a compare-expr s 132
+a expr s 133
+a input-expr s 134
+a mult-expr s 135
+a primary-expr s 136
+g add-expr 127
+g assignment-expr 128
+g call-argument 129
+g call-arguments 239
+g call-expr 131
+g compare-expr 132
+g expr 133
+g input-expr 134
+g mult-expr 135
+g primary-expr 136
+s
+a ( r 3 return-statement return expr ;
+a FLOAT-LITERAL r 3 return-statement return expr ;
+a IDENTIFIER r 3 return-statement return expr ;
+a INT-LITERAL r 3 return-statement return expr ;
+a float r 3 return-statement return expr ;
+a func r 3 return-statement return expr ;
+a if r 3 return-statement return expr ;
+a input r 3 return-statement return expr ;
+a int r 3 return-statement return expr ;
+a print r 3 return-statement return expr ;
+a println r 3 return-statement return expr ;
+a return r 3 return-statement return expr ;
+a void r 3 return-statement return expr ;
+a { r 3 return-statement return expr ;
+a } r 3 return-statement return expr ;
+s
+a ( r 3 block-statement { statements }
+a FLOAT-LITERAL r 3 block-statement { statements }
+a IDENTIFIER r 3 block-statement { statements }
+a INT-LITERAL r 3 block-statement { statements }
+a float r 3 block-statement { statements }
+a func r 3 block-statement { statements }
+a if r 3 block-statement { statements }
+a input r 3 block-statement { statements }
+a int r 3 block-statement { statements }
+a print r 3 block-statement { statements }
+a println r 3 block-statement { statements }
+a return r 3 block-statement { statements }
+a void r 3 block-statement { statements }
+a { r 3 block-statement { statements }
+a } r 3 block-statement { statements }
+s
+a ( r 3 print-statement print expr ;
+a FLOAT-LITERAL r 3 print-statement print expr ;
+a IDENTIFIER r 3 print-statement print expr ;
+a INT-LITERAL r 3 print-statement print expr ;
+a float r 3 print-statement print expr ;
+a func r 3 print-statement print expr ;
+a if r 3 print-statement print expr ;
+a input r 3 print-statement print expr ;
+a int r 3 print-statement print expr ;
+a print r 3 print-statement print expr ;
+a println r 3 print-statement print expr ;
+a return r 3 print-statement print expr ;
+a void r 3 print-statement print expr ;
+a { r 3 print-statement print expr ;
+a } r 3 print-statement print expr ;
+s
+a ( r 3 print-statement println expr ;
+a FLOAT-LITERAL r 3 print-statement println expr ;
+a IDENTIFIER r 3 print-statement println expr ;
+a INT-LITERAL r 3 print-statement println expr ;
+a float r 3 print-statement println expr ;
+a func r 3 print-statement println expr ;
+a if r 3 print-statement println expr ;
+a input r 3 print-statement println expr ;
+a int r 3 print-statement println expr ;
+a print r 3 print-statement println expr ;
+a println r 3 print-statement println expr ;
+a return r 3 print-statement println expr ;
+a void r 3 print-statement println expr ;
+a { r 3 print-statement println expr ;
+a } r 3 print-statement println expr ;
+s
+a ( r 3 print-statement print STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a float r 3 print-statement print STRING-LITERAL ;
+a func r 3 print-statement print STRING-LITERAL ;
+a if r 3 print-statement print STRING-LITERAL ;
+a input r 3 print-statement print STRING-LITERAL ;
+a int r 3 print-statement print STRING-LITERAL ;
+a print r 3 print-statement print STRING-LITERAL ;
+a println r 3 print-statement print STRING-LITERAL ;
+a return r 3 print-statement print STRING-LITERAL ;
+a void r 3 print-statement print STRING-LITERAL ;
+a { r 3 print-statement print STRING-LITERAL ;
+a } r 3 print-statement print STRING-LITERAL ;
+s
+a ( r 3 print-statement println STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement println STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a float r 3 print-statement println STRING-LITERAL ;
+a func r 3 print-statement println STRING-LITERAL ;
+a if r 3 print-statement println STRING-LITERAL ;
+a input r 3 print-statement println STRING-LITERAL ;
+a int r 3 print-statement println STRING-LITERAL ;
+a print r 3 print-statement println STRING-LITERAL ;
+a println r 3 print-statement println STRING-LITERAL ;
+a return r 3 print-statement println STRING-LITERAL ;
+a void r 3 print-statement println STRING-LITERAL ;
+a { r 3 print-statement println STRING-LITERAL ;
+a } r 3 print-statement println STRING-LITERAL ;
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 241
+a call-expr s 18
+a compare-expr s 19
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 241
+g call-expr 18
+g compare-expr 19
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a != r 3 primary-expr ( expr )
+a % r 3 primary-expr ( expr )
+a ) r 3 primary-expr ( expr )
+a * r 3 primary-expr ( expr )
+a + r 3 primary-expr ( expr )
+a - r 3 primary-expr ( expr )
+a / r 3 primary-expr ( expr )
+a < r 3 primary-expr ( expr )
+a <= r 3 primary-expr ( expr )
+a == r 3 primary-expr ( expr )
+a > r 3 primary-expr ( expr )
+a >= r 3 primary-expr ( expr )
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 221
+a if s 7
+a input s 8
+a int s 9
+a print s 222
+a println s 223
+a return s 224
+a void s 13
+a { s 225
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 226
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 227
+a expr s 228
+a expression-statement s 229
+a function-definition s 230
+a if-clause s 231
+a if-else-statement s 232
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 233
+a return-statement s 234
+a statement s 235
+a type s 236
+g add-expr 15
+g assignment-expr 16
+g block-statement 226
+g call-expr 18
+g compare-expr 19
+g decl-statement 227
+g expr 228
+g expression-statement 229
+g function-definition 230
+g if-clause 231
+g if-else-statement 232
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 233
+g return-statement 234
+g statement 235
+g type 236
+s
+a != r 4 call-expr IDENTIFIER ( call-arguments )
+a % r 4 call-expr IDENTIFIER ( call-arguments )
+a * r 4 call-expr IDENTIFIER ( call-arguments )
+a + r 4 call-expr IDENTIFIER ( call-arguments )
+a - r 4 call-expr IDENTIFIER ( call-arguments )
+a / r 4 call-expr IDENTIFIER ( call-arguments )
+a ; r 4 call-expr IDENTIFIER ( call-arguments )
+a < r 4 call-expr IDENTIFIER ( call-arguments )
+a <= r 4 call-expr IDENTIFIER ( call-arguments )
+a == r 4 call-expr IDENTIFIER ( call-arguments )
+a > r 4 call-expr IDENTIFIER ( call-arguments )
+a >= r 4 call-expr IDENTIFIER ( call-arguments )
+s
+a float s 248
+a int s 249
+a return s 250
+a void s 251
+a type s 252
+g type 252
+s
+a IDENTIFIER s 314
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 301
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 302
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 302
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 303
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 304
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 304
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 300
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 300
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
+a } r 0 statements 
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 41
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 42
+a expr s 43
+a expression-statement s 44
+a function-definition s 45
+a if-clause s 46
+a if-else-statement s 47
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 48
+a return-statement s 49
+a statement s 50
+a statements s 262
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 41
+g call-expr 18
+g compare-expr 19
+g decl-statement 42
+g expr 43
+g expression-statement 44
+g function-definition 45
+g if-clause 46
+g if-else-statement 47
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 48
+g return-statement 49
+g statement 50
+g statements 262
+g type 52
+s
+a Ω r 1 statement block-statement
+a ( r 1 statement block-statement
+a FLOAT-LITERAL r 1 statement block-statement
+a IDENTIFIER r 1 statement block-statement
+a INT-LITERAL r 1 statement block-statement
+a elif r 1 statement block-statement
+a else r 1 statement block-statement
+a float r 1 statement block-statement
+a func r 1 statement block-statement
+a if r 1 statement block-statement
+a input r 1 statement block-statement
+a int r 1 statement block-statement
+a print r 1 statement block-statement
+a println r 1 statement block-statement
+a return r 1 statement block-statement
+a void r 1 statement block-statement
+a { r 1 statement block-statement
+s
+a Ω r 1 statement decl-statement
+a ( r 1 statement decl-statement
+a FLOAT-LITERAL r 1 statement decl-statement
+a IDENTIFIER r 1 statement decl-statement
+a INT-LITERAL r 1 statement decl-statement
+a elif r 1 statement decl-statement
+a else r 1 statement decl-statement
+a float r 1 statement decl-statement
+a func r 1 statement decl-statement
+a if r 1 statement decl-statement
+a input r 1 statement decl-statement
+a int r 1 statement decl-statement
+a print r 1 statement decl-statement
+a println r 1 statement decl-statement
+a return r 1 statement decl-statement
+a void r 1 statement decl-statement
+a { r 1 statement decl-statement
+s
+a ; s 312
+s
+a Ω r 1 statement expression-statement
+a ( r 1 statement expression-statement
+a FLOAT-LITERAL r 1 statement expression-statement
+a IDENTIFIER r 1 statement expression-statement
+a INT-LITERAL r 1 statement expression-statement
+a elif r 1 statement expression-statement
+a else r 1 statement expression-statement
+a float r 1 statement expression-statement
+a func r 1 statement expression-statement
+a if r 1 statement expression-statement
+a input r 1 statement expression-statement
+a int r 1 statement expression-statement
+a print r 1 statement expression-statement
+a println r 1 statement expression-statement
+a return r 1 statement expression-statement
+a void r 1 statement expression-statement
+a { r 1 statement expression-statement
+s
+a Ω r 1 statement function-definition
+a ( r 1 statement function-definition
+a FLOAT-LITERAL r 1 statement function-definition
+a IDENTIFIER r 1 statement function-definition
+a INT-LITERAL r 1 statement function-definition
+a elif r 1 statement function-definition
+a else r 1 statement function-definition
+a float r 1 statement function-definition
+a func r 1 statement function-definition
+a if r 1 statement function-definition
+a input r 1 statement function-definition
+a int r 1 statement function-definition
+a print r 1 statement function-definition
+a println r 1 statement function-definition
+a return r 1 statement function-definition
+a void r 1 statement function-definition
+a { r 1 statement function-definition
+s
+a Ω r 1 if-else-statement if-clause
+a ( r 1 if-else-statement if-clause
+a FLOAT-LITERAL r 1 if-else-statement if-clause
+a IDENTIFIER r 1 if-else-statement if-clause
+a INT-LITERAL r 1 if-else-statement if-clause
+a elif r 1 if-else-statement if-clause
+a else r 1 if-else-statement if-clause
+a float r 1 if-else-statement if-clause
+a func r 1 if-else-statement if-clause
+a if r 1 if-else-statement if-clause
+a input r 1 if-else-statement if-clause
+a int r 1 if-else-statement if-clause
+a print r 1 if-else-statement if-clause
+a println r 1 if-else-statement if-clause
+a return r 1 if-else-statement if-clause
+a void r 1 if-else-statement if-clause
+a { r 1 if-else-statement if-clause
+a elif-clause s 55
+a elif-clauses s 297
+a else-clause s 298
+g elif-clause 55
+g elif-clauses 297
+g else-clause 298
+s
+a Ω r 1 statement if-else-statement
+a ( r 1 statement if-else-statement
+a FLOAT-LITERAL r 1 statement if-else-statement
+a IDENTIFIER r 1 statement if-else-statement
+a INT-LITERAL r 1 statement if-else-statement
+a elif r 1 statement if-else-statement
+a else r 1 statement if-else-statement
+a float r 1 statement if-else-statement
+a func r 1 statement if-else-statement
+a if r 1 statement if-else-statement
+a input r 1 statement if-else-statement
+a int r 1 statement if-else-statement
+a print r 1 statement if-else-statement
+a println r 1 statement if-else-statement
+a return r 1 statement if-else-statement
+a void r 1 statement if-else-statement
+a { r 1 statement if-else-statement
+s
+a Ω r 1 statement print-statement
+a ( r 1 statement print-statement
+a FLOAT-LITERAL r 1 statement print-statement
+a IDENTIFIER r 1 statement print-statement
+a INT-LITERAL r 1 statement print-statement
+a elif r 1 statement print-statement
+a else r 1 statement print-statement
+a float r 1 statement print-statement
+a func r 1 statement print-statement
+a if r 1 statement print-statement
+a input r 1 statement print-statement
+a int r 1 statement print-statement
+a print r 1 statement print-statement
+a println r 1 statement print-statement
+a return r 1 statement print-statement
+a void r 1 statement print-statement
+a { r 1 statement print-statement
+s
+a Ω r 1 statement return-statement
+a ( r 1 statement return-statement
+a FLOAT-LITERAL r 1 statement return-statement
+a IDENTIFIER r 1 statement return-statement
+a INT-LITERAL r 1 statement return-statement
+a elif r 1 statement return-statement
+a else r 1 statement return-statement
+a float r 1 statement return-statement
+a func r 1 statement return-statement
+a if r 1 statement return-statement
+a input r 1 statement return-statement
+a int r 1 statement return-statement
+a print r 1 statement return-statement
+a println r 1 statement return-statement
+a return r 1 statement return-statement
+a void r 1 statement return-statement
+a { r 1 statement return-statement
+s
+a Ω r 5 if-clause if ( expr ) statement
+a ( r 5 if-clause if ( expr ) statement
+a FLOAT-LITERAL r 5 if-clause if ( expr ) statement
+a IDENTIFIER r 5 if-clause if ( expr ) statement
+a INT-LITERAL r 5 if-clause if ( expr ) statement
+a elif r 5 if-clause if ( expr ) statement
+a else r 5 if-clause if ( expr ) statement
+a float r 5 if-clause if ( expr ) statement
+a func r 5 if-clause if ( expr ) statement
+a if r 5 if-clause if ( expr ) statement
+a input r 5 if-clause if ( expr ) statement
+a int r 5 if-clause if ( expr ) statement
+a print r 5 if-clause if ( expr ) statement
+a println r 5 if-clause if ( expr ) statement
+a return r 5 if-clause if ( expr ) statement
+a void r 5 if-clause if ( expr ) statement
+a { r 5 if-clause if ( expr ) statement
+s
+a IDENTIFIER s 313
+s
+a != r 3 call-expr IDENTIFIER ( )
+a % r 3 call-expr IDENTIFIER ( )
+a ) r 3 call-expr IDENTIFIER ( )
+a * r 3 call-expr IDENTIFIER ( )
+a + r 3 call-expr IDENTIFIER ( )
+a , r 3 call-expr IDENTIFIER ( )
+a - r 3 call-expr IDENTIFIER ( )
+a / r 3 call-expr IDENTIFIER ( )
+a < r 3 call-expr IDENTIFIER ( )
+a <= r 3 call-expr IDENTIFIER ( )
+a == r 3 call-expr IDENTIFIER ( )
+a > r 3 call-expr IDENTIFIER ( )
+a >= r 3 call-expr IDENTIFIER ( )
+s
+a ) s 317
+s
+a ) r 3 call-arguments call-argument , call-arguments
+s
+a ) r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
+a , r 3 assignment-expr IDENTIFIER assignment-op assignment-expr
+s
+a ; s 318
+s
+a != r 1 primary-expr IDENTIFIER
+a % r 1 primary-expr IDENTIFIER
+a ( s 187
+a ) r 1 primary-expr IDENTIFIER
+a * r 1 primary-expr IDENTIFIER
+a + r 1 primary-expr IDENTIFIER
+a , r 1 primary-expr IDENTIFIER
+a - r 1 primary-expr IDENTIFIER
+a / r 1 primary-expr IDENTIFIER
+a < r 1 primary-expr IDENTIFIER
+a <= r 1 primary-expr IDENTIFIER
+a == r 1 primary-expr IDENTIFIER
+a > r 1 primary-expr IDENTIFIER
+a >= r 1 primary-expr IDENTIFIER
+s
+a != r 3 compare-expr compare-expr compare-op add-expr
+a ) r 3 compare-expr compare-expr compare-op add-expr
+a + s 91
+a , r 3 compare-expr compare-expr compare-op add-expr
+a - s 92
+a < r 3 compare-expr compare-expr compare-op add-expr
+a <= r 3 compare-expr compare-expr compare-op add-expr
+a == r 3 compare-expr compare-expr compare-op add-expr
+a > r 3 compare-expr compare-expr compare-op add-expr
+a >= r 3 compare-expr compare-expr compare-op add-expr
+a add-op s 192
+g add-op 192
+s
+a != r 3 add-expr add-expr add-op mult-expr
+a % s 94
+a ) r 3 add-expr add-expr add-op mult-expr
+a * s 95
+a + r 3 add-expr add-expr add-op mult-expr
+a , r 3 add-expr add-expr add-op mult-expr
+a - r 3 add-expr add-expr add-op mult-expr
+a / s 96
+a < r 3 add-expr add-expr add-op mult-expr
+a <= r 3 add-expr add-expr add-op mult-expr
+a == r 3 add-expr add-expr add-op mult-expr
+a > r 3 add-expr add-expr add-op mult-expr
+a >= r 3 add-expr add-expr add-op mult-expr
+a mult-op s 195
+g mult-op 195
+s
+a != r 3 mult-expr mult-expr mult-op primary-expr
+a % r 3 mult-expr mult-expr mult-op primary-expr
+a ) r 3 mult-expr mult-expr mult-op primary-expr
+a * r 3 mult-expr mult-expr mult-op primary-expr
+a + r 3 mult-expr mult-expr mult-op primary-expr
+a , r 3 mult-expr mult-expr mult-op primary-expr
+a - r 3 mult-expr mult-expr mult-op primary-expr
+a / r 3 mult-expr mult-expr mult-op primary-expr
+a < r 3 mult-expr mult-expr mult-op primary-expr
+a <= r 3 mult-expr mult-expr mult-op primary-expr
+a == r 3 mult-expr mult-expr mult-op primary-expr
+a > r 3 mult-expr mult-expr mult-op primary-expr
+a >= r 3 mult-expr mult-expr mult-op primary-expr
+s
+a IDENTIFIER s 315
+s
+a IDENTIFIER s 316
+s
+a { r 1 type float
+s
+a { r 1 type int
+s
+a float s 306
+a int s 307
+a void s 308
+a type s 309
+g type 309
+s
+a { r 1 type void
+s
+a { s 14
+a block-statement s 299
+g block-statement 299
+s
+a float s 5
+a int s 9
+a mut s 200
+a ref s 201
+a void s 13
+a parameter s 202
+a parameters s 305
+a type s 204
+g parameter 202
+g parameters 305
+g type 204
+s
+a ) r 2 parameter type IDENTIFIER
+a , r 2 parameter type IDENTIFIER
+s
+a != r 3 primary-expr ( expr )
+a % r 3 primary-expr ( expr )
+a ) r 3 primary-expr ( expr )
+a * r 3 primary-expr ( expr )
+a + r 3 primary-expr ( expr )
+a , r 3 primary-expr ( expr )
+a - r 3 primary-expr ( expr )
+a / r 3 primary-expr ( expr )
+a < r 3 primary-expr ( expr )
+a <= r 3 primary-expr ( expr )
+a == r 3 primary-expr ( expr )
+a > r 3 primary-expr ( expr )
+a >= r 3 primary-expr ( expr )
+s
+a -> r 3 parameter-list ( parameters )
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 263
+a if s 36
+a input s 8
+a int s 9
+a print s 264
+a println s 265
+a return s 266
+a void s 13
+a { s 267
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 268
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 269
+a expr s 270
+a expression-statement s 271
+a function-definition s 272
+a if-clause s 273
+a if-else-statement s 274
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 275
+a return-statement s 276
+a statement s 277
+a type s 278
+g add-expr 15
+g assignment-expr 16
+g block-statement 268
+g call-expr 18
+g compare-expr 19
+g decl-statement 269
+g expr 270
+g expression-statement 271
+g function-definition 272
+g if-clause 273
+g if-else-statement 274
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 275
+g return-statement 276
+g statement 277
+g type 278
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 279
+a if s 280
+a input s 8
+a int s 9
+a print s 281
+a println s 282
+a return s 283
+a void s 13
+a { s 284
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 285
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 286
+a expr s 287
+a expression-statement s 288
+a function-definition s 289
+a if-clause s 290
+a if-else-statement s 291
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 292
+a return-statement s 293
+a statement s 294
+a type s 295
+g add-expr 15
+g assignment-expr 16
+g block-statement 285
+g call-expr 18
+g compare-expr 19
+g decl-statement 286
+g expr 287
+g expression-statement 288
+g function-definition 289
+g if-clause 290
+g if-else-statement 291
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 292
+g return-statement 293
+g statement 294
+g type 295
+s
+a != r 4 call-expr IDENTIFIER ( call-arguments )
+a % r 4 call-expr IDENTIFIER ( call-arguments )
+a ) r 4 call-expr IDENTIFIER ( call-arguments )
+a * r 4 call-expr IDENTIFIER ( call-arguments )
+a + r 4 call-expr IDENTIFIER ( call-arguments )
+a - r 4 call-expr IDENTIFIER ( call-arguments )
+a / r 4 call-expr IDENTIFIER ( call-arguments )
+a < r 4 call-expr IDENTIFIER ( call-arguments )
+a <= r 4 call-expr IDENTIFIER ( call-arguments )
+a == r 4 call-expr IDENTIFIER ( call-arguments )
+a > r 4 call-expr IDENTIFIER ( call-arguments )
+a >= r 4 call-expr IDENTIFIER ( call-arguments )
+s
+a float s 248
+a int s 249
+a return s 310
+a void s 251
+a type s 311
+g type 311
+s
+a Ω r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a ( r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a FLOAT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a IDENTIFIER r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a INT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a float r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a func r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a if r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a input r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a int r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a print r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a println r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a return r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a void r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a { r 5 decl-statement type IDENTIFIER = assignment-expr ;
+s
+a } s 351
+s
+a IDENTIFIER s 348
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 332
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 333
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 333
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 336
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 337
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 337
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 330
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 330
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
+a } r 0 statements 
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 41
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 42
+a expr s 43
+a expression-statement s 44
+a function-definition s 45
+a if-clause s 46
+a if-else-statement s 47
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 48
+a return-statement s 49
+a statement s 50
+a statements s 319
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 41
+g call-expr 18
+g compare-expr 19
+g decl-statement 42
+g expr 43
+g expression-statement 44
+g function-definition 45
+g if-clause 46
+g if-else-statement 47
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 48
+g return-statement 49
+g statement 50
+g statements 319
+g type 52
+s
+a ( r 1 statement block-statement
+a FLOAT-LITERAL r 1 statement block-statement
+a IDENTIFIER r 1 statement block-statement
+a INT-LITERAL r 1 statement block-statement
+a elif r 1 statement block-statement
+a else r 1 statement block-statement
+a float r 1 statement block-statement
+a func r 1 statement block-statement
+a if r 1 statement block-statement
+a input r 1 statement block-statement
+a int r 1 statement block-statement
+a print r 1 statement block-statement
+a println r 1 statement block-statement
+a return r 1 statement block-statement
+a void r 1 statement block-statement
+a { r 1 statement block-statement
+a } r 1 statement block-statement
+s
+a ( r 1 statement decl-statement
+a FLOAT-LITERAL r 1 statement decl-statement
+a IDENTIFIER r 1 statement decl-statement
+a INT-LITERAL r 1 statement decl-statement
+a elif r 1 statement decl-statement
+a else r 1 statement decl-statement
+a float r 1 statement decl-statement
+a func r 1 statement decl-statement
+a if r 1 statement decl-statement
+a input r 1 statement decl-statement
+a int r 1 statement decl-statement
+a print r 1 statement decl-statement
+a println r 1 statement decl-statement
+a return r 1 statement decl-statement
+a void r 1 statement decl-statement
+a { r 1 statement decl-statement
+a } r 1 statement decl-statement
+s
+a ; s 344
+s
+a ( r 1 statement expression-statement
+a FLOAT-LITERAL r 1 statement expression-statement
+a IDENTIFIER r 1 statement expression-statement
+a INT-LITERAL r 1 statement expression-statement
+a elif r 1 statement expression-statement
+a else r 1 statement expression-statement
+a float r 1 statement expression-statement
+a func r 1 statement expression-statement
+a if r 1 statement expression-statement
+a input r 1 statement expression-statement
+a int r 1 statement expression-statement
+a print r 1 statement expression-statement
+a println r 1 statement expression-statement
+a return r 1 statement expression-statement
+a void r 1 statement expression-statement
+a { r 1 statement expression-statement
+a } r 1 statement expression-statement
+s
+a ( r 1 statement function-definition
+a FLOAT-LITERAL r 1 statement function-definition
+a IDENTIFIER r 1 statement function-definition
+a INT-LITERAL r 1 statement function-definition
+a elif r 1 statement function-definition
+a else r 1 statement function-definition
+a float r 1 statement function-definition
+a func r 1 statement function-definition
+a if r 1 statement function-definition
+a input r 1 statement function-definition
+a int r 1 statement function-definition
+a print r 1 statement function-definition
+a println r 1 statement function-definition
+a return r 1 statement function-definition
+a void r 1 statement function-definition
+a { r 1 statement function-definition
+a } r 1 statement function-definition
+s
+a ( r 1 if-else-statement if-clause
+a FLOAT-LITERAL r 1 if-else-statement if-clause
+a IDENTIFIER r 1 if-else-statement if-clause
+a INT-LITERAL r 1 if-else-statement if-clause
+a elif r 1 if-else-statement if-clause
+a else r 1 if-else-statement if-clause
+a float r 1 if-else-statement if-clause
+a func r 1 if-else-statement if-clause
+a if r 1 if-else-statement if-clause
+a input r 1 if-else-statement if-clause
+a int r 1 if-else-statement if-clause
+a print r 1 if-else-statement if-clause
+a println r 1 if-else-statement if-clause
+a return r 1 if-else-statement if-clause
+a void r 1 if-else-statement if-clause
+a { r 1 if-else-statement if-clause
+a } r 1 if-else-statement if-clause
+a elif-clause s 55
+a elif-clauses s 323
+a else-clause s 324
+g elif-clause 55
+g elif-clauses 323
+g else-clause 324
+s
+a ( r 1 statement if-else-statement
+a FLOAT-LITERAL r 1 statement if-else-statement
+a IDENTIFIER r 1 statement if-else-statement
+a INT-LITERAL r 1 statement if-else-statement
+a elif r 1 statement if-else-statement
+a else r 1 statement if-else-statement
+a float r 1 statement if-else-statement
+a func r 1 statement if-else-statement
+a if r 1 statement if-else-statement
+a input r 1 statement if-else-statement
+a int r 1 statement if-else-statement
+a print r 1 statement if-else-statement
+a println r 1 statement if-else-statement
+a return r 1 statement if-else-statement
+a void r 1 statement if-else-statement
+a { r 1 statement if-else-statement
+a } r 1 statement if-else-statement
+s
+a ( r 1 statement print-statement
+a FLOAT-LITERAL r 1 statement print-statement
+a IDENTIFIER r 1 statement print-statement
+a INT-LITERAL r 1 statement print-statement
+a elif r 1 statement print-statement
+a else r 1 statement print-statement
+a float r 1 statement print-statement
+a func r 1 statement print-statement
+a if r 1 statement print-statement
+a input r 1 statement print-statement
+a int r 1 statement print-statement
+a print r 1 statement print-statement
+a println r 1 statement print-statement
+a return r 1 statement print-statement
+a void r 1 statement print-statement
+a { r 1 statement print-statement
+a } r 1 statement print-statement
+s
+a ( r 1 statement return-statement
+a FLOAT-LITERAL r 1 statement return-statement
+a IDENTIFIER r 1 statement return-statement
+a INT-LITERAL r 1 statement return-statement
+a elif r 1 statement return-statement
+a else r 1 statement return-statement
+a float r 1 statement return-statement
+a func r 1 statement return-statement
+a if r 1 statement return-statement
+a input r 1 statement return-statement
+a int r 1 statement return-statement
+a print r 1 statement return-statement
+a println r 1 statement return-statement
+a return r 1 statement return-statement
+a void r 1 statement return-statement
+a { r 1 statement return-statement
+a } r 1 statement return-statement
+s
+a ( r 5 if-clause if ( expr ) statement
+a FLOAT-LITERAL r 5 if-clause if ( expr ) statement
+a IDENTIFIER r 5 if-clause if ( expr ) statement
+a INT-LITERAL r 5 if-clause if ( expr ) statement
+a elif r 5 if-clause if ( expr ) statement
+a else r 5 if-clause if ( expr ) statement
+a float r 5 if-clause if ( expr ) statement
+a func r 5 if-clause if ( expr ) statement
+a if r 5 if-clause if ( expr ) statement
+a input r 5 if-clause if ( expr ) statement
+a int r 5 if-clause if ( expr ) statement
+a print r 5 if-clause if ( expr ) statement
+a println r 5 if-clause if ( expr ) statement
+a return r 5 if-clause if ( expr ) statement
+a void r 5 if-clause if ( expr ) statement
+a { r 5 if-clause if ( expr ) statement
+a } r 5 if-clause if ( expr ) statement
+s
+a IDENTIFIER s 346
+s
+a IDENTIFIER s 349
+s
+a ( s 343
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 334
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 335
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 335
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a STRING-LITERAL s 338
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 339
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 339
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 331
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 331
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 35
+a if s 36
+a input s 8
+a int s 9
+a print s 37
+a println s 38
+a return s 39
+a void s 13
+a { s 40
+a } r 0 statements 
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 41
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 42
+a expr s 43
+a expression-statement s 44
+a function-definition s 45
+a if-clause s 46
+a if-else-statement s 47
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 48
+a return-statement s 49
+a statement s 50
+a statements s 320
+a type s 52
+g add-expr 15
+g assignment-expr 16
+g block-statement 41
+g call-expr 18
+g compare-expr 19
+g decl-statement 42
+g expr 43
+g expression-statement 44
+g function-definition 45
+g if-clause 46
+g if-else-statement 47
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 48
+g return-statement 49
+g statement 50
+g statements 320
+g type 52
+s
+a elif r 1 statement block-statement
+a else r 1 statement block-statement
+s
+a elif r 1 statement decl-statement
+a else r 1 statement decl-statement
+s
+a ; s 345
+s
+a elif r 1 statement expression-statement
+a else r 1 statement expression-statement
+s
+a elif r 1 statement function-definition
+a else r 1 statement function-definition
+s
+a elif r 1 if-else-statement if-clause
+a else r 1 if-else-statement if-clause
+a elif-clause s 55
+a elif-clauses s 326
+a else-clause s 327
+g elif-clause 55
+g elif-clauses 326
+g else-clause 327
+s
+a elif r 1 statement if-else-statement
+a else r 1 statement if-else-statement
+s
+a elif r 1 statement print-statement
+a else r 1 statement print-statement
+s
+a elif r 1 statement return-statement
+a else r 1 statement return-statement
+s
+a elif r 5 elif-clause elif ( expr ) statement
+a else r 5 elif-clause elif ( expr ) statement
+s
+a IDENTIFIER s 347
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 221
+a if s 7
+a input s 8
+a int s 9
+a print s 222
+a println s 223
+a return s 224
+a void s 13
+a { s 225
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 226
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 227
+a expr s 228
+a expression-statement s 229
+a function-definition s 230
+a if-clause s 231
+a if-else-statement s 232
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 233
+a return-statement s 234
+a statement s 321
+a type s 236
+g add-expr 15
+g assignment-expr 16
+g block-statement 226
+g call-expr 18
+g compare-expr 19
+g decl-statement 227
+g expr 228
+g expression-statement 229
+g function-definition 230
+g if-clause 231
+g if-else-statement 232
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 233
+g return-statement 234
+g statement 321
+g type 236
+s
+a else s 296
+a else-clause s 328
+g else-clause 328
+s
+a Ω r 2 if-else-statement if-clause else-clause
+a ( r 2 if-else-statement if-clause else-clause
+a FLOAT-LITERAL r 2 if-else-statement if-clause else-clause
+a IDENTIFIER r 2 if-else-statement if-clause else-clause
+a INT-LITERAL r 2 if-else-statement if-clause else-clause
+a elif r 2 if-else-statement if-clause else-clause
+a else r 2 if-else-statement if-clause else-clause
+a float r 2 if-else-statement if-clause else-clause
+a func r 2 if-else-statement if-clause else-clause
+a if r 2 if-else-statement if-clause else-clause
+a input r 2 if-else-statement if-clause else-clause
+a int r 2 if-else-statement if-clause else-clause
+a print r 2 if-else-statement if-clause else-clause
+a println r 2 if-else-statement if-clause else-clause
+a return r 2 if-else-statement if-clause else-clause
+a void r 2 if-else-statement if-clause else-clause
+a { r 2 if-else-statement if-clause else-clause
+s
+a Ω r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a ( r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a FLOAT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a IDENTIFIER r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a INT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a float r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a func r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a if r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a input r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a int r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a print r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a println r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a return r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a void r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a { r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+s
+a ; s 350
+s
+a ; s 354
+s
+a ; s 352
+s
+a ; s 355
+s
+a ; s 353
 s
 a ) r 3 parameters parameter , parameters
 s
+a ( r 1 type float
+a FLOAT-LITERAL r 1 type float
+a IDENTIFIER r 1 type float
+a INT-LITERAL r 1 type float
+a input r 1 type float
+s
+a ( r 1 type int
+a FLOAT-LITERAL r 1 type int
+a IDENTIFIER r 1 type int
+a INT-LITERAL r 1 type int
+a input r 1 type int
+s
+a ( r 1 type void
+a FLOAT-LITERAL r 1 type void
+a IDENTIFIER r 1 type void
+a INT-LITERAL r 1 type void
+a input r 1 type void
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 340
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 340
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a float s 306
+a int s 307
+a void s 308
+a type s 342
+g type 342
+s
+a { s 40
+a block-statement s 329
+g block-statement 329
+s
+a Ω r 2 expression-statement expr ;
+a ( r 2 expression-statement expr ;
+a FLOAT-LITERAL r 2 expression-statement expr ;
+a IDENTIFIER r 2 expression-statement expr ;
+a INT-LITERAL r 2 expression-statement expr ;
+a elif r 2 expression-statement expr ;
+a else r 2 expression-statement expr ;
+a float r 2 expression-statement expr ;
+a func r 2 expression-statement expr ;
+a if r 2 expression-statement expr ;
+a input r 2 expression-statement expr ;
+a int r 2 expression-statement expr ;
+a print r 2 expression-statement expr ;
+a println r 2 expression-statement expr ;
+a return r 2 expression-statement expr ;
+a void r 2 expression-statement expr ;
+a { r 2 expression-statement expr ;
+s
+a = s 356
+s
+a ( s 154
+a parameter-list s 341
+g parameter-list 341
+s
+a ) r 3 parameter ref type IDENTIFIER
+a , r 3 parameter ref type IDENTIFIER
+s
+a ) r 3 parameter mut type IDENTIFIER
+a , r 3 parameter mut type IDENTIFIER
+s
+a != r 4 call-expr IDENTIFIER ( call-arguments )
 a % r 4 call-expr IDENTIFIER ( call-arguments )
 a ) r 4 call-expr IDENTIFIER ( call-arguments )
 a * r 4 call-expr IDENTIFIER ( call-arguments )
@@ -1480,4 +4052,989 @@ a + r 4 call-expr IDENTIFIER ( call-arguments )
 a , r 4 call-expr IDENTIFIER ( call-arguments )
 a - r 4 call-expr IDENTIFIER ( call-arguments )
 a / r 4 call-expr IDENTIFIER ( call-arguments )
+a < r 4 call-expr IDENTIFIER ( call-arguments )
+a <= r 4 call-expr IDENTIFIER ( call-arguments )
+a == r 4 call-expr IDENTIFIER ( call-arguments )
+a > r 4 call-expr IDENTIFIER ( call-arguments )
+a >= r 4 call-expr IDENTIFIER ( call-arguments )
+s
+a ( r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a FLOAT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a IDENTIFIER r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a INT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a float r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a func r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a if r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a input r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a int r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a print r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a println r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a return r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a void r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a { r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a } r 5 decl-statement type IDENTIFIER = assignment-expr ;
+s
+a } s 368
+s
+a } s 369
+s
+a Ω r 2 else-clause else statement
+a ( r 2 else-clause else statement
+a FLOAT-LITERAL r 2 else-clause else statement
+a IDENTIFIER r 2 else-clause else statement
+a INT-LITERAL r 2 else-clause else statement
+a elif r 2 else-clause else statement
+a else r 2 else-clause else statement
+a float r 2 else-clause else statement
+a func r 2 else-clause else statement
+a if r 2 else-clause else statement
+a input r 2 else-clause else statement
+a int r 2 else-clause else statement
+a print r 2 else-clause else statement
+a println r 2 else-clause else statement
+a return r 2 else-clause else statement
+a void r 2 else-clause else statement
+a { r 2 else-clause else statement
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 263
+a if s 36
+a input s 8
+a int s 9
+a print s 264
+a println s 265
+a return s 266
+a void s 13
+a { s 267
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 268
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 269
+a expr s 270
+a expression-statement s 271
+a function-definition s 272
+a if-clause s 273
+a if-else-statement s 274
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 275
+a return-statement s 276
+a statement s 357
+a type s 278
+g add-expr 15
+g assignment-expr 16
+g block-statement 268
+g call-expr 18
+g compare-expr 19
+g decl-statement 269
+g expr 270
+g expression-statement 271
+g function-definition 272
+g if-clause 273
+g if-else-statement 274
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 275
+g return-statement 276
+g statement 357
+g type 278
+s
+a else s 322
+a else-clause s 359
+g else-clause 359
+s
+a ( r 2 if-else-statement if-clause else-clause
+a FLOAT-LITERAL r 2 if-else-statement if-clause else-clause
+a IDENTIFIER r 2 if-else-statement if-clause else-clause
+a INT-LITERAL r 2 if-else-statement if-clause else-clause
+a elif r 2 if-else-statement if-clause else-clause
+a else r 2 if-else-statement if-clause else-clause
+a float r 2 if-else-statement if-clause else-clause
+a func r 2 if-else-statement if-clause else-clause
+a if r 2 if-else-statement if-clause else-clause
+a input r 2 if-else-statement if-clause else-clause
+a int r 2 if-else-statement if-clause else-clause
+a print r 2 if-else-statement if-clause else-clause
+a println r 2 if-else-statement if-clause else-clause
+a return r 2 if-else-statement if-clause else-clause
+a void r 2 if-else-statement if-clause else-clause
+a { r 2 if-else-statement if-clause else-clause
+a } r 2 if-else-statement if-clause else-clause
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 279
+a if s 280
+a input s 8
+a int s 9
+a print s 281
+a println s 282
+a return s 283
+a void s 13
+a { s 284
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 285
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 286
+a expr s 287
+a expression-statement s 288
+a function-definition s 289
+a if-clause s 290
+a if-else-statement s 291
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 292
+a return-statement s 293
+a statement s 358
+a type s 295
+g add-expr 15
+g assignment-expr 16
+g block-statement 285
+g call-expr 18
+g compare-expr 19
+g decl-statement 286
+g expr 287
+g expression-statement 288
+g function-definition 289
+g if-clause 290
+g if-else-statement 291
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 292
+g return-statement 293
+g statement 358
+g type 295
+s
+a else s 325
+a else-clause s 360
+g else-clause 360
+s
+a elif r 2 if-else-statement if-clause else-clause
+a else r 2 if-else-statement if-clause else-clause
+s
+a Ω r 3 if-else-statement if-clause elif-clauses else-clause
+a ( r 3 if-else-statement if-clause elif-clauses else-clause
+a FLOAT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a IDENTIFIER r 3 if-else-statement if-clause elif-clauses else-clause
+a INT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a elif r 3 if-else-statement if-clause elif-clauses else-clause
+a else r 3 if-else-statement if-clause elif-clauses else-clause
+a float r 3 if-else-statement if-clause elif-clauses else-clause
+a func r 3 if-else-statement if-clause elif-clauses else-clause
+a if r 3 if-else-statement if-clause elif-clauses else-clause
+a input r 3 if-else-statement if-clause elif-clauses else-clause
+a int r 3 if-else-statement if-clause elif-clauses else-clause
+a print r 3 if-else-statement if-clause elif-clauses else-clause
+a println r 3 if-else-statement if-clause elif-clauses else-clause
+a return r 3 if-else-statement if-clause elif-clauses else-clause
+a void r 3 if-else-statement if-clause elif-clauses else-clause
+a { r 3 if-else-statement if-clause elif-clauses else-clause
+s
+a ( r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a FLOAT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a IDENTIFIER r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a INT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a float r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a func r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a if r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a input r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a int r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a print r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a println r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a return r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a void r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a { r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a } r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+s
+a ; s 366
+s
+a ; s 367
+s
+a ; s 374
+s
+a ; s 370
+s
+a ; s 375
+s
+a ; s 371
+s
+a ; s 376
+s
+a ; s 372
+s
+a ; s 377
+s
+a ; s 373
+s
+a ; s 381
+s
+a -> s 380
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 362
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 362
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 58
+a FLOAT-LITERAL s 59
+a IDENTIFIER s 60
+a INT-LITERAL s 61
+a input s 62
+a add-expr s 63
+a assignment-expr s 64
+a call-expr s 65
+a compare-expr s 66
+a expr s 361
+a input-expr s 68
+a mult-expr s 69
+a primary-expr s 70
+g add-expr 63
+g assignment-expr 64
+g call-expr 65
+g compare-expr 66
+g expr 361
+g input-expr 68
+g mult-expr 69
+g primary-expr 70
+s
+a ( r 2 expression-statement expr ;
+a FLOAT-LITERAL r 2 expression-statement expr ;
+a IDENTIFIER r 2 expression-statement expr ;
+a INT-LITERAL r 2 expression-statement expr ;
+a elif r 2 expression-statement expr ;
+a else r 2 expression-statement expr ;
+a float r 2 expression-statement expr ;
+a func r 2 expression-statement expr ;
+a if r 2 expression-statement expr ;
+a input r 2 expression-statement expr ;
+a int r 2 expression-statement expr ;
+a print r 2 expression-statement expr ;
+a println r 2 expression-statement expr ;
+a return r 2 expression-statement expr ;
+a void r 2 expression-statement expr ;
+a { r 2 expression-statement expr ;
+a } r 2 expression-statement expr ;
+s
+a elif r 2 expression-statement expr ;
+a else r 2 expression-statement expr ;
+s
+a = s 378
+s
+a = s 379
+s
+a ( s 154
+a parameter-list s 364
+g parameter-list 364
+s
+a ( s 154
+a parameter-list s 365
+g parameter-list 365
+s
+a Ω r 3 return-statement return expr ;
+a ( r 3 return-statement return expr ;
+a FLOAT-LITERAL r 3 return-statement return expr ;
+a IDENTIFIER r 3 return-statement return expr ;
+a INT-LITERAL r 3 return-statement return expr ;
+a elif r 3 return-statement return expr ;
+a else r 3 return-statement return expr ;
+a float r 3 return-statement return expr ;
+a func r 3 return-statement return expr ;
+a if r 3 return-statement return expr ;
+a input r 3 return-statement return expr ;
+a int r 3 return-statement return expr ;
+a print r 3 return-statement return expr ;
+a println r 3 return-statement return expr ;
+a return r 3 return-statement return expr ;
+a void r 3 return-statement return expr ;
+a { r 3 return-statement return expr ;
+s
+a Ω r 3 block-statement { statements }
+a ( r 3 block-statement { statements }
+a FLOAT-LITERAL r 3 block-statement { statements }
+a IDENTIFIER r 3 block-statement { statements }
+a INT-LITERAL r 3 block-statement { statements }
+a elif r 3 block-statement { statements }
+a else r 3 block-statement { statements }
+a float r 3 block-statement { statements }
+a func r 3 block-statement { statements }
+a if r 3 block-statement { statements }
+a input r 3 block-statement { statements }
+a int r 3 block-statement { statements }
+a print r 3 block-statement { statements }
+a println r 3 block-statement { statements }
+a return r 3 block-statement { statements }
+a void r 3 block-statement { statements }
+a { r 3 block-statement { statements }
+s
+a Ω r 3 print-statement print expr ;
+a ( r 3 print-statement print expr ;
+a FLOAT-LITERAL r 3 print-statement print expr ;
+a IDENTIFIER r 3 print-statement print expr ;
+a INT-LITERAL r 3 print-statement print expr ;
+a elif r 3 print-statement print expr ;
+a else r 3 print-statement print expr ;
+a float r 3 print-statement print expr ;
+a func r 3 print-statement print expr ;
+a if r 3 print-statement print expr ;
+a input r 3 print-statement print expr ;
+a int r 3 print-statement print expr ;
+a print r 3 print-statement print expr ;
+a println r 3 print-statement print expr ;
+a return r 3 print-statement print expr ;
+a void r 3 print-statement print expr ;
+a { r 3 print-statement print expr ;
+s
+a Ω r 3 print-statement println expr ;
+a ( r 3 print-statement println expr ;
+a FLOAT-LITERAL r 3 print-statement println expr ;
+a IDENTIFIER r 3 print-statement println expr ;
+a INT-LITERAL r 3 print-statement println expr ;
+a elif r 3 print-statement println expr ;
+a else r 3 print-statement println expr ;
+a float r 3 print-statement println expr ;
+a func r 3 print-statement println expr ;
+a if r 3 print-statement println expr ;
+a input r 3 print-statement println expr ;
+a int r 3 print-statement println expr ;
+a print r 3 print-statement println expr ;
+a println r 3 print-statement println expr ;
+a return r 3 print-statement println expr ;
+a void r 3 print-statement println expr ;
+a { r 3 print-statement println expr ;
+s
+a Ω r 3 print-statement print STRING-LITERAL ;
+a ( r 3 print-statement print STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a elif r 3 print-statement print STRING-LITERAL ;
+a else r 3 print-statement print STRING-LITERAL ;
+a float r 3 print-statement print STRING-LITERAL ;
+a func r 3 print-statement print STRING-LITERAL ;
+a if r 3 print-statement print STRING-LITERAL ;
+a input r 3 print-statement print STRING-LITERAL ;
+a int r 3 print-statement print STRING-LITERAL ;
+a print r 3 print-statement print STRING-LITERAL ;
+a println r 3 print-statement print STRING-LITERAL ;
+a return r 3 print-statement print STRING-LITERAL ;
+a void r 3 print-statement print STRING-LITERAL ;
+a { r 3 print-statement print STRING-LITERAL ;
+s
+a Ω r 3 print-statement println STRING-LITERAL ;
+a ( r 3 print-statement println STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement println STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a elif r 3 print-statement println STRING-LITERAL ;
+a else r 3 print-statement println STRING-LITERAL ;
+a float r 3 print-statement println STRING-LITERAL ;
+a func r 3 print-statement println STRING-LITERAL ;
+a if r 3 print-statement println STRING-LITERAL ;
+a input r 3 print-statement println STRING-LITERAL ;
+a int r 3 print-statement println STRING-LITERAL ;
+a print r 3 print-statement println STRING-LITERAL ;
+a println r 3 print-statement println STRING-LITERAL ;
+a return r 3 print-statement println STRING-LITERAL ;
+a void r 3 print-statement println STRING-LITERAL ;
+a { r 3 print-statement println STRING-LITERAL ;
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 363
+a call-expr s 18
+a compare-expr s 19
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 363
+g call-expr 18
+g compare-expr 19
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( r 2 else-clause else statement
+a FLOAT-LITERAL r 2 else-clause else statement
+a IDENTIFIER r 2 else-clause else statement
+a INT-LITERAL r 2 else-clause else statement
+a elif r 2 else-clause else statement
+a else r 2 else-clause else statement
+a float r 2 else-clause else statement
+a func r 2 else-clause else statement
+a if r 2 else-clause else statement
+a input r 2 else-clause else statement
+a int r 2 else-clause else statement
+a print r 2 else-clause else statement
+a println r 2 else-clause else statement
+a return r 2 else-clause else statement
+a void r 2 else-clause else statement
+a { r 2 else-clause else statement
+a } r 2 else-clause else statement
+s
+a elif r 2 else-clause else statement
+a else r 2 else-clause else statement
+s
+a ( r 3 if-else-statement if-clause elif-clauses else-clause
+a FLOAT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a IDENTIFIER r 3 if-else-statement if-clause elif-clauses else-clause
+a INT-LITERAL r 3 if-else-statement if-clause elif-clauses else-clause
+a elif r 3 if-else-statement if-clause elif-clauses else-clause
+a else r 3 if-else-statement if-clause elif-clauses else-clause
+a float r 3 if-else-statement if-clause elif-clauses else-clause
+a func r 3 if-else-statement if-clause elif-clauses else-clause
+a if r 3 if-else-statement if-clause elif-clauses else-clause
+a input r 3 if-else-statement if-clause elif-clauses else-clause
+a int r 3 if-else-statement if-clause elif-clauses else-clause
+a print r 3 if-else-statement if-clause elif-clauses else-clause
+a println r 3 if-else-statement if-clause elif-clauses else-clause
+a return r 3 if-else-statement if-clause elif-clauses else-clause
+a void r 3 if-else-statement if-clause elif-clauses else-clause
+a { r 3 if-else-statement if-clause elif-clauses else-clause
+a } r 3 if-else-statement if-clause elif-clauses else-clause
+s
+a elif r 3 if-else-statement if-clause elif-clauses else-clause
+a else r 3 if-else-statement if-clause elif-clauses else-clause
+s
+a ) s 386
+s
+a ; s 390
+s
+a ; s 389
+s
+a -> s 387
+s
+a -> s 388
+s
+a ( r 3 return-statement return expr ;
+a FLOAT-LITERAL r 3 return-statement return expr ;
+a IDENTIFIER r 3 return-statement return expr ;
+a INT-LITERAL r 3 return-statement return expr ;
+a elif r 3 return-statement return expr ;
+a else r 3 return-statement return expr ;
+a float r 3 return-statement return expr ;
+a func r 3 return-statement return expr ;
+a if r 3 return-statement return expr ;
+a input r 3 return-statement return expr ;
+a int r 3 return-statement return expr ;
+a print r 3 return-statement return expr ;
+a println r 3 return-statement return expr ;
+a return r 3 return-statement return expr ;
+a void r 3 return-statement return expr ;
+a { r 3 return-statement return expr ;
+a } r 3 return-statement return expr ;
+s
+a elif r 3 return-statement return expr ;
+a else r 3 return-statement return expr ;
+s
+a ( r 3 block-statement { statements }
+a FLOAT-LITERAL r 3 block-statement { statements }
+a IDENTIFIER r 3 block-statement { statements }
+a INT-LITERAL r 3 block-statement { statements }
+a elif r 3 block-statement { statements }
+a else r 3 block-statement { statements }
+a float r 3 block-statement { statements }
+a func r 3 block-statement { statements }
+a if r 3 block-statement { statements }
+a input r 3 block-statement { statements }
+a int r 3 block-statement { statements }
+a print r 3 block-statement { statements }
+a println r 3 block-statement { statements }
+a return r 3 block-statement { statements }
+a void r 3 block-statement { statements }
+a { r 3 block-statement { statements }
+a } r 3 block-statement { statements }
+s
+a elif r 3 block-statement { statements }
+a else r 3 block-statement { statements }
+s
+a ( r 3 print-statement print expr ;
+a FLOAT-LITERAL r 3 print-statement print expr ;
+a IDENTIFIER r 3 print-statement print expr ;
+a INT-LITERAL r 3 print-statement print expr ;
+a elif r 3 print-statement print expr ;
+a else r 3 print-statement print expr ;
+a float r 3 print-statement print expr ;
+a func r 3 print-statement print expr ;
+a if r 3 print-statement print expr ;
+a input r 3 print-statement print expr ;
+a int r 3 print-statement print expr ;
+a print r 3 print-statement print expr ;
+a println r 3 print-statement print expr ;
+a return r 3 print-statement print expr ;
+a void r 3 print-statement print expr ;
+a { r 3 print-statement print expr ;
+a } r 3 print-statement print expr ;
+s
+a elif r 3 print-statement print expr ;
+a else r 3 print-statement print expr ;
+s
+a ( r 3 print-statement println expr ;
+a FLOAT-LITERAL r 3 print-statement println expr ;
+a IDENTIFIER r 3 print-statement println expr ;
+a INT-LITERAL r 3 print-statement println expr ;
+a elif r 3 print-statement println expr ;
+a else r 3 print-statement println expr ;
+a float r 3 print-statement println expr ;
+a func r 3 print-statement println expr ;
+a if r 3 print-statement println expr ;
+a input r 3 print-statement println expr ;
+a int r 3 print-statement println expr ;
+a print r 3 print-statement println expr ;
+a println r 3 print-statement println expr ;
+a return r 3 print-statement println expr ;
+a void r 3 print-statement println expr ;
+a { r 3 print-statement println expr ;
+a } r 3 print-statement println expr ;
+s
+a elif r 3 print-statement println expr ;
+a else r 3 print-statement println expr ;
+s
+a ( r 3 print-statement print STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement print STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement print STRING-LITERAL ;
+a elif r 3 print-statement print STRING-LITERAL ;
+a else r 3 print-statement print STRING-LITERAL ;
+a float r 3 print-statement print STRING-LITERAL ;
+a func r 3 print-statement print STRING-LITERAL ;
+a if r 3 print-statement print STRING-LITERAL ;
+a input r 3 print-statement print STRING-LITERAL ;
+a int r 3 print-statement print STRING-LITERAL ;
+a print r 3 print-statement print STRING-LITERAL ;
+a println r 3 print-statement print STRING-LITERAL ;
+a return r 3 print-statement print STRING-LITERAL ;
+a void r 3 print-statement print STRING-LITERAL ;
+a { r 3 print-statement print STRING-LITERAL ;
+a } r 3 print-statement print STRING-LITERAL ;
+s
+a elif r 3 print-statement print STRING-LITERAL ;
+a else r 3 print-statement print STRING-LITERAL ;
+s
+a ( r 3 print-statement println STRING-LITERAL ;
+a FLOAT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a IDENTIFIER r 3 print-statement println STRING-LITERAL ;
+a INT-LITERAL r 3 print-statement println STRING-LITERAL ;
+a elif r 3 print-statement println STRING-LITERAL ;
+a else r 3 print-statement println STRING-LITERAL ;
+a float r 3 print-statement println STRING-LITERAL ;
+a func r 3 print-statement println STRING-LITERAL ;
+a if r 3 print-statement println STRING-LITERAL ;
+a input r 3 print-statement println STRING-LITERAL ;
+a int r 3 print-statement println STRING-LITERAL ;
+a print r 3 print-statement println STRING-LITERAL ;
+a println r 3 print-statement println STRING-LITERAL ;
+a return r 3 print-statement println STRING-LITERAL ;
+a void r 3 print-statement println STRING-LITERAL ;
+a { r 3 print-statement println STRING-LITERAL ;
+a } r 3 print-statement println STRING-LITERAL ;
+s
+a elif r 3 print-statement println STRING-LITERAL ;
+a else r 3 print-statement println STRING-LITERAL ;
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 382
+a call-expr s 18
+a compare-expr s 19
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 382
+g call-expr 18
+g compare-expr 19
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 383
+a call-expr s 18
+a compare-expr s 19
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 383
+g call-expr 18
+g compare-expr 19
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a float s 248
+a int s 249
+a return s 384
+a void s 251
+a type s 385
+g type 385
+s
+a Ω r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a ( r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a FLOAT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a IDENTIFIER r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a INT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a float r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a func r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a if r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a input r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a int r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a print r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a println r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a return r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a void r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a { r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+s
+a ; s 398
+s
+a ; s 399
+s
+a float s 306
+a int s 307
+a void s 308
+a type s 393
+g type 393
+s
+a { s 225
+a block-statement s 392
+g block-statement 392
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a float s 5
+a func s 279
+a if s 280
+a input s 8
+a int s 9
+a print s 281
+a println s 282
+a return s 283
+a void s 13
+a { s 284
+a add-expr s 15
+a assignment-expr s 16
+a block-statement s 285
+a call-expr s 18
+a compare-expr s 19
+a decl-statement s 286
+a expr s 287
+a expression-statement s 288
+a function-definition s 289
+a if-clause s 290
+a if-else-statement s 291
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+a print-statement s 292
+a return-statement s 293
+a statement s 391
+a type s 295
+g add-expr 15
+g assignment-expr 16
+g block-statement 285
+g call-expr 18
+g compare-expr 19
+g decl-statement 286
+g expr 287
+g expression-statement 288
+g function-definition 289
+g if-clause 290
+g if-else-statement 291
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+g print-statement 292
+g return-statement 293
+g statement 391
+g type 295
+s
+a float s 248
+a int s 249
+a return s 394
+a void s 251
+a type s 395
+g type 395
+s
+a float s 248
+a int s 249
+a return s 396
+a void s 251
+a type s 397
+g type 397
+s
+a Ω r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a ( r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a FLOAT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a IDENTIFIER r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a INT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a elif r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a else r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a float r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a func r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a if r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a input r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a int r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a print r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a println r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a return r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a void r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a { r 5 decl-statement type IDENTIFIER = assignment-expr ;
+s
+a ( r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a FLOAT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a IDENTIFIER r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a INT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a float r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a func r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a if r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a input r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a int r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a print r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a println r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a return r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a void r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a { r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a } r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+s
+a elif r 5 if-clause if ( expr ) statement
+a else r 5 if-clause if ( expr ) statement
+s
+a Ω r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a ( r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a FLOAT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a IDENTIFIER r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a INT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a elif r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a else r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a float r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a func r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a if r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a input r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a int r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a print r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a println r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a return r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a void r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a { r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 402
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 402
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a float s 306
+a int s 307
+a void s 308
+a type s 403
+g type 403
+s
+a { s 267
+a block-statement s 400
+g block-statement 400
+s
+a float s 306
+a int s 307
+a void s 308
+a type s 404
+g type 404
+s
+a { s 284
+a block-statement s 401
+g block-statement 401
+s
+a ( r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a FLOAT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a IDENTIFIER r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a INT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a elif r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a else r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a float r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a func r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a if r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a input r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a int r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a print r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a println r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a return r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a void r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a { r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a } r 5 decl-statement type IDENTIFIER = assignment-expr ;
+s
+a elif r 5 decl-statement type IDENTIFIER = assignment-expr ;
+a else r 5 decl-statement type IDENTIFIER = assignment-expr ;
+s
+a ( r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a FLOAT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a IDENTIFIER r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a INT-LITERAL r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a elif r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a else r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a float r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a func r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a if r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a input r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a int r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a print r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a println r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a return r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a void r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a { r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a } r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+s
+a elif r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+a else r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
+s
+a ; s 407
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 405
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 405
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ( s 1
+a FLOAT-LITERAL s 2
+a IDENTIFIER s 3
+a INT-LITERAL s 4
+a input s 8
+a add-expr s 15
+a assignment-expr s 16
+a call-expr s 18
+a compare-expr s 19
+a expr s 406
+a input-expr s 26
+a mult-expr s 27
+a primary-expr s 28
+g add-expr 15
+g assignment-expr 16
+g call-expr 18
+g compare-expr 19
+g expr 406
+g input-expr 26
+g mult-expr 27
+g primary-expr 28
+s
+a ; s 408
+s
+a ; s 409
+s
+a Ω r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a ( r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a FLOAT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a IDENTIFIER r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a INT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a elif r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a else r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a float r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a func r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a if r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a input r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a int r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a print r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a println r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a return r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a void r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a { r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+s
+a ( r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a FLOAT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a IDENTIFIER r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a INT-LITERAL r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a elif r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a else r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a float r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a func r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a if r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a input r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a int r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a print r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a println r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a return r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a void r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a { r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a } r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+s
+a elif r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
+a else r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
 s

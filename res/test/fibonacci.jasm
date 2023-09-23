@@ -137,7 +137,7 @@ label FIB;
     jmp 0 [i @r0] ucd;           % jump to caller
 % end of function
 
-% ============================= TestJeppParse Block ============================= %
+% ============================= TestJeppInterpreter Block ============================= %
 
 label PROGRAM_START;
 
@@ -169,11 +169,11 @@ label CALL_LOC_2;
 sub [i sp] 5 [i sp];           % decrement the stack pointer
 
 print "c = ";
-sub [i sp] 1 [i r7];
+sub [i sp] 2 [i r7];
 dsp [i @r7];
 print "\n";
 
 print "fib(c) = ";
-sub [i sp] 2 [i r7];
+sub [i sp] 1 [i r7];
 dsp [i @r7];
 print "\n";

@@ -54,7 +54,7 @@ public final class LRParser implements Parser{
             finished = false;
         }
 
-        public void process(Token token){
+        public boolean process(Token token){
             while(true){
                 //noinspection DataFlowIssue
                 int state = stateStack.peek();
@@ -77,11 +77,11 @@ public final class LRParser implements Parser{
 
                         // Update parse tree -- add new leaf node to stack
                         parseTreeNodeStack.push(new ParseTreeNode(token.type, token));
-                        return;
+                        return false;
                     }
                     case ACCEPT -> { //Parse successful -- return parse tree
                         finished = true;
-                        return;
+                        return true;
                     }
                     case REDUCE -> {
                         Rule reduceRule = ((ReduceEntry) entry).rule();

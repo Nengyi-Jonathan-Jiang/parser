@@ -24,11 +24,56 @@ public class JeppInterpreter {
     }
 
     public void run(ParseTreeNode pTree) {
+        System.out.println(pTree);
         evaluate(pTree);
     }
 
     public JeppValue evaluate(ParseTreeNode node) {
         switch (node.getDescription().name) {
+            case "function-definition" -> {
+                String name = node.getChild(1).getValue().value;
+
+                ParseTreeNode code;
+                if(node.getChild(4).getDescription().equals("return")) {
+                    code = new ParseTreeNode(node.getChild(4).getDescription(), node.getChild(5));
+                }
+                else code = node.getChild(5);
+
+                ParseTreeNode parameters = node.getChild(2);
+
+                List<String> argNames = new ArrayList<>();
+                List<JeppType> argTypes = new ArrayList<>();
+
+                System.out.println(parameters.getChild(1));
+
+                for(ParseTreeNode parameter :
+                    parameters.getChild(1).getChildren().length == 2 ? new ParseTreeNode[]{} : parameters.getChild(1).getChildren()
+                ) {
+                    String argType, argName;
+                    if(parameter.getChildren().length == 3) {
+                        argType = parameter.getChild(1).getValue().value;
+                        argName = parameter.getChild(2).getValue().value;
+                    }
+                    else {
+                        argType = parameter.getChild(0).getValue().value;
+                        argName = parameter.getChild(1).getValue().value;
+                    }
+
+                    argTypes.add(switch (argType) {
+                        case "int" -> PrimitiveJeppType.JIntegerT;
+                        case "float" -> PrimitiveJeppType.JFloatT;
+                        default -> throw new IllegalArgumentException("Wrong type");
+                    });
+                    argNames.add(argName);
+                }
+
+                JeppMethodSignature signature = new JeppMethodSignature(argTypes.toArray(JeppType[]::new));
+                JeppMethodPrototype prototype = new JeppMethodPrototype(signature, argNames.toArray(String[]::new));
+
+                System.out.println(prototype);
+
+                currentScope().registerMethod(new UserJeppMethod(name, prototype, code));
+            }
             case "return-statement" -> {
                 return evaluate(node.getChild(1));
             }
@@ -36,23 +81,16 @@ public class JeppInterpreter {
             case "statements" -> {
                 for (ParseTreeNode statement : node.getChildren()) {
                     JeppValue value = evaluate(statement);
-                    if (value.getType() != PrimitiveJeppType.JVoidT) {
-                        return value;
-                    }
+                    if (value != PrimitiveJeppValue.Void) return value;
                 }
             }
             case "call-expr" -> {
                 String methodName = node.getChild(0).getValue().value;
 
-                List<JeppValue> arguments = new ArrayList<>();
-                ParseTreeNode argsNode = node.getChild(2);
-                while (argsNode.getDescription().name.equals("call-arguments")) {
-                    arguments.add(evaluate(argsNode.getChild(0)));
-                    if (argsNode.getChildren().length == 3) argsNode = argsNode.getChild(2);
-                }
-                if (!argsNode.getDescription().toString().equals(")")) arguments.add(evaluate(argsNode));
-
+                List<JeppValue> arguments = node.getChild(2).children().map(this::evaluate).toList();
                 List<JeppType> argTypes = arguments.stream().map(JeppValue::getType).toList();
+
+                System.out.println("calling " + methodName + argTypes + " with " + arguments);
 
                 JeppMethod m = currentScope().getMethod(methodName, argTypes.toArray(JeppType[]::new));
                 if (m == null) throw new JeppUnknownMethodException(methodName, argTypes);
@@ -63,6 +101,14 @@ public class JeppInterpreter {
                 return currentScope().getVariable(node.getValue().value);
             }
 
+            case "input-expr" -> {
+                return switch(node.getChild(1).getValue().value) {
+                    case "int" -> new PrimitiveJeppValue.JInteger(scan.nextInt());
+                    case "float" ->  new PrimitiveJeppValue.JFloat(scan.nextFloat());
+                    default -> throw new UnsupportedOperationException("Unknown input type");
+                };
+            }
+
             case "add-expr", "mult-expr" -> {
                 JeppValue val1 = evaluate(node.getChild(0));
                 JeppValue val2 = evaluate(node.getChild(2));
@@ -71,6 +117,14 @@ public class JeppInterpreter {
                 JeppMethod m = currentScope().getMethod("operator" + op, val1.getType(), val2.getType());
                 if (m == null) throw new JeppUnknownOperatorException(op, val1, val2);
                 return m.apply(this, val1, val2);
+            }
+            case "decl-statement" -> {
+                String variableName = node.getChild(1).getValue().value;
+                JeppValue val = evaluate(node.getChild(3));
+
+                currentScope().setVariable(variableName, val);
+
+                return PrimitiveJeppValue.Void;
             }
             case "assignment-expr" -> {
                 String variableName = node.getChild(0).getValue().value;
@@ -89,8 +143,6 @@ public class JeppInterpreter {
 
                 currentScope().setVariable(variableName, val);
 
-                System.out.println(variableName + " <- " + val);
-
                 return val;
             }
 
@@ -103,18 +155,21 @@ public class JeppInterpreter {
             }
             case "FLOAT-LITERAL" -> {
                 String tok_val = node.getValue().value;
-                return new PrimitiveJeppValue.JDouble(Double.parseDouble(tok_val));
+                return new PrimitiveJeppValue.JFloat(Float.parseFloat(tok_val));
             }
             case "print-statement" -> {
-                Object value;
-                if (node.getChild(1).getDescription().name.equals("STRING-LITERAL")) {
-                    String val = node.getChild(1).getValue().value;
-                    value = val.substring(1, val.length() - 1);
-                } else value = evaluate(node.getChild(1));
+                String val;
+                if (node.getChild(1).getDescription().equals("STRING-LITERAL")) {
+                    val = node.getChild(1).getValue().value;
+                    val = val.substring(1, val.length() - 1)
+                             .replace("\\n", "\n")
+                             .replace("\\t", "\t")
+                             .replaceAll("\\\\(.)", "$1");
+                } else val = evaluate(node.getChild(1)).toString();
 
                 switch(node.getChild(0).getValue().value) {
-                    case "print" -> out.print(value);
-                    case "println" -> out.println(value);
+                    case "print" -> out.print(val);
+                    case "println" -> out.println(val);
                 }
             }
             default -> System.out.println("Got " + node.getDescription());

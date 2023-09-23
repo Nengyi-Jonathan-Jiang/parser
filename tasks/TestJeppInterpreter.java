@@ -1,17 +1,16 @@
 import frontend.Token;
+import frontend.parser.ParseTreeNode;
+import frontend.parser.Parser;
+import frontend.lexer.Lexer;
 import jepp.frontend.JePPFrontend;
 import jepp.interpreter.Interpreter;
-import frontend.lexer.Lexer;
-import frontend.parser.*;
-import org.junit.Test;
 
-import java.io.*;
+import java.io.InputStream;
 
-public class TestJeppParse {
-	@Test
-	public void test() {
+public class TestJeppInterpreter {
+	public static void main(String[] args) {
 		String input;
-		try(InputStream jeppFile = TestJeppParse.class.getResourceAsStream("/test/hello world.jepp")) {
+		try(InputStream jeppFile = TestJeppInterpreter.class.getResourceAsStream("/test/fibonacci.jepp")) {
             assert jeppFile != null;
 			input = new String(jeppFile.readAllBytes());
 		} catch(Exception e) { throw new RuntimeException(e); }
@@ -27,8 +26,7 @@ public class TestJeppParse {
 		} while(!tk.isEOF());
 		System.out.println();
 
-		ParseTreeNode pTree;
-		pTree = parse.getParseTree();
+		ParseTreeNode pTree = parse.getParseTree();
 		if(pTree == null) throw new Error("unknown error parsing string");
 
 		Interpreter interpreter = new Interpreter();
