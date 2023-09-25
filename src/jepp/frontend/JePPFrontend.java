@@ -12,7 +12,7 @@ public class JePPFrontend {
     private static final Parser parser;
     public static final Symbol.SymbolTable symbolTable;
 
-    public static Lexer.Lex tokenize(String input) {
+    public static Lexer.Lex beginLex(String input) {
         return lexer.lex(input);
     }
 
@@ -29,7 +29,11 @@ public class JePPFrontend {
         parser = new LRParser(ParsingTable.loadFromFile(symbolTable, "je++/generated/je++.ptbl"));
     }
 
-    public static Parser.Parse startParse() {
+    public static Parser.Parse beginParse() {
         return parser.start();
+    }
+
+    public static Symbol getSymbol(String s) {
+        return symbolTable.get(s);
     }
 }

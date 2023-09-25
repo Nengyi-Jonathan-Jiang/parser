@@ -1,0 +1,55 @@
+println 1 == 1;
+println 1 >= 1;
+println 1 <= 1;
+println 1 > 1;
+println 1 < 1;
+println 1 != 1;
+
+println 1 == 2;
+println 1 >= 2;
+println 1 <= 2;
+println 1 > 2;
+println 1 < 2;
+println 1 != 2;
+
+int a = 5;
+int b = 7;
+
+if(a == b) {
+    println "a == b";
+}
+if(a != b) {
+    println "a != b";
+}
+
+if(b >= a) {
+    println "b >= a";
+}
+else {
+    println "b < a";
+}
+
+if(a > 10) {
+    println "a > 10";
+}
+elif(a > 5) {
+    println "a > 5";
+}
+elif(a > 2) {
+    println "a > 2";
+}
+else {
+    println "a <= 2";
+}
+
+if(b > 10) {
+    println "b > 10";
+}
+elif(b > 8) {
+    println "b > 8";
+}
+elif(b > 7) {
+    println "b > 7";
+}
+
+println "end program";

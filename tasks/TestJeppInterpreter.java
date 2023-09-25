@@ -15,8 +15,8 @@ public class TestJeppInterpreter {
 			input = new String(jeppFile.readAllBytes());
 		} catch(Exception e) { throw new RuntimeException(e); }
 
-		Lexer.Lex lex = JePPFrontend.tokenize(input);
-		Parser.Parse parse = JePPFrontend.startParse();
+		Lexer.Lex lex = JePPFrontend.beginLex(input);
+		Parser.Parse parse = JePPFrontend.beginParse();
 		System.out.println("Processing input...");
 		Token tk;
 		do {
@@ -29,9 +29,7 @@ public class TestJeppInterpreter {
 		ParseTreeNode pTree = parse.getParseTree();
 		if(pTree == null) throw new Error("unknown error parsing string");
 
-		Interpreter interpreter = new Interpreter();
+		Interpreter interpreter = new Interpreter(System.in, System.out);
 		interpreter.run(pTree);
-		String result = interpreter.result();
-		System.out.println("--------------------\n" + result);
 	}
 }

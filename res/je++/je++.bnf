@@ -9,11 +9,14 @@ statement := return-statement
 statement := expression-statement
 statement := function-definition
 statement := decl-statement
+statement := if-clause
 statement := if-else-statement
+statement := if-elif-statement
+statement := if-elif-else-statement
 
-if-else-statement := if-clause
 if-else-statement := if-clause else-clause
-if-else-statement := if-clause elif-clauses else-clause
+if-elif-statement := if-clause elif-clauses
+if-elif-else-statement := if-elif-statement else-clause
 
 if-clause := if ( expr ) statement
 elif-clauses := elif-clause

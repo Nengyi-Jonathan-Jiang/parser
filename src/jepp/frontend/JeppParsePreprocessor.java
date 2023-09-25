@@ -14,50 +14,34 @@ public class JeppParsePreprocessor {
                 ParseTreeNode[] newChildren = Stream.concat(Stream.of(statement), flatten(rest).children()).toArray(ParseTreeNode[]::new);
                 yield new ParseTreeNode(parse.getDescription(), newChildren);
             }
-            case "call-argument" -> {
-                System.out.println("wrap call argument");
-                yield new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), flattenChildren(parse));
-            }
-            case "parameter" -> {
-                System.out.println("wrap parameter");
-                yield new ParseTreeNode(JePPFrontend.symbolTable.get("parameters"), flattenChildren(parse));
-            }
+            case "call-argument" ->
+                    new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), flattenChildren(parse));
+            case "parameter" -> new ParseTreeNode(JePPFrontend.symbolTable.get("parameters"), flattenChildren(parse));
             case "call-expr" -> {
-                if (parse.getChildren().length == 3) {
-                    yield flattenChildren(parse);
-                } else {
+                if (parse.getChildren().length != 3) {
                     var x = parse.getChildren()[2];
                     if (!x.getDescription().equals("call-arguments")) {
-                        System.out.println("wrap call args");
                         parse.getChildren()[2] = flatten(new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), x));
                     }
-                    yield flattenChildren(parse);
                 }
+                yield flattenChildren(parse);
             }
             case "call-arguments" -> {
-                System.out.println("flatten call args " + parse);
-
                 if (parse.getChildren().length == 1) yield flattenChildren(parse);
                 var param = flattenChildren(parse.getChild(0));
                 var rest = flatten(parse.getChild(2));
                 if (rest.getDescription().equals("call-arguments")) {
-                    ParseTreeNode[] newChildren = Stream.concat(Stream.of(param),
-                            rest.children()
-                    ).toArray(ParseTreeNode[]::new);
+                    ParseTreeNode[] newChildren = Stream.concat(Stream.of(param), rest.children()).toArray(ParseTreeNode[]::new);
                     yield new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), newChildren);
                 } else {
                     yield new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), param, rest);
                 }
             }
             case "parameters" -> {
-                System.out.println("flatten parameters");
-
                 if (parse.getChildren().length == 1) yield flattenChildren(parse);
                 var param = flattenChildren(parse.getChild(0));
                 var rest = flatten(parse.getChild(2));
-                ParseTreeNode[] newChildren = Stream.concat(Stream.of(param),
-                        rest.children()
-                ).toArray(ParseTreeNode[]::new);
+                ParseTreeNode[] newChildren = Stream.concat(Stream.of(param), rest.children()).toArray(ParseTreeNode[]::new);
                 yield new ParseTreeNode(JePPFrontend.symbolTable.get("parameters"), newChildren);
             }
 

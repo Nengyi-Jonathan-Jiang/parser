@@ -1,0 +1,12 @@
+func add3(int a, int b, int c) -> return int a + b + c;
+func greet(int id) -> void {
+    print "Hello, user ";
+    print id;
+    println "!";
+}
+
+print "add3(1, add3(2, 3, 4), 5) = ";
+println add3(1, add3(2, 3, 4), 5);
+
+println "Running greet:";
+greet(56);

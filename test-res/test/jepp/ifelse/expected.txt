@@ -1,0 +1,16 @@
+true
+true
+true
+false
+false
+false
+false
+false
+true
+false
+true
+true
+a != b
+b >= a
+a > 2
+end program

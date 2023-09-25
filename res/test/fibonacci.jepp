@@ -1,18 +1,28 @@
+/*
 func fib(int n) -> int {
     if(n <= 2) return 1;
     return fib(n - 1) + fib(n - 2);
 }
 
-func add(int a, int b, int c) -> return int a + b + c;
-println "adding -> ";
-println add(2, 4, 6);
-
 print "c <- ";
 int c = input int;
 println "";
 
-// int res = fib(c);
+int res = fib(c);
 print "c = ";
 print c;
 print "\n fib(c) = ";
 print res;
+*/
+
+println 1 <= 2;
+println 1 >= 5;
+if(2) {
+    println "2 is truthy";
+}
+elif(5) {
+    println "5 is truthy";
+}
+else {
+    println "2 and 5 are not truthy";
+}

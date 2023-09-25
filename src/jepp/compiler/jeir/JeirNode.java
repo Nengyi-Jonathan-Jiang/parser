@@ -1,8 +1,7 @@
 package jepp.compiler.jeir;
 
 import jepp.jevm.Instruction;
-import jepp.language.JeppMethodPrototype;
-import jepp.language.JeppMethodSignature;
+import jepp.interpreter.language.JeppMethodPrototype;
 
 public sealed interface JeirNode permits JeirNode.JeirArithmeticStatement, JeirNode.JeirHeapAllocateStatement, JeirNode.JeirMoveStatement, JeirNode.JeirPrintStatement, JeirNode.JeirPrintVarStatement, JeirNode.JeirStatements, JeirNode.JeirStaticHeapAllocateStatement, JeirNode.JeirStoreStatement {
 

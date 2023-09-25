@@ -1,6 +1,5 @@
 package jepp.compiler;
 
-import frontend.Token;
 import frontend.lexer.Lexer;
 import frontend.parser.ParseTreeNode;
 import frontend.parser.Parser;
@@ -14,8 +13,8 @@ import java.util.List;
 
 public class JeppToJasmCompiler {
     public static Program compile(String input) {
-        Lexer.Lex lex = JePPFrontend.tokenize(input);
-        Parser.Parse parse = JePPFrontend.startParse();
+        Lexer.Lex lex = JePPFrontend.beginLex(input);
+        Parser.Parse parse = JePPFrontend.beginParse();
         while(parse.process(lex.next()));
 
         JeppToJasmCompiler compiler = new JeppToJasmCompiler(parse.getParseTree());

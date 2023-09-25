@@ -1,6 +1,6 @@
 package jepp.interpreter;
 
-import jepp.language.JeppValue;
+import jepp.interpreter.language.JeppValue;
 
 public class JeppUnknownOperatorException extends JeppInterpreterException {
     public JeppUnknownOperatorException(String s, JeppValue val1, JeppValue val2) {

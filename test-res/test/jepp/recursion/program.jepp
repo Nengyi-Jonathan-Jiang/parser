@@ -1,0 +1,14 @@
+func fib(int n) -> int {
+    if(n <= 2) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+
+print "c <- ";
+int c = input int;
+println "";
+
+int res = fib(c);
+print "c = ";
+println c;
+print "fib(c) = ";
+println res;

@@ -1,6 +1,6 @@
 package jepp.interpreter;
 
-import jepp.language.JeppType;
+import jepp.interpreter.language.JeppType;
 
 import java.util.List;
 
