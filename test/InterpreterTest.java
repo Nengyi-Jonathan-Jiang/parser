@@ -41,6 +41,11 @@ public class InterpreterTest {
         check("test/jepp/recursion");
     }
 
+    @Test
+    public void testInterpreterLoops() {
+        check("test/jepp/loops");
+    }
+
     private void check(String directory){
         System.out.println("Reading file...");
         String program = FileUtil.getTextContents(directory + "/program.jepp");

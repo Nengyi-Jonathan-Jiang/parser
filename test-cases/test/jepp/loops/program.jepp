@@ -1,0 +1,27 @@
+int sum = 5;
+int i = 0;
+until((i = input int) == 0) {
+    print i;
+    print " + ";
+    sum += i;
+}
+print "0 = ";
+println sum;
+
+int fact = input int;
+print fact;
+print "! = ";
+for(int i = fact - 1; i >= 1; i--) {
+    fact *= i;
+}
+println fact;
+
+int collatz = 15;
+print "Simulating collatz(15): 15 -> ";
+while(collatz > 1) {
+    if(collatz % 2 == 0) collatz /= 2;
+    else collatz = 3 * collatz + 1;
+    print collatz;
+    print " ";
+}
+println "Reached end.";

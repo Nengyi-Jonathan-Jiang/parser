@@ -9,20 +9,43 @@ statement := return-statement
 statement := expression-statement
 statement := function-definition
 statement := decl-statement
-statement := if-clause
+statement := if-statement
 statement := if-else-statement
-statement := if-elif-statement
-statement := if-elif-else-statement
+statement := loop
+statement := loop-else
+statement := loop-exit-statement
+statement := nothing-statement
 
-if-else-statement := if-clause else-clause
-if-elif-statement := if-clause elif-clauses
-if-elif-else-statement := if-elif-statement else-clause
+nothing-statement := nothing ;
 
-if-clause := if ( expr ) statement
-elif-clauses := elif-clause
-elif-clauses := elif-clause elif-clauses
-elif-clause := elif ( expr ) statement
+if-else-statement := if-statement else-clause
+
+if-statement := if ( expr ) statement
 else-clause := else statement
+
+loop-exit := break
+loop-exit := continue
+loop-exit-statement := loop-exit ;
+loop-exit-statement := loop-exit INT-LITERAL ;
+
+loop-else := loop else-clause
+
+loop := while-loop
+loop := until-loop
+loop := do-while-loop
+loop := do-until-loop
+loop := for-loop
+loop := foreach-loop
+
+while-loop := while ( expr ) statement
+until-loop := until ( expr ) statement
+do-while-loop := do block-statement while ( expr ) ;
+do-while-loop := do expr while ( expr ) ;
+do-until-loop := do block-statement until ( expr ) ;
+do-until-loop := do expr until ( expr ) ;
+
+for-loop := for ( decl-statement expr ; expr ) statement
+foreach-loop := foreach ( type IDENTIFIER : expr ) statement
 
 expression-statement := expr ;
 return-statement := return expr ;
@@ -63,27 +86,35 @@ add-expr := add-expr add-op mult-expr
 mult-op := *
 mult-op := /
 mult-op := %
-mult-expr := primary-expr
-mult-expr := mult-expr mult-op primary-expr
+mult-expr := postfix-expr
+mult-expr := mult-expr mult-op postfix-expr
+
+postfix-expr := primary-expr
+postfix-expr := postfix-expr postfix-op
+postfix-expr := call-expr
+postfix-expr := index-expr
+
+postfix-op := --
+postfix-op := ++
+
+call-expr := postfix-expr ( )
+call-expr := postfix-expr ( argument-list )
+index-expr := postfix-expr [ argument-list ]
+argument-list := expr
+argument-list := expr , argument-list
+argument-list := expr
+
 
 primary-expr := INT-LITERAL
 primary-expr := FLOAT-LITERAL
 primary-expr := IDENTIFIER
 primary-expr := ( expr )
-primary-expr := call-expr
 primary-expr := input-expr
 
 input-expr := input type
 
-call-expr := IDENTIFIER ( )
-call-expr := IDENTIFIER ( call-arguments )
-call-arguments := call-argument
-call-arguments := call-argument , call-arguments
-call-arguments := call-argument
-call-argument := expr
-
 function-definition := func IDENTIFIER parameter-list -> return type expr ;
-function-definition := func IDENTIFIER parameter-list -> type block-statement
+function-definition := func IDENTIFIER parameter-list -> type { statements }
 parameter-list := ( )
 parameter-list := ( parameters )
 parameters := parameter

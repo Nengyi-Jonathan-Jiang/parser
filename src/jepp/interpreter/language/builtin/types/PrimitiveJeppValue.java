@@ -1,10 +1,9 @@
 package jepp.interpreter.language.builtin.types;
 
 import jepp.interpreter.JeppInterpreterException;
-import jepp.interpreter.JeppInterpreterPanic;
 import jepp.interpreter.language.JeppValue;
 
-public abstract class PrimitiveJeppValue implements JeppValue {
+public abstract sealed class PrimitiveJeppValue implements JeppValue permits PrimitiveJeppValue.JBoolean, PrimitiveJeppValue.JCompare, PrimitiveJeppValue.JFloat, PrimitiveJeppValue.JInteger, PrimitiveJeppValue.JVoid {
     private final PrimitiveJeppType type;
 
     protected PrimitiveJeppValue(PrimitiveJeppType type) {
@@ -78,7 +77,7 @@ public abstract class PrimitiveJeppValue implements JeppValue {
         }
     }
 
-    public static final class JVoid extends PrimitiveJeppValue {
+    public static sealed class JVoid extends PrimitiveJeppValue permits SIG_break, SIG_continue {
         private JVoid() {
             super(PrimitiveJeppType.JVoidT);
         }
@@ -95,6 +94,26 @@ public abstract class PrimitiveJeppValue implements JeppValue {
     }
 
     public static JVoid Void = new JVoid();
+    public static final class SIG_break extends JVoid {
+        public final int level;
+        public SIG_break() { this(1); }
+        public SIG_break(int level) {
+            this.level = level;
+        }
+        public SIG_break decrease_level() {
+            return new SIG_break(level - 1);
+        }
+    };
+    public static final class SIG_continue extends JVoid {
+        public final int level;
+        public SIG_continue() { this(1); }
+        public SIG_continue(int levels) {
+            this.level = levels;
+        }
+        public SIG_continue decrease_level() {
+            return new SIG_continue(level - 1);
+        }
+    };
 
     public static final class JCompare extends PrimitiveJeppValue {
         public enum CompareResult {

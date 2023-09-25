@@ -18,12 +18,14 @@ var
 
 if
 else
-elif
 do
 while
+until
 for
+foreach
 break
 continue
+nothing
 
 return
 

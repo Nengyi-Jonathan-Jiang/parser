@@ -37,27 +37,25 @@ public class JeppInterpreter {
                 String name = node.getChild(1).getValue().value;
 
                 ParseTreeNode code;
-                if(node.getChild(4).getDescription().equals("return")) {
+                if (node.getChild(4).getDescription().equals("return")) {
                     code = new ParseTreeNode(
                             JePPFrontend.symbolTable.get("return-statement"), node.getChild(4), node.getChild(6)
                     );
-                }
-                else code = node.getChild(5);
+                } else code = node.getChild(6);
 
                 ParseTreeNode parameters = node.getChild(2);
 
                 List<String> argNames = new ArrayList<>();
                 List<JeppType> argTypes = new ArrayList<>();
 
-                for(ParseTreeNode parameter :
-                    parameters.getChild(1).getChildren().length == 2 ? new ParseTreeNode[]{} : parameters.getChild(1).getChildren()
+                for (ParseTreeNode parameter :
+                        parameters.getChild(1).getChildren().length == 2 ? new ParseTreeNode[]{} : parameters.getChild(1).getChildren()
                 ) {
                     String argType, argName;
-                    if(parameter.getChildren().length == 3) {
+                    if (parameter.getChildren().length == 3) {
                         argType = parameter.getChild(1).getValue().value;
                         argName = parameter.getChild(2).getValue().value;
-                    }
-                    else {
+                    } else {
                         argType = parameter.getChild(0).getValue().value;
                         argName = parameter.getChild(1).getValue().value;
                     }
@@ -77,31 +75,44 @@ public class JeppInterpreter {
 
                 currentScope().registerMethod(new UserJeppMethod(name, prototype, code));
             }
+
             case "return-statement" -> {
                 return evaluate(node.getChild(1));
             }
+
             case "expression-statement" -> evaluate(node.getChild(0));
+
             case "statements" -> {
                 for (ParseTreeNode statement : node.getChildren()) {
                     JeppValue value = evaluate(statement);
                     if (value != Void) return value;
                 }
             }
-            case "if-clause" -> {
-                if(evaluate(node.getChild(2)).isTruthy()) {
+
+            case "if-statement" -> {
+                if (evaluate(node.getChild(2)).isTruthy()) {
                     return evaluate(node.getChild(4));
                 }
             }
+
             case "if-else-statement" -> {
-                if(evaluate(node.getChild(0).getChild(2)).isTruthy()) {
+                if (evaluate(node.getChild(0).getChild(2)).isTruthy()) {
                     return evaluate(node.getChild(0).getChild(4));
-                }
-                else {
+                } else {
                     return evaluate(node.getChild(1).getChild(1));
                 }
             }
+
+            case "loop" -> {
+
+            }
+
             case "block-statement" -> {
-                return evaluate(node.getChild(1));
+                for (ParseTreeNode statement : node.getChildren()) {
+                    JeppValue value = evaluate(statement);
+                    if (value != Void) return value;
+                    if (value == )
+                }
             }
             case "call-expr" -> {
                 String methodName = node.getChild(0).getValue().value;
@@ -119,9 +130,9 @@ public class JeppInterpreter {
             }
 
             case "input-expr" -> {
-                return switch(node.getChild(1).getValue().value) {
+                return switch (node.getChild(1).getValue().value) {
                     case "int" -> new JInteger(scan.nextInt());
-                    case "float" ->  new JFloat(scan.nextFloat());
+                    case "float" -> new JFloat(scan.nextFloat());
                     default -> throw new UnsupportedOperationException("Unknown input type");
                 };
             }
@@ -144,7 +155,7 @@ public class JeppInterpreter {
                 if (m == null) throw new JeppUnknownOperatorException("<=>", val1, val2);
                 JeppValue res = m.apply(this, val1, val2);
                 if (res.getType() != JCompareT) throw new JeppInterpreterException("Comparison must return JCompare");
-                return new JBoolean(((JCompare)res).matches(fromString(op)));
+                return new JBoolean(((JCompare) res).matches(fromString(op)));
             }
             case "decl-statement" -> {
                 String variableName = node.getChild(1).getValue().value;
@@ -190,14 +201,14 @@ public class JeppInterpreter {
                 if (node.getChild(1).getDescription().equals("STRING-LITERAL")) {
                     val = node.getChild(1).getValue().value;
                     val = val.substring(1, val.length() - 1)
-                             .replace("\\n", "\n")
-                             .replace("\\t", "\t")
-                             .replaceAll("\\\\(.)", "$1");
+                            .replace("\\n", "\n")
+                            .replace("\\t", "\t")
+                            .replaceAll("\\\\(.)", "$1");
                 } else {
                     val = evaluate(node.getChild(1)).toString();
                 }
 
-                switch(node.getChild(0).getValue().value) {
+                switch (node.getChild(0).getValue().value) {
                     case "print" -> out.print(val);
                     case "println" -> out.println(val);
                 }

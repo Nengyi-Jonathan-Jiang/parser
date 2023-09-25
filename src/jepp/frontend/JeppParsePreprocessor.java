@@ -14,27 +14,27 @@ public class JeppParsePreprocessor {
                 ParseTreeNode[] newChildren = Stream.concat(Stream.of(statement), flatten(rest).children()).toArray(ParseTreeNode[]::new);
                 yield new ParseTreeNode(parse.getDescription(), newChildren);
             }
-            case "call-argument" ->
-                    new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), flattenChildren(parse));
+            case "argument" ->
+                    new ParseTreeNode(JePPFrontend.symbolTable.get("argument-list"), flattenChildren(parse));
             case "parameter" -> new ParseTreeNode(JePPFrontend.symbolTable.get("parameters"), flattenChildren(parse));
             case "call-expr" -> {
                 if (parse.getChildren().length != 3) {
                     var x = parse.getChildren()[2];
-                    if (!x.getDescription().equals("call-arguments")) {
-                        parse.getChildren()[2] = flatten(new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), x));
+                    if (!x.getDescription().equals("argument-list")) {
+                        parse.getChildren()[2] = flatten(new ParseTreeNode(JePPFrontend.symbolTable.get("argument-list"), x));
                     }
                 }
                 yield flattenChildren(parse);
             }
-            case "call-arguments" -> {
+            case "argument-list" -> {
                 if (parse.getChildren().length == 1) yield flattenChildren(parse);
                 var param = flattenChildren(parse.getChild(0));
                 var rest = flatten(parse.getChild(2));
-                if (rest.getDescription().equals("call-arguments")) {
+                if (rest.getDescription().equals("argument-list")) {
                     ParseTreeNode[] newChildren = Stream.concat(Stream.of(param), rest.children()).toArray(ParseTreeNode[]::new);
-                    yield new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), newChildren);
+                    yield new ParseTreeNode(JePPFrontend.symbolTable.get("argument-list"), newChildren);
                 } else {
-                    yield new ParseTreeNode(JePPFrontend.symbolTable.get("call-arguments"), param, rest);
+                    yield new ParseTreeNode(JePPFrontend.symbolTable.get("argument-list"), param, rest);
                 }
             }
             case "parameters" -> {

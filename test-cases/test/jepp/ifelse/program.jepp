@@ -32,10 +32,10 @@ else {
 if(a > 10) {
     println "a > 10";
 }
-elif(a > 5) {
+else if(a > 5) {
     println "a > 5";
 }
-elif(a > 2) {
+else if(a > 2) {
     println "a > 2";
 }
 else {
@@ -45,10 +45,10 @@ else {
 if(b > 10) {
     println "b > 10";
 }
-elif(b > 8) {
+else if(b > 8) {
     println "b > 8";
 }
-elif(b > 7) {
+else if(b > 7) {
     println "b > 7";
 }
 
