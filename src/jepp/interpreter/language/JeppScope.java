@@ -25,7 +25,7 @@ public class JeppScope {
         return variables.containsKey(name);
     }
     private boolean hasVariable(String name) {
-        return hasOwnVariable(name) || parentScope != null && parentScope.hasType(name);
+        return hasOwnVariable(name) || parentScope != null && parentScope.hasVariable(name);
     }
     private boolean hasOwnMethod(String name, JeppMethodSignature signature) {
         return methods.containsKey(name) && methods.get(name).containsKey(signature);
@@ -41,8 +41,11 @@ public class JeppScope {
     }
 
     public JeppValue getVariable(String name){
-        if (hasVariable(name)) return variables.get(name);
-        if (parentScope != null) return parentScope.getVariable(name);
+        if (hasVariable(name)) {
+            if(hasOwnVariable(name))
+                return variables.get(name);
+            else return parentScope.getVariable(name);
+        }
         throw new JeppInterpreterException("Could not find variable " + name);
     }
 
@@ -80,17 +83,16 @@ public class JeppScope {
         return hasType(name) ? types.get(name) : parentScope != null ? parentScope.getType(name) : null;
     }
 
-    public void createVariable(String name) {
+    public void declareVariable(String name) {
         variables.put(name, PrimitiveJeppValue.Void);
     }
 
     public void setVariable(String name, JeppValue value) {
-        if (!hasOwnVariable(name) && hasVariable(name)) {
-            System.out.println(name + " found in parent scope");
-            parentScope.setVariable(name, value);
-        } else {
-            variables.put(name, value);
+        if(hasVariable(name)) {
+            if(hasOwnVariable(name)) variables.put(name, value);
+            else parentScope.setVariable(name, value);
         }
+        else throw new JeppInterpreterException("Unknown variable " + name);
     }
 
     public void registerMethod(JeppMethod method) {

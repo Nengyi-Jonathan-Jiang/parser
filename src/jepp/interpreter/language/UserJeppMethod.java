@@ -29,10 +29,11 @@ public class UserJeppMethod implements JeppMethod {
 
     @Override
     public @NotNull JeppValue apply(@NotNull JeppInterpreter interpreter, JeppValue... values) {
-        System.out.println("Executing " + name + "(" + Arrays.toString(values) + ")");
         JeppScope s = interpreter.pushNewScope();
-        for(int i = 0; i < signature().types().length; i++)
+        for(int i = 0; i < signature().types().length; i++) {
+            s.declareVariable(prototype.argNames()[i]);
             s.setVariable(prototype.argNames()[i], values[i]);
+        }
         JeppValue res = interpreter.evaluate(code);
         interpreter.popScope(s);
         return res;
