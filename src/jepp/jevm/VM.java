@@ -1,16 +1,21 @@
 package jepp.jevm;
 
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class VM {
     public final RAM ram = new RAM();
-    private final Register registers[] = new Register[10];
+    private final Register[] registers = new Register[10];
+    private final PrintStream output;
     private int instruction_ptr;
     public final Allocator allocator = new Allocator();
-    public final Scanner scan = new Scanner(System.in);
+    public final Scanner scan;
 
-    public VM() {
+    public VM(InputStream input, PrintStream output) {
+        this.output = output;
         for(int i = 0; i < registers.length; i++) registers[i] = new Register();
+        scan = new Scanner(input);
     }
 
     public void execute(Program program){
@@ -43,7 +48,7 @@ public class VM {
 
     public void display(String s){
         // TODO: add log file?
-        System.out.print(s);
+        output.print(s);
     }
 
     public int readInt() {

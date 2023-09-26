@@ -8,7 +8,7 @@ public class AssemblerTest {
         System.out.println("Compiling file...");
         var program = Assembler.assembleFile("test/fibonacci.jasm");
         System.out.println("Executing...");
-        var vm = new VM();
+        var vm = new VM(System.in, System.out);
         vm.execute(program);
     }
 }
