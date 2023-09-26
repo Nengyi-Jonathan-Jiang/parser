@@ -3,7 +3,7 @@ package jepp.compiler.jeir;
 import jepp.jevm.Instruction;
 import jepp.interpreter.language.JeppMethodPrototype;
 
-public sealed interface JeirNode permits JeirNode.JeirArithmeticStatement, JeirNode.JeirHeapAllocateStatement, JeirNode.JeirMoveStatement, JeirNode.JeirPrintStatement, JeirNode.JeirPrintVarStatement, JeirNode.JeirStatements, JeirNode.JeirStaticHeapAllocateStatement, JeirNode.JeirStoreStatement {
+public sealed interface JeirNode permits JeirNode.JeirArithmeticStatement, JeirNode.JeirHeapAllocateStatement, JeirNode.JeirMoveStatement, JeirNode.JeirNoop, JeirNode.JeirPrintStatement, JeirNode.JeirPrintVarStatement, JeirNode.JeirStatements, JeirNode.JeirStaticHeapAllocateStatement, JeirNode.JeirStoreStatement {
 
     record JeirStatements(JeirNode... children) implements JeirNode {}
 
@@ -22,4 +22,6 @@ public sealed interface JeirNode permits JeirNode.JeirArithmeticStatement, JeirN
     }
 
     record JeirFunctionDeclaration(JeppMethodPrototype prototype, JeirStatements body) {}
+
+    record JeirNoop() implements JeirNode {}
 }
