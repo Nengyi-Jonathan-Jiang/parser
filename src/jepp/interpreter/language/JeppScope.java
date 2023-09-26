@@ -1,6 +1,7 @@
 package jepp.interpreter.language;
 
 import jepp.interpreter.JeppInterpreterException;
+import jepp.interpreter.language.builtin.types.PrimitiveJeppValue;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -79,8 +80,13 @@ public class JeppScope {
         return hasType(name) ? types.get(name) : parentScope != null ? parentScope.getType(name) : null;
     }
 
+    public void createVariable(String name) {
+        variables.put(name, PrimitiveJeppValue.Void);
+    }
+
     public void setVariable(String name, JeppValue value) {
         if (!hasOwnVariable(name) && hasVariable(name)) {
+            System.out.println(name + " found in parent scope");
             parentScope.setVariable(name, value);
         } else {
             variables.put(name, value);

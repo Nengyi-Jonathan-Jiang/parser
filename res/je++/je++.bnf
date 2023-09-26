@@ -3,6 +3,8 @@ statements
 statements := statement statements
 statements __EPSILON__
 
+__DUMMY__ __EPSILON__
+
 statement := print-statement
 statement := block-statement
 statement := return-statement
@@ -32,15 +34,13 @@ loop-else := loop else-clause
 
 loop := while-loop
 loop := until-loop
-loop := do-while-loop
-loop := do-until-loop
 loop := for-loop
 loop := foreach-loop
 
-while-loop := while ( expr ) statement
-until-loop := until ( expr ) statement
-do-while-loop := do block-statement while ( expr ) ;
-do-until-loop := do block-statement until ( expr ) ;
+while-loop := while ( expr ) loop-body
+until-loop := until ( expr ) loop-body
+
+loop-body := statement __DUMMY__
 
 for-loop := for ( decl-statement expr ; expr ) statement
 foreach-loop := foreach ( type IDENTIFIER : expr ) statement
@@ -112,7 +112,7 @@ primary-expr := input-expr
 input-expr := input type
 
 function-definition := func IDENTIFIER parameter-list -> return type expr ;
-function-definition := func IDENTIFIER parameter-list -> type { statements }
+function-definition := func IDENTIFIER parameter-list -> type block-statement
 parameter-list := ( )
 parameter-list := ( parameters )
 parameters := parameter

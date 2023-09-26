@@ -7,6 +7,7 @@ import frontend.parser.ParseTreeNode;
 import jepp.frontend.JePPFrontend;
 import jepp.interpreter.language.*;
 import jepp.interpreter.language.builtin.JeppBaseScope;
+import jepp.interpreter.language.builtin.types.PrimitiveJeppValue;
 import org.jetbrains.annotations.NotNull;
 
 import static jepp.interpreter.language.builtin.types.PrimitiveJeppType.*;
@@ -41,7 +42,7 @@ public class JeppInterpreter {
                     code = new ParseTreeNode(
                             JePPFrontend.symbolTable.get("return-statement"), node.getChild(4), node.getChild(6)
                     );
-                } else code = node.getChild(6);
+                } else code = node.getChild(5);
 
                 ParseTreeNode parameters = node.getChild(2);
 
@@ -103,27 +104,81 @@ public class JeppInterpreter {
                 }
             }
 
+            case "loop-exit-statement" -> {
+                int o = switch(node.getChild(0).getValue().value) {
+                    case "break" -> 2;
+                    case "continue" -> 1;
+                    default -> throw new JeppInterpreterPanic("Unknown loop exit statement");
+                } + (node.getChildren().length == 3 ? Integer.parseInt(node.getChild(1).getValue().value) - 1 : 0);
+                return new PrimitiveJeppValue._SIG_exit(o);
+            }
             case "until-loop" -> {
                 int loop_limit = 10000;
+                JeppScope loopScope = pushNewScope();
+
                 ParseTreeNode expr = node.getChild(2);
                 while(!evaluate(expr).isTruthy()) {
                     JeppValue value = evaluate(node.getChild(4));
-                    if (value != Void) return value;
                     if (value instanceof _SIG_exit exit) {
+                        System.out.println("BREAK " + exit.level);
                         return exit.decrease_level();
                     }
+                    if (value != Void) return value;
                     if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
                 }
-            }
 
-            case "block-statement" -> {
-                for (ParseTreeNode statement : node.getChildren()) {
-                    JeppValue value = evaluate(statement);
-                    if (value != Void) return value;
+                popScope(loopScope);
+            }
+            case "while-loop" -> {
+                int loop_limit = 10000;
+                JeppScope loopScope = pushNewScope();
+
+                ParseTreeNode expr = node.getChild(2);
+                while(evaluate(expr).isTruthy()) {
+                    JeppValue value = evaluate(node.getChild(4));
                     if (value instanceof _SIG_exit exit) {
+                        System.out.println("BREAK " + exit.level);
                         return exit.decrease_level();
                     }
+                    if (value != Void) return value;
+                    if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
                 }
+
+                popScope(loopScope);
+            }
+            case "for-loop" -> {
+                int loop_limit = 10000;
+                JeppScope loopScope = pushNewScope();
+
+                evaluate(node.getChild(2));
+
+                ParseTreeNode loopCondition = node.getChild(3);
+                ParseTreeNode loopUpdate = node.getChild(5);
+                ParseTreeNode loopBody = node.getChild(7);
+                while(evaluate(loopCondition).isTruthy()) {
+                    JeppValue value = evaluate(loopBody);
+                    if (value instanceof _SIG_exit exit) {
+                        System.out.println("BREAK " + exit.level);
+                        return exit.decrease_level();
+                    }
+                    if (value != Void) return value;
+                    if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
+
+                    evaluate(loopUpdate);
+                }
+
+                popScope(loopScope);
+            }
+            case "loop-body" -> {
+                JeppValue res = evaluate(node.getChild(0));
+                if(res instanceof _SIG_exit exit) {
+                    System.out.println("BREAK " + exit.level);
+                    return exit.decrease_level();
+                }
+                return res;
+            }
+            case "block-statement" -> {
+                return evaluate(node.getChild(1));
             }
             case "call-expr" -> {
                 String methodName = node.getChild(0).getValue().value;
@@ -156,6 +211,26 @@ public class JeppInterpreter {
                 JeppMethod m = currentScope().getMethod("operator" + op, val1.getType(), val2.getType());
                 if (m == null) throw new JeppUnknownOperatorException(op, val1, val2);
                 return m.apply(this, val1, val2);
+            }
+            case "postfix-expr" -> {
+                String name = node.getChild(0).getValue().value;
+                String op = node.getChild(1).getValue().value;
+
+                // TODO: make more robust
+
+                JeppValue currValue = currentScope().getVariable(name);
+                int change = switch (op) {
+                    case "++" -> 1;
+                    case "--" -> -1;
+                    default -> throw new JeppInterpreterPanic("Unknown postfix operator: " + op);
+                };
+                JeppValue newValue = switch(currValue) {
+                    case JInteger val -> new JInteger(val.value + change);
+                    case JFloat val -> new JFloat(val.value + change);
+                    default -> throw new JeppInterpreterPanic("ouch");
+                };
+                currentScope().setVariable(name, newValue);
+                return currValue;
             }
             case "compare-expr" -> {
                 JeppValue val1 = evaluate(node.getChild(0));
@@ -206,6 +281,10 @@ public class JeppInterpreter {
             case "FLOAT-LITERAL" -> {
                 String tok_val = node.getValue().value;
                 return new JFloat(Float.parseFloat(tok_val));
+            }
+            case "BOOL-LITERAL" -> {
+                String tok_val = node.getValue().value;
+                return new JBoolean(Boolean.parseBoolean(tok_val));
             }
             case "print-statement" -> {
                 String val;

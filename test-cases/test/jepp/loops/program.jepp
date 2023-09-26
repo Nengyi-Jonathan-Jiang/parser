@@ -11,7 +11,16 @@ println sum;
 int fact = input int;
 print fact;
 print "! = ";
-for(int i = fact - 1; i >= 1; i--) {
+
+func comp(int i) -> int {
+    print "{i=";
+    print i;
+    print "}";
+    return i >= 1;
+}
+
+for(int i = fact - 1; comp(i); i--) {
+    println fact;
     fact *= i;
 }
 println fact;
