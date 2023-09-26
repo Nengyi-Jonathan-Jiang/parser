@@ -103,15 +103,26 @@ public class JeppInterpreter {
                 }
             }
 
-            case "loop" -> {
-
+            case "until-loop" -> {
+                int loop_limit = 10000;
+                ParseTreeNode expr = node.getChild(2);
+                while(!evaluate(expr).isTruthy()) {
+                    JeppValue value = evaluate(node.getChild(4));
+                    if (value != Void) return value;
+                    if (value instanceof _SIG_exit exit) {
+                        return exit.decrease_level();
+                    }
+                    if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
+                }
             }
 
             case "block-statement" -> {
                 for (ParseTreeNode statement : node.getChildren()) {
                     JeppValue value = evaluate(statement);
                     if (value != Void) return value;
-                    if (value == )
+                    if (value instanceof _SIG_exit exit) {
+                        return exit.decrease_level();
+                    }
                 }
             }
             case "call-expr" -> {

@@ -40,9 +40,7 @@ loop := foreach-loop
 while-loop := while ( expr ) statement
 until-loop := until ( expr ) statement
 do-while-loop := do block-statement while ( expr ) ;
-do-while-loop := do expr while ( expr ) ;
 do-until-loop := do block-statement until ( expr ) ;
-do-until-loop := do expr until ( expr ) ;
 
 for-loop := for ( decl-statement expr ; expr ) statement
 foreach-loop := foreach ( type IDENTIFIER : expr ) statement

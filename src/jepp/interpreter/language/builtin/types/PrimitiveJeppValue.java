@@ -77,7 +77,7 @@ public abstract sealed class PrimitiveJeppValue implements JeppValue permits Pri
         }
     }
 
-    public static sealed class JVoid extends PrimitiveJeppValue permits SIG_break, SIG_continue {
+    public static sealed class JVoid extends PrimitiveJeppValue permits _SIG_exit {
         private JVoid() {
             super(PrimitiveJeppType.JVoidT);
         }
@@ -93,25 +93,15 @@ public abstract sealed class PrimitiveJeppValue implements JeppValue permits Pri
         }
     }
 
-    public static JVoid Void = new JVoid();
-    public static final class SIG_break extends JVoid {
+    public static final JVoid Void = new JVoid();
+    public static final class _SIG_exit extends JVoid {
         public final int level;
-        public SIG_break() { this(1); }
-        public SIG_break(int level) {
+        public _SIG_exit() { this(1); }
+        public _SIG_exit(int level) {
             this.level = level;
         }
-        public SIG_break decrease_level() {
-            return new SIG_break(level - 1);
-        }
-    };
-    public static final class SIG_continue extends JVoid {
-        public final int level;
-        public SIG_continue() { this(1); }
-        public SIG_continue(int levels) {
-            this.level = levels;
-        }
-        public SIG_continue decrease_level() {
-            return new SIG_continue(level - 1);
+        public JVoid decrease_level() {
+            return level == 1 ? Void : new _SIG_exit(level - 1);
         }
     };
 
