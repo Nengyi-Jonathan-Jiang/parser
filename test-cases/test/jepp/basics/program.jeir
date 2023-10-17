@@ -1,0 +1,56 @@
+print "1 + 1 = "
+local int $1
+$1 <- 1
+local int $2
+$2 <- 1
+local int $3
+$3 <- add $1 $2
+end $1
+end $2
+dsp int $3
+end $3
+print "\n"
+
+print "2 + 5 * 3 + 7 = "
+local int $4
+$4 <- 2
+local int $5
+$5 <- 5
+local int $6
+$6 <- 3
+local int $7
+$7 <- mul $5 $6
+end $5
+end $6
+local int $8
+$8 <- add $4 $7
+end $4
+end $7
+local int $9
+$9 <- 7
+local int $10
+$10 <- add $8 $9
+end $8
+end $9
+dsp int $10
+end $10
+print "\n"
+
+print "2 - input() * 3 = "
+local int $11
+$11 <- 2
+local int $12
+$12 <- inp
+local int $13
+$13 <- 3
+local int $14
+$14 <- mul $12 $13
+end $12
+end $13
+local int $15
+$15 <- sub $11 $14
+end $11
+end $14
+dsp int $15
+end $15
+print "\n"

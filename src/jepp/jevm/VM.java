@@ -25,7 +25,7 @@ public class VM {
             var instruction = program.get(instruction_ptr);
             instruction.execute(this);
             instruction_ptr++;
-            if(++i > 1000000000) throw new JeVMError("TLE (Executed more than 1e9 instructions)");
+            if(++i > 1e9) throw new JeVMError("TLE (Executed more than 1e9 instructions)");
         }
     }
 
