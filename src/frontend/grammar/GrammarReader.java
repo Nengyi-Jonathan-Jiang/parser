@@ -15,7 +15,7 @@ public class GrammarReader {
         {
             String n = scan.next();
             while(true) {
-                if(n.equals("__NO_UNWRAP__"))  unwrap = false;
+                if(n.equals("__WRAP__"))  unwrap = false;
                 else if(n.equals("__CHAIN__")) chained = true;
                 else break;
 

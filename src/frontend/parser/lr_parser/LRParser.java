@@ -49,6 +49,8 @@ public final class LRParser implements Parser{
         private final ParsingTable table;
         private boolean finished;
 
+        private List<LRParsingError> errors = new ArrayList<>();
+
         public Parse(LRParser parser){
             stateStack.push(0);
             table = parser.table;
@@ -64,11 +66,14 @@ public final class LRParser implements Parser{
 
                 // Parse failed
                 if(entry == null) {
-                    throw new LRParsingError("Parse failed: expected one of "
-                        + table.acceptableSymbolsAtState(state).stream().map(Symbol::toString).collect(Collectors.joining(" "))
-                        + ", instead got " + token,
-                        table.acceptableSymbolsAtState(state)
+                    var err = new LRParsingError("Parse failed: expected one of "
+                            + table.acceptableSymbolsAtState(state).stream().map(Symbol::toString).collect(Collectors.joining(" "))
+                            + ", instead got " + token,
+                            table.acceptableSymbolsAtState(state)
                     );
+                    errors.add(err);
+
+                    return false;
                 }
 
                 switch (entry.getAction()) {
@@ -120,7 +125,13 @@ public final class LRParser implements Parser{
         }
 
         public ParseTreeNode getParseTree(){
-            return parseTreeNodeStack.getLast();
+            if(errors.isEmpty())
+                return parseTreeNodeStack.getLast();
+            else {
+                var err = new RuntimeException("Parse failed");
+                errors.forEach(err::addSuppressed);
+                throw err;
+            }
         }
 
         public boolean isFinished(){

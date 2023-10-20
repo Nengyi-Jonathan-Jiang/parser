@@ -1,3 +1,5 @@
+module main;
+
 func add3(int a, int b, int c) -> return int a + b + c;
 func greet(int id) -> void {
     print "Hello, user ";

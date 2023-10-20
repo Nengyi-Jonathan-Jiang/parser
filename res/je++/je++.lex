@@ -4,6 +4,11 @@ INT-LITERAL := (0|-?[123456789][\d]*)
 FLOAT-LITERAL := (0|-?[123456789][\d]*)(.[\d]+)?
 BOOL-LITERAL := (true|false)
 
+module
+using
+from
+as
+
 int
 float
 void

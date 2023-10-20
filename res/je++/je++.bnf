@@ -1,8 +1,40 @@
-statements
+program
+
+program __EPSILON__
+__CHAIN__ program := program file
+
+file := module-declaration imports statements
+module-declaration := module module-name ;
+
+__WRAP__ module-name := IDENTIFIER
+__WRAP__ module-name := module-name . IDENTIFIER
+
+imports __EPSILON__
+__CHAIN__ imports := imports import
+
+import := using import-clause ;
+
+import-clause := module-import-clause
+import-clause := aliased-module-import-clause
+import-clause := wildcard-import-clause
+import-clause := specific-import-clause
+
+simple-import-clause := module-name
+aliased-module-import-clause := module-name as module-name
+wildcard-import-clause := * from module-name
+specific-import-clause := { import-list } from module-name
+
+__WRAP__ import-list := specific-import
+__CHAIN__ import-list := import-list , specific-import
+
+specific-import := simple-specific-import
+specific-import := aliased-specific-import
+
+simple-specific-import := IDENTIFIER
+aliased-specific-import := IDENTIFIER as IDENTIFIER
 
 statements __EPSILON__
 __CHAIN__ statements := statements statement
-
 
 __DUMMY__ __EPSILON__
 
@@ -101,8 +133,8 @@ call-expr := postfix-expr ( argument-list )
 index-expr := postfix-expr [ argument-list ]
 argument-list := expr
 __CHAIN__ argument-list := argument-list , argument
-__NO_UNWRAP__ argument-list := argument
-__NO_UNWRAP__ argument := expr
+__WRAP__ argument-list := argument
+__WRAP__ argument := expr
 
 
 primary-expr := INT-LITERAL
@@ -117,7 +149,7 @@ function-definition := func IDENTIFIER parameter-list -> return type expr ;
 function-definition := func IDENTIFIER parameter-list -> type block-statement
 parameter-list := ( )
 parameter-list := ( parameters )
-__NO_UNWRAP__ parameters := parameter
+__WRAP__ parameters := parameter
 __CHAIN__ parameters := parameters , parameter
 parameter := type IDENTIFIER
 parameter := ref type IDENTIFIER
