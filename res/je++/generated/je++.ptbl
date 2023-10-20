@@ -91,6 +91,7 @@ a specific-import-clause s 20
 a wildcard-import-clause s 21
 g aliased-module-import-clause 16
 g import-clause 17
+g module-import-clause 18
 g module-name 19
 g specific-import-clause 20
 g wildcard-import-clause 21
@@ -232,6 +233,7 @@ s
 a from s 134
 s
 a . r 1 __w module-name IDENTIFIER
+a ; r 1 __w module-name IDENTIFIER
 a as r 1 __w module-name IDENTIFIER
 s
 a IDENTIFIER s 73
@@ -251,6 +253,7 @@ s
 a ; r 1 import-clause module-import-clause
 s
 a . s 132
+a ; r 1 module-import-clause module-name
 a as s 133
 s
 a ; r 1 import-clause specific-import-clause
@@ -1030,8 +1033,8 @@ a void r 1 loop while-loop
 a while r 1 loop while-loop
 a { r 1 loop while-loop
 s
-a . r 3 __w module-name module-name . IDENTIFIER
-a ; r 3 __w module-name module-name . IDENTIFIER
+a . r 3 __c module-name module-name . IDENTIFIER
+a ; r 3 __c module-name module-name . IDENTIFIER
 s
 a , r 1 simple-specific-import IDENTIFIER
 a as s 246
@@ -3516,8 +3519,9 @@ a from s 328
 s
 a IDENTIFIER s 326
 s
-a . r 3 __w module-name module-name . IDENTIFIER
-a as r 3 __w module-name module-name . IDENTIFIER
+a . r 3 __c module-name module-name . IDENTIFIER
+a ; r 3 __c module-name module-name . IDENTIFIER
+a as r 3 __c module-name module-name . IDENTIFIER
 s
 a Ω r 3 loop-exit-statement loop-exit INT-LITERAL ;
 a ( r 3 loop-exit-statement loop-exit INT-LITERAL ;

@@ -7,7 +7,7 @@ file := module-declaration imports statements
 module-declaration := module module-name ;
 
 __WRAP__ module-name := IDENTIFIER
-__WRAP__ module-name := module-name . IDENTIFIER
+__CHAIN__ module-name := module-name . IDENTIFIER
 
 imports __EPSILON__
 __CHAIN__ imports := imports import
@@ -19,7 +19,7 @@ import-clause := aliased-module-import-clause
 import-clause := wildcard-import-clause
 import-clause := specific-import-clause
 
-simple-import-clause := module-name
+module-import-clause := module-name
 aliased-module-import-clause := module-name as module-name
 wildcard-import-clause := * from module-name
 specific-import-clause := { import-list } from module-name

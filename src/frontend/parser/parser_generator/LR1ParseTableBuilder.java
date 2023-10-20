@@ -10,9 +10,6 @@ import frontend.util.Cache;
 import frontend.util.CompareCache;
 
 public class LR1ParseTableBuilder extends LRParseTableBuilderBase {
-    // See http://w.9lo.lublin.pl/DOC/bison-doc/html/LR-Table-Construction.html
-    // for IELR algorithm
-
     protected Cache<Item, ItemSet> memoization;
 
     public LR1ParseTableBuilder(Grammar grammar){
