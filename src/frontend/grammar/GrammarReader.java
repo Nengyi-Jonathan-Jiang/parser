@@ -10,17 +10,29 @@ public class GrammarReader {
     
     private static Rule ruleFromLine(Symbol.SymbolTable table, String str){
         Scanner scan = new Scanner(str);
-        String lhs = scan.next();
+        boolean unwrap = true, chained = false;
+        String lhs;
+        {
+            String n = scan.next();
+            while(true) {
+                if(n.equals("__NO_UNWRAP__"))  unwrap = false;
+                else if(n.equals("__CHAIN__")) chained = true;
+                else break;
+
+                n = scan.next();
+            }
+            lhs = n;
+        }
         if(scan.next().equals("__EPSILON__")){
             scan.close();
-            return new Rule(table.get(lhs));
+            return new Rule(table.get(lhs), false, true);
         }
         List<Symbol> rhs = new ArrayList<>();
 
         while(scan.hasNext()) rhs.add(table.get(scan.next()));
 
         scan.close();
-        return new Rule(table.get(lhs), rhs);
+        return new Rule(table.get(lhs), unwrap, chained, rhs);
     }
     private static Grammar readFromScanner(Symbol.SymbolTable table, Scanner scan){
         Symbol startSymbol = table.get(scan.next());

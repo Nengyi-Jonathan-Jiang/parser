@@ -131,7 +131,7 @@ public class ParsingTable{
                                             throw new Error("Could not get symbol " + a + " at state " + state);
                                         }
                                     }
-                                    table.setActionReduce(state, symbol, new Rule(lhs, rhs));
+                                    table.setActionReduce(state, symbol, new Rule(lhs, false, true, rhs));
                                 }
                             }
                         }

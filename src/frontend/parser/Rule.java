@@ -6,18 +6,26 @@ import java.util.*;
 
 public class Rule implements Comparable<Rule>, Printable {
     private static int _id = 0;
-    private final int id = ++_id;
+    public final int id = ++_id;
+    public final boolean unwrap;
+    public final boolean chained;
 
-    private final Symbol lhs;
-    private final SymbolString rhs;
-    private final boolean empty;
+    public final Symbol lhs;
+    public final SymbolString rhs;
+    public final boolean empty;
 
-    public Rule(Symbol lhs, Symbol... rhs){this(lhs, new SymbolString(rhs));}
-    public Rule(Symbol lhs, List<Symbol> rhs){this(lhs, rhs.toArray(Symbol[]::new));}
-    public Rule(Symbol lhs, SymbolString rhs){
+    public Rule(Symbol lhs, boolean unwrap, boolean chained, List<Symbol> rhs){
+        this(lhs, chained, unwrap, rhs.toArray(Symbol[]::new));
+    }
+    public Rule(Symbol lhs, boolean chained, boolean unwrap, Symbol... rhs){
+        this(lhs, new SymbolString(rhs), chained, unwrap);
+    }
+    public Rule(Symbol lhs, SymbolString rhs, boolean chained, boolean unwrap){
         this.lhs = lhs;
         this.rhs = rhs;
         this.empty = rhs.size() == 0;
+        this.chained = chained;
+        this.unwrap = unwrap;
     }
 
     public Symbol getLhs(){return lhs;}
@@ -32,7 +40,6 @@ public class Rule implements Comparable<Rule>, Printable {
 
     @Override
     public int compareTo(Rule that){
-//        return hashCode() - that.hashCode();
         return id - that.id;
     }
 }

@@ -51,7 +51,7 @@ public class JeppCompiler {
                     case "println" -> "\n";
                     default -> throw new JeppCompileException("Unknown print statement");
                 };
-                if (node.getChild(1).getDescription().equals("STRING-LITERAL")) {
+                if (node.getChild(1).matches("STRING-LITERAL")) {
                     String val = node.getChild(1).getValue().value;
                     yield new JeirNode.JeirPrintStatement(val.substring(1, val.length() - 1)
                             .replace("\\n", "\n")

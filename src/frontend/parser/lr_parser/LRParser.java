@@ -2,6 +2,7 @@ package frontend.parser.lr_parser;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import frontend.parser.Rule;
 import frontend.Symbol;
@@ -94,9 +95,23 @@ public final class LRParser implements Parser{
 
                         // Update parse tree - merge nodes into parent node
 
-                        if (reduceRule.getRhs().size() == 1) break;  //Simplify parse tree - remove unnecessary wrapping
+                        // Unwrap node if allowed to simplify the parse tree
+                        if (reduceRule.getRhs().size() == 1 && reduceRule.unwrap) break;
+
+                        // Handle chained nodes
                         ParseTreeNode[] children = new ParseTreeNode[reduceRule.getRhsSize()];
                         for (int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeNodeStack.pop();
+                        if(reduceRule.chained) {
+                            ParseTreeNode reducer = children[0];
+                            if(reducer.matches(lhs)) {
+                                var joinedChildren = Stream.concat(
+                                        reducer.children(),
+                                        Arrays.stream(children).skip(1)
+                                ).toArray(ParseTreeNode[]::new);
+                                parseTreeNodeStack.push(new ParseTreeNode(lhs, joinedChildren));
+                                continue;
+                            }
+                        }
                         parseTreeNodeStack.push(new ParseTreeNode(lhs, children));
                     }
                 }

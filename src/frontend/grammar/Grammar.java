@@ -24,7 +24,7 @@ public class Grammar implements Printable {
         this.rules = new ArrayList<>(rules);
 
         // Augment the grammar
-        startRule = new Rule(symbolTable.__START__, startSymbol);
+        startRule = new Rule(symbolTable.__START__, false, true, startSymbol);
         this.symbolTable = symbolTable;
         this.rules.add(startRule);
         

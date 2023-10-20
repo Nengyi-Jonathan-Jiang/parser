@@ -25,6 +25,7 @@ public class ParseTreeNode implements Iterable<ParseTreeNode> {
 
     public Stream<ParseTreeNode> children() {
         if (isLeaf()) throw new Error("Cannot access children of leaf node");
+        //noinspection DataFlowIssue
         return Arrays.stream(children);
     }
     public ParseTreeNode[] getChildren() {
@@ -51,6 +52,14 @@ public class ParseTreeNode implements Iterable<ParseTreeNode> {
 
     public Symbol getDescription() {
         return description;
+    }
+
+    public boolean matches(Symbol sym) {
+        return description.equals(sym);
+    }
+
+    public boolean matches(String sym) {
+        return description.equals(sym);
     }
 
     public String toString() {
