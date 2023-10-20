@@ -39,17 +39,23 @@ public class JeppInterpreter {
 
                 ParseTreeNode code;
                 if (node.getChild(4).matches("return")) code = new ParseTreeNode(
-                        JePPFrontend.symbolTable.get("return-statement"), node.getChild(4), node.getChild(6)
+                    JePPFrontend.symbolTable.get("return-statement"), node.getChild(4), node.getChild(6)
                 );
-                else code = node.getChild(5);
+                else code = node.getChild(5).getChild(1);
 
                 ParseTreeNode parameters = node.getChild(2);
+
+                System.out.println(parameters);
 
                 List<String> argNames = new ArrayList<>();
                 List<JeppType> argTypes = new ArrayList<>();
 
                 for (ParseTreeNode parameter :
-                        parameters.getChild(1).getChildren().length == 2 ? new ParseTreeNode[]{} : parameters.getChild(1).getChildren()
+                        parameters.getChild(1).getChildren().length == 2 ?
+                            Collections.<ParseTreeNode>emptyList() :
+                            Arrays.stream(parameters.getChild(1).getChildren())
+                                    .filter(i -> i.matches("parameter"))
+                                    .toList()
                 ) {
                     String argType, argName;
                     if (parameter.getChildren().length == 3) {
@@ -163,7 +169,11 @@ public class JeppInterpreter {
             case "call-expr" -> {
                 String methodName = node.getChild(0).getValue().value;
 
-                List<JeppValue> arguments = node.getChild(2).children().map(this::evaluate).toList();
+                List<JeppValue> arguments = node.getChild(2).children()
+                        .filter(i -> i.matches("argument"))
+                        .map(i -> i.getChild(0))
+                        .map(this::evaluate).toList();
+
                 List<JeppType> argTypes = arguments.stream().map(JeppValue::getType).toList();
 
                 JeppMethod m = currentScope().getMethod(methodName, argTypes.toArray(JeppType[]::new));

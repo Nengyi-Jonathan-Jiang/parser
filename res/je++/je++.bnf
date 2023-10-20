@@ -1,7 +1,7 @@
 statements
 
 statements __EPSILON__
-__CHAIN__ statements := statement statements
+__CHAIN__ statements := statements statement
 
 
 __DUMMY__ __EPSILON__
@@ -100,8 +100,9 @@ call-expr := postfix-expr ( )
 call-expr := postfix-expr ( argument-list )
 index-expr := postfix-expr [ argument-list ]
 argument-list := expr
-argument-list := expr , argument-list
-argument-list := expr
+__CHAIN__ argument-list := argument-list , argument
+__NO_UNWRAP__ argument-list := argument
+__NO_UNWRAP__ argument := expr
 
 
 primary-expr := INT-LITERAL
@@ -116,8 +117,8 @@ function-definition := func IDENTIFIER parameter-list -> return type expr ;
 function-definition := func IDENTIFIER parameter-list -> type block-statement
 parameter-list := ( )
 parameter-list := ( parameters )
-parameters := parameter
-parameters := parameter , parameters
+__NO_UNWRAP__ parameters := parameter
+__CHAIN__ parameters := parameters , parameter
 parameter := type IDENTIFIER
 parameter := ref type IDENTIFIER
 parameter := mut type IDENTIFIER

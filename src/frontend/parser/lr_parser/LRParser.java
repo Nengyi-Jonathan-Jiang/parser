@@ -102,6 +102,7 @@ public final class LRParser implements Parser{
                         ParseTreeNode[] children = new ParseTreeNode[reduceRule.getRhsSize()];
                         for (int j = reduceRule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeNodeStack.pop();
                         if(reduceRule.chained) {
+//                            System.out.println("Attempted to apply chaining to " + Arrays.deepToString(children));
                             ParseTreeNode reducer = children[0];
                             if(reducer.matches(lhs)) {
                                 var joinedChildren = Stream.concat(

@@ -56,14 +56,14 @@ public class ParsingTable{
             throw new RuntimeException("Unable to create file " + filename, e);
         }
         try(PrintWriter printWriter = new PrintWriter(filename)) {
-            printWriter.write(dataAsString(printWriter));
+            printWriter.write(dataAsString());
         }
         catch(Exception e){
             throw new RuntimeException("Error saving LR parse table to file", e);
         }
     }
 
-    private String dataAsString(PrintWriter printWriter) {
+    private String dataAsString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append(numStates);
@@ -83,8 +83,13 @@ public class ParsingTable{
                     case REDUCE -> {
                         sb.append(" r ");
                         Rule rule = ((ReduceEntry) entry).rule();
+
                         sb.append(rule.getRhsSize());
                         sb.append(" ");
+
+                        if(rule.chained) sb.append("__c ");
+                        if(!rule.unwrap) sb.append("__w ");
+
                         sb.append(rule.getLhs());
                         sb.append(" ");
                         sb.append(rule.getRhs().toString());
@@ -120,7 +125,20 @@ public class ParsingTable{
                                 case "s" -> table.setActionShift(state, symbol, scan.nextInt());
                                 case "r" -> {
                                     int rhsSize = scan.nextInt();
-                                    Symbol lhs = symbolTable.get(scan.next());
+                                    boolean chained = false, unwrap = true;
+                                    Symbol lhs;
+                                    {
+                                        String n = scan.next();
+                                        while(true) {
+                                            if(n.equals("__c")) chained = true;
+                                            else if(n.equals("__w")) unwrap = false;
+                                            else break;
+                                            n = scan.next();
+                                        }
+                                        lhs = symbolTable.get(n);
+                                    }
+
+
                                     Symbol[] rhs = new Symbol[rhsSize];
                                     for (int i = 0; i < rhsSize; i++) {
                                         var a = scan.next();
@@ -131,7 +149,7 @@ public class ParsingTable{
                                             throw new Error("Could not get symbol " + a + " at state " + state);
                                         }
                                     }
-                                    table.setActionReduce(state, symbol, new Rule(lhs, false, true, rhs));
+                                    table.setActionReduce(state, symbol, new Rule(lhs, chained, unwrap, rhs));
                                 }
                             }
                         }
