@@ -1,7 +1,8 @@
 statements
 
-statements := statement statements
 statements __EPSILON__
+__CHAIN__ statements := statement statements
+
 
 __DUMMY__ __EPSILON__
 

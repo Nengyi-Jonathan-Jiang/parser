@@ -38,7 +38,7 @@ public class JeppInterpreter {
                 String name = node.getChild(1).getValue().value;
 
                 ParseTreeNode code;
-                if (node.getChild(4).getDescription().equals("return")) code = new ParseTreeNode(
+                if (node.getChild(4).matches("return")) code = new ParseTreeNode(
                         JePPFrontend.symbolTable.get("return-statement"), node.getChild(4), node.getChild(6)
                 );
                 else code = node.getChild(5);
@@ -269,7 +269,7 @@ public class JeppInterpreter {
             }
             case "print-statement" -> {
                 String val;
-                if (node.getChild(1).getDescription().equals("STRING-LITERAL")) {
+                if (node.getChild(1).matches("STRING-LITERAL")) {
                     val = node.getChild(1).getValue().value;
                     val = val.substring(1, val.length() - 1)
                             .replace("\\n", "\n")

@@ -1,86 +1,109 @@
 534
 a Ω r 0 statements 
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 19
-a if s 20
-a input s 21
-a int s 22
-a nothing s 23
-a print s 24
-a println s 25
-a return s 26
-a until s 27
-a void s 28
-a while s 29
-a { s 30
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 33
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 36
-a expr s 37
-a expression-statement s 38
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 41
-a if-else-statement s 42
-a if-statement s 43
-a index-expr s 44
-a input-expr s 45
-a loop s 46
-a loop-else s 47
-a loop-exit s 48
-a loop-exit-statement s 49
-a mult-expr s 50
-a nothing-statement s 51
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 3
-a return-statement s 4
-a statement s 5
-a statements s 6
-a type s 7
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 33
-g call-expr 34
-g compare-expr 35
-g decl-statement 36
-g expr 37
-g expression-statement 38
-g for-loop 39
-g foreach-loop 40
-g function-definition 41
-g if-else-statement 42
-g if-statement 43
-g index-expr 44
-g input-expr 45
-g loop 46
-g loop-else 47
-g loop-exit 48
-g loop-exit-statement 49
-g mult-expr 50
-g nothing-statement 51
-g postfix-expr 1
-g primary-expr 2
-g print-statement 3
-g return-statement 4
-g statement 5
-g statements 6
-g type 7
-g until-loop 8
-g while-loop 9
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 20
+a if s 21
+a input s 22
+a int s 23
+a nothing s 24
+a print s 25
+a println s 26
+a return s 27
+a until s 28
+a void s 29
+a while s 30
+a { s 31
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 34
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 37
+a expr s 38
+a expression-statement s 39
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 42
+a if-else-statement s 43
+a if-statement s 44
+a index-expr s 45
+a input-expr s 46
+a loop s 47
+a loop-else s 48
+a loop-exit s 49
+a loop-exit-statement s 50
+a mult-expr s 51
+a nothing-statement s 1
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 4
+a return-statement s 5
+a statement s 6
+a statements s 7
+a type s 8
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 34
+g call-expr 35
+g compare-expr 36
+g decl-statement 37
+g expr 38
+g expression-statement 39
+g for-loop 40
+g foreach-loop 41
+g function-definition 42
+g if-else-statement 43
+g if-statement 44
+g index-expr 45
+g input-expr 46
+g loop 47
+g loop-else 48
+g loop-exit 49
+g loop-exit-statement 50
+g mult-expr 51
+g nothing-statement 1
+g postfix-expr 2
+g primary-expr 3
+g print-statement 4
+g return-statement 5
+g statement 6
+g statements 7
+g type 8
+g until-loop 10
+g while-loop 11
+s
+a Ω r 1 statement nothing-statement
+a ( r 1 statement nothing-statement
+a FLOAT-LITERAL r 1 statement nothing-statement
+a IDENTIFIER r 1 statement nothing-statement
+a INT-LITERAL r 1 statement nothing-statement
+a break r 1 statement nothing-statement
+a continue r 1 statement nothing-statement
+a float r 1 statement nothing-statement
+a for r 1 statement nothing-statement
+a foreach r 1 statement nothing-statement
+a func r 1 statement nothing-statement
+a if r 1 statement nothing-statement
+a input r 1 statement nothing-statement
+a int r 1 statement nothing-statement
+a nothing r 1 statement nothing-statement
+a print r 1 statement nothing-statement
+a println r 1 statement nothing-statement
+a return r 1 statement nothing-statement
+a until r 1 statement nothing-statement
+a void r 1 statement nothing-statement
+a while r 1 statement nothing-statement
+a { r 1 statement nothing-statement
 s
 a != r 1 mult-expr postfix-expr
 a % r 1 mult-expr postfix-expr
@@ -165,91 +188,117 @@ a while r 1 statement return-statement
 a { r 1 statement return-statement
 s
 a Ω r 0 statements 
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 19
-a if s 20
-a input s 21
-a int s 22
-a nothing s 23
-a print s 24
-a println s 25
-a return s 26
-a until s 27
-a void s 28
-a while s 29
-a { s 30
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 33
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 36
-a expr s 37
-a expression-statement s 38
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 41
-a if-else-statement s 42
-a if-statement s 43
-a index-expr s 44
-a input-expr s 45
-a loop s 46
-a loop-else s 47
-a loop-exit s 48
-a loop-exit-statement s 49
-a mult-expr s 50
-a nothing-statement s 51
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 3
-a return-statement s 4
-a statement s 5
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 20
+a if s 21
+a input s 22
+a int s 23
+a nothing s 24
+a print s 25
+a println s 26
+a return s 27
+a until s 28
+a void s 29
+a while s 30
+a { s 31
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 34
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 37
+a expr s 38
+a expression-statement s 39
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 42
+a if-else-statement s 43
+a if-statement s 44
+a index-expr s 45
+a input-expr s 46
+a loop s 47
+a loop-else s 48
+a loop-exit s 49
+a loop-exit-statement s 50
+a mult-expr s 51
+a nothing-statement s 1
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 4
+a return-statement s 5
+a statement s 6
 a statements s 52
-a type s 7
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 33
-g call-expr 34
-g compare-expr 35
-g decl-statement 36
-g expr 37
-g expression-statement 38
-g for-loop 39
-g foreach-loop 40
-g function-definition 41
-g if-else-statement 42
-g if-statement 43
-g index-expr 44
-g input-expr 45
-g loop 46
-g loop-else 47
-g loop-exit 48
-g loop-exit-statement 49
-g mult-expr 50
-g nothing-statement 51
-g postfix-expr 1
-g primary-expr 2
-g print-statement 3
-g return-statement 4
-g statement 5
+a type s 8
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 34
+g call-expr 35
+g compare-expr 36
+g decl-statement 37
+g expr 38
+g expression-statement 39
+g for-loop 40
+g foreach-loop 41
+g function-definition 42
+g if-else-statement 43
+g if-statement 44
+g index-expr 45
+g input-expr 46
+g loop 47
+g loop-else 48
+g loop-exit 49
+g loop-exit-statement 50
+g mult-expr 51
+g nothing-statement 1
+g postfix-expr 2
+g primary-expr 3
+g print-statement 4
+g return-statement 5
+g statement 6
 g statements 52
-g type 7
-g until-loop 8
-g while-loop 9
+g type 8
+g until-loop 10
+g while-loop 11
 s
 a Ω a 
 s
 a IDENTIFIER s 147
+s
+a ( s 90
+a FLOAT-LITERAL s 91
+a IDENTIFIER s 92
+a INT-LITERAL s 93
+a input s 94
+a add-expr s 95
+a assignment-expr s 96
+a call-expr s 97
+a compare-expr s 98
+a expr s 99
+a index-expr s 100
+a input-expr s 101
+a mult-expr s 102
+a postfix-expr s 88
+a primary-expr s 89
+g add-expr 95
+g assignment-expr 96
+g call-expr 97
+g compare-expr 98
+g expr 99
+g index-expr 100
+g input-expr 101
+g mult-expr 102
+g postfix-expr 88
+g primary-expr 89
 s
 a Ω r 1 loop until-loop
 a ( r 1 loop until-loop
@@ -298,32 +347,6 @@ a until r 1 loop while-loop
 a void r 1 loop while-loop
 a while r 1 loop while-loop
 a { r 1 loop while-loop
-s
-a ( s 90
-a FLOAT-LITERAL s 91
-a IDENTIFIER s 92
-a INT-LITERAL s 93
-a input s 94
-a add-expr s 95
-a assignment-expr s 96
-a call-expr s 97
-a compare-expr s 98
-a expr s 99
-a index-expr s 100
-a input-expr s 101
-a mult-expr s 102
-a postfix-expr s 88
-a primary-expr s 89
-g add-expr 95
-g assignment-expr 96
-g call-expr 97
-g compare-expr 98
-g expr 99
-g index-expr 100
-g input-expr 101
-g mult-expr 102
-g postfix-expr 88
-g primary-expr 89
 s
 a != r 1 primary-expr FLOAT-LITERAL
 a % r 1 primary-expr FLOAT-LITERAL
@@ -410,85 +433,85 @@ a IDENTIFIER r 1 type int
 s
 a ; s 138
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 104
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 105
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 105
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 106
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 107
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 107
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 103
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 103
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( s 143
 s
@@ -496,88 +519,88 @@ a IDENTIFIER r 1 type void
 s
 a ( s 142
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 62
-a if s 63
-a input s 21
-a int s 22
-a nothing s 64
-a print s 65
-a println s 66
-a return s 67
-a until s 68
-a void s 28
-a while s 69
-a { s 70
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 63
+a if s 64
+a input s 22
+a int s 23
+a nothing s 65
+a print s 66
+a println s 67
+a return s 68
+a until s 69
+a void s 29
+a while s 70
+a { s 71
 a } r 0 statements 
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 71
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 72
-a expr s 73
-a expression-statement s 74
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 77
-a if-else-statement s 78
-a if-statement s 79
-a index-expr s 44
-a input-expr s 45
-a loop s 80
-a loop-else s 81
-a loop-exit s 82
-a loop-exit-statement s 83
-a mult-expr s 50
-a nothing-statement s 84
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 53
-a return-statement s 54
-a statement s 55
-a statements s 56
-a type s 57
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 71
-g call-expr 34
-g compare-expr 35
-g decl-statement 72
-g expr 73
-g expression-statement 74
-g for-loop 75
-g foreach-loop 76
-g function-definition 77
-g if-else-statement 78
-g if-statement 79
-g index-expr 44
-g input-expr 45
-g loop 80
-g loop-else 81
-g loop-exit 82
-g loop-exit-statement 83
-g mult-expr 50
-g nothing-statement 84
-g postfix-expr 1
-g primary-expr 2
-g print-statement 53
-g return-statement 54
-g statement 55
-g statements 56
-g type 57
-g until-loop 58
-g while-loop 59
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 72
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 73
+a expr s 74
+a expression-statement s 75
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 78
+a if-else-statement s 79
+a if-statement s 80
+a index-expr s 45
+a input-expr s 46
+a loop s 81
+a loop-else s 82
+a loop-exit s 83
+a loop-exit-statement s 84
+a mult-expr s 51
+a nothing-statement s 53
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 54
+a return-statement s 55
+a statement s 56
+a statements s 57
+a type s 58
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 72
+g call-expr 35
+g compare-expr 36
+g decl-statement 73
+g expr 74
+g expression-statement 75
+g for-loop 76
+g foreach-loop 77
+g function-definition 78
+g if-else-statement 79
+g if-statement 80
+g index-expr 45
+g input-expr 46
+g loop 81
+g loop-else 82
+g loop-exit 83
+g loop-exit-statement 84
+g mult-expr 51
+g nothing-statement 53
+g postfix-expr 2
+g primary-expr 3
+g print-statement 54
+g return-statement 55
+g statement 56
+g statements 57
+g type 58
+g until-loop 59
+g while-loop 60
 s
 a != r 1 compare-expr add-expr
 a + s 122
@@ -935,7 +958,8 @@ a >= r 1 add-expr mult-expr
 a mult-op s 128
 g mult-op 128
 s
-a Ω r 1 statement nothing-statement
+a Ω r 2 statements statement statements
+s
 a ( r 1 statement nothing-statement
 a FLOAT-LITERAL r 1 statement nothing-statement
 a IDENTIFIER r 1 statement nothing-statement
@@ -957,8 +981,7 @@ a until r 1 statement nothing-statement
 a void r 1 statement nothing-statement
 a while r 1 statement nothing-statement
 a { r 1 statement nothing-statement
-s
-a Ω r 2 statements statement statements
+a } r 1 statement nothing-statement
 s
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
@@ -1006,88 +1029,88 @@ a while r 1 statement return-statement
 a { r 1 statement return-statement
 a } r 1 statement return-statement
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 62
-a if s 63
-a input s 21
-a int s 22
-a nothing s 64
-a print s 65
-a println s 66
-a return s 67
-a until s 68
-a void s 28
-a while s 69
-a { s 70
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 63
+a if s 64
+a input s 22
+a int s 23
+a nothing s 65
+a print s 66
+a println s 67
+a return s 68
+a until s 69
+a void s 29
+a while s 70
+a { s 71
 a } r 0 statements 
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 71
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 72
-a expr s 73
-a expression-statement s 74
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 77
-a if-else-statement s 78
-a if-statement s 79
-a index-expr s 44
-a input-expr s 45
-a loop s 80
-a loop-else s 81
-a loop-exit s 82
-a loop-exit-statement s 83
-a mult-expr s 50
-a nothing-statement s 84
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 53
-a return-statement s 54
-a statement s 55
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 72
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 73
+a expr s 74
+a expression-statement s 75
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 78
+a if-else-statement s 79
+a if-statement s 80
+a index-expr s 45
+a input-expr s 46
+a loop s 81
+a loop-else s 82
+a loop-exit s 83
+a loop-exit-statement s 84
+a mult-expr s 51
+a nothing-statement s 53
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 54
+a return-statement s 55
+a statement s 56
 a statements s 149
-a type s 57
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 71
-g call-expr 34
-g compare-expr 35
-g decl-statement 72
-g expr 73
-g expression-statement 74
-g for-loop 75
-g foreach-loop 76
-g function-definition 77
-g if-else-statement 78
-g if-statement 79
-g index-expr 44
-g input-expr 45
-g loop 80
-g loop-else 81
-g loop-exit 82
-g loop-exit-statement 83
-g mult-expr 50
-g nothing-statement 84
-g postfix-expr 1
-g primary-expr 2
-g print-statement 53
-g return-statement 54
-g statement 55
+a type s 58
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 72
+g call-expr 35
+g compare-expr 36
+g decl-statement 73
+g expr 74
+g expression-statement 75
+g for-loop 76
+g foreach-loop 77
+g function-definition 78
+g if-else-statement 79
+g if-statement 80
+g index-expr 45
+g input-expr 46
+g loop 81
+g loop-else 82
+g loop-exit 83
+g loop-exit-statement 84
+g mult-expr 51
+g nothing-statement 53
+g postfix-expr 2
+g primary-expr 3
+g print-statement 54
+g return-statement 55
+g statement 56
 g statements 149
-g type 57
-g until-loop 58
-g while-loop 59
+g type 58
+g until-loop 59
+g while-loop 60
 s
 a } s 245
 s
@@ -1151,172 +1174,172 @@ a ( s 233
 s
 a ; s 232
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 207
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 208
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 208
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 209
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 210
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 210
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 206
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 206
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( s 237
 s
 a ( s 236
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 62
-a if s 63
-a input s 21
-a int s 22
-a nothing s 64
-a print s 65
-a println s 66
-a return s 67
-a until s 68
-a void s 28
-a while s 69
-a { s 70
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 63
+a if s 64
+a input s 22
+a int s 23
+a nothing s 65
+a print s 66
+a println s 67
+a return s 68
+a until s 69
+a void s 29
+a while s 70
+a { s 71
 a } r 0 statements 
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 71
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 72
-a expr s 73
-a expression-statement s 74
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 77
-a if-else-statement s 78
-a if-statement s 79
-a index-expr s 44
-a input-expr s 45
-a loop s 80
-a loop-else s 81
-a loop-exit s 82
-a loop-exit-statement s 83
-a mult-expr s 50
-a nothing-statement s 84
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 53
-a return-statement s 54
-a statement s 55
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 72
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 73
+a expr s 74
+a expression-statement s 75
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 78
+a if-else-statement s 79
+a if-statement s 80
+a index-expr s 45
+a input-expr s 46
+a loop s 81
+a loop-else s 82
+a loop-exit s 83
+a loop-exit-statement s 84
+a mult-expr s 51
+a nothing-statement s 53
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 54
+a return-statement s 55
+a statement s 56
 a statements s 150
-a type s 57
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 71
-g call-expr 34
-g compare-expr 35
-g decl-statement 72
-g expr 73
-g expression-statement 74
-g for-loop 75
-g foreach-loop 76
-g function-definition 77
-g if-else-statement 78
-g if-statement 79
-g index-expr 44
-g input-expr 45
-g loop 80
-g loop-else 81
-g loop-exit 82
-g loop-exit-statement 83
-g mult-expr 50
-g nothing-statement 84
-g postfix-expr 1
-g primary-expr 2
-g print-statement 53
-g return-statement 54
-g statement 55
+a type s 58
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 72
+g call-expr 35
+g compare-expr 36
+g decl-statement 73
+g expr 74
+g expression-statement 75
+g for-loop 76
+g foreach-loop 77
+g function-definition 78
+g if-else-statement 79
+g if-statement 80
+g index-expr 45
+g input-expr 46
+g loop 81
+g loop-else 82
+g loop-exit 83
+g loop-exit-statement 84
+g mult-expr 51
+g nothing-statement 53
+g postfix-expr 2
+g primary-expr 3
+g print-statement 54
+g return-statement 55
+g statement 56
 g statements 150
-g type 57
-g until-loop 58
-g while-loop 59
+g type 58
+g until-loop 59
+g while-loop 60
 s
 a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
@@ -1584,108 +1607,85 @@ a while r 1 statement loop-exit-statement
 a { r 1 statement loop-exit-statement
 a } r 1 statement loop-exit-statement
 s
-a ( r 1 statement nothing-statement
-a FLOAT-LITERAL r 1 statement nothing-statement
-a IDENTIFIER r 1 statement nothing-statement
-a INT-LITERAL r 1 statement nothing-statement
-a break r 1 statement nothing-statement
-a continue r 1 statement nothing-statement
-a float r 1 statement nothing-statement
-a for r 1 statement nothing-statement
-a foreach r 1 statement nothing-statement
-a func r 1 statement nothing-statement
-a if r 1 statement nothing-statement
-a input r 1 statement nothing-statement
-a int r 1 statement nothing-statement
-a nothing r 1 statement nothing-statement
-a print r 1 statement nothing-statement
-a println r 1 statement nothing-statement
-a return r 1 statement nothing-statement
-a until r 1 statement nothing-statement
-a void r 1 statement nothing-statement
-a while r 1 statement nothing-statement
-a { r 1 statement nothing-statement
-a } r 1 statement nothing-statement
-s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 19
-a if s 20
-a input s 21
-a int s 22
-a nothing s 23
-a print s 24
-a println s 25
-a return s 26
-a until s 27
-a void s 28
-a while s 29
-a { s 30
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 154
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 155
-a expr s 37
-a expression-statement s 156
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 157
-a if-else-statement s 158
-a if-statement s 159
-a index-expr s 44
-a input-expr s 45
-a loop s 160
-a loop-else s 161
-a loop-exit s 48
-a loop-exit-statement s 162
-a mult-expr s 50
-a nothing-statement s 163
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 151
-a return-statement s 152
-a statement s 153
-a type s 7
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 154
-g call-expr 34
-g compare-expr 35
-g decl-statement 155
-g expr 37
-g expression-statement 156
-g for-loop 39
-g foreach-loop 40
-g function-definition 157
-g if-else-statement 158
-g if-statement 159
-g index-expr 44
-g input-expr 45
-g loop 160
-g loop-else 161
-g loop-exit 48
-g loop-exit-statement 162
-g mult-expr 50
-g nothing-statement 163
-g postfix-expr 1
-g primary-expr 2
-g print-statement 151
-g return-statement 152
-g statement 153
-g type 7
-g until-loop 8
-g while-loop 9
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 20
+a if s 21
+a input s 22
+a int s 23
+a nothing s 24
+a print s 25
+a println s 26
+a return s 27
+a until s 28
+a void s 29
+a while s 30
+a { s 31
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 155
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 156
+a expr s 38
+a expression-statement s 157
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 158
+a if-else-statement s 159
+a if-statement s 160
+a index-expr s 45
+a input-expr s 46
+a loop s 161
+a loop-else s 162
+a loop-exit s 49
+a loop-exit-statement s 163
+a mult-expr s 51
+a nothing-statement s 151
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 152
+a return-statement s 153
+a statement s 154
+a type s 8
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 155
+g call-expr 35
+g compare-expr 36
+g decl-statement 156
+g expr 38
+g expression-statement 157
+g for-loop 40
+g foreach-loop 41
+g function-definition 158
+g if-else-statement 159
+g if-statement 160
+g index-expr 45
+g input-expr 46
+g loop 161
+g loop-else 162
+g loop-exit 49
+g loop-exit-statement 163
+g mult-expr 51
+g nothing-statement 151
+g postfix-expr 2
+g primary-expr 3
+g print-statement 152
+g return-statement 153
+g statement 154
+g type 8
+g until-loop 10
+g while-loop 11
 s
 a Ω r 2 if-else-statement if-statement else-clause
 a ( r 2 if-else-statement if-statement else-clause
@@ -1998,29 +1998,29 @@ a IDENTIFIER r 1 assignment-op =
 a INT-LITERAL r 1 assignment-op =
 a input r 1 assignment-op =
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
 a assignment-expr s 212
-a call-expr s 34
-a compare-expr s 35
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
+a call-expr s 35
+a compare-expr s 36
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
 g assignment-expr 212
-g call-expr 34
-g compare-expr 35
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g compare-expr 36
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( r 1 compare-op !=
 a FLOAT-LITERAL r 1 compare-op !=
@@ -2058,25 +2058,25 @@ a IDENTIFIER r 1 compare-op >=
 a INT-LITERAL r 1 compare-op >=
 a input r 1 compare-op >=
 s
-a ( s 10
-a FLOAT-LITERAL s 11
+a ( s 9
+a FLOAT-LITERAL s 12
 a IDENTIFIER s 215
-a INT-LITERAL s 13
-a input s 21
+a INT-LITERAL s 14
+a input s 22
 a add-expr s 216
-a call-expr s 34
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
+a call-expr s 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
 g add-expr 216
-g call-expr 34
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( r 1 add-op +
 a FLOAT-LITERAL r 1 add-op +
@@ -2090,23 +2090,23 @@ a IDENTIFIER r 1 add-op -
 a INT-LITERAL r 1 add-op -
 a input r 1 add-op -
 s
-a ( s 10
-a FLOAT-LITERAL s 11
+a ( s 9
+a FLOAT-LITERAL s 12
 a IDENTIFIER s 215
-a INT-LITERAL s 13
-a input s 21
-a call-expr s 34
-a index-expr s 44
-a input-expr s 45
+a INT-LITERAL s 14
+a input s 22
+a call-expr s 35
+a index-expr s 45
+a input-expr s 46
 a mult-expr s 218
-a postfix-expr s 1
-a primary-expr s 2
-g call-expr 34
-g index-expr 44
-g input-expr 45
+a postfix-expr s 2
+a primary-expr s 3
+g call-expr 35
+g index-expr 45
+g input-expr 46
 g mult-expr 218
-g postfix-expr 1
-g primary-expr 2
+g postfix-expr 2
+g primary-expr 3
 s
 a ( r 1 mult-op %
 a FLOAT-LITERAL r 1 mult-op %
@@ -2126,21 +2126,21 @@ a IDENTIFIER r 1 mult-op /
 a INT-LITERAL r 1 mult-op /
 a input r 1 mult-op /
 s
-a ( s 10
-a FLOAT-LITERAL s 11
+a ( s 9
+a FLOAT-LITERAL s 12
 a IDENTIFIER s 215
-a INT-LITERAL s 13
-a input s 21
-a call-expr s 34
-a index-expr s 44
-a input-expr s 45
+a INT-LITERAL s 14
+a input s 22
+a call-expr s 35
+a index-expr s 45
+a input-expr s 46
 a postfix-expr s 219
-a primary-expr s 2
-g call-expr 34
-g index-expr 44
-g input-expr 45
+a primary-expr s 3
+g call-expr 35
+g index-expr 45
+g input-expr 46
 g postfix-expr 219
-g primary-expr 2
+g primary-expr 3
 s
 a != r 2 postfix-expr postfix-expr postfix-op
 a % r 2 postfix-expr postfix-expr postfix-op
@@ -2444,17 +2444,17 @@ g mult-expr 102
 g postfix-expr 88
 g primary-expr 89
 s
-a float s 16
-a int s 22
-a void s 28
+a float s 17
+a int s 23
+a void s 29
 a decl-statement s 168
 a type s 167
 g decl-statement 168
 g type 167
 s
-a float s 16
-a int s 22
-a void s 28
+a float s 17
+a int s 23
+a void s 29
 a type s 231
 g type 231
 s
@@ -2490,6 +2490,29 @@ s
 a } r 2 statements statement statements
 s
 a } s 320
+s
+a Ω r 1 statement nothing-statement
+a ( r 1 statement nothing-statement
+a FLOAT-LITERAL r 1 statement nothing-statement
+a IDENTIFIER r 1 statement nothing-statement
+a INT-LITERAL r 1 statement nothing-statement
+a break r 1 statement nothing-statement
+a continue r 1 statement nothing-statement
+a float r 1 statement nothing-statement
+a for r 1 statement nothing-statement
+a foreach r 1 statement nothing-statement
+a func r 1 statement nothing-statement
+a if r 1 statement nothing-statement
+a input r 1 statement nothing-statement
+a int r 1 statement nothing-statement
+a nothing r 1 statement nothing-statement
+a print r 1 statement nothing-statement
+a println r 1 statement nothing-statement
+a return r 1 statement nothing-statement
+a until r 1 statement nothing-statement
+a void r 1 statement nothing-statement
+a while r 1 statement nothing-statement
+a { r 1 statement nothing-statement
 s
 a Ω r 1 statement print-statement
 a ( r 1 statement print-statement
@@ -2773,108 +2796,85 @@ a void r 1 statement loop-exit-statement
 a while r 1 statement loop-exit-statement
 a { r 1 statement loop-exit-statement
 s
-a Ω r 1 statement nothing-statement
-a ( r 1 statement nothing-statement
-a FLOAT-LITERAL r 1 statement nothing-statement
-a IDENTIFIER r 1 statement nothing-statement
-a INT-LITERAL r 1 statement nothing-statement
-a break r 1 statement nothing-statement
-a continue r 1 statement nothing-statement
-a float r 1 statement nothing-statement
-a for r 1 statement nothing-statement
-a foreach r 1 statement nothing-statement
-a func r 1 statement nothing-statement
-a if r 1 statement nothing-statement
-a input r 1 statement nothing-statement
-a int r 1 statement nothing-statement
-a nothing r 1 statement nothing-statement
-a print r 1 statement nothing-statement
-a println r 1 statement nothing-statement
-a return r 1 statement nothing-statement
-a until r 1 statement nothing-statement
-a void r 1 statement nothing-statement
-a while r 1 statement nothing-statement
-a { r 1 statement nothing-statement
-s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 62
-a if s 63
-a input s 21
-a int s 22
-a nothing s 64
-a print s 65
-a println s 66
-a return s 67
-a until s 68
-a void s 28
-a while s 69
-a { s 70
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 255
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 256
-a expr s 73
-a expression-statement s 257
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 258
-a if-else-statement s 259
-a if-statement s 260
-a index-expr s 44
-a input-expr s 45
-a loop s 261
-a loop-else s 262
-a loop-exit s 82
-a loop-exit-statement s 263
-a mult-expr s 50
-a nothing-statement s 264
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 252
-a return-statement s 253
-a statement s 254
-a type s 57
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 255
-g call-expr 34
-g compare-expr 35
-g decl-statement 256
-g expr 73
-g expression-statement 257
-g for-loop 75
-g foreach-loop 76
-g function-definition 258
-g if-else-statement 259
-g if-statement 260
-g index-expr 44
-g input-expr 45
-g loop 261
-g loop-else 262
-g loop-exit 82
-g loop-exit-statement 263
-g mult-expr 50
-g nothing-statement 264
-g postfix-expr 1
-g primary-expr 2
-g print-statement 252
-g return-statement 253
-g statement 254
-g type 57
-g until-loop 58
-g while-loop 59
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 63
+a if s 64
+a input s 22
+a int s 23
+a nothing s 65
+a print s 66
+a println s 67
+a return s 68
+a until s 69
+a void s 29
+a while s 70
+a { s 71
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 256
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 257
+a expr s 74
+a expression-statement s 258
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 259
+a if-else-statement s 260
+a if-statement s 261
+a index-expr s 45
+a input-expr s 46
+a loop s 262
+a loop-else s 263
+a loop-exit s 83
+a loop-exit-statement s 264
+a mult-expr s 51
+a nothing-statement s 252
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 253
+a return-statement s 254
+a statement s 255
+a type s 58
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 256
+g call-expr 35
+g compare-expr 36
+g decl-statement 257
+g expr 74
+g expression-statement 258
+g for-loop 76
+g foreach-loop 77
+g function-definition 259
+g if-else-statement 260
+g if-statement 261
+g index-expr 45
+g input-expr 46
+g loop 262
+g loop-else 263
+g loop-exit 83
+g loop-exit-statement 264
+g mult-expr 51
+g nothing-statement 252
+g postfix-expr 2
+g primary-expr 3
+g print-statement 253
+g return-statement 254
+g statement 255
+g type 58
+g until-loop 59
+g while-loop 60
 s
 a ( r 2 if-else-statement if-statement else-clause
 a FLOAT-LITERAL r 2 if-else-statement if-statement else-clause
@@ -2924,31 +2924,31 @@ a } r 2 loop-else loop else-clause
 s
 a IDENTIFIER s 315
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 274
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 274
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a != r 1 mult-expr postfix-expr
 a % r 1 mult-expr postfix-expr
@@ -3706,18 +3706,18 @@ g primary-expr 170
 s
 a -> s 333
 s
-a ) s 302
-a float s 16
-a int s 22
-a mut s 303
-a ref s 304
-a void s 28
-a parameter s 305
-a parameters s 300
-a type s 301
-g parameter 305
-g parameters 300
-g type 301
+a ) s 303
+a float s 17
+a int s 23
+a mut s 304
+a ref s 305
+a void s 29
+a parameter s 300
+a parameters s 301
+a type s 302
+g parameter 300
+g parameters 301
+g type 302
 s
 a != r 2 input-expr input type
 a % r 2 input-expr input type
@@ -3915,17 +3915,17 @@ g mult-expr 102
 g postfix-expr 88
 g primary-expr 89
 s
-a float s 16
-a int s 22
-a void s 28
+a float s 17
+a int s 23
+a void s 29
 a decl-statement s 265
 a type s 167
 g decl-statement 265
 g type 167
 s
-a float s 16
-a int s 22
-a void s 28
+a float s 17
+a int s 23
+a void s 29
 a type s 314
 g type 314
 s
@@ -4119,29 +4119,29 @@ a void r 3 print-statement println STRING-LITERAL ;
 a while r 3 print-statement println STRING-LITERAL ;
 a { r 3 print-statement println STRING-LITERAL ;
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
 a assignment-expr s 278
-a call-expr s 34
-a compare-expr s 35
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
+a call-expr s 35
+a compare-expr s 36
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
 g assignment-expr 278
-g call-expr 34
-g compare-expr 35
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g compare-expr 36
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a != r 3 primary-expr ( expr )
 a % r 3 primary-expr ( expr )
@@ -4159,6 +4159,29 @@ a == r 3 primary-expr ( expr )
 a > r 3 primary-expr ( expr )
 a >= r 3 primary-expr ( expr )
 a [ r 3 primary-expr ( expr )
+s
+a ( r 1 statement nothing-statement
+a FLOAT-LITERAL r 1 statement nothing-statement
+a IDENTIFIER r 1 statement nothing-statement
+a INT-LITERAL r 1 statement nothing-statement
+a break r 1 statement nothing-statement
+a continue r 1 statement nothing-statement
+a float r 1 statement nothing-statement
+a for r 1 statement nothing-statement
+a foreach r 1 statement nothing-statement
+a func r 1 statement nothing-statement
+a if r 1 statement nothing-statement
+a input r 1 statement nothing-statement
+a int r 1 statement nothing-statement
+a nothing r 1 statement nothing-statement
+a print r 1 statement nothing-statement
+a println r 1 statement nothing-statement
+a return r 1 statement nothing-statement
+a until r 1 statement nothing-statement
+a void r 1 statement nothing-statement
+a while r 1 statement nothing-statement
+a { r 1 statement nothing-statement
+a } r 1 statement nothing-statement
 s
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
@@ -4442,54 +4465,31 @@ a while r 1 statement loop-exit-statement
 a { r 1 statement loop-exit-statement
 a } r 1 statement loop-exit-statement
 s
-a ( r 1 statement nothing-statement
-a FLOAT-LITERAL r 1 statement nothing-statement
-a IDENTIFIER r 1 statement nothing-statement
-a INT-LITERAL r 1 statement nothing-statement
-a break r 1 statement nothing-statement
-a continue r 1 statement nothing-statement
-a float r 1 statement nothing-statement
-a for r 1 statement nothing-statement
-a foreach r 1 statement nothing-statement
-a func r 1 statement nothing-statement
-a if r 1 statement nothing-statement
-a input r 1 statement nothing-statement
-a int r 1 statement nothing-statement
-a nothing r 1 statement nothing-statement
-a print r 1 statement nothing-statement
-a println r 1 statement nothing-statement
-a return r 1 statement nothing-statement
-a until r 1 statement nothing-statement
-a void r 1 statement nothing-statement
-a while r 1 statement nothing-statement
-a { r 1 statement nothing-statement
-a } r 1 statement nothing-statement
-s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 367
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 367
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ] s 397
 s
@@ -4971,26 +4971,26 @@ g primary-expr 170
 s
 a -> s 398
 s
+a ) r 1 parameters parameter
+a , s 386
+s
 a ) s 391
 s
 a IDENTIFIER s 387
 s
 a -> r 2 parameter-list ( )
 s
-a float s 16
-a int s 22
-a void s 28
+a float s 17
+a int s 23
+a void s 29
 a type s 380
 g type 380
 s
-a float s 16
-a int s 22
-a void s 28
+a float s 17
+a int s 23
+a void s 29
 a type s 379
 g type 379
-s
-a ) r 1 parameters parameter
-a , s 386
 s
 a != r 2 input-expr input type
 a % r 2 input-expr input type
@@ -5357,29 +5357,29 @@ a while r 3 print-statement println STRING-LITERAL ;
 a { r 3 print-statement println STRING-LITERAL ;
 a } r 3 print-statement println STRING-LITERAL ;
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
 a assignment-expr s 370
-a call-expr s 34
-a compare-expr s 35
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
+a call-expr s 35
+a compare-expr s 36
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
 g assignment-expr 370
-g call-expr 34
-g compare-expr 35
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g compare-expr 36
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a != r 3 primary-expr ( expr )
 a % r 3 primary-expr ( expr )
@@ -5398,249 +5398,249 @@ a > r 3 primary-expr ( expr )
 a >= r 3 primary-expr ( expr )
 a [ r 3 primary-expr ( expr )
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 338
-a if s 20
-a input s 21
-a int s 22
-a nothing s 339
-a print s 340
-a println s 341
-a return s 342
-a until s 27
-a void s 28
-a while s 29
-a { s 343
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 344
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 345
-a expr s 346
-a expression-statement s 347
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 348
-a if-else-statement s 349
-a if-statement s 350
-a index-expr s 44
-a input-expr s 45
-a loop s 351
-a loop-else s 353
-a loop-exit s 354
-a loop-exit-statement s 355
-a mult-expr s 50
-a nothing-statement s 356
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 334
-a return-statement s 335
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 339
+a if s 21
+a input s 22
+a int s 23
+a nothing s 340
+a print s 341
+a println s 342
+a return s 343
+a until s 28
+a void s 29
+a while s 30
+a { s 344
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 345
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 346
+a expr s 347
+a expression-statement s 348
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 349
+a if-else-statement s 350
+a if-statement s 351
+a index-expr s 45
+a input-expr s 46
+a loop s 352
+a loop-else s 354
+a loop-exit s 355
+a loop-exit-statement s 356
+a mult-expr s 51
+a nothing-statement s 334
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 335
+a return-statement s 336
 a statement s 358
-a type s 337
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 344
-g call-expr 34
-g compare-expr 35
-g decl-statement 345
-g expr 346
-g expression-statement 347
-g for-loop 39
-g foreach-loop 40
-g function-definition 348
-g if-else-statement 349
-g if-statement 350
-g index-expr 44
-g input-expr 45
-g loop 351
-g loop-else 353
-g loop-exit 354
-g loop-exit-statement 355
-g mult-expr 50
-g nothing-statement 356
-g postfix-expr 1
-g primary-expr 2
-g print-statement 334
-g return-statement 335
+a type s 338
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 345
+g call-expr 35
+g compare-expr 36
+g decl-statement 346
+g expr 347
+g expression-statement 348
+g for-loop 40
+g foreach-loop 41
+g function-definition 349
+g if-else-statement 350
+g if-statement 351
+g index-expr 45
+g input-expr 46
+g loop 352
+g loop-else 354
+g loop-exit 355
+g loop-exit-statement 356
+g mult-expr 51
+g nothing-statement 334
+g postfix-expr 2
+g primary-expr 3
+g print-statement 335
+g return-statement 336
 g statement 358
-g type 337
-g until-loop 8
-g while-loop 9
+g type 338
+g until-loop 10
+g while-loop 11
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 338
-a if s 20
-a input s 21
-a int s 22
-a nothing s 339
-a print s 340
-a println s 341
-a return s 342
-a until s 27
-a void s 28
-a while s 29
-a { s 343
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 344
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 345
-a expr s 346
-a expression-statement s 347
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 348
-a if-else-statement s 349
-a if-statement s 350
-a index-expr s 44
-a input-expr s 45
-a loop s 351
-a loop-body s 352
-a loop-else s 353
-a loop-exit s 354
-a loop-exit-statement s 355
-a mult-expr s 50
-a nothing-statement s 356
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 334
-a return-statement s 335
-a statement s 336
-a type s 337
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 344
-g call-expr 34
-g compare-expr 35
-g decl-statement 345
-g expr 346
-g expression-statement 347
-g for-loop 39
-g foreach-loop 40
-g function-definition 348
-g if-else-statement 349
-g if-statement 350
-g index-expr 44
-g input-expr 45
-g loop 351
-g loop-body 352
-g loop-else 353
-g loop-exit 354
-g loop-exit-statement 355
-g mult-expr 50
-g nothing-statement 356
-g postfix-expr 1
-g primary-expr 2
-g print-statement 334
-g return-statement 335
-g statement 336
-g type 337
-g until-loop 8
-g while-loop 9
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 339
+a if s 21
+a input s 22
+a int s 23
+a nothing s 340
+a print s 341
+a println s 342
+a return s 343
+a until s 28
+a void s 29
+a while s 30
+a { s 344
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 345
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 346
+a expr s 347
+a expression-statement s 348
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 349
+a if-else-statement s 350
+a if-statement s 351
+a index-expr s 45
+a input-expr s 46
+a loop s 352
+a loop-body s 353
+a loop-else s 354
+a loop-exit s 355
+a loop-exit-statement s 356
+a mult-expr s 51
+a nothing-statement s 334
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 335
+a return-statement s 336
+a statement s 337
+a type s 338
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 345
+g call-expr 35
+g compare-expr 36
+g decl-statement 346
+g expr 347
+g expression-statement 348
+g for-loop 40
+g foreach-loop 41
+g function-definition 349
+g if-else-statement 350
+g if-statement 351
+g index-expr 45
+g input-expr 46
+g loop 352
+g loop-body 353
+g loop-else 354
+g loop-exit 355
+g loop-exit-statement 356
+g mult-expr 51
+g nothing-statement 334
+g postfix-expr 2
+g primary-expr 3
+g print-statement 335
+g return-statement 336
+g statement 337
+g type 338
+g until-loop 10
+g while-loop 11
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 338
-a if s 20
-a input s 21
-a int s 22
-a nothing s 339
-a print s 340
-a println s 341
-a return s 342
-a until s 27
-a void s 28
-a while s 29
-a { s 343
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 344
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 345
-a expr s 346
-a expression-statement s 347
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 348
-a if-else-statement s 349
-a if-statement s 350
-a index-expr s 44
-a input-expr s 45
-a loop s 351
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 339
+a if s 21
+a input s 22
+a int s 23
+a nothing s 340
+a print s 341
+a println s 342
+a return s 343
+a until s 28
+a void s 29
+a while s 30
+a { s 344
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 345
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 346
+a expr s 347
+a expression-statement s 348
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 349
+a if-else-statement s 350
+a if-statement s 351
+a index-expr s 45
+a input-expr s 46
+a loop s 352
 a loop-body s 357
-a loop-else s 353
-a loop-exit s 354
-a loop-exit-statement s 355
-a mult-expr s 50
-a nothing-statement s 356
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 334
-a return-statement s 335
-a statement s 336
-a type s 337
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 344
-g call-expr 34
-g compare-expr 35
-g decl-statement 345
-g expr 346
-g expression-statement 347
-g for-loop 39
-g foreach-loop 40
-g function-definition 348
-g if-else-statement 349
-g if-statement 350
-g index-expr 44
-g input-expr 45
-g loop 351
+a loop-else s 354
+a loop-exit s 355
+a loop-exit-statement s 356
+a mult-expr s 51
+a nothing-statement s 334
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 335
+a return-statement s 336
+a statement s 337
+a type s 338
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 345
+g call-expr 35
+g compare-expr 36
+g decl-statement 346
+g expr 347
+g expression-statement 348
+g for-loop 40
+g foreach-loop 41
+g function-definition 349
+g if-else-statement 350
+g if-statement 351
+g index-expr 45
+g input-expr 46
+g loop 352
 g loop-body 357
-g loop-else 353
-g loop-exit 354
-g loop-exit-statement 355
-g mult-expr 50
-g nothing-statement 356
-g postfix-expr 1
-g primary-expr 2
-g print-statement 334
-g return-statement 335
-g statement 336
-g type 337
-g until-loop 8
-g while-loop 9
+g loop-else 354
+g loop-exit 355
+g loop-exit-statement 356
+g mult-expr 51
+g nothing-statement 334
+g postfix-expr 2
+g primary-expr 3
+g print-statement 335
+g return-statement 336
+g statement 337
+g type 338
+g until-loop 10
+g while-loop 11
 s
 a : s 400
 s
@@ -5684,6 +5684,30 @@ a return s 384
 a void s 385
 a type s 381
 g type 381
+s
+a Ω r 1 statement nothing-statement
+a ( r 1 statement nothing-statement
+a FLOAT-LITERAL r 1 statement nothing-statement
+a IDENTIFIER r 1 statement nothing-statement
+a INT-LITERAL r 1 statement nothing-statement
+a break r 1 statement nothing-statement
+a continue r 1 statement nothing-statement
+a else r 1 statement nothing-statement
+a float r 1 statement nothing-statement
+a for r 1 statement nothing-statement
+a foreach r 1 statement nothing-statement
+a func r 1 statement nothing-statement
+a if r 1 statement nothing-statement
+a input r 1 statement nothing-statement
+a int r 1 statement nothing-statement
+a nothing r 1 statement nothing-statement
+a print r 1 statement nothing-statement
+a println r 1 statement nothing-statement
+a return r 1 statement nothing-statement
+a until r 1 statement nothing-statement
+a void r 1 statement nothing-statement
+a while r 1 statement nothing-statement
+a { r 1 statement nothing-statement
 s
 a Ω r 1 statement print-statement
 a ( r 1 statement print-statement
@@ -5765,168 +5789,168 @@ a IDENTIFIER s 453
 s
 a ; s 448
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 436
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 437
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 437
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 438
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 439
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 439
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 435
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 435
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 62
-a if s 63
-a input s 21
-a int s 22
-a nothing s 64
-a print s 65
-a println s 66
-a return s 67
-a until s 68
-a void s 28
-a while s 69
-a { s 70
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 63
+a if s 64
+a input s 22
+a int s 23
+a nothing s 65
+a print s 66
+a println s 67
+a return s 68
+a until s 69
+a void s 29
+a while s 70
+a { s 71
 a } r 0 statements 
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 71
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 72
-a expr s 73
-a expression-statement s 74
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 77
-a if-else-statement s 78
-a if-statement s 79
-a index-expr s 44
-a input-expr s 45
-a loop s 80
-a loop-else s 81
-a loop-exit s 82
-a loop-exit-statement s 83
-a mult-expr s 50
-a nothing-statement s 84
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 53
-a return-statement s 54
-a statement s 55
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 72
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 73
+a expr s 74
+a expression-statement s 75
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 78
+a if-else-statement s 79
+a if-statement s 80
+a index-expr s 45
+a input-expr s 46
+a loop s 81
+a loop-else s 82
+a loop-exit s 83
+a loop-exit-statement s 84
+a mult-expr s 51
+a nothing-statement s 53
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 54
+a return-statement s 55
+a statement s 56
 a statements s 402
-a type s 57
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 71
-g call-expr 34
-g compare-expr 35
-g decl-statement 72
-g expr 73
-g expression-statement 74
-g for-loop 75
-g foreach-loop 76
-g function-definition 77
-g if-else-statement 78
-g if-statement 79
-g index-expr 44
-g input-expr 45
-g loop 80
-g loop-else 81
-g loop-exit 82
-g loop-exit-statement 83
-g mult-expr 50
-g nothing-statement 84
-g postfix-expr 1
-g primary-expr 2
-g print-statement 53
-g return-statement 54
-g statement 55
+a type s 58
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 72
+g call-expr 35
+g compare-expr 36
+g decl-statement 73
+g expr 74
+g expression-statement 75
+g for-loop 76
+g foreach-loop 77
+g function-definition 78
+g if-else-statement 79
+g if-statement 80
+g index-expr 45
+g input-expr 46
+g loop 81
+g loop-else 82
+g loop-exit 83
+g loop-exit-statement 84
+g mult-expr 51
+g nothing-statement 53
+g postfix-expr 2
+g primary-expr 3
+g print-statement 54
+g return-statement 55
+g statement 56
 g statements 402
-g type 57
-g until-loop 58
-g while-loop 59
+g type 58
+g until-loop 59
+g while-loop 60
 s
 a Ω r 1 statement block-statement
 a ( r 1 statement block-statement
@@ -6177,30 +6201,6 @@ a void r 1 statement loop-exit-statement
 a while r 1 statement loop-exit-statement
 a { r 1 statement loop-exit-statement
 s
-a Ω r 1 statement nothing-statement
-a ( r 1 statement nothing-statement
-a FLOAT-LITERAL r 1 statement nothing-statement
-a IDENTIFIER r 1 statement nothing-statement
-a INT-LITERAL r 1 statement nothing-statement
-a break r 1 statement nothing-statement
-a continue r 1 statement nothing-statement
-a else r 1 statement nothing-statement
-a float r 1 statement nothing-statement
-a for r 1 statement nothing-statement
-a foreach r 1 statement nothing-statement
-a func r 1 statement nothing-statement
-a if r 1 statement nothing-statement
-a input r 1 statement nothing-statement
-a int r 1 statement nothing-statement
-a nothing r 1 statement nothing-statement
-a print r 1 statement nothing-statement
-a println r 1 statement nothing-statement
-a return r 1 statement nothing-statement
-a until r 1 statement nothing-statement
-a void r 1 statement nothing-statement
-a while r 1 statement nothing-statement
-a { r 1 statement nothing-statement
-s
 a Ω r 5 until-loop until ( expr ) loop-body
 a ( r 5 until-loop until ( expr ) loop-body
 a FLOAT-LITERAL r 5 until-loop until ( expr ) loop-body
@@ -6445,7 +6445,7 @@ a IDENTIFIER s 454
 s
 a IDENTIFIER s 455
 s
-a { s 30
+a { s 31
 a block-statement s 432
 g block-statement 432
 s
@@ -6461,44 +6461,44 @@ g type 442
 s
 a { r 1 type void
 s
-a float s 16
-a int s 22
-a mut s 303
-a ref s 304
-a void s 28
-a parameter s 305
+a float s 17
+a int s 23
+a mut s 304
+a ref s 305
+a void s 29
+a parameter s 300
 a parameters s 441
-a type s 301
-g parameter 305
+a type s 302
+g parameter 300
 g parameters 441
-g type 301
+g type 302
 s
 a ) r 2 parameter type IDENTIFIER
 a , r 2 parameter type IDENTIFIER
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
 a assignment-expr s 440
-a call-expr s 34
-a compare-expr s 35
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
+a call-expr s 35
+a compare-expr s 36
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
 g assignment-expr 440
-g call-expr 34
-g compare-expr 35
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g compare-expr 36
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a != r 3 primary-expr ( expr )
 a % r 3 primary-expr ( expr )
@@ -6538,249 +6538,249 @@ a [ r 3 primary-expr ( expr )
 s
 a -> r 3 parameter-list ( parameters )
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 408
-a if s 63
-a input s 21
-a int s 22
-a nothing s 409
-a print s 410
-a println s 411
-a return s 412
-a until s 68
-a void s 28
-a while s 69
-a { s 413
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 414
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 415
-a expr s 416
-a expression-statement s 417
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 418
-a if-else-statement s 419
-a if-statement s 420
-a index-expr s 44
-a input-expr s 45
-a loop s 421
-a loop-else s 423
-a loop-exit s 424
-a loop-exit-statement s 425
-a mult-expr s 50
-a nothing-statement s 426
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 404
-a return-statement s 405
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 409
+a if s 64
+a input s 22
+a int s 23
+a nothing s 410
+a print s 411
+a println s 412
+a return s 413
+a until s 69
+a void s 29
+a while s 70
+a { s 414
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 415
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 416
+a expr s 417
+a expression-statement s 418
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 419
+a if-else-statement s 420
+a if-statement s 421
+a index-expr s 45
+a input-expr s 46
+a loop s 422
+a loop-else s 424
+a loop-exit s 425
+a loop-exit-statement s 426
+a mult-expr s 51
+a nothing-statement s 404
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 405
+a return-statement s 406
 a statement s 428
-a type s 407
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 414
-g call-expr 34
-g compare-expr 35
-g decl-statement 415
-g expr 416
-g expression-statement 417
-g for-loop 75
-g foreach-loop 76
-g function-definition 418
-g if-else-statement 419
-g if-statement 420
-g index-expr 44
-g input-expr 45
-g loop 421
-g loop-else 423
-g loop-exit 424
-g loop-exit-statement 425
-g mult-expr 50
-g nothing-statement 426
-g postfix-expr 1
-g primary-expr 2
-g print-statement 404
-g return-statement 405
+a type s 408
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 415
+g call-expr 35
+g compare-expr 36
+g decl-statement 416
+g expr 417
+g expression-statement 418
+g for-loop 76
+g foreach-loop 77
+g function-definition 419
+g if-else-statement 420
+g if-statement 421
+g index-expr 45
+g input-expr 46
+g loop 422
+g loop-else 424
+g loop-exit 425
+g loop-exit-statement 426
+g mult-expr 51
+g nothing-statement 404
+g postfix-expr 2
+g primary-expr 3
+g print-statement 405
+g return-statement 406
 g statement 428
-g type 407
-g until-loop 58
-g while-loop 59
+g type 408
+g until-loop 59
+g while-loop 60
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 408
-a if s 63
-a input s 21
-a int s 22
-a nothing s 409
-a print s 410
-a println s 411
-a return s 412
-a until s 68
-a void s 28
-a while s 69
-a { s 413
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 414
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 415
-a expr s 416
-a expression-statement s 417
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 418
-a if-else-statement s 419
-a if-statement s 420
-a index-expr s 44
-a input-expr s 45
-a loop s 421
-a loop-body s 422
-a loop-else s 423
-a loop-exit s 424
-a loop-exit-statement s 425
-a mult-expr s 50
-a nothing-statement s 426
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 404
-a return-statement s 405
-a statement s 406
-a type s 407
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 414
-g call-expr 34
-g compare-expr 35
-g decl-statement 415
-g expr 416
-g expression-statement 417
-g for-loop 75
-g foreach-loop 76
-g function-definition 418
-g if-else-statement 419
-g if-statement 420
-g index-expr 44
-g input-expr 45
-g loop 421
-g loop-body 422
-g loop-else 423
-g loop-exit 424
-g loop-exit-statement 425
-g mult-expr 50
-g nothing-statement 426
-g postfix-expr 1
-g primary-expr 2
-g print-statement 404
-g return-statement 405
-g statement 406
-g type 407
-g until-loop 58
-g while-loop 59
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 409
+a if s 64
+a input s 22
+a int s 23
+a nothing s 410
+a print s 411
+a println s 412
+a return s 413
+a until s 69
+a void s 29
+a while s 70
+a { s 414
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 415
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 416
+a expr s 417
+a expression-statement s 418
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 419
+a if-else-statement s 420
+a if-statement s 421
+a index-expr s 45
+a input-expr s 46
+a loop s 422
+a loop-body s 423
+a loop-else s 424
+a loop-exit s 425
+a loop-exit-statement s 426
+a mult-expr s 51
+a nothing-statement s 404
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 405
+a return-statement s 406
+a statement s 407
+a type s 408
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 415
+g call-expr 35
+g compare-expr 36
+g decl-statement 416
+g expr 417
+g expression-statement 418
+g for-loop 76
+g foreach-loop 77
+g function-definition 419
+g if-else-statement 420
+g if-statement 421
+g index-expr 45
+g input-expr 46
+g loop 422
+g loop-body 423
+g loop-else 424
+g loop-exit 425
+g loop-exit-statement 426
+g mult-expr 51
+g nothing-statement 404
+g postfix-expr 2
+g primary-expr 3
+g print-statement 405
+g return-statement 406
+g statement 407
+g type 408
+g until-loop 59
+g while-loop 60
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 408
-a if s 63
-a input s 21
-a int s 22
-a nothing s 409
-a print s 410
-a println s 411
-a return s 412
-a until s 68
-a void s 28
-a while s 69
-a { s 413
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 414
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 415
-a expr s 416
-a expression-statement s 417
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 418
-a if-else-statement s 419
-a if-statement s 420
-a index-expr s 44
-a input-expr s 45
-a loop s 421
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 409
+a if s 64
+a input s 22
+a int s 23
+a nothing s 410
+a print s 411
+a println s 412
+a return s 413
+a until s 69
+a void s 29
+a while s 70
+a { s 414
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 415
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 416
+a expr s 417
+a expression-statement s 418
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 419
+a if-else-statement s 420
+a if-statement s 421
+a index-expr s 45
+a input-expr s 46
+a loop s 422
 a loop-body s 427
-a loop-else s 423
-a loop-exit s 424
-a loop-exit-statement s 425
-a mult-expr s 50
-a nothing-statement s 426
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 404
-a return-statement s 405
-a statement s 406
-a type s 407
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 414
-g call-expr 34
-g compare-expr 35
-g decl-statement 415
-g expr 416
-g expression-statement 417
-g for-loop 75
-g foreach-loop 76
-g function-definition 418
-g if-else-statement 419
-g if-statement 420
-g index-expr 44
-g input-expr 45
-g loop 421
+a loop-else s 424
+a loop-exit s 425
+a loop-exit-statement s 426
+a mult-expr s 51
+a nothing-statement s 404
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 405
+a return-statement s 406
+a statement s 407
+a type s 408
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 415
+g call-expr 35
+g compare-expr 36
+g decl-statement 416
+g expr 417
+g expression-statement 418
+g for-loop 76
+g foreach-loop 77
+g function-definition 419
+g if-else-statement 420
+g if-statement 421
+g index-expr 45
+g input-expr 46
+g loop 422
 g loop-body 427
-g loop-else 423
-g loop-exit 424
-g loop-exit-statement 425
-g mult-expr 50
-g nothing-statement 426
-g postfix-expr 1
-g primary-expr 2
-g print-statement 404
-g return-statement 405
-g statement 406
-g type 407
-g until-loop 58
-g while-loop 59
+g loop-else 424
+g loop-exit 425
+g loop-exit-statement 426
+g mult-expr 51
+g nothing-statement 404
+g postfix-expr 2
+g primary-expr 3
+g print-statement 405
+g return-statement 406
+g statement 407
+g type 408
+g until-loop 59
+g while-loop 60
 s
 a : s 461
 s
@@ -6926,6 +6926,30 @@ a void r 2 loop-body statement __DUMMY__
 a while r 2 loop-body statement __DUMMY__
 a { r 2 loop-body statement __DUMMY__
 s
+a ( r 1 statement nothing-statement
+a FLOAT-LITERAL r 1 statement nothing-statement
+a IDENTIFIER r 1 statement nothing-statement
+a INT-LITERAL r 1 statement nothing-statement
+a break r 1 statement nothing-statement
+a continue r 1 statement nothing-statement
+a else r 1 statement nothing-statement
+a float r 1 statement nothing-statement
+a for r 1 statement nothing-statement
+a foreach r 1 statement nothing-statement
+a func r 1 statement nothing-statement
+a if r 1 statement nothing-statement
+a input r 1 statement nothing-statement
+a int r 1 statement nothing-statement
+a nothing r 1 statement nothing-statement
+a print r 1 statement nothing-statement
+a println r 1 statement nothing-statement
+a return r 1 statement nothing-statement
+a until r 1 statement nothing-statement
+a void r 1 statement nothing-statement
+a while r 1 statement nothing-statement
+a { r 1 statement nothing-statement
+a } r 1 statement nothing-statement
+s
 a ( r 1 statement print-statement
 a FLOAT-LITERAL r 1 statement print-statement
 a IDENTIFIER r 1 statement print-statement
@@ -7006,168 +7030,168 @@ a IDENTIFIER s 485
 s
 a ; s 480
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 473
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 474
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 474
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
 a STRING-LITERAL s 475
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 476
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 476
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 472
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 472
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 62
-a if s 63
-a input s 21
-a int s 22
-a nothing s 64
-a print s 65
-a println s 66
-a return s 67
-a until s 68
-a void s 28
-a while s 69
-a { s 70
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 63
+a if s 64
+a input s 22
+a int s 23
+a nothing s 65
+a print s 66
+a println s 67
+a return s 68
+a until s 69
+a void s 29
+a while s 70
+a { s 71
 a } r 0 statements 
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 71
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 72
-a expr s 73
-a expression-statement s 74
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 77
-a if-else-statement s 78
-a if-statement s 79
-a index-expr s 44
-a input-expr s 45
-a loop s 80
-a loop-else s 81
-a loop-exit s 82
-a loop-exit-statement s 83
-a mult-expr s 50
-a nothing-statement s 84
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 53
-a return-statement s 54
-a statement s 55
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 72
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 73
+a expr s 74
+a expression-statement s 75
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 78
+a if-else-statement s 79
+a if-statement s 80
+a index-expr s 45
+a input-expr s 46
+a loop s 81
+a loop-else s 82
+a loop-exit s 83
+a loop-exit-statement s 84
+a mult-expr s 51
+a nothing-statement s 53
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 54
+a return-statement s 55
+a statement s 56
 a statements s 463
-a type s 57
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 71
-g call-expr 34
-g compare-expr 35
-g decl-statement 72
-g expr 73
-g expression-statement 74
-g for-loop 75
-g foreach-loop 76
-g function-definition 77
-g if-else-statement 78
-g if-statement 79
-g index-expr 44
-g input-expr 45
-g loop 80
-g loop-else 81
-g loop-exit 82
-g loop-exit-statement 83
-g mult-expr 50
-g nothing-statement 84
-g postfix-expr 1
-g primary-expr 2
-g print-statement 53
-g return-statement 54
-g statement 55
+a type s 58
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 72
+g call-expr 35
+g compare-expr 36
+g decl-statement 73
+g expr 74
+g expression-statement 75
+g for-loop 76
+g foreach-loop 77
+g function-definition 78
+g if-else-statement 79
+g if-statement 80
+g index-expr 45
+g input-expr 46
+g loop 81
+g loop-else 82
+g loop-exit 83
+g loop-exit-statement 84
+g mult-expr 51
+g nothing-statement 53
+g postfix-expr 2
+g primary-expr 3
+g print-statement 54
+g return-statement 55
+g statement 56
 g statements 463
-g type 57
-g until-loop 58
-g while-loop 59
+g type 58
+g until-loop 59
+g while-loop 60
 s
 a ( r 1 statement block-statement
 a FLOAT-LITERAL r 1 statement block-statement
@@ -7418,30 +7442,6 @@ a while r 1 statement loop-exit-statement
 a { r 1 statement loop-exit-statement
 a } r 1 statement loop-exit-statement
 s
-a ( r 1 statement nothing-statement
-a FLOAT-LITERAL r 1 statement nothing-statement
-a IDENTIFIER r 1 statement nothing-statement
-a INT-LITERAL r 1 statement nothing-statement
-a break r 1 statement nothing-statement
-a continue r 1 statement nothing-statement
-a else r 1 statement nothing-statement
-a float r 1 statement nothing-statement
-a for r 1 statement nothing-statement
-a foreach r 1 statement nothing-statement
-a func r 1 statement nothing-statement
-a if r 1 statement nothing-statement
-a input r 1 statement nothing-statement
-a int r 1 statement nothing-statement
-a nothing r 1 statement nothing-statement
-a print r 1 statement nothing-statement
-a println r 1 statement nothing-statement
-a return r 1 statement nothing-statement
-a until r 1 statement nothing-statement
-a void r 1 statement nothing-statement
-a while r 1 statement nothing-statement
-a { r 1 statement nothing-statement
-a } r 1 statement nothing-statement
-s
 a ( r 5 until-loop until ( expr ) loop-body
 a FLOAT-LITERAL r 5 until-loop until ( expr ) loop-body
 a IDENTIFIER r 5 until-loop until ( expr ) loop-body
@@ -7490,85 +7490,85 @@ a while r 5 if-statement if ( expr ) statement
 a { r 5 if-statement if ( expr ) statement
 a } r 5 if-statement if ( expr ) statement
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 338
-a if s 20
-a input s 21
-a int s 22
-a nothing s 339
-a print s 340
-a println s 341
-a return s 342
-a until s 27
-a void s 28
-a while s 29
-a { s 343
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 344
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 345
-a expr s 346
-a expression-statement s 347
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 348
-a if-else-statement s 349
-a if-statement s 350
-a index-expr s 44
-a input-expr s 45
-a loop s 351
-a loop-else s 353
-a loop-exit s 354
-a loop-exit-statement s 355
-a mult-expr s 50
-a nothing-statement s 356
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 334
-a return-statement s 335
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 339
+a if s 21
+a input s 22
+a int s 23
+a nothing s 340
+a print s 341
+a println s 342
+a return s 343
+a until s 28
+a void s 29
+a while s 30
+a { s 344
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 345
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 346
+a expr s 347
+a expression-statement s 348
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 349
+a if-else-statement s 350
+a if-statement s 351
+a index-expr s 45
+a input-expr s 46
+a loop s 352
+a loop-else s 354
+a loop-exit s 355
+a loop-exit-statement s 356
+a mult-expr s 51
+a nothing-statement s 334
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 335
+a return-statement s 336
 a statement s 465
-a type s 337
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 344
-g call-expr 34
-g compare-expr 35
-g decl-statement 345
-g expr 346
-g expression-statement 347
-g for-loop 39
-g foreach-loop 40
-g function-definition 348
-g if-else-statement 349
-g if-statement 350
-g index-expr 44
-g input-expr 45
-g loop 351
-g loop-else 353
-g loop-exit 354
-g loop-exit-statement 355
-g mult-expr 50
-g nothing-statement 356
-g postfix-expr 1
-g primary-expr 2
-g print-statement 334
-g return-statement 335
+a type s 338
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 345
+g call-expr 35
+g compare-expr 36
+g decl-statement 346
+g expr 347
+g expression-statement 348
+g for-loop 40
+g foreach-loop 41
+g function-definition 349
+g if-else-statement 350
+g if-statement 351
+g index-expr 45
+g input-expr 46
+g loop 352
+g loop-else 354
+g loop-exit 355
+g loop-exit-statement 356
+g mult-expr 51
+g nothing-statement 334
+g postfix-expr 2
+g primary-expr 3
+g print-statement 335
+g return-statement 336
 g statement 465
-g type 337
-g until-loop 8
-g while-loop 9
+g type 338
+g until-loop 10
+g while-loop 11
 s
 a Ω r 2 if-else-statement if-statement else-clause
 a ( r 2 if-else-statement if-statement else-clause
@@ -7659,31 +7659,31 @@ a ; s 494
 s
 a ) r 3 parameters parameter , parameters
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 477
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 477
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( r 1 type float
 a FLOAT-LITERAL r 1 type float
@@ -7703,7 +7703,7 @@ a IDENTIFIER r 1 type void
 a INT-LITERAL r 1 type void
 a input r 1 type void
 s
-a { s 70
+a { s 71
 a block-statement s 469
 g block-statement 469
 s
@@ -7996,85 +7996,85 @@ a void r 2 else-clause else statement
 a while r 2 else-clause else statement
 a { r 2 else-clause else statement
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 408
-a if s 63
-a input s 21
-a int s 22
-a nothing s 409
-a print s 410
-a println s 411
-a return s 412
-a until s 68
-a void s 28
-a while s 69
-a { s 413
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 414
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 415
-a expr s 416
-a expression-statement s 417
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 418
-a if-else-statement s 419
-a if-statement s 420
-a index-expr s 44
-a input-expr s 45
-a loop s 421
-a loop-else s 423
-a loop-exit s 424
-a loop-exit-statement s 425
-a mult-expr s 50
-a nothing-statement s 426
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 404
-a return-statement s 405
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 409
+a if s 64
+a input s 22
+a int s 23
+a nothing s 410
+a print s 411
+a println s 412
+a return s 413
+a until s 69
+a void s 29
+a while s 70
+a { s 414
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 415
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 416
+a expr s 417
+a expression-statement s 418
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 419
+a if-else-statement s 420
+a if-statement s 421
+a index-expr s 45
+a input-expr s 46
+a loop s 422
+a loop-else s 424
+a loop-exit s 425
+a loop-exit-statement s 426
+a mult-expr s 51
+a nothing-statement s 404
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 405
+a return-statement s 406
 a statement s 499
-a type s 407
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 414
-g call-expr 34
-g compare-expr 35
-g decl-statement 415
-g expr 416
-g expression-statement 417
-g for-loop 75
-g foreach-loop 76
-g function-definition 418
-g if-else-statement 419
-g if-statement 420
-g index-expr 44
-g input-expr 45
-g loop 421
-g loop-else 423
-g loop-exit 424
-g loop-exit-statement 425
-g mult-expr 50
-g nothing-statement 426
-g postfix-expr 1
-g primary-expr 2
-g print-statement 404
-g return-statement 405
+a type s 408
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 415
+g call-expr 35
+g compare-expr 36
+g decl-statement 416
+g expr 417
+g expression-statement 418
+g for-loop 76
+g foreach-loop 77
+g function-definition 419
+g if-else-statement 420
+g if-statement 421
+g index-expr 45
+g input-expr 46
+g loop 422
+g loop-else 424
+g loop-exit 425
+g loop-exit-statement 426
+g mult-expr 51
+g nothing-statement 404
+g postfix-expr 2
+g primary-expr 3
+g print-statement 405
+g return-statement 406
 g statement 499
-g type 407
-g until-loop 58
-g while-loop 59
+g type 408
+g until-loop 59
+g while-loop 60
 s
 a ( r 2 if-else-statement if-statement else-clause
 a FLOAT-LITERAL r 2 if-else-statement if-statement else-clause
@@ -8165,31 +8165,31 @@ a ; s 514
 s
 a -> s 511
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 500
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 500
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( r 2 nothing-statement nothing ;
 a FLOAT-LITERAL r 2 nothing-statement nothing ;
@@ -8439,29 +8439,29 @@ a void r 3 print-statement println STRING-LITERAL ;
 a while r 3 print-statement println STRING-LITERAL ;
 a { r 3 print-statement println STRING-LITERAL ;
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
 a assignment-expr s 501
-a call-expr s 34
-a compare-expr s 35
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
+a call-expr s 35
+a compare-expr s 36
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
 g assignment-expr 501
-g call-expr 34
-g compare-expr 35
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g compare-expr 36
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ( r 5 decl-statement type IDENTIFIER = assignment-expr ;
 a FLOAT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
@@ -8469,165 +8469,165 @@ a IDENTIFIER r 5 decl-statement type IDENTIFIER = assignment-expr ;
 a INT-LITERAL r 5 decl-statement type IDENTIFIER = assignment-expr ;
 a input r 5 decl-statement type IDENTIFIER = assignment-expr ;
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 338
-a if s 20
-a input s 21
-a int s 22
-a nothing s 339
-a print s 340
-a println s 341
-a return s 342
-a until s 27
-a void s 28
-a while s 29
-a { s 343
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 344
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 345
-a expr s 346
-a expression-statement s 347
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 348
-a if-else-statement s 349
-a if-statement s 350
-a index-expr s 44
-a input-expr s 45
-a loop s 351
-a loop-else s 353
-a loop-exit s 354
-a loop-exit-statement s 355
-a mult-expr s 50
-a nothing-statement s 356
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 334
-a return-statement s 335
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 339
+a if s 21
+a input s 22
+a int s 23
+a nothing s 340
+a print s 341
+a println s 342
+a return s 343
+a until s 28
+a void s 29
+a while s 30
+a { s 344
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 345
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 346
+a expr s 347
+a expression-statement s 348
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 349
+a if-else-statement s 350
+a if-statement s 351
+a index-expr s 45
+a input-expr s 46
+a loop s 352
+a loop-else s 354
+a loop-exit s 355
+a loop-exit-statement s 356
+a mult-expr s 51
+a nothing-statement s 334
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 335
+a return-statement s 336
 a statement s 497
-a type s 337
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 344
-g call-expr 34
-g compare-expr 35
-g decl-statement 345
-g expr 346
-g expression-statement 347
-g for-loop 39
-g foreach-loop 40
-g function-definition 348
-g if-else-statement 349
-g if-statement 350
-g index-expr 44
-g input-expr 45
-g loop 351
-g loop-else 353
-g loop-exit 354
-g loop-exit-statement 355
-g mult-expr 50
-g nothing-statement 356
-g postfix-expr 1
-g primary-expr 2
-g print-statement 334
-g return-statement 335
+a type s 338
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 345
+g call-expr 35
+g compare-expr 36
+g decl-statement 346
+g expr 347
+g expression-statement 348
+g for-loop 40
+g foreach-loop 41
+g function-definition 349
+g if-else-statement 350
+g if-statement 351
+g index-expr 45
+g input-expr 46
+g loop 352
+g loop-else 354
+g loop-exit 355
+g loop-exit-statement 356
+g mult-expr 51
+g nothing-statement 334
+g postfix-expr 2
+g primary-expr 3
+g print-statement 335
+g return-statement 336
 g statement 497
-g type 337
-g until-loop 8
-g while-loop 9
+g type 338
+g until-loop 10
+g while-loop 11
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 17
-a foreach s 18
-a func s 338
-a if s 20
-a input s 21
-a int s 22
-a nothing s 339
-a print s 340
-a println s 341
-a return s 342
-a until s 27
-a void s 28
-a while s 29
-a { s 343
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 344
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 345
-a expr s 346
-a expression-statement s 347
-a for-loop s 39
-a foreach-loop s 40
-a function-definition s 348
-a if-else-statement s 349
-a if-statement s 350
-a index-expr s 44
-a input-expr s 45
-a loop s 351
-a loop-else s 353
-a loop-exit s 354
-a loop-exit-statement s 355
-a mult-expr s 50
-a nothing-statement s 356
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 334
-a return-statement s 335
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 18
+a foreach s 19
+a func s 339
+a if s 21
+a input s 22
+a int s 23
+a nothing s 340
+a print s 341
+a println s 342
+a return s 343
+a until s 28
+a void s 29
+a while s 30
+a { s 344
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 345
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 346
+a expr s 347
+a expression-statement s 348
+a for-loop s 40
+a foreach-loop s 41
+a function-definition s 349
+a if-else-statement s 350
+a if-statement s 351
+a index-expr s 45
+a input-expr s 46
+a loop s 352
+a loop-else s 354
+a loop-exit s 355
+a loop-exit-statement s 356
+a mult-expr s 51
+a nothing-statement s 334
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 335
+a return-statement s 336
 a statement s 498
-a type s 337
-a until-loop s 8
-a while-loop s 9
-g add-expr 31
-g assignment-expr 32
-g block-statement 344
-g call-expr 34
-g compare-expr 35
-g decl-statement 345
-g expr 346
-g expression-statement 347
-g for-loop 39
-g foreach-loop 40
-g function-definition 348
-g if-else-statement 349
-g if-statement 350
-g index-expr 44
-g input-expr 45
-g loop 351
-g loop-else 353
-g loop-exit 354
-g loop-exit-statement 355
-g mult-expr 50
-g nothing-statement 356
-g postfix-expr 1
-g primary-expr 2
-g print-statement 334
-g return-statement 335
+a type s 338
+a until-loop s 10
+a while-loop s 11
+g add-expr 32
+g assignment-expr 33
+g block-statement 345
+g call-expr 35
+g compare-expr 36
+g decl-statement 346
+g expr 347
+g expression-statement 348
+g for-loop 40
+g foreach-loop 41
+g function-definition 349
+g if-else-statement 350
+g if-statement 351
+g index-expr 45
+g input-expr 46
+g loop 352
+g loop-else 354
+g loop-exit 355
+g loop-exit-statement 356
+g mult-expr 51
+g nothing-statement 334
+g postfix-expr 2
+g primary-expr 3
+g print-statement 335
+g return-statement 336
 g statement 498
-g type 337
-g until-loop 8
-g while-loop 9
+g type 338
+g until-loop 10
+g while-loop 11
 s
 a Ω r 8 for-loop for ( decl-statement expr ; expr ) statement
 a ( r 8 for-loop for ( decl-statement expr ; expr ) statement
@@ -8875,29 +8875,29 @@ a while r 3 print-statement println STRING-LITERAL ;
 a { r 3 print-statement println STRING-LITERAL ;
 a } r 3 print-statement println STRING-LITERAL ;
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
 a assignment-expr s 517
-a call-expr s 34
-a compare-expr s 35
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
+a call-expr s 35
+a compare-expr s 36
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
 g assignment-expr 517
-g call-expr 34
-g compare-expr 35
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g call-expr 35
+g compare-expr 36
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a float s 382
 a int s 383
@@ -8906,165 +8906,165 @@ a void s 385
 a type s 518
 g type 518
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 408
-a if s 63
-a input s 21
-a int s 22
-a nothing s 409
-a print s 410
-a println s 411
-a return s 412
-a until s 68
-a void s 28
-a while s 69
-a { s 413
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 414
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 415
-a expr s 416
-a expression-statement s 417
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 418
-a if-else-statement s 419
-a if-statement s 420
-a index-expr s 44
-a input-expr s 45
-a loop s 421
-a loop-else s 423
-a loop-exit s 424
-a loop-exit-statement s 425
-a mult-expr s 50
-a nothing-statement s 426
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 404
-a return-statement s 405
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 409
+a if s 64
+a input s 22
+a int s 23
+a nothing s 410
+a print s 411
+a println s 412
+a return s 413
+a until s 69
+a void s 29
+a while s 70
+a { s 414
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 415
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 416
+a expr s 417
+a expression-statement s 418
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 419
+a if-else-statement s 420
+a if-statement s 421
+a index-expr s 45
+a input-expr s 46
+a loop s 422
+a loop-else s 424
+a loop-exit s 425
+a loop-exit-statement s 426
+a mult-expr s 51
+a nothing-statement s 404
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 405
+a return-statement s 406
 a statement s 515
-a type s 407
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 414
-g call-expr 34
-g compare-expr 35
-g decl-statement 415
-g expr 416
-g expression-statement 417
-g for-loop 75
-g foreach-loop 76
-g function-definition 418
-g if-else-statement 419
-g if-statement 420
-g index-expr 44
-g input-expr 45
-g loop 421
-g loop-else 423
-g loop-exit 424
-g loop-exit-statement 425
-g mult-expr 50
-g nothing-statement 426
-g postfix-expr 1
-g primary-expr 2
-g print-statement 404
-g return-statement 405
+a type s 408
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 415
+g call-expr 35
+g compare-expr 36
+g decl-statement 416
+g expr 417
+g expression-statement 418
+g for-loop 76
+g foreach-loop 77
+g function-definition 419
+g if-else-statement 420
+g if-statement 421
+g index-expr 45
+g input-expr 46
+g loop 422
+g loop-else 424
+g loop-exit 425
+g loop-exit-statement 426
+g mult-expr 51
+g nothing-statement 404
+g postfix-expr 2
+g primary-expr 3
+g print-statement 405
+g return-statement 406
 g statement 515
-g type 407
-g until-loop 58
-g while-loop 59
+g type 408
+g until-loop 59
+g while-loop 60
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a break s 14
-a continue s 15
-a float s 16
-a for s 60
-a foreach s 61
-a func s 408
-a if s 63
-a input s 21
-a int s 22
-a nothing s 409
-a print s 410
-a println s 411
-a return s 412
-a until s 68
-a void s 28
-a while s 69
-a { s 413
-a add-expr s 31
-a assignment-expr s 32
-a block-statement s 414
-a call-expr s 34
-a compare-expr s 35
-a decl-statement s 415
-a expr s 416
-a expression-statement s 417
-a for-loop s 75
-a foreach-loop s 76
-a function-definition s 418
-a if-else-statement s 419
-a if-statement s 420
-a index-expr s 44
-a input-expr s 45
-a loop s 421
-a loop-else s 423
-a loop-exit s 424
-a loop-exit-statement s 425
-a mult-expr s 50
-a nothing-statement s 426
-a postfix-expr s 1
-a primary-expr s 2
-a print-statement s 404
-a return-statement s 405
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a break s 15
+a continue s 16
+a float s 17
+a for s 61
+a foreach s 62
+a func s 409
+a if s 64
+a input s 22
+a int s 23
+a nothing s 410
+a print s 411
+a println s 412
+a return s 413
+a until s 69
+a void s 29
+a while s 70
+a { s 414
+a add-expr s 32
+a assignment-expr s 33
+a block-statement s 415
+a call-expr s 35
+a compare-expr s 36
+a decl-statement s 416
+a expr s 417
+a expression-statement s 418
+a for-loop s 76
+a foreach-loop s 77
+a function-definition s 419
+a if-else-statement s 420
+a if-statement s 421
+a index-expr s 45
+a input-expr s 46
+a loop s 422
+a loop-else s 424
+a loop-exit s 425
+a loop-exit-statement s 426
+a mult-expr s 51
+a nothing-statement s 404
+a postfix-expr s 2
+a primary-expr s 3
+a print-statement s 405
+a return-statement s 406
 a statement s 516
-a type s 407
-a until-loop s 58
-a while-loop s 59
-g add-expr 31
-g assignment-expr 32
-g block-statement 414
-g call-expr 34
-g compare-expr 35
-g decl-statement 415
-g expr 416
-g expression-statement 417
-g for-loop 75
-g foreach-loop 76
-g function-definition 418
-g if-else-statement 419
-g if-statement 420
-g index-expr 44
-g input-expr 45
-g loop 421
-g loop-else 423
-g loop-exit 424
-g loop-exit-statement 425
-g mult-expr 50
-g nothing-statement 426
-g postfix-expr 1
-g primary-expr 2
-g print-statement 404
-g return-statement 405
+a type s 408
+a until-loop s 59
+a while-loop s 60
+g add-expr 32
+g assignment-expr 33
+g block-statement 415
+g call-expr 35
+g compare-expr 36
+g decl-statement 416
+g expr 417
+g expression-statement 418
+g for-loop 76
+g foreach-loop 77
+g function-definition 419
+g if-else-statement 420
+g if-statement 421
+g index-expr 45
+g input-expr 46
+g loop 422
+g loop-else 424
+g loop-exit 425
+g loop-exit-statement 426
+g mult-expr 51
+g nothing-statement 404
+g postfix-expr 2
+g primary-expr 3
+g print-statement 405
+g return-statement 406
 g statement 516
-g type 407
-g until-loop 58
-g while-loop 59
+g type 408
+g until-loop 59
+g while-loop 60
 s
 a Ω r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
 a ( r 8 function-definition func IDENTIFIER parameter-list -> return type expr ;
@@ -9139,7 +9139,7 @@ a } r 8 foreach-loop foreach ( type IDENTIFIER : expr ) statement
 s
 a ; s 527
 s
-a { s 343
+a { s 344
 a block-statement s 523
 g block-statement 523
 s
@@ -9227,33 +9227,33 @@ a void r 6 function-definition func IDENTIFIER parameter-list -> type block-stat
 a while r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
 a { r 6 function-definition func IDENTIFIER parameter-list -> type block-statement
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 529
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 529
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
-a { s 413
+a { s 414
 a block-statement s 528
 g block-statement 528
 s
@@ -9313,31 +9313,31 @@ a } r 6 function-definition func IDENTIFIER parameter-list -> type block-stateme
 s
 a ; s 532
 s
-a ( s 10
-a FLOAT-LITERAL s 11
-a IDENTIFIER s 12
-a INT-LITERAL s 13
-a input s 21
-a add-expr s 31
-a assignment-expr s 32
-a call-expr s 34
-a compare-expr s 35
+a ( s 9
+a FLOAT-LITERAL s 12
+a IDENTIFIER s 13
+a INT-LITERAL s 14
+a input s 22
+a add-expr s 32
+a assignment-expr s 33
+a call-expr s 35
+a compare-expr s 36
 a expr s 531
-a index-expr s 44
-a input-expr s 45
-a mult-expr s 50
-a postfix-expr s 1
-a primary-expr s 2
-g add-expr 31
-g assignment-expr 32
-g call-expr 34
-g compare-expr 35
+a index-expr s 45
+a input-expr s 46
+a mult-expr s 51
+a postfix-expr s 2
+a primary-expr s 3
+g add-expr 32
+g assignment-expr 33
+g call-expr 35
+g compare-expr 36
 g expr 531
-g index-expr 44
-g input-expr 45
-g mult-expr 50
-g postfix-expr 1
-g primary-expr 2
+g index-expr 45
+g input-expr 46
+g mult-expr 51
+g postfix-expr 2
+g primary-expr 3
 s
 a ; s 533
 s

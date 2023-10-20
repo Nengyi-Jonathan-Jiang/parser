@@ -78,7 +78,7 @@ public class Assembler {
         {
             int instruction_number = 0;
             for (var i : statements) {
-                if(i.getDescription() == symbolTable.get("label_declaration")) {
+                if(i.matches(symbolTable.get("label_declaration"))) {
                     labels.put(i.getChild(1).getValue().value, instruction_number);
                 }
                 else instruction_number++;
@@ -87,7 +87,7 @@ public class Assembler {
 
         List<Instruction> instructions = new ArrayList<>();
         for(var i : statements) {
-            if(i.getDescription() == symbolTable.get("label_declaration")) continue;
+            if(i.matches(symbolTable.get("label_declaration"))) continue;
 
             instructions.add(switch(i.getDescription().toString()){
                 case "dump" -> new Instruction() {
@@ -191,7 +191,7 @@ public class Assembler {
     }
 
     private static Instruction.Param createRegister(Instruction.Param.ParamType type, ParseTreeNode tree) {
-        if(tree.getDescription() == symbolTable.get("reg")) {
+        if(tree.matches(symbolTable.get("reg"))) {
             String s = tree.getValue().value.substring(1);
             int rId = s.equals("b") ? -2 : s.equals("p") ? -1 : s.charAt(0) - '0';
             return switch (type) {
