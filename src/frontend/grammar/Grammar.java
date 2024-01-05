@@ -62,8 +62,7 @@ public class Grammar implements Printable {
                 throw e;
             }
         }
-        
-        
+
         //Initialize FIRST sets, FOLLOW sets, nullable set
         
         nullableComparableSet = new SymbolSet();
