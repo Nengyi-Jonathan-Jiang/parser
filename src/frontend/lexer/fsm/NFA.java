@@ -17,16 +17,16 @@ public class NFA {
 
     public NFA() {}
 
-    public void addTransition(int startState, char character, int endState) {
-        table.putIfAbsent(startState, new HashMap<>());
-        Map<Character, Set<Integer>> entry = table.get(startState);
+    public void addTransition(int currState, char character, int nextState) {
+        table.putIfAbsent(currState, new HashMap<>());
+        Map<Character, Set<Integer>> entry = table.get(currState);
 
         entry.putIfAbsent(character, new HashSet<>());
 
         // Remember, we don't allow multiple normal transitions, only epsilon transitions
         assert character == EPSILON || (entry.get(character).isEmpty());
 
-        entry.get(character).add(endState);
+        entry.get(character).add(nextState);
     }
 
     // This method will be highly useful when merging NFAs -- we'll get to that soon!
@@ -61,6 +61,16 @@ public class NFA {
     // no common states with this NFA.
     public void mergeWith(NFA other) {
         table.putAll(other.table);
+    }
+
+    public void print() {
+        for(var entry : table.entrySet()) {
+            int state = entry.getKey();
+            for(var entry2 : entry.getValue().entrySet()) {
+                char c = entry2.getKey();
+                System.out.println(state + " --" + c + "-> " + entry2.getValue());
+            }
+        }
     }
 
     // Don't worry about how to run the NFA for now -- it's not very important, as we will optimize

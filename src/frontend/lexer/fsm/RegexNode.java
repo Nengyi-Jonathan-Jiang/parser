@@ -2,7 +2,6 @@ package frontend.lexer.fsm;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public interface RegexNode {
     NFA createNFA();

@@ -1,5 +1,11 @@
+import frontend.Symbol;
+import frontend.lexer.fsm.DFA;
+import frontend.lexer.fsm.DFA2NFA;
 import frontend.lexer.fsm.NFA;
 import frontend.lexer.fsm.RegexNode;
+
+import java.util.Map;
+import java.util.TreeMap;
 
 public class BuildJeppLexer {
     public static void main(String[] args) {
@@ -38,13 +44,13 @@ public class BuildJeppLexer {
 
         NFA comment_nfa = comment_regex.createNFA();
 
-        for(var entry : comment_nfa.table.entrySet()) {
-            int state = entry.getKey();
-            for(var entry2 : entry.getValue().entrySet()) {
-                char c = entry2.getKey();
-                System.out.println(state + " --" + c + "-> " + entry2.getValue());
-            }
-        }
+        comment_nfa.print();
+
+        System.out.println("creating dfa...");
+
+        DFA dfa = DFA2NFA.to_dfa(Map.of(new Symbol.SymbolTable().create("comment"), comment_nfa));
+
+        dfa.print();
 
         System.out.println("done.");
     }
