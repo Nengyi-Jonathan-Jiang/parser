@@ -6,11 +6,13 @@ import frontend.parser.Parser;
 import jepp.compiler.jeir.JeirNode;
 import jepp.compiler.jeir.JeirNode.JeirStatements;
 import jepp.frontend.JePPFrontend;
-import jepp.frontend.JeppParsePreprocessor;
 import jepp.jevm.Instruction;
 import jepp.jevm.Program;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class JeppCompiler {
     public static Program compile(String input) {
@@ -18,7 +20,7 @@ public class JeppCompiler {
         Parser.Parse parse = JePPFrontend.beginParse();
         while(!parse.process(lex.next()));
 
-        JeppCompiler compiler = new JeppCompiler(parse.getParseTree());
+        JeppCompiler compiler = new JeppCompiler(parse.getResult());
 
         Program result = compiler.result();
 
@@ -30,8 +32,7 @@ public class JeppCompiler {
     private int tempVarIndex = 0;
 
     private JeppCompiler(ParseTreeNode parseTree) {
-        ParseTreeNode jeppParseTree = JeppParsePreprocessor.process(parseTree);
-        JeirNode ir = createIR(jeppParseTree);
+        JeirNode ir = createIR(parseTree);
         createResult(ir);
     }
 

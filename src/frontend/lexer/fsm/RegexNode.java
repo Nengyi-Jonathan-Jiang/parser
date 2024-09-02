@@ -1,6 +1,6 @@
 package frontend.lexer.fsm;
 
-import java.util.*;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public interface RegexNode {
@@ -113,7 +113,6 @@ public interface RegexNode {
         private final Set<Character> characters;
 
         public LeafNode(char... characters) {
-            // Bruh java... why...
             this(new String(characters).chars().mapToObj(i -> (char)i).collect(Collectors.toUnmodifiableSet()));
         }
 

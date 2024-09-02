@@ -4,11 +4,11 @@ import frontend.Symbol;
 import frontend.SymbolTableReader;
 import frontend.Token;
 import frontend.lexer.Lexer;
+import frontend.parser.ParseTreeNode;
+import frontend.parser.Parser;
 import frontend.parser.lr_parser.LRParser;
 import frontend.parser.lr_parser.LRParsingError;
 import frontend.parser.lr_parser.parsing_table.ParsingTable;
-import frontend.parser.ParseTreeNode;
-import frontend.parser.Parser;
 import jepp.jevm.Instruction;
 import jepp.jevm.Program;
 import jepp.jevm.VM;
@@ -57,7 +57,7 @@ public class Assembler {
             }
         } while(tk.type != symbolTable.__END__);
 
-        var result = parse.getParseTree();
+        var result = parse.getResult();
         if(result == null) throw new Error("ERROR PARSING STRING");
 
         // Flatten parse tree

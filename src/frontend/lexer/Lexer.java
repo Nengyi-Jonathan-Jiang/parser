@@ -3,9 +3,12 @@ package frontend.lexer;
 import frontend.Symbol;
 import frontend.Token;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.function.Function;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Lexer {
     private final Symbol.SymbolTable table;

@@ -1,8 +1,9 @@
 package frontend.parser;
+
 import frontend.Symbol;
 import frontend.util.Printable;
 
-import java.util.*;
+import java.util.List;
 
 public class Rule implements Comparable<Rule>, Printable {
     private static int _id = 0;

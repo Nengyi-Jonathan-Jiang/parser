@@ -1,16 +1,12 @@
 import jepp.compiler.JeppCompiler;
 import jepp.jevm.Program;
 import jepp.jevm.VM;
-import org.junit.Assert;
 import org.junit.Test;
-import util.FileUtil;
 import util.StringPrintStream;
 
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
-public class CompilerTest {
+public class TestCompilerAndVM {
 
     @Test
     public void testCompilerBasics() {
@@ -42,22 +38,16 @@ public class CompilerTest {
         check("test/jepp/loops");
     }
 
-    private void check(String directory){
-        System.out.println("Reading file...");
-        String program = FileUtil.getTextContents(directory + "/program.jepp");
+    private void check(String directory) {
+        String programFile = directory + "/program.jepp";
+        String expectedOutputFile = directory + "/expected.txt";
+        String inputFile = directory + "/input.txt";
+        TestUtil.testProgram(inputFile, expectedOutputFile, programFile, this::runProgram);
+    }
 
+    private void runProgram(String program, InputStream input, StringPrintStream output) {
         Program compiledProgram = JeppCompiler.compile(program);
-
-        InputStream input = FileUtil.getInputStream(directory + "/input.txt");
-        StringPrintStream output = new StringPrintStream();
-        String expected = FileUtil.getTextContents(directory + "/expected.txt");
-
         VM virtualMachine = new VM(input, output);
         virtualMachine.execute(compiledProgram);
-
-        String sanitizedExpected = Arrays.stream(expected.strip().split("\n")).map(String::stripTrailing).collect(Collectors.joining("\n"));
-        String sanitizedOutput = Arrays.stream(output.toString().strip().split("\n")).map(String::stripTrailing).collect(Collectors.joining("\n"));
-
-        Assert.assertEquals(sanitizedExpected, sanitizedOutput);
     }
 }

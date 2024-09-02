@@ -1,13 +1,13 @@
 package jepp.interpreter.language;
 
 import jepp.interpreter.JeppInterpreter;
-import org.jetbrains.annotations.NotNull;
+
 
 public interface JeppMethod extends Comparable<JeppMethod>{
-    @NotNull String name();
-    @NotNull JeppMethodSignature signature();
+    String name();
+    JeppMethodSignature signature();
 
-    @NotNull JeppValue apply(@NotNull JeppInterpreter interpreter, JeppValue... values);
+    JeppValue apply(JeppInterpreter interpreter, JeppValue... values);
 
     @Override
     default int compareTo(JeppMethod o) {

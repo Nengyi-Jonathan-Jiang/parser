@@ -1,10 +1,12 @@
 package frontend.parser;
 
-import java.util.*;
-import java.util.stream.Stream;
-
 import frontend.Symbol;
 import frontend.Token;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.stream.Stream;
 
 public class ParseTreeNode implements Iterable<ParseTreeNode> {
     private final Symbol description;

@@ -2,7 +2,8 @@ package frontend.lexer.fsm;
 
 import frontend.Symbol;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DFA {
     public Map<Integer, Map<Character, Integer>> table = new HashMap<>();

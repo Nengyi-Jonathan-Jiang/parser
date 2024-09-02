@@ -1,8 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="CompilerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+  <configuration default="false" name="TestInterpreter" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
     <module name="parser" />
+    <option name="ALTERNATIVE_JRE_PATH" value="corretto-20" />
     <option name="PACKAGE_NAME" value="" />
-    <option name="MAIN_CLASS_NAME" value="CompilerTest" />
+    <option name="MAIN_CLASS_NAME" value="TestInterpreter" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
     <method v="2">

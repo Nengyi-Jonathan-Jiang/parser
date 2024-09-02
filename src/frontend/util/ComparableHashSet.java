@@ -1,5 +1,7 @@
 package frontend.util;
-import java.util.*;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 public class ComparableHashSet<T extends Comparable<T>> extends HashSet<T> implements ComparableSet<T> {
     public ComparableHashSet(){}

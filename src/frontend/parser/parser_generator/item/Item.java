@@ -1,10 +1,10 @@
 package frontend.parser.parser_generator.item;
 
-import frontend.util.Printable;
-import frontend.parser.Rule;
 import frontend.Symbol;
+import frontend.parser.Rule;
 import frontend.parser.parser_generator.SymbolSet;
 import frontend.util.ComparableSet;
+import frontend.util.Printable;
 
 public class Item implements Comparable<Item>, Printable {
     private final Rule rule;
@@ -77,7 +77,7 @@ public class Item implements Comparable<Item>, Printable {
         }
         if (isFinished()) sb.append(" ●");
         sb.append(" ");
-        sb.append(lookahead.stream().map(i -> "\"" + i + "\"").reduce("", (a, b) -> a.equals("") ? "\t\t" + b : a + " / " + b));
+        sb.append(lookahead.stream().map(i -> "\"" + i + "\"").reduce("", (a, b) -> a.isEmpty() ? "\t\t" + b : a + " / " + b));
         return sb.toString();
     }
 }

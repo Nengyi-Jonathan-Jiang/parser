@@ -1,12 +1,13 @@
 package frontend.grammar;
-import java.util.*;
-import java.util.stream.Collectors;
 
 import frontend.Symbol;
 import frontend.parser.Rule;
 import frontend.parser.SymbolString;
 import frontend.parser.parser_generator.SymbolSet;
 import frontend.util.*;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Grammar implements Printable {
     private final List<Rule> rules;
@@ -128,11 +129,10 @@ public class Grammar implements Printable {
     }
     
     public boolean isNullable(SymbolString tkns){
-        if(tkns.size() == 0) return true;
         for(Symbol tkn : tkns)
-            if(isNullable(tkn))
-                return true;
-        return false;
+            if(!isNullable(tkn))
+                return false;
+        return true;
     }
     
     public boolean isNullable(Symbol tkn){
@@ -187,6 +187,7 @@ public class Grammar implements Printable {
 
         return res;
     }
+
     public SymbolSet first(Symbol tkn){
         return firstComparableSets.get(tkn);
     }

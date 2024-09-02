@@ -4,7 +4,7 @@ import jepp.interpreter.JeppInterpreter;
 import jepp.interpreter.language.JeppMethodSignature;
 import jepp.interpreter.language.JeppType;
 import jepp.interpreter.language.JeppValue;
-import org.jetbrains.annotations.NotNull;
+
 
 public class UnaryFunc<X extends JeppValue> implements BuiltinMethod {
     private final JeppType x, r;
@@ -23,18 +23,18 @@ public class UnaryFunc<X extends JeppValue> implements BuiltinMethod {
     }
 
     @Override
-    public @NotNull String name() {
+    public String name() {
         return name;
     }
 
     @Override
-    public final @NotNull JeppMethodSignature signature() {
+    public final JeppMethodSignature signature() {
         return new JeppMethodSignature(x);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public final @NotNull JeppValue apply(@NotNull JeppInterpreter interpreter, JeppValue... values) {
+    public final JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         return func.apply((X) values[0]);
     }
 }

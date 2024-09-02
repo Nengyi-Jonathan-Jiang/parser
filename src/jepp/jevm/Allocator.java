@@ -2,7 +2,10 @@ package jepp.jevm;
 
 import frontend.util.Pair;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Allocator {
     private final Map<Integer, Integer> sizes = new TreeMap<>();

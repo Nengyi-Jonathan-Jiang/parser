@@ -1,7 +1,12 @@
 package frontend.parser.lr_parser.parsing_table;
 
-public record GotoEntry(int nextState) implements TableEntry {
-    public Action getAction() {
-        return Action.GOTO;
+import frontend.util.SerializableToString;
+
+public record GotoEntry(int nextState) implements SerializableToString {
+
+    @Override
+    public void writeToStringBuilder(StringBuilder stringBuilder) {
+        stringBuilder.append(" ");
+        stringBuilder.append(nextState);
     }
 }

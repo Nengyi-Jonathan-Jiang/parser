@@ -2,10 +2,10 @@ package jepp.interpreter.language;
 
 import jepp.interpreter.JeppInterpreterException;
 import jepp.interpreter.language.builtin.types.PrimitiveJeppValue;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class JeppScope {
     private final Map<String, JeppValue> variables;
@@ -49,17 +49,17 @@ public class JeppScope {
         throw new JeppInterpreterException("Could not find variable " + name);
     }
 
-    public @Nullable JeppMethod getMethod(String name, JeppType... signature){
+    public JeppMethod getMethod(String name, JeppType... signature){
         return getMethod(name, new JeppMethodSignature(signature));
     }
 
-    public @Nullable JeppMethod getMethod(String name, JeppMethodSignature signature){
+    public JeppMethod getMethod(String name, JeppMethodSignature signature){
         if (hasOwnMethod(name, signature)) return methods.get(name).get(signature);
         if (parentScope != null) return parentScope.getMethod(name, signature);
         return null;
     }
 
-    private @NotNull Map<JeppMethodSignature, JeppMethod> allMethodsForName(String name){
+    private Map<JeppMethodSignature, JeppMethod> allMethodsForName(String name){
         Map<JeppMethodSignature, JeppMethod> res = ownMethodsForName(name);
         if(parentScope != null) parentScope.allMethodsForName(name).forEach(res::putIfAbsent);
         return res;

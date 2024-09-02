@@ -5,9 +5,8 @@ import jepp.interpreter.language.JeppMethodSignature;
 import jepp.interpreter.language.JeppType;
 import jepp.interpreter.language.JeppValue;
 import jepp.interpreter.language.builtin.types.PrimitiveJeppValue.JCompare.CompareResult;
-import org.jetbrains.annotations.NotNull;
 
-import static jepp.interpreter.language.builtin.types.PrimitiveJeppValue.*;
+import static jepp.interpreter.language.builtin.types.PrimitiveJeppValue.JCompare;
 
 public class JComparator<X extends JeppValue> implements BuiltinMethod {
     private final JeppType x;
@@ -23,18 +22,18 @@ public class JComparator<X extends JeppValue> implements BuiltinMethod {
     }
 
     @Override
-    public @NotNull String name() {
+    public String name() {
         return "operator<=>";
     }
 
     @Override
-    public final @NotNull JeppMethodSignature signature() {
+    public final JeppMethodSignature signature() {
         return new JeppMethodSignature(x, x);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public final @NotNull JeppValue apply(@NotNull JeppInterpreter interpreter, JeppValue... values) {
+    public final JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         return new JCompare(func.apply((X) values[0], (X) values[1]));
     }
 }

@@ -1,10 +1,11 @@
 package frontend.parser.parser_generator;
 
-import frontend.parser.Rule;
 import frontend.Symbol;
 import frontend.grammar.Grammar;
-import frontend.parser.lr_parser.parsing_table.*;
-import frontend.parser.parser_generator.item.*;
+import frontend.parser.Rule;
+import frontend.parser.lr_parser.parsing_table.ParsingTable;
+import frontend.parser.parser_generator.item.Item;
+import frontend.parser.parser_generator.item.ItemSet;
 
 import java.util.*;
 

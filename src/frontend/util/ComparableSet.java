@@ -1,5 +1,7 @@
 package frontend.util;
-import java.util.*;
+
+import java.util.Iterator;
+import java.util.Set;
 
 public interface ComparableSet<T extends Comparable<T>> extends Comparable<ComparableSet<T>>, Set<T>{
     

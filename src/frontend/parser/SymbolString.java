@@ -1,8 +1,11 @@
 package frontend.parser;
+
 import frontend.Symbol;
 import frontend.util.Printable;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>, Printable {
     private final Symbol[] symbols;

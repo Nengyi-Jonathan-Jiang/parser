@@ -1,6 +1,7 @@
 package jepp.interpreter.language.builtin.methods;
 
-import static jepp.interpreter.language.builtin.types.PrimitiveJeppType.*;
+import static jepp.interpreter.language.builtin.types.PrimitiveJeppType.JFloatT;
+import static jepp.interpreter.language.builtin.types.PrimitiveJeppType.JIntegerT;
 import static jepp.interpreter.language.builtin.types.PrimitiveJeppValue.*;
 
 public class _Methods {

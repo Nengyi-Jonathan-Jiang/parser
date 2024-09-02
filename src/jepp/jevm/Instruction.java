@@ -2,8 +2,9 @@ package jepp.jevm;
 
 import java.util.function.BinaryOperator;
 
-import static jepp.jevm.Instruction.Param.ParamType.*;
-import static jepp.jevm.MemoryLocation.*;
+import static jepp.jevm.Instruction.Param.ParamType.FLOAT;
+import static jepp.jevm.Instruction.Param.ParamType.INT;
+import static jepp.jevm.MemoryLocation.Constant;
 
 public abstract class Instruction {
     private interface BinOp {

@@ -1,7 +1,7 @@
 package frontend.parser.parser_generator.item;
 
-import frontend.util.Printable;
 import frontend.util.ComparableTreeSet;
+import frontend.util.Printable;
 
 public class ItemSet extends ComparableTreeSet<Item> implements Printable{
 

@@ -2,9 +2,6 @@ package jepp.interpreter.language;
 
 import frontend.parser.ParseTreeNode;
 import jepp.interpreter.JeppInterpreter;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 public class UserJeppMethod implements JeppMethod {
     private final String name;
@@ -18,17 +15,17 @@ public class UserJeppMethod implements JeppMethod {
     }
 
     @Override
-    public @NotNull String name() {
+    public String name() {
         return name;
     }
 
     @Override
-    public @NotNull JeppMethodSignature signature() {
+    public JeppMethodSignature signature() {
         return prototype.signature();
     }
 
     @Override
-    public @NotNull JeppValue apply(@NotNull JeppInterpreter interpreter, JeppValue... values) {
+    public JeppValue apply(JeppInterpreter interpreter, JeppValue... values) {
         JeppScope s = interpreter.pushNewScope();
         for(int i = 0; i < signature().types().length; i++) {
             s.declareVariable(prototype.argNames()[i]);

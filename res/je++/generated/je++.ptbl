@@ -4,7 +4,7 @@ a module r 0 program
 a program s 1
 g program 1
 s
-a Ω a 
+a Ω a
 a module s 2
 a file s 3
 a module-declaration s 4

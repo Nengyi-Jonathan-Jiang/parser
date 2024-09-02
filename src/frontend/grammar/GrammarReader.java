@@ -1,9 +1,11 @@
 package frontend.grammar;
 
-import frontend.parser.Rule;
 import frontend.Symbol;
+import frontend.parser.Rule;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class GrammarReader {
     private GrammarReader(){}

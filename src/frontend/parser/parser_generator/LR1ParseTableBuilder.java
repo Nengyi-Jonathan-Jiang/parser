@@ -1,9 +1,9 @@
 package frontend.parser.parser_generator;
 
-import frontend.parser.Rule;
 import frontend.Symbol;
-import frontend.parser.SymbolString;
 import frontend.grammar.Grammar;
+import frontend.parser.Rule;
+import frontend.parser.SymbolString;
 import frontend.parser.parser_generator.item.Item;
 import frontend.parser.parser_generator.item.ItemSet;
 import frontend.util.Cache;

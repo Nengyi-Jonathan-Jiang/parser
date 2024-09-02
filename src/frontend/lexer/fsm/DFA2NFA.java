@@ -3,12 +3,11 @@ package frontend.lexer.fsm;
 import frontend.Symbol;
 import frontend.util.ComparableHashSet;
 import frontend.util.ComparableSet;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 public class DFA2NFA {
-    private static class MANFA extends NFA {
+    private static class MultiAcceptNFA extends NFA {
         public Map<Integer, Symbol> acceptingStates = new HashMap<>();
     }
 
@@ -16,11 +15,11 @@ public class DFA2NFA {
         ComparableSet<Integer> result = new ComparableHashSet<>(states);
         Queue<Integer> edge = new ArrayDeque<>(states);
 
-        while(!edge.isEmpty()) {
+        while (!edge.isEmpty()) {
             int currState = edge.poll();
 
-            for(int equivalentState : nfa.table.getOrDefault(currState, new HashMap<>()).getOrDefault(NFA.EPSILON, new HashSet<>())) {
-                if(result.contains(equivalentState)) continue;
+            for (int equivalentState : nfa.table.getOrDefault(currState, new HashMap<>()).getOrDefault(NFA.EPSILON, new HashSet<>())) {
+                if (result.contains(equivalentState)) continue;
                 result.add(equivalentState);
                 edge.offer(equivalentState);
             }
@@ -29,17 +28,17 @@ public class DFA2NFA {
         return result;
     }
 
-    public static DFA to_dfa(Map<Symbol, NFA> rules){
+    public static DFA to_dfa(Map<Symbol, NFA> rules) {
         return createDFA(createMANFA(rules));
     }
 
-    @NotNull
-    private static DFA createDFA(MANFA manfa) {
+
+    private static DFA createDFA(MultiAcceptNFA multiAcceptNFA) {
         DFA dfa = new DFA();
 
         Map<ComparableSet<Integer>, Integer> dfaStates = new TreeMap<>();
 
-        dfaStates.put(epsilon_closure(manfa, new HashSet<>(List.of(NFA.INITIAL_STATE))), DFA.INITIAL_STATE);
+        dfaStates.put(epsilon_closure(multiAcceptNFA, new HashSet<>(List.of(NFA.INITIAL_STATE))), DFA.INITIAL_STATE);
 
         boolean didUpdate = true;
         while (didUpdate) {
@@ -51,28 +50,27 @@ public class DFA2NFA {
 
                 Map<Character, Set<Integer>> transitions = new HashMap<>();
 
-                for(int state : curr_NFA_states) {
-                    for(var entry : manfa.table.getOrDefault(state, new HashMap<>()).entrySet()) {
+                for (int state : curr_NFA_states) {
+                    for (var entry : multiAcceptNFA.table.getOrDefault(state, new HashMap<>()).entrySet()) {
                         Character c = entry.getKey();
-                        if(c != NFA.EPSILON) {
+                        if (c != NFA.EPSILON) {
                             transitions.putIfAbsent(c, new HashSet<>());
                             transitions.get(c).addAll(entry.getValue());
                         }
                     }
                 }
 
-                for(var entry : transitions.entrySet()) {
-                    ComparableSet<Integer> new_states = epsilon_closure(manfa, entry.getValue());
+                for (var entry : transitions.entrySet()) {
+                    ComparableSet<Integer> new_states = epsilon_closure(multiAcceptNFA, entry.getValue());
 
                     int newStateID;
-                    if(dfaStates.containsKey(new_states)) {
+                    if (dfaStates.containsKey(new_states)) {
                         newStateID = dfaStates.get(new_states);
-                    }
-                    else {
+                    } else {
                         dfaStates.put(new_states, newStateID = DFA.getNextUnusedState());
 
-                        new_states.stream().filter(manfa.acceptingStates::containsKey).findFirst().ifPresent(acceptedDFAState -> {
-                            Symbol acceptedSymbol = manfa.acceptingStates.get(acceptedDFAState);
+                        new_states.stream().filter(multiAcceptNFA.acceptingStates::containsKey).findFirst().ifPresent(acceptedDFAState -> {
+                            Symbol acceptedSymbol = multiAcceptNFA.acceptingStates.get(acceptedDFAState);
                             dfa.makeAcceptingState(acceptedSymbol, acceptedDFAState);
                         });
 
@@ -85,17 +83,17 @@ public class DFA2NFA {
         return dfa;
     }
 
-    @NotNull
-    private static MANFA createMANFA(Map<Symbol, NFA> rules) {
-        MANFA manfa = new MANFA();
-        for(var entry : rules.entrySet()) {
+
+    private static MultiAcceptNFA createMANFA(Map<Symbol, NFA> rules) {
+        MultiAcceptNFA multiAcceptNFA = new MultiAcceptNFA();
+        for (var entry : rules.entrySet()) {
             Symbol symbol = entry.getKey();
             NFA nfa = entry.getValue();
             int newAcceptingState = NFA.getNextUnusedState();
             nfa.remap(NFA.INITIAL_STATE, newAcceptingState);
-            manfa.mergeWith(nfa);
-            manfa.acceptingStates.put(newAcceptingState, symbol);
+            multiAcceptNFA.mergeWith(nfa);
+            multiAcceptNFA.acceptingStates.put(newAcceptingState, symbol);
         }
-        return manfa;
+        return multiAcceptNFA;
     }
 }

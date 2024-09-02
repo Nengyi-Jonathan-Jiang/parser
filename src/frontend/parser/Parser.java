@@ -12,7 +12,7 @@ public interface Parser {
 
     interface Parse{
         boolean process(Token tok);
-        boolean isFinished();
-        ParseTreeNode getParseTree();
+        boolean didAccept();
+        ParseTreeNode getResult();
     }
 }

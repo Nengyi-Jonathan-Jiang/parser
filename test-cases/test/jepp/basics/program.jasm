@@ -1,0 +1,32 @@
+print "1 + 1 = ";
+% Compute 1 + 1
+mov 1 [i r0];
+mov 1 [i r1];
+add [i r0] [i r1] [i r0];
+% Display output
+dsp [i r0];
+print "\n";
+
+print "2 + 5 * 3 + 7 = ";
+% Compute 2 + 5 * 3 + 7
+mov 2 [i r0];
+mov 5 [i r1];
+mov 3 [i r2];
+mul [i r1] [i r2] [i r1];
+add [i r0] [i r1] [i r0];
+mov 7 [i r1];
+add [i r0] [i r1] [i r0];
+% Display output
+dsp [i r0];
+print "\n";
+
+print "2 - input() * 3 = ";
+% Compute 2 - input() * 3
+mov 2 [i r0];
+inp [i r1];
+mov 3 [i r2];
+mul [i r1] [i r2] [i r1];
+sub [i r0] [i r1] [i r0];
+% Display output
+dsp [i r0];
+print "\n";

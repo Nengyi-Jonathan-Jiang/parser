@@ -5,7 +5,6 @@ import jepp.frontend.JePPFrontend;
 import jepp.interpreter.language.*;
 import jepp.interpreter.language.builtin.JeppBaseScope;
 import jepp.interpreter.language.builtin.types.PrimitiveJeppValue;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -13,7 +12,6 @@ import java.util.*;
 
 import static jepp.interpreter.language.builtin.types.PrimitiveJeppType.*;
 import static jepp.interpreter.language.builtin.types.PrimitiveJeppValue.*;
-import static jepp.interpreter.language.builtin.types.PrimitiveJeppValue.Void;
 import static jepp.interpreter.language.builtin.types.PrimitiveJeppValue.JCompare.CompareCondition.fromString;
 
 public class JeppInterpreter {
@@ -34,7 +32,7 @@ public class JeppInterpreter {
         evaluate(pTree);
     }
 
-    public @NotNull JeppValue evaluate(ParseTreeNode node) {
+    public JeppValue evaluate(ParseTreeNode node) {
         switch (node.getDescription().name) {
             case "function-definition" -> {
                 String name = node.getChild(1).getValue().value;
