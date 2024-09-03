@@ -28,8 +28,10 @@ public class JeppInterpreter {
     }
 
     public void run(ParseTreeNode pTree) {
-        System.out.println(pTree);
-        evaluate(pTree);
+        JeppValue result = evaluate(pTree);
+        if (result != Void) {
+            System.out.println(result);
+        }
     }
 
     public JeppValue evaluate(ParseTreeNode node) {
@@ -51,11 +53,11 @@ public class JeppInterpreter {
                 List<JeppType> argTypes = new ArrayList<>();
 
                 for (ParseTreeNode parameter :
-                        parameters.getChild(1).getChildren().length == 2 ?
-                            Collections.<ParseTreeNode>emptyList() :
-                            Arrays.stream(parameters.getChild(1).getChildren())
-                                    .filter(i -> i.matches("parameter"))
-                                    .toList()
+                    parameters.getChild(1).getChildren().length == 2 ?
+                        Collections.<ParseTreeNode>emptyList() :
+                        Arrays.stream(parameters.getChild(1).getChildren())
+                            .filter(i -> i.matches("parameter"))
+                            .toList()
                 ) {
                     String argType, argName;
                     if (parameter.getChildren().length == 3) {
@@ -103,7 +105,7 @@ public class JeppInterpreter {
             }
 
             case "loop-exit-statement" -> {
-                int o = switch(node.getChild(0).getValue().value) {
+                int o = switch (node.getChild(0).getValue().value) {
                     case "break" -> 2;
                     case "continue" -> 1;
                     default -> throw new JeppInterpreterPanic("Unknown loop exit statement");
@@ -115,11 +117,11 @@ public class JeppInterpreter {
                 JeppScope loopScope = pushNewScope();
 
                 ParseTreeNode expr = node.getChild(2);
-                while(!evaluate(expr).isTruthy()) {
+                while (!evaluate(expr).isTruthy()) {
                     JeppValue value = evaluate(node.getChild(4));
                     if (value instanceof _SIG_exit exit) return exit.decrease_level();
                     if (value != Void) return value;
-                    if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
+                    if (loop_limit-- < 0) throw new JeppInterpreterException("Infinite loop :(");
                 }
 
                 popScope(loopScope);
@@ -129,11 +131,11 @@ public class JeppInterpreter {
                 JeppScope loopScope = pushNewScope();
 
                 ParseTreeNode expr = node.getChild(2);
-                while(evaluate(expr).isTruthy()) {
+                while (evaluate(expr).isTruthy()) {
                     JeppValue value = evaluate(node.getChild(4));
                     if (value instanceof _SIG_exit exit) return exit.decrease_level();
                     if (value != Void) return value;
-                    if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
+                    if (loop_limit-- < 0) throw new JeppInterpreterException("Infinite loop :(");
                 }
 
                 popScope(loopScope);
@@ -147,11 +149,11 @@ public class JeppInterpreter {
                 ParseTreeNode loopCondition = node.getChild(3);
                 ParseTreeNode loopUpdate = node.getChild(5);
                 ParseTreeNode loopBody = node.getChild(7);
-                while(evaluate(loopCondition).isTruthy()) {
+                while (evaluate(loopCondition).isTruthy()) {
                     JeppValue value = evaluate(loopBody);
                     if (value instanceof _SIG_exit exit) return exit.decrease_level();
                     if (value != Void) return value;
-                    if(loop_limit--<0) throw new JeppInterpreterException("Infinite loop :(");
+                    if (loop_limit-- < 0) throw new JeppInterpreterException("Infinite loop :(");
 
                     evaluate(loopUpdate);
                 }
@@ -160,7 +162,7 @@ public class JeppInterpreter {
             }
             case "loop-body" -> {
                 JeppValue res = evaluate(node.getChild(0));
-                if(res instanceof _SIG_exit exit) return exit.decrease_level();
+                if (res instanceof _SIG_exit exit) return exit.decrease_level();
                 return res;
             }
             case "block-statement" -> {
@@ -170,9 +172,9 @@ public class JeppInterpreter {
                 String methodName = node.getChild(0).getValue().value;
 
                 List<JeppValue> arguments = node.getChild(2).children()
-                        .filter(i -> i.matches("argument"))
-                        .map(i -> i.getChild(0))
-                        .map(this::evaluate).toList();
+                    .filter(i -> i.matches("argument"))
+                    .map(i -> i.getChild(0))
+                    .map(this::evaluate).toList();
 
                 List<JeppType> argTypes = arguments.stream().map(JeppValue::getType).toList();
 
@@ -215,7 +217,7 @@ public class JeppInterpreter {
                     default -> throw new JeppInterpreterPanic("Unknown postfix operator: " + op);
                 };
                 JeppValue newValue;
-                if(currValue instanceof JInteger val) newValue = new JInteger(val.value + change);
+                if (currValue instanceof JInteger val) newValue = new JInteger(val.value + change);
                 else if (currValue instanceof JFloat val) newValue = new JFloat(val.value + change);
                 else throw new JeppInterpreterPanic("ouch");
 
@@ -282,9 +284,9 @@ public class JeppInterpreter {
                 if (node.getChild(1).matches("STRING-LITERAL")) {
                     val = node.getChild(1).getValue().value;
                     val = val.substring(1, val.length() - 1)
-                            .replace("\\n", "\n")
-                            .replace("\\t", "\t")
-                            .replaceAll("\\\\(.)", "$1");
+                        .replace("\\n", "\n")
+                        .replace("\\t", "\t")
+                        .replaceAll("\\\\(.)", "$1");
                 } else val = evaluate(node.getChild(1)).toString();
 
                 switch (node.getChild(0).getValue().value) {

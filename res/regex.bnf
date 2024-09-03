@@ -1,0 +1,25 @@
+regex
+
+regex __EPSILON__
+regex := alternation
+
+alternation := concatenation
+__CHAIN__ alternation := alternation | concatenation
+
+concatenation := item
+__CHAIN__ concatenation := concatenation item
+
+item := basic-item
+item := basic-item *
+item := basic-item +
+item := basic-item ?
+
+basic-item := ( alternation )
+basic-item := char
+basic-item := any
+basic-item := character-class
+
+character-class := [ chars ]
+
+chars := char
+chars := chars char

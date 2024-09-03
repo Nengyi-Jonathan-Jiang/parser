@@ -30,6 +30,10 @@ public class Interpreter {
             throw new Error("Error parsing program: Parse tree was null");
         }
 
+        this.runParseTree(parseTree);
+    }
+
+    public void runParseTree(ParseTreeNode parseTree) {
         this.runner.run(parseTree);
     }
 }
