@@ -5,9 +5,8 @@ import frontend.Token;
 import frontend.parser.ParseTreeNode;
 import frontend.parser.Rule;
 
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.stream.Stream;
+import java.util.Objects;
+import java.util.Stack;
 
 public record ReduceEntry(Rule rule) implements ActionTableEntry {
 
@@ -18,15 +17,28 @@ public record ReduceEntry(Rule rule) implements ActionTableEntry {
         stringBuilder.append(" ");
 
         if (rule.chained) stringBuilder.append("__c ");
-        if (!rule.unwrap) stringBuilder.append("__w ");
+        if (!rule.unwrapMono) stringBuilder.append("__w ");
 
         stringBuilder.append(rule.getLhs());
         stringBuilder.append(" ");
         stringBuilder.append(rule.getRhs().toString());
     }
 
-    public void applyAction(Deque<Integer> stateStack, Deque<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token) {
-        doApply(stateStack, parseTreeNodeStack, table);
+    public void applyAction(Stack<Integer> stateStack, Stack<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token) {
+        Symbol lhs = rule.getLhs();
+
+        // Update state stack
+        for (int j = 0; j < rule.getRhsSize(); j++) stateStack.pop();
+        GotoEntry gotoEntry = table.getGoto(Objects.requireNonNull(stateStack.peek()), lhs);
+        stateStack.push(gotoEntry.nextState());
+
+        // Update parse tree
+        ParseTreeNode[] children = new ParseTreeNode[rule.getRhsSize()];
+        for (int j = rule.getRhsSize() - 1; j >= 0; j--) {
+            children[j] = parseTreeNodeStack.pop();
+        }
+
+        parseTreeNodeStack.push(rule.applyTo(children));
     }
 
     @Override
@@ -37,36 +49,5 @@ public record ReduceEntry(Rule rule) implements ActionTableEntry {
     @Override
     public boolean isAccepting() {
         return false;
-    }
-
-    private void doApply(Deque<Integer> stateStack, Deque<ParseTreeNode> parseTreeNodeStack, ParsingTable table) {
-        Symbol lhs = rule.getLhs();
-
-        // Update state stack
-        for (int j = 0; j < rule.getRhsSize(); j++) stateStack.pop();
-        GotoEntry gotoEntry = table.getGoto(stateStack.peek(), lhs);
-        stateStack.push(gotoEntry.nextState());
-
-        // Update parse tree - merge nodes into parent node
-
-        // Unwrap node if allowed to simplify the parse tree
-        if (rule.getRhs().size() == 1 && rule.unwrap) return;
-
-        // Handle chained nodes
-        ParseTreeNode[] children = new ParseTreeNode[rule.getRhsSize()];
-        for (int j = rule.getRhsSize() - 1; j >= 0; j--) children[j] = parseTreeNodeStack.pop();
-        if (rule.chained) {
-            ParseTreeNode reducer = children[0];
-            if (reducer.matches(lhs)) {
-                var joinedChildren = Stream.concat(
-                    reducer.children(),
-                    Arrays.stream(children).skip(1)
-                ).toArray(ParseTreeNode[]::new);
-                parseTreeNodeStack.push(new ParseTreeNode(lhs, joinedChildren));
-                return;
-            }
-        }
-
-        parseTreeNodeStack.push(new ParseTreeNode(lhs, children));
     }
 }

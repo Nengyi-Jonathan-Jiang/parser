@@ -41,26 +41,23 @@ public final class LRParser implements Parser {
     }
 
     public Parse start() {
-        return new Parse(this);
+        return new Parse();
     }
 
-    public static class Parse implements Parser.Parse {
-        private final Deque<Integer> stateStack = new ArrayDeque<>();
-        private final Deque<ParseTreeNode> parseTreeNodeStack = new ArrayDeque<>();
-        private final ParsingTable table;
+    public class Parse implements Parser.Parse {
+        private final Stack<Integer> stateStack = new Stack<>();
+        private final Stack<ParseTreeNode> parseTreeNodeStack = new Stack<>();
         private boolean didAccept;
 
         private final List<LRParsingError> errors = new ArrayList<>();
 
-        public Parse(LRParser parser) {
+        private Parse() {
             stateStack.push(0);
-            table = parser.table;
             didAccept = false;
         }
 
         public boolean process(Token token) {
             while (true) {
-                //noinspection DataFlowIssue
                 int currentState = stateStack.peek();
 
                 ActionTableEntry entry = table.getAction(currentState, token.type);

@@ -3,7 +3,7 @@ package frontend.parser.lr_parser.parsing_table;
 import frontend.Token;
 import frontend.parser.ParseTreeNode;
 
-import java.util.Deque;
+import java.util.Stack;
 
 public record ShiftEntry(int nextState) implements ActionTableEntry {
 
@@ -12,7 +12,7 @@ public record ShiftEntry(int nextState) implements ActionTableEntry {
         stringBuilder.append(nextState);
     }
 
-    public void applyAction(Deque<Integer> stateStack, Deque<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token) {
+    public void applyAction(Stack<Integer> stateStack, Stack<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token) {
         stateStack.push(nextState);
         parseTreeNodeStack.push(new ParseTreeNode(token.type, token));
     }

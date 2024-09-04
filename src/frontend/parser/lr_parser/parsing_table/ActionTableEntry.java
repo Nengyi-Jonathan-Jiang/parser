@@ -4,10 +4,10 @@ import frontend.Token;
 import frontend.parser.ParseTreeNode;
 import frontend.util.SerializableToString;
 
-import java.util.Deque;
+import java.util.Stack;
 
 public interface ActionTableEntry extends SerializableToString {
-    void applyAction(Deque<Integer> stateStack, Deque<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token);
+    void applyAction(Stack<Integer> stateStack, Stack<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token);
 
     boolean isDoneProcessingToken();
 
