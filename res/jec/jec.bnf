@@ -1,0 +1,81 @@
+program
+
+// Basic program structure; DEPENDS ON: main-block, declarations
+program := declarations main-block
+
+// Declarations; DEPENDS ON: parameter-list, optional-parameter-list,
+//                           type, block-statement, variable-declaration
+declarations __EPSILON__
+__CHAIN__ declarations := declarations declaration
+declaration := struct-declaration
+declaration := function-declaration
+declaration := global-declaration
+struct-declaration := def struct identifier { parameter-list }
+function-declaration := def func identifier ( optional-parameter-list ) -> type block-statement
+global-declaration := global variable-declaration
+
+// Blocks; DEPENDS ON: block-body
+// Example: main { ... }
+main-block := main block-body
+
+// Statements; DEPENDS ON: variable-declaration, expression-statement,
+//                                     conditional-statement, loop-statement,
+//                                     exit-statement, return-statement
+statements __EPSILON__
+__CHAIN__ statements := statements statement
+statement := block-statement
+statement := expression-statement
+statement := variable-declaration
+statement := conditional-statement
+statement := loop-statement
+statement := exit-statement
+statement := return-statement
+
+// Block statement; DEPENDS ON: statements
+block-statement := { statements }
+
+// Expression statement; DEPENDS ON: expression
+expression-statement := expression ;
+
+// Variable declaration statement; DEPENDS ON: type, expression
+variable-declaration := simple-variable-declaration ;
+variable-declaration := compound-variable-declaration ;
+simple-variable-declaration := type identifier
+compound-variable-declaration := simple-variable-declaration = expression
+
+// Parameter-list
+parameter-list := variable-declaration
+__CHAIN__ parameter-list := parameter-list , variable-declaration
+optional-parameter-list __EPSILON__
+optional-parameter-list := parameter-list
+
+// Conditional-statement; DEPENDS ON: expression, statement
+conditional-statement := if-statement
+conditional-statement := if-else-statement
+if-statement := if ( expression ) statement
+if-else-statement := if-statement else statement
+
+// Loop statement; DEPENDS ON: expression, statement
+loop-statement := while-loop
+loop-statement := while-else-loop
+while-loop := while ( expression ) statement
+while-else-loop := while-loop else statement
+
+// Exit-statement; DEPENDS ON:
+exit-statement := exit-instructions ;
+exit-instructions := exit-instruction
+__CHAIN__ exit-instructions := exit-instructions exit-instruction
+exit-instruction := break
+exit-instruction := continue
+
+// Return-statement; DEPENDS ON: expression
+return-statement := return expression ;
+
+// Types; DEPENDS ON:
+type := int
+type := float
+type := bool
+type := char
+type := struct identifier
+
+// Expressions

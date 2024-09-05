@@ -41,7 +41,7 @@ public class GrammarReader {
         List<Rule> rules = new ArrayList<>();
         while(scan.hasNextLine()){
             String line = scan.nextLine();
-            if(line.length() == 0 || line.indexOf("//") == 0) continue; //Filter out empty or commented lines
+            if(line.isEmpty() || line.indexOf("//") == 0) continue; //Filter out empty or commented lines
             rules.add(ruleFromLine(table, line));
         }
         return new Grammar(rules, startSymbol, table);
