@@ -5,6 +5,7 @@ program := declarations main-block
 
 // Declarations; DEPENDS ON: parameter-list, optional-parameter-list,
 //                           type, block-statement, variable-declaration
+//               TOKENS: def struct identifier { } func ( ) -> global
 declarations __EPSILON__
 __CHAIN__ declarations := declarations declaration
 declaration := struct-declaration
@@ -15,7 +16,7 @@ function-declaration := def func identifier ( optional-parameter-list ) -> type 
 global-declaration := global variable-declaration
 
 // Blocks; DEPENDS ON: block-body
-// Example: main { ... }
+//         TOKENS: main 
 main-block := main block-body
 
 // Statements; DEPENDS ON: variable-declaration, expression-statement,
@@ -30,14 +31,18 @@ statement := conditional-statement
 statement := loop-statement
 statement := exit-statement
 statement := return-statement
+statement := dealloc-statement
 
 // Block statement; DEPENDS ON: statements
+//                  TOKENS: { }
 block-statement := { statements }
 
 // Expression statement; DEPENDS ON: expression
+//                       TOKENS: ;
 expression-statement := expression ;
 
 // Variable declaration statement; DEPENDS ON: type, expression
+//                                 TOKENS: =
 variable-declaration := simple-variable-declaration ;
 variable-declaration := compound-variable-declaration ;
 simple-variable-declaration := type identifier
@@ -72,10 +77,79 @@ exit-instruction := continue
 return-statement := return expression ;
 
 // Types; DEPENDS ON:
-type := int
-type := float
-type := bool
-type := char
-type := struct identifier
+simple-type := int
+simple-type := float
+simple-type := bool
+simple-type := char
+simple-type := struct identifier
+type := simple-type
+type := @ type
 
-// Expressions
+// Expressions -- Resolve precedence later with shunting yard algorithm
+// DEPENDS ON: type
+expression := prefix-expression
+__CHAIN__ expression := expression binary-operator prefix-expression
+// Prefix expressions, including expressions that act like prefix expressions
+prefix-expression := postfix-expression
+prefix-expression := prefix-operator prefix-expression
+prefix-expression := struct-initializer
+prefix-expression := single-allocation-expression
+prefix-expression := array-allocation-expression
+single-allocation-expression := alloc struct-initializer
+array-allocation-expression := alloc [ int-literal ] type
+prefix-expression := sizeof-expression
+prefix-expression := sizeof type
+// Postfix expressions, including expressions that act like postfix expressions
+postfix-expression := primary-expression
+postfix-expression := primary-expression postfix-operator
+// Primary expressions
+primary-expression := ( expression )
+primary-expression := int-literal
+primary-expression := float-literal
+primary-expression := char-literal
+primary-expression := bool-literal
+primary-expression := string-literal
+
+// Struct initializer
+struct-initializer := struct identifier { optional-struct-members }
+optional-struct-members __EPSILON__
+optional-struct-members := struct-members
+struct-members := struct-member
+__CHAIN__ struct-members := struct-members , struct-member
+struct-member := identifier = expression
+
+// Binary operators; DEPENDS ON
+binary-operator := simple-binary-operator
+binary-operator := assignment-binary-operator
+binary-operator := relational-operator
+simple-binary-operator := +
+simple-binary-operator := -
+simple-binary-operator := /
+simple-binary-operator := *
+simple-binary-operator := %
+simple-binary-operator := ||
+simple-binary-operator := &&
+simple-binary-operator := |
+simple-binary-operator := &
+simple-binary-operator := ^
+simple-binary-operator := >>
+simple-binary-operator := <<
+assignment-binary-operator := simple-binary-operator =
+relational-operator := >
+relational-operator := <
+relational-operator := >=
+relational-operator := <=
+relational-operator := !=
+relational-operator := ==
+
+// Prefix operators; DEPENDS ON
+// Note that # is the dereference operator
+prefix-operator := -
+prefix-operator := ~
+prefix-operator := !
+prefix-operator := #
+
+
+postfix-operator := ( optional-argument-list )
+postfix-operator := [ expression ]
+postfix-operator := as type

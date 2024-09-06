@@ -1,31 +1,22 @@
-COMMENT := (% [^\n]*)
+COMMENT := //[^\n]*|/\*([^*]|\*+[^*/])*\**\*/
+STRING-LITERAL := "[^"\\]*(\\.[^"\\]*)*"
+CHAR-LITERAL := '([^'\n]|\\.)'
+INT-LITERAL := 0|-?[123456789][\d]*
+FLOAT-LITERAL := (0|-?[123456789][\d]*)(.[\d]+)?
+BOOL-LITERAL := (true|false)
 
-mov
-cpy
-add
-sub
-mul
-div
-mod
-or
-and
-xor
-shl
-shr
-cmp
-jmp
-ucd
-eqz
-nez
-gtz
-ltz
-gez
-lez
-dsp
-inp
-new
-del
-label
+def
+struct
+{
+}
+(
+)
+func
+->
+global
+main
+;
+
 [
 ]
 @
@@ -47,7 +38,4 @@ fconst := (0|-?[123456789][\d]*)(\.[\d]+)
 bconst := (true|false)
 cconst := '\\?.'
 
-string := "[^"\\]*(\\.[^"\\]*)*"
-
-label_name := [A-Z][A-Za-z0-9_]*
-
+identifier := [A-Za-z_]\w*
