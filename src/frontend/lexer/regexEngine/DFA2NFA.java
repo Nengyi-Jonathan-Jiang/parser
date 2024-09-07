@@ -1,4 +1,4 @@
-package frontend.lexer.fsm;
+package frontend.lexer.regexEngine;
 
 import frontend.Symbol;
 import frontend.util.ComparableHashSet;

@@ -1,13 +1,13 @@
 # Cerium (Assembly language)
 
-(Neodymium, the IR; Dysprosium, the language)
+(Neodymium the low level language; Dysprosium the high level language)
 
 ### Locations and operations
 
 Cerium is a register-based assembly language. The CeVM (Cerium Virtual Machine) has 8 general-purpose registers labeled
 `r0` through `r7` as well as a dedicated stack pointer register `sp`
 
-Operations in Cerium can read and write directly to registers (direct location) or memory locations pointed to by 
+Operations in Cerium can read and write directly to registers (direct location) or memory locations pointed to by
 registers (indirect location), and they can also have literals as sources. Unary operations are written as
 
 ```
@@ -68,88 +68,33 @@ Cerium has a mov operation written as `<target> <- <source>` which performs auto
 for float to char. Cerium also has a builtin `memcpy` operation with the syntax `memcpy <source> : <len> -> <target>`
 where `<len>` must be an integer and `source` and `target` must be indirect locations of type `l`.
 
-### Display and print
+### Input and Output
+
+As a temporary hack while I work everything out, I built IO into the virtual machine. To input a value, use 
+```
+<target> <- stdin
+```
+To display a value, use
+```
+stdout <- <source>
+```
+Source can be a value as well as a string literal (which is only used in this context) 
 
 ### Memory allocation
 
-I'm too lazy to implement a memory allocator in Cerium, so I built it into the VM (think Java Bytecode, but no garbage 
-collection). To allocate memory, write `<target> <- alloc <len>` where `<len>` is an integer and `<target>` is a direct 
-location of type `l`. To deallocate memory, write `dealloc <target>` 
+I thought it would be really painful to implement an actual memory allocator in assembly, so I built it into the VM
+(think Java bytecode, but no garbage collection). To allocate memory, write `<target> <- alloc <len>` where `<len>` is
+an integer and `<target>` is a direct location of type `l`. To deallocate memory, write `dealloc <target>`
 
+### Jumps
 
+Jumps are accomplished through the `goto` instruction
+```
+goto <target> if <source> <condition>
+```
+where `<target>` should be an integer pointing to instruction and `<condition>` should be one of `==0`, `>=0`, `<=0`, 
+`>0`, `<0`, or `!=0` (with no spaces). The if clause can be omitted for an unconditional jump 
 
-print_statement := print string
+### Debugging
 
-mov_statement := mov any location
-cpy_statement := cpy int int int
-
-partial_statement := mov_statement
-partial_statement := cpy_statement
-
-// Arithmetic operations
-
-arithmetic_op := add
-arithmetic_op := sub
-arithmetic_op := mul
-arithmetic_op := div
-arithmetic_op := mod
-
-arithmetic_statement := arithmetic_op int int int_location
-arithmetic_statement := arithmetic_op int float float_location
-arithmetic_statement := arithmetic_op float int float_location
-arithmetic_statement := arithmetic_op float float float_location
-
-partial_statement := arithmetic_statement
-
-// Bitwise operations
-
-bitwise_op := or
-bitwise_op := xor
-bitwise_op := and
-
-bitwise_statement := bitwise_op int int int_location
-bitwise_statement := bitwise_op bool bool bool_location
-
-partial_statement := bitwise_statement
-
-// Bit Shift operations
-
-sop := shl
-sop := shr
-
-shift_statement := sop int int int_location
-
-partial_statement := shift_statement
-
-// JMP and CMP
-
-condition := ucd
-condition := eqz
-condition := nez
-condition := gtz
-condition := ltz
-condition := gez
-condition := lez
-
-jmp_statement := jmp any int condition
-cmp_statement := cmp any bool_location condition
-
-partial_statement := jmp_statement
-partial_statement := cmp_statement
-
-// DSP and INP
-
-display_statement := dsp any
-input_statement := inp location
-partial_statement := display_statement
-partial_statement := input_statement
-
-// Memory management instructions
-
-alloc_statement := new int int_location
-dealloc_statement := del int
-
-partial_statement := alloc_statement
-partial_statement := dealloc_statement
-
-partial_statement := dump
+The `dump` instruction (by itself on a line) dumps the hex values in memory to the console.

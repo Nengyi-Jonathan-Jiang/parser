@@ -4,6 +4,7 @@ import frontend.Symbol;
 import frontend.SymbolTableReader;
 import frontend.Token;
 import frontend.lexer.Lexer;
+import frontend.lexer.LexerReader;
 import frontend.parser.ParseTreeNode;
 import frontend.parser.Parser;
 import frontend.parser.lr_parser.LRParser;
@@ -12,6 +13,7 @@ import frontend.parser.lr_parser.parsing_table.ParsingTable;
 import jepp.jevm.Instruction;
 import jepp.jevm.Program;
 import jepp.jevm.VM;
+import util.FileUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,55 +24,55 @@ import java.util.stream.Collectors;
 
 public class Assembler {
     public static final String lxFile = "jasm/jasm.lx",
-                               ebnfFile = "jasm/jasm.bnf",
-                               ptblFile = "jasm/jasm.ptbl";
+        ebnfFile = "jasm/jasm.bnf",
+        ptblFile = "jasm/jasm.ptbl";
     public static final Symbol.SymbolTable symbolTable = Symbol.SymbolTable.merge(
         SymbolTableReader.generateFromLexerFile(lxFile),
         SymbolTableReader.generateFromParsingTableFile(ptblFile)
     );
-    public static final Lexer lexer = Lexer.fromFile(symbolTable, lxFile);
+    //    public static final Lexer lexer = Lexer.fromFile(symbolTable, lxFile);
+    public static final Lexer lexer = LexerReader.readLexerFromString(FileUtil.getTextContents(lxFile));
+
+
     public static final Parser parser = new LRParser(ParsingTable.loadFromFile(symbolTable, ptblFile));
 
-    public static Program assemble(String program){
+    public static Program assemble(String program) {
         var lex = lexer.lex(program);
         var parse = parser.start();
 
         Token tk;
         do {
             tk = lex.next();
-            if(tk.type == symbolTable.get("COMMENT")) continue;
+            if (tk.type == symbolTable.get("COMMENT")) continue;
             try {
                 parse.process(tk);
-            }
-            catch (LRParsingError e) {
+            } catch (LRParsingError e) {
                 System.out.print("Parse failed on token ");
                 System.out.print(tk);
                 System.out.print(" with stack [");
-                System.out.print(((LRParser.Parse)parse).getParseTreeStack().stream().map(ParseTreeNode::toString).collect(Collectors.joining(" ")));
+                System.out.print(((LRParser.Parse) parse).getParseTreeStack().stream().map(ParseTreeNode::toString).collect(Collectors.joining(" ")));
                 System.out.print("] : Expected one of ");
                 System.out.println(e.getExpected());
                 throw e;
-            }
-            catch (Error e) {
+            } catch (Error e) {
                 System.out.println("Unexpected error while parsing");
                 throw e;
             }
-        } while(tk.type != symbolTable.__END__);
+        } while (tk.type != symbolTable.__END__);
 
         var result = parse.getResult();
-        if(result == null) throw new Error("ERROR PARSING STRING");
+        if (result == null) throw new Error("ERROR PARSING STRING");
 
         // Flatten parse tree
 
         List<ParseTreeNode> statements = new ArrayList<>();
         var s = result;
-        while(s != null) {
+        while (s != null) {
             var children = s.getChildren();
-            if(children.length > 0) {
+            if (children.length > 0) {
                 statements.add(0, children[1].getChild(0));
                 s = children[0];
-            }
-            else s = null;
+            } else s = null;
         }
 
         // Second pass: calculate label locations
@@ -78,18 +80,17 @@ public class Assembler {
         {
             int instruction_number = 0;
             for (var i : statements) {
-                if(i.matches(symbolTable.get("label_declaration"))) {
+                if (i.matches(symbolTable.get("label_declaration"))) {
                     labels.put(i.getChild(1).getValue().value, instruction_number);
-                }
-                else instruction_number++;
+                } else instruction_number++;
             }
         }
 
         List<Instruction> instructions = new ArrayList<>();
-        for(var i : statements) {
-            if(i.matches(symbolTable.get("label_declaration"))) continue;
+        for (var i : statements) {
+            if (i.matches(symbolTable.get("label_declaration"))) continue;
 
-            instructions.add(switch(i.getDescription().toString()){
+            instructions.add(switch (i.getDescription().toString()) {
                 case "dump" -> new Instruction() {
                     @Override
                     public void execute(VM jevm) {
@@ -153,7 +154,7 @@ public class Assembler {
                 case "jmp_statement" -> {
                     var param = createParam(i.getChild(1), labels);
                     var dest = createParam(i.getChild(2), labels);
-                    byte cmp = switch(i.getChild(3).getValue().value) {
+                    byte cmp = switch (i.getChild(3).getValue().value) {
                         case "gtz" -> Instruction.JMP.GZ;
                         case "ltz" -> Instruction.JMP.LZ;
                         case "nez" -> Instruction.JMP.GZ | Instruction.JMP.LZ;
@@ -179,8 +180,7 @@ public class Assembler {
             case "label_name" -> {
                 try {
                     yield Instruction.Param.constant(label_locs.get(tree.getValue().value));
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     throw new Error("Could not find label " + tree.getValue().value);
                 }
             }
@@ -191,14 +191,13 @@ public class Assembler {
     }
 
     private static Instruction.Param createRegister(Instruction.Param.ParamType type, ParseTreeNode tree) {
-        if(tree.matches(symbolTable.get("reg"))) {
+        if (tree.matches(symbolTable.get("reg"))) {
             String s = tree.getValue().value.substring(1);
             int rId = s.equals("b") ? -2 : s.equals("p") ? -1 : s.charAt(0) - '0';
             return switch (type) {
                 case INT, FLOAT -> Instruction.Param.reg(rId, type);
             };
-        }
-        else {
+        } else {
             String s = tree.getChild(1).getValue().value.substring(1);
             int rId = s.equals("b") ? -2 : s.equals("p") ? -1 : s.charAt(0) - '0';
             return switch (type) {
@@ -207,7 +206,7 @@ public class Assembler {
         }
     }
 
-    public static Program assembleFile(String file){
+    public static Program assembleFile(String file) {
         try {
             return assemble(new String(SymbolTableReader.class.getResourceAsStream("/" + file).readAllBytes()));
         } catch (IOException e) {

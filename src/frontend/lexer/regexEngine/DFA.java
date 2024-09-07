@@ -1,4 +1,4 @@
-package frontend.lexer.fsm;
+package frontend.lexer.regexEngine;
 
 import frontend.Symbol;
 
@@ -45,7 +45,6 @@ public class DFA {
             }
         }
     }
-
 
     public static class DFARunner {
         private static final int ERROR_STATE = -1;

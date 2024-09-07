@@ -53,8 +53,7 @@ public class GrammarReader {
             scan = new Scanner(GrammarReader.class.getResourceAsStream("/" + filename));
         }
         catch(Exception e){
-            System.out.println("Could not read file!");
-            return null;
+            throw new RuntimeException("Could not read grammar file");
         }
         Grammar res = readFromScanner(table, scan);
         scan.close();

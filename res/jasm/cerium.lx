@@ -1,0 +1,45 @@
+comment := %%[^\n]*
+
+<-
+jump-condition := ([<>]=?|[!=]=)0
+compare-operator := [<>]=?|[!=]=
+
+[
+]
+@
+
+b
+c
+i
+f
+l
+
++
+-
+*
+/
+%
+|
+&
+^
+~
+>>
+<<
+
+register := @?(r[01234567]|sp)
+
+goto
+label
+stdout
+stdin
+memcpy
+alloc
+dealloc
+dump
+
+iconst := (0|-?[123456789]\d*)i
+fconst := (0|-?[123456789]\d*)(\.[\d]+)?f
+bconst := [01]b
+cconst := '([^']|\\.)'
+
+label := [A-Z_]+

@@ -28,8 +28,6 @@ public abstract class LRParseTableBuilderBase {
 
     /** Generates the parsing table */
     protected void generateParsingTable(){
-        System.out.println("Generating parsing table entries...");
-
         table = new ParsingTable(configuratingSets.size());
 
         int i = 0;
@@ -43,10 +41,6 @@ public abstract class LRParseTableBuilderBase {
             // Generate Goto table
 
             generateGotoSetEntries(state, itemSet);
-            
-            // Debug
-
-            System.out.println("Generated parsing table entries for " + (++i) + " states (currently on state " + state + ")");
         }
     }
 
@@ -56,7 +50,6 @@ public abstract class LRParseTableBuilderBase {
 
     /** Compute all configurating sets */
     protected void generateConfiguratingSets(){
-        System.out.println("Generating configurating sets...");
 
         configuratingSets = new TreeMap<>();
 
@@ -98,7 +91,6 @@ public abstract class LRParseTableBuilderBase {
             successors.put(newState, new TreeMap<>());
             configuratingSets.put(successor, newState);
             successors.get(state).put(symbol, newState);
-            System.out.println("Found " + configuratingSets.size() + "th configurating set (" + successor.size() + " items)");
             return true;
         }
         else{

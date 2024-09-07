@@ -16,7 +16,7 @@ public class Rule implements Comparable<Rule>, Printable, SerializableToString {
 
     public final Symbol lhs;
     public final SymbolString rhs;
-//    public final RuleOptions[] ruleOptions = {};
+    public final RuleOptions[] ruleOptions;
 
     public final boolean empty;
 
@@ -34,6 +34,8 @@ public class Rule implements Comparable<Rule>, Printable, SerializableToString {
         this.empty = rhs.size() == 0;
         this.chained = chained;
         this.unwrapMono = unwrapMono;
+
+        this.ruleOptions = new RuleOptions[rhs.size()];
     }
 
     public Symbol getLhs() {

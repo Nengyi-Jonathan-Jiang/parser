@@ -142,8 +142,7 @@ public class ParsingTable {
             }
             return table;
         } catch (Exception e) {
-            System.out.println("Error loading LR parse table from file");
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error loading LR parse table from file", e);
         }
     }
 }

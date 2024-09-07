@@ -40,7 +40,7 @@ dump
 
 print
 
-reg := r[0-7]|sp|sb
+reg := r[0-7]|sp
 
 iconst := (0|-?[123456789][\d]*)
 fconst := (0|-?[123456789][\d]*)(\.[\d]+)

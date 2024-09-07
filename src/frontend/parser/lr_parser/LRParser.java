@@ -56,43 +56,47 @@ public final class LRParser implements Parser {
             didAccept = false;
         }
 
-        public boolean process(Token token) {
+        public void process(Token token) {
             while (true) {
                 int currentState = stateStack.peek();
 
                 ActionTableEntry entry = table.getAction(currentState, token.type);
                 if (entry == null) {
-                    Set<Symbol> acceptedSymbols = table.acceptableSymbolsAtState(currentState);
-                    String message =
-                        "Parse failed: expected one of "
-                            + acceptedSymbols.stream().map(Symbol::toString).collect(Collectors.joining(" "))
-                            + ", instead got "
-                            + token;
-
-                    errors.add(new LRParsingError(message, acceptedSymbols));
-
-                    return false;
+                    addErrorOn(token, currentState);
+                    break;
                 }
 
                 entry.applyAction(stateStack, parseTreeNodeStack, table, token);
 
-                didAccept |= entry.isAccepting();
-                if (entry.isDoneProcessingToken()) break;
-            }
+                if (entry.isAccepting()) {
+                    didAccept = true;
+                }
 
-            return didAccept;
+                if (entry.isDoneProcessingToken()) {
+                    break;
+                }
+            }
+        }
+
+        private void addErrorOn(Token token, int currentState) {
+            Set<Symbol> acceptedSymbols = table.acceptableSymbolsAtState(currentState);
+            String message =
+                "Parse failed: expected one of "
+                    + acceptedSymbols.stream().map(Symbol::toString).collect(Collectors.joining(" "))
+                    + ", instead got "
+                    + token;
+
+            errors.add(new LRParsingError(message, acceptedSymbols));
         }
 
         public ParseTreeNode getResult() {
-            if (errors.isEmpty()) {
-                return parseTreeNodeStack.peek();
+            if (!errors.isEmpty()) {
+                RuntimeException exception = new RuntimeException("Parse failed");
+                errors.forEach(exception::addSuppressed);
+                throw exception;
             }
 
-            // Something went wrong while parsing. Throw all the accumulated errors
-            var err = new RuntimeException("Parse failed");
-            errors.forEach(err::addSuppressed);
-
-            throw err;
+            return parseTreeNodeStack.peek();
         }
 
         public boolean didAccept() {

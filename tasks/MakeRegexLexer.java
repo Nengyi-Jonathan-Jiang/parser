@@ -1,13 +1,12 @@
 import frontend.Symbol;
-import frontend.lexer.fsm.DFA;
-import frontend.lexer.fsm.DFA2NFA;
-import frontend.lexer.fsm.NFA;
-import frontend.lexer.fsm.RegexNode;
+import frontend.lexer.regexEngine.DFA;
+import frontend.lexer.regexEngine.DFA2NFA;
+import frontend.lexer.regexEngine.NFA;
+import frontend.lexer.regexEngine.RegexNode;
 
 import java.util.Map;
-import java.util.TreeMap;
 
-public class BuildJeppLexer {
+public class MakeRegexLexer {
     public static void main(String[] args) {
         RegexNode comment_regex = new RegexNode.AlternationNode(
             new RegexNode.ConcatenationNode(

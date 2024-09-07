@@ -1,4 +1,4 @@
-package frontend.lexer.fsm;
+package frontend.lexer.regexEngine;
 
 import java.util.Set;
 import java.util.stream.Collectors;

@@ -15,6 +15,6 @@ public class genparser {
 
         System.out.println("Generating Parser...");
 
-        new LR1ParseTableBuilder(grammar).getTable().saveToFile(Assembler.ptblFile);
+        new LR1ParseTableBuilder(grammar).getTable().saveToFile("res/jasm/jasm.ptbl");
     }
 }

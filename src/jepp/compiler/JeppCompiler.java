@@ -18,14 +18,14 @@ public class JeppCompiler {
     public static Program compile(String input) {
         Lexer.Lex lex = JePPFrontend.beginLex(input);
         Parser.Parse parse = JePPFrontend.beginParse();
-        while(!parse.process(lex.next()));
+
+        while (!parse.didAccept()) {
+            parse.process(lex.next());
+        }
 
         JeppCompiler compiler = new JeppCompiler(parse.getResult());
 
-        Program result = compiler.result();
-
-        System.out.println(result);
-        return result;
+        return compiler.result();
     }
 
     private final List<Instruction> res = new ArrayList<>();
@@ -44,7 +44,7 @@ public class JeppCompiler {
         System.out.println("IR: Encountered " + node.getDescription().name);
         return switch (node.getDescription().name) {
             case "statements" -> new JeirStatements(
-                    node.children().map(this::createIR).toArray(JeirNode[]::new)
+                node.children().map(this::createIR).toArray(JeirNode[]::new)
             );
             case "print-statement" -> {
                 String end = switch (node.getChild(0).getValue().value) {
@@ -55,11 +55,10 @@ public class JeppCompiler {
                 if (node.getChild(1).matches("STRING-LITERAL")) {
                     String val = node.getChild(1).getValue().value;
                     yield new JeirNode.JeirPrintStatement(val.substring(1, val.length() - 1)
-                            .replace("\\n", "\n")
-                            .replace("\\t", "\t")
-                            .replaceAll("\\\\(.)", "$1") + end);
-                }
-                else {
+                        .replace("\\n", "\n")
+                        .replace("\\t", "\t")
+                        .replaceAll("\\\\(.)", "$1") + end);
+                } else {
                     String val = node.getChild(1).getValue().value;
                     createIR(new ParseTreeNode(JePPFrontend.getSymbol("statements"),
                         new ParseTreeNode(null)
@@ -77,7 +76,7 @@ public class JeppCompiler {
         switch (node.getDescription().name) {
             case "add-expr", "mult-expr" -> {
                 ParseTreeNode arg1 = node.getChild(0),
-                              arg2 = node.getChild(2);
+                    arg2 = node.getChild(2);
                 switch (arg1.getDescription().name) {
                     case "INT-LITERAL" -> {
 
@@ -92,6 +91,7 @@ public class JeppCompiler {
 
 
     Map<String, Integer> localVars = new HashMap<>();
+
     private void declareLocalVariable(String name) {
         localVars.put(name, localVars.size());
     }

@@ -85,6 +85,9 @@ simple-type := struct identifier
 type := simple-type
 type := @ type
 
+// Dealloc statement
+dealloc-statement := dealloc identifier ;
+
 // Expressions -- Resolve precedence later with shunting yard algorithm
 // DEPENDS ON: type
 expression := prefix-expression

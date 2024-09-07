@@ -24,7 +24,7 @@ a del r 0 statements
 a dump r 0 statements 
 g statements 1
 s
-a Ω a 
+a Ω a
 a statement s 2
 a partial_statement s 3
 a label_declaration s 4

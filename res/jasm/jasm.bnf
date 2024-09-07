@@ -1,6 +1,6 @@
 statements
 
-statements __EPSILON__
+statements :=
 statements := statements statement
 statement := partial_statement ;
 
