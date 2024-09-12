@@ -1,7 +1,7 @@
 package jepp.interpreter;
 
 import frontend.Token;
-import frontend.lexer.Lexer;
+import frontend.lexer.Lex;
 import frontend.parser.ParseTreeNode;
 import frontend.parser.Parser;
 import jepp.frontend.JePPFrontend;
@@ -17,7 +17,7 @@ public class Interpreter {
     }
 
     public void run(String program) {
-        Lexer.Lex lex = JePPFrontend.beginLex(program);
+        Lex lex = JePPFrontend.beginLex(program);
         Parser.Parse parse = JePPFrontend.beginParse();
         Token tk;
         do {

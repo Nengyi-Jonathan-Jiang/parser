@@ -2,7 +2,9 @@ package jepp.frontend;
 
 import frontend.Symbol;
 import frontend.SymbolTableReader;
+import frontend.lexer.Lex;
 import frontend.lexer.Lexer;
+import frontend.lexer.RegexBasedLexer;
 import frontend.parser.Parser;
 import frontend.parser.lr_parser.LRParser;
 import frontend.parser.lr_parser.parsing_table.ParsingTable;
@@ -12,7 +14,7 @@ public class JePPFrontend {
     private static final Parser parser;
     public static final Symbol.SymbolTable symbolTable;
 
-    public static Lexer.Lex beginLex(String input) {
+    public static Lex beginLex(String input) {
         return lexer.lex(input);
     }
 
@@ -24,7 +26,7 @@ public class JePPFrontend {
         symbolTable.lock();
 
         System.out.println("Loading Je++ lexer ...");
-        lexer = Lexer.fromFile(symbolTable, "je++/je++.lex");
+        lexer = RegexBasedLexer.fromFile(symbolTable, "je++/je++.lex");
         System.out.println("Loading Je++ parser ...");
         parser = new LRParser(ParsingTable.loadFromFile(symbolTable, "je++/generated/je++.ptbl"));
     }

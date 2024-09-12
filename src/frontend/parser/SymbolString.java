@@ -1,7 +1,7 @@
 package frontend.parser;
 
 import frontend.Symbol;
-import frontend.util.SerializableToString;
+import util.SerializableToString;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -52,7 +52,7 @@ public class SymbolString implements Iterable<Symbol>, Comparable<SymbolString>,
     }
 
     @Override
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
         stringBuilder.append(_representation);
     }
 

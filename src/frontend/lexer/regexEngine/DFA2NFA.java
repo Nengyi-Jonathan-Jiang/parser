@@ -1,8 +1,8 @@
 package frontend.lexer.regexEngine;
 
 import frontend.Symbol;
-import frontend.util.ComparableHashSet;
-import frontend.util.ComparableSet;
+import util.comparableSet.ComparableHashSet;
+import util.comparableSet.ComparableSet;
 
 import java.util.*;
 

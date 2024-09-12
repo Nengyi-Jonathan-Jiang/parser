@@ -1,15 +1,13 @@
 import frontend.Symbol;
 import frontend.SymbolTableReader;
-import frontend.grammar.Grammar;
-import frontend.grammar.GrammarReader;
+import frontend.grammar.ContextFreeGrammar;
+import frontend.grammar.ContextFreeGrammarReader;
 import frontend.parser.parser_generator.LR1ParseTableBuilder;
 
 import java.io.File;
 
-public class BuildJppParser {
+public class BuildJeppParser {
     public static void main(String[] args) {
-        System.out.println(new File("./").getAbsolutePath());
-
         System.out.println("Generating Symbol Table...");
 
         var symbolTable = Symbol.SymbolTable.merge(
@@ -20,7 +18,7 @@ public class BuildJppParser {
         System.out.println(symbolTable);
 
         System.out.println("Generating Je++ Grammar ...");
-        Grammar grammar = GrammarReader.readFromFile(symbolTable, "je++/je++.bnf");
+        ContextFreeGrammar grammar = ContextFreeGrammarReader.readFromFile(symbolTable, "je++/je++.bnf");
 
         System.out.println("===================");
         System.out.println(grammar);

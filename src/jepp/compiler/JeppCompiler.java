@@ -1,6 +1,6 @@
 package jepp.compiler;
 
-import frontend.lexer.Lexer;
+import frontend.lexer.Lex;
 import frontend.parser.ParseTreeNode;
 import frontend.parser.Parser;
 import jepp.compiler.jeir.JeirNode;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class JeppCompiler {
     public static Program compile(String input) {
-        Lexer.Lex lex = JePPFrontend.beginLex(input);
+        Lex lex = JePPFrontend.beginLex(input);
         Parser.Parse parse = JePPFrontend.beginParse();
 
         while (!parse.didAccept()) {

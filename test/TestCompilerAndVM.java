@@ -2,7 +2,7 @@ import jepp.compiler.JeppCompiler;
 import jepp.jevm.Program;
 import jepp.jevm.VM;
 import org.junit.Test;
-import util.StringPrintStream;
+import util.stringstream.StringPrintStream;
 
 import java.io.InputStream;
 

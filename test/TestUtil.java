@@ -1,6 +1,6 @@
 import org.junit.Assert;
 import util.FileUtil;
-import util.StringPrintStream;
+import util.stringstream.StringPrintStream;
 
 import java.io.InputStream;
 import java.util.Arrays;

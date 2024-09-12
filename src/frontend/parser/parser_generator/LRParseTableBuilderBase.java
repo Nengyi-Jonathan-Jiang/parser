@@ -1,7 +1,7 @@
 package frontend.parser.parser_generator;
 
 import frontend.Symbol;
-import frontend.grammar.Grammar;
+import frontend.grammar.ContextFreeGrammar;
 import frontend.parser.Rule;
 import frontend.parser.lr_parser.parsing_table.ParsingTable;
 import frontend.parser.parser_generator.item.Item;
@@ -11,16 +11,16 @@ import java.util.*;
 
 public abstract class LRParseTableBuilderBase {
     protected ParsingTable table;
-    protected final Grammar grammar;
+    protected final ContextFreeGrammar grammar;
     Map<ItemSet, Integer> configuratingSets;
 
     protected Map<Integer, Map<Symbol, Integer>> successors;
 
     /**
-     * Generates an LR parse table given a {@link Grammar}
+     * Generates an LR parse table given a {@link ContextFreeGrammar}
      * @param grammar the grammar to use
      */
-    protected LRParseTableBuilderBase(Grammar grammar){
+    protected LRParseTableBuilderBase(ContextFreeGrammar grammar){
         this.grammar = grammar;
         generateConfiguratingSets();
         generateParsingTable();

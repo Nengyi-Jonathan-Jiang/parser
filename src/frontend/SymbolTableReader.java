@@ -1,5 +1,6 @@
 package frontend;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class SymbolTableReader {
@@ -10,7 +11,7 @@ public class SymbolTableReader {
 
         Scanner scan;
         try {
-            scan = new Scanner(SymbolTableReader.class.getResourceAsStream("/" + filename));
+            scan = new Scanner(Objects.requireNonNull(SymbolTableReader.class.getResourceAsStream("/" + filename)));
         }
         catch(Exception e){
             throw new Error("Could not read file!");

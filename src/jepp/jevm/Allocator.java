@@ -1,6 +1,6 @@
 package jepp.jevm;
 
-import frontend.util.Pair;
+import util.Pair;
 
 import java.util.Map;
 import java.util.Set;

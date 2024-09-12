@@ -1,7 +1,7 @@
 package frontend.parser.parser_generator;
 
 import frontend.Symbol;
-import frontend.util.ComparableHashSet;
+import util.comparableSet.ComparableHashSet;
 
 import java.util.Collection;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-COMMENT := (% [^\n]*)
+ignore (% [^\n]*)
 
 mov
 cpy
@@ -26,15 +26,15 @@ inp
 new
 del
 label
-[
-]
-@
+"["
+"]"
+"@"
 b
 c
 i
 f
-:
-;
+":"
+";"
 
 dump
 

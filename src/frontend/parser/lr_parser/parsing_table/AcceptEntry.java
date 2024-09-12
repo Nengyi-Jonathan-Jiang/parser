@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class AcceptEntry implements ActionTableEntry {
 
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
         stringBuilder.append(" a");
     }
 

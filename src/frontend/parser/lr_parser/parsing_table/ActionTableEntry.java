@@ -2,7 +2,7 @@ package frontend.parser.lr_parser.parsing_table;
 
 import frontend.Token;
 import frontend.parser.ParseTreeNode;
-import frontend.util.SerializableToString;
+import util.SerializableToString;
 
 import java.util.Stack;
 

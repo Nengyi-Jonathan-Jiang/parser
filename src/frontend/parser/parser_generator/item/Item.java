@@ -3,10 +3,10 @@ package frontend.parser.parser_generator.item;
 import frontend.Symbol;
 import frontend.parser.Rule;
 import frontend.parser.parser_generator.SymbolSet;
-import frontend.util.ComparableSet;
-import frontend.util.Printable;
+import util.comparableSet.ComparableSet;
+import util.SerializableToString;
 
-public class Item implements Comparable<Item>, Printable {
+public class Item implements Comparable<Item>, SerializableToString {
     private final Rule rule;
     private final int pos;
     private final SymbolSet lookahead;
@@ -66,18 +66,26 @@ public class Item implements Comparable<Item>, Printable {
         return lookahead;
     }
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(rule.getLhs());
-        sb.append(" :=");
+    @Override
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
+        stringBuilder.append(rule.getLhs());
+        stringBuilder.append(" :=");
         for (int i = 0; i < rule.getRhsSize(); i++) {
-            if (i == pos) sb.append(" ● ");
-            else sb.append(" ");
-            sb.append(rule.getRhs().get(i));
+            if (i == pos) stringBuilder.append(" ● ");
+            else stringBuilder.append(" ");
+            stringBuilder.append(rule.getRhs().get(i));
         }
-        if (isFinished()) sb.append(" ●");
-        sb.append(" ");
-        sb.append(lookahead.stream().map(i -> "\"" + i + "\"").reduce("", (a, b) -> a.isEmpty() ? "\t\t" + b : a + " / " + b));
-        return sb.toString();
+        if (isFinished()) stringBuilder.append(" ●");
+        stringBuilder.append(" ");
+        stringBuilder.append(
+            lookahead
+                .stream()
+                .map(i -> "\"" + i + "\"")
+                .reduce("", (a, b) -> a.isEmpty() ? "\t\t" + b : a + " / " + b)
+        );
+    }
+
+    public String toString() {
+        return serializeToString();
     }
 }

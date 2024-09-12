@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public record ShiftEntry(int nextState) implements ActionTableEntry {
 
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
         stringBuilder.append(" s ");
         stringBuilder.append(nextState);
     }

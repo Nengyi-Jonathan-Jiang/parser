@@ -1,11 +1,11 @@
 package frontend.parser.lr_parser.parsing_table;
 
-import frontend.util.SerializableToString;
+import util.SerializableToString;
 
 public record GotoEntry(int nextState) implements SerializableToString {
 
     @Override
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
         stringBuilder.append(" ");
         stringBuilder.append(nextState);
     }

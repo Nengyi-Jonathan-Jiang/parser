@@ -10,18 +10,9 @@ import java.util.Stack;
 
 public record ReduceEntry(Rule rule) implements ActionTableEntry {
 
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
         stringBuilder.append(" r ");
-
-        stringBuilder.append(rule.getRhsSize());
-        stringBuilder.append(" ");
-
-        if (rule.chained) stringBuilder.append("__c ");
-        if (!rule.unwrapMono) stringBuilder.append("__w ");
-
-        stringBuilder.append(rule.getLhs());
-        stringBuilder.append(" ");
-        stringBuilder.append(rule.getRhs().toString());
+        rule.serializeToStringBuilder(stringBuilder);
     }
 
     public void applyAction(Stack<Integer> stateStack, Stack<ParseTreeNode> parseTreeNodeStack, ParsingTable table, Token token) {

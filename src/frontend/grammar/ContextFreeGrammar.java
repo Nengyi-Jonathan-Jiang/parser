@@ -4,12 +4,15 @@ import frontend.Symbol;
 import frontend.parser.Rule;
 import frontend.parser.SymbolString;
 import frontend.parser.parser_generator.SymbolSet;
-import frontend.util.*;
+import util.cache.Cache;
+import util.comparableSet.ComparableHashSet;
+import util.comparableSet.ComparableSet;
+import util.cache.CompareCache;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Grammar implements Printable {
+public class ContextFreeGrammar {
     private final List<Rule> rules;
     private final Rule startRule;
 
@@ -20,7 +23,7 @@ public class Grammar implements Printable {
 
     public final Symbol.SymbolTable symbolTable;
 
-    public Grammar(List<Rule> rules, Symbol startSymbol, Symbol.SymbolTable symbolTable) {
+    public ContextFreeGrammar(List<Rule> rules, Symbol startSymbol, Symbol.SymbolTable symbolTable) {
 
         this.rules = new ArrayList<>(rules);
 

@@ -1,13 +1,22 @@
 import jepp.assembler.Assembler;
 import jepp.jevm.Program;
 import jepp.jevm.VM;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import util.StringPrintStream;
+import util.stringstream.StringPrintStream;
 
 import java.io.InputStream;
 
 // TODO: write all assembly programs for the rest of the test cases
 public class TestAssemblerAndVM {
+    @BeforeClass
+    public static void setUp() {
+        System.out.println("Loading assembler");
+        Assembler.assemble("");
+        System.out.println("Done.");
+    }
+
     @Test
     public void testCompilerBasics() {
         check("test/jepp/basics");

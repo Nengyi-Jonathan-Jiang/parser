@@ -1,6 +1,6 @@
 import jepp.interpreter.Interpreter;
 import org.junit.Test;
-import util.StringPrintStream;
+import util.stringstream.StringPrintStream;
 
 import java.io.InputStream;
 

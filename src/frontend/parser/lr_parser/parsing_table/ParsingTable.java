@@ -78,7 +78,7 @@ public class ParsingTable {
 
                 sb.append("\na ");
                 sb.append(symbol);
-                entry.writeToStringBuilder(sb);
+                entry.serializeToStringBuilder(sb);
             }
             for (Map.Entry<Symbol, GotoEntry> mapEntry : gotoTable.get(state).entrySet()) {
                 Symbol symbol = mapEntry.getKey();
@@ -86,7 +86,7 @@ public class ParsingTable {
 
                 sb.append("\ng ");
                 sb.append(symbol);
-                entry.writeToStringBuilder(sb);
+                entry.serializeToStringBuilder(sb);
             }
             sb.append("\ns");
         }
@@ -121,7 +121,6 @@ public class ParsingTable {
                                         }
                                         lhs = symbolTable.get(n);
                                     }
-
 
                                     Symbol[] rhs = new Symbol[rhsSize];
                                     for (int i = 0; i < rhsSize; i++) {

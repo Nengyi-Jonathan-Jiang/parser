@@ -1,6 +1,6 @@
 package frontend;
 
-import frontend.util.SerializableToString;
+import util.SerializableToString;
 
 import java.util.List;
 import java.util.Map;
@@ -14,13 +14,9 @@ public class Symbol implements Comparable<Symbol>, SerializableToString {
 
         public final Symbol __START__ = create("§"), __END__ = create("Ω");
 
-        private Symbol createNewSymbol(String string) {
-            if (locked) throw new Error("Cannot create new symbol after table is locked");
-            return new Symbol(this, string, ++size);
-        }
-
         public Symbol create(String string) {
-            return store.containsKey(string) ? get(string) : createNewSymbol(string);
+            if (locked) throw new Error("Cannot create new symbol after table is locked");
+            return store.containsKey(string) ? get(string) : new Symbol(this, string, ++size);
         }
 
         public Symbol get(String string) {
@@ -79,7 +75,7 @@ public class Symbol implements Comparable<Symbol>, SerializableToString {
     }
 
     @Override
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
         stringBuilder.append(name);
     }
 

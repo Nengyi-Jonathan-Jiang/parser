@@ -1,11 +1,11 @@
-package frontend.util;
+package util;
 
 public interface SerializableToString {
-    void writeToStringBuilder(StringBuilder stringBuilder);
+    void serializeToStringBuilder(StringBuilder stringBuilder);
 
     default String serializeToString() {
         StringBuilder stringBuilder = new StringBuilder();
-        writeToStringBuilder(stringBuilder);
+        serializeToStringBuilder(stringBuilder);
         return stringBuilder.toString();
     }
 }

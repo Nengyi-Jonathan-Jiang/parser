@@ -1,14 +1,13 @@
 package frontend.parser;
 
 import frontend.Symbol;
-import frontend.util.Printable;
-import frontend.util.SerializableToString;
+import util.SerializableToString;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Rule implements Comparable<Rule>, Printable, SerializableToString {
+public class Rule implements Comparable<Rule>, SerializableToString {
     private static int _id = 0;
     public final int id = ++_id;
     public final boolean unwrapMono;
@@ -32,10 +31,20 @@ public class Rule implements Comparable<Rule>, Printable, SerializableToString {
         this.lhs = lhs;
         this.rhs = rhs;
         this.empty = rhs.size() == 0;
+
         this.chained = chained;
         this.unwrapMono = unwrapMono;
 
         this.ruleOptions = new RuleOptions[rhs.size()];
+        Arrays.fill(ruleOptions, RuleOptions.Keep);
+
+        if (chained) {
+            for (int i = 0; i < rhs.size(); i++) {
+                if (rhs.get(i).equals(lhs)) {
+                    ruleOptions[i] = RuleOptions.Unwrap;
+                }
+            }
+        }
     }
 
     public Symbol getLhs() {
@@ -56,14 +65,20 @@ public class Rule implements Comparable<Rule>, Printable, SerializableToString {
 
     @Override
     public String toString() {
-        return serializeToString();
+        return lhs + " := " + rhs;
     }
 
     @Override
-    public void writeToStringBuilder(StringBuilder stringBuilder) {
-        lhs.writeToStringBuilder(stringBuilder);
-        stringBuilder.append(" := ");
-        rhs.writeToStringBuilder(stringBuilder);
+    public void serializeToStringBuilder(StringBuilder stringBuilder) {
+        stringBuilder.append(rhs.size());
+        stringBuilder.append(" ");
+
+        if (chained) stringBuilder.append("__c ");
+        if (!unwrapMono) stringBuilder.append("__w ");
+
+        lhs.serializeToStringBuilder(stringBuilder);
+        stringBuilder.append(" ");
+        rhs.serializeToStringBuilder(stringBuilder);
     }
 
     @Override

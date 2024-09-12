@@ -5,10 +5,11 @@ import frontend.parser.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
-public class GrammarReader {
-    private GrammarReader(){}
+public class ContextFreeGrammarReader {
+    private ContextFreeGrammarReader(){}
     
     private static Rule ruleFromLine(Symbol.SymbolTable table, String str){
         Scanner scan = new Scanner(str);
@@ -36,7 +37,8 @@ public class GrammarReader {
         scan.close();
         return new Rule(table.get(lhs), unwrap, chained, rhs);
     }
-    private static Grammar readFromScanner(Symbol.SymbolTable table, Scanner scan){
+
+    private static ContextFreeGrammar readFromScanner(Symbol.SymbolTable table, Scanner scan){
         Symbol startSymbol = table.get(scan.next());
         List<Rule> rules = new ArrayList<>();
         while(scan.hasNextLine()){
@@ -44,18 +46,18 @@ public class GrammarReader {
             if(line.isEmpty() || line.indexOf("//") == 0) continue; //Filter out empty or commented lines
             rules.add(ruleFromLine(table, line));
         }
-        return new Grammar(rules, startSymbol, table);
+        return new ContextFreeGrammar(rules, startSymbol, table);
     }
 
-    public static Grammar readFromFile(Symbol.SymbolTable table, String filename){
+    public static ContextFreeGrammar readFromFile(Symbol.SymbolTable table, String filename){
         Scanner scan;
         try{
-            scan = new Scanner(GrammarReader.class.getResourceAsStream("/" + filename));
+            scan = new Scanner(Objects.requireNonNull(ContextFreeGrammarReader.class.getResourceAsStream("/" + filename)));
         }
         catch(Exception e){
             throw new RuntimeException("Could not read grammar file");
         }
-        Grammar res = readFromScanner(table, scan);
+        ContextFreeGrammar res = readFromScanner(table, scan);
         scan.close();
         return res;
     }

@@ -81,10 +81,10 @@ public final class LRParser implements Parser {
         private void addErrorOn(Token token, int currentState) {
             Set<Symbol> acceptedSymbols = table.acceptableSymbolsAtState(currentState);
             String message =
-                "Parse failed: expected one of "
+                "Expected one of "
                     + acceptedSymbols.stream().map(Symbol::toString).collect(Collectors.joining(" "))
                     + ", instead got "
-                    + token;
+                    + token + " at " + token.startLocation;
 
             errors.add(new LRParsingError(message, acceptedSymbols));
         }

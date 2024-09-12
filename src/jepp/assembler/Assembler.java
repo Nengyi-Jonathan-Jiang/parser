@@ -4,7 +4,8 @@ import frontend.Symbol;
 import frontend.SymbolTableReader;
 import frontend.Token;
 import frontend.lexer.Lexer;
-import frontend.lexer.LexerReader;
+import frontend.lexer.RegexBasedLexerReader;
+import frontend.lexer.LexerReaderException;
 import frontend.parser.ParseTreeNode;
 import frontend.parser.Parser;
 import frontend.parser.lr_parser.LRParser;
@@ -31,7 +32,15 @@ public class Assembler {
         SymbolTableReader.generateFromParsingTableFile(ptblFile)
     );
     //    public static final Lexer lexer = Lexer.fromFile(symbolTable, lxFile);
-    public static final Lexer lexer = LexerReader.readLexerFromString(FileUtil.getTextContents(lxFile));
+    public static final Lexer lexer;
+
+    static {
+        try {
+            lexer = RegexBasedLexerReader.readLexerFromString(FileUtil.getTextContents(lxFile), symbolTable);
+        } catch (LexerReaderException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public static final Parser parser = new LRParser(ParsingTable.loadFromFile(symbolTable, ptblFile));
@@ -43,7 +52,6 @@ public class Assembler {
         Token tk;
         do {
             tk = lex.next();
-            if (tk.type == symbolTable.get("COMMENT")) continue;
             try {
                 parse.process(tk);
             } catch (LRParsingError e) {
@@ -70,7 +78,7 @@ public class Assembler {
         while (s != null) {
             var children = s.getChildren();
             if (children.length > 0) {
-                statements.add(0, children[1].getChild(0));
+                statements.addFirst(children[1].getChild(0));
                 s = children[0];
             } else s = null;
         }

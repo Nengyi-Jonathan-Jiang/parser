@@ -1,4 +1,4 @@
-package frontend.util;
+package util.comparableSet;
 
 import java.util.Iterator;
 import java.util.Set;

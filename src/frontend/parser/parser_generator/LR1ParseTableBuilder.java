@@ -1,18 +1,18 @@
 package frontend.parser.parser_generator;
 
 import frontend.Symbol;
-import frontend.grammar.Grammar;
+import frontend.grammar.ContextFreeGrammar;
 import frontend.parser.Rule;
 import frontend.parser.SymbolString;
 import frontend.parser.parser_generator.item.Item;
 import frontend.parser.parser_generator.item.ItemSet;
-import frontend.util.Cache;
-import frontend.util.CompareCache;
+import util.cache.Cache;
+import util.cache.CompareCache;
 
 public class LR1ParseTableBuilder extends LRParseTableBuilderBase {
     protected Cache<Item, ItemSet> memoization;
 
-    public LR1ParseTableBuilder(Grammar grammar){
+    public LR1ParseTableBuilder(ContextFreeGrammar grammar){
         super(grammar);
     }
 

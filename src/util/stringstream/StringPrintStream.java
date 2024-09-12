@@ -1,4 +1,4 @@
-package util;
+package util.stringstream;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

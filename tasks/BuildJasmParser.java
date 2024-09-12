@@ -1,17 +1,16 @@
-package jepp.assembler;
-
 import frontend.SymbolTableReader;
-import frontend.grammar.Grammar;
-import frontend.grammar.GrammarReader;
+import frontend.grammar.ContextFreeGrammar;
+import frontend.grammar.ContextFreeGrammarReader;
 import frontend.parser.parser_generator.LR1ParseTableBuilder;
+import jepp.assembler.Assembler;
 
-public class genparser {
+public class BuildJasmParser {
     public static void main(String[] args){
         var symbolTable = SymbolTableReader.generateFromGrammarFile(Assembler.ebnfFile);
 
         System.out.println(symbolTable);
 
-        Grammar grammar = GrammarReader.readFromFile(symbolTable, Assembler.ebnfFile);
+        ContextFreeGrammar grammar = ContextFreeGrammarReader.readFromFile(symbolTable, Assembler.ebnfFile);
 
         System.out.println("Generating Parser...");
 

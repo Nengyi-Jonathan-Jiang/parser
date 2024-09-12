@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ComputeJeppParser" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/corretto-20.0.2.1" />
-    <option name="MAIN_CLASS_NAME" value="BuildJppParser" />
+    <option name="MAIN_CLASS_NAME" value="BuildJeppParser" />
     <module name="parser" />
     <method v="2">
       <option name="Make" enabled="true" />
