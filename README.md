@@ -23,6 +23,7 @@ project.
 ## Examples
 
 Example lexer and grammar for a simple language
+
 ```
 COMMENT := //[^\n]*|/\*([^*]|\*+[^*/])*\**\*/
 LITERAL := 0|-?[123456789][\d]*
@@ -39,10 +40,11 @@ print
 
 IDENTIFIER := [a-zA-Z_]\w*
 ```
+
 ```
 statements              // This is the root node of the AST
 
-statements __EPSILON__  // statements can be an empty parse
+statements __EPSILON__  // statements can be empty
 __CHAIN__ statements := statements statement 
 
 statement := var IDENTIFIER = expression
@@ -60,6 +62,21 @@ operator := /
 primary-expression := ( expression )
 primary-expression := IDENTIFIER
 primary-expression := LITERAL
+```
+
+Example program in Jepp (
+see [testcases/test/jepp](https://github.com/Nengyi-Jonathan-Jiang/jasm-jepp/tree/master/test-cases/test/jepp)
+for more examples)
+
+```
+module main;
+
+func fib(int n) -> int {
+    if(n <= 2) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+
+println fib(input int);
 ```
 
 ## Architecture
