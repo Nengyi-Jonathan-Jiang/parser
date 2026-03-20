@@ -22,7 +22,10 @@ project.
 
 ## Examples
 
-Example lexer and grammar for a simple language
+### Lexer and grammar
+
+Example lexer and grammar for a simple expression language with variables and 
+arithmetic operations:
 
 ```
 COMMENT := //[^\n]*|/\*([^*]|\*+[^*/])*\**\*/
@@ -38,7 +41,7 @@ var
 =
 print
 
-IDENTIFIER := [a-zA-Z_]\w*
+IDENTIFIER := \w+
 ```
 
 ```
@@ -64,9 +67,11 @@ primary-expression := IDENTIFIER
 primary-expression := LITERAL
 ```
 
+### Jepp program
+
 Example program in Jepp (
 see [testcases/test/jepp](https://github.com/Nengyi-Jonathan-Jiang/jasm-jepp/tree/master/test-cases/test/jepp)
-for more examples)
+for more examples):
 
 ```
 module main;
@@ -84,7 +89,7 @@ println fib(input int);
 Both Jasm and Jepp follow a standard language pipeline:
 
 ```text
-Source code --Lexer-> Tokens --LR(1)-Parser-> AST --Interpreter-> Execution
+Source code → Lexer → Tokens → LR(1) Parser → AST → Interpreter → Execution
 ```
 
 ## Design Decisions
@@ -106,7 +111,7 @@ Source code --Lexer-> Tokens --LR(1)-Parser-> AST --Interpreter-> Execution
   as they are produced rather than requiring the full input stream. This enables
   bidirectional interaction between the parser and lexer: parsing state can
   influence tokenization decisions, allowing context-sensitive lexing (e.g.,
-  resolving identifiers based on previously parsed declarations, as in the lexer
+  resolving identifiers based on prior declarations, as in the lexer
   hack).
 
 - **Language design (Jepp)**  
@@ -118,7 +123,7 @@ Source code --Lexer-> Tokens --LR(1)-Parser-> AST --Interpreter-> Execution
 
 - Profiled the parser generator using Java Flight Recorder to identify
   bottlenecks, introducing aggressive memoization and finding that binary trees
-  outperformed hash tables for this workload
+  outperformed hash tables for this access pattern
 - Designed an AST simplification pass to reduce tree depth and normalize
   structure, improving traversal and evaluation performance
 - Implemented scoped variable and method lookup in the interpreter, supporting
