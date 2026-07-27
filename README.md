@@ -1,14 +1,17 @@
-# JASM/JEPP
+# Parser and Lexer Generators
 
-A parser and interpreter for two custom languages: a low-level language (Jasm)
-and a high-level language (Jepp), implemented in Java, with a focus on LR(1)
-parsing and finite-state-machine-based lexing.
+Java implementations of a lexer based on non-backtracking 
+[deterministic finite automata](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)
+and an [LR(1)](https://en.wikipedia.org/wiki/Canonical_LR_parser) parser.
 
 Focused on the front-end of a language implementation pipeline.
 
-The lexer was later used to prototype syntax for
-the [Cerium](https://github.com/Nengyi-Jonathan-Jiang/cerium/commits/master/)
-project.
+As proofs of concepts using the tools, this repository also includes implementations of two 
+custom languages: a low-level language (Jasm) and a high-level language (Jepp).
+
+The lexer was also later used to prototype syntax for
+my [Cerium](https://github.com/Nengyi-Jonathan-Jiang/cerium/commits/master/)
+language project.
 
 ## Goals
 
@@ -77,7 +80,7 @@ for more examples):
 module main;
 
 func fib(int n) -> int {
-    if(n <= 2) return 1;
+    if (n <= 2) return 1;
     return fib(n - 1) + fib(n - 2);
 }
 
@@ -92,38 +95,53 @@ Both Jasm and Jepp follow a standard language pipeline:
 Source code → Lexer → Tokens → LR(1) Parser → AST → Interpreter → Execution
 ```
 
+## Usage
+
+To run the proof of concept languages Jasm and Jepp:
+1. **Precompute parse tables**: Execute the main methods in `tasks/BuildXYZParser`
+2. **Execute programs**:
+   - Run the Jepp interpreter using `tasks/RunInterpreter`
+   - Assemble and execute Jasm programs using `tasks/RunAssembler`
+
+The source code for Jasm and Jepp is located in `src/jepp`.
+
+Representative examples of code using the tools include 
+`tasks/BuildJasmParser.java`, `src/jepp/frontend/JePPFrontend.java`, 
+`src/jepp/interpreter/Interpreter.java`, and `src/jepp/interpreter/JeppInterpreter.java`.
+Source code for the parser and lexer generators is contained in `src/frontend` and 
+`src/util`. 
+
 ## Design Decisions
 
 - **Parsing algorithm**  
   Chose LR(1) parsing for its ability to handle all deterministic context-free
   languages while enabling parse tables to be precomputed. This provides broader
   language support than LL(k) and avoids the manual effort of recursive descent,
-  while remaining more efficient than general algorithms like Earley parsing.
+  while remaining more efficient than general algorithms like Earley parsing
 
 - **Custom regex engine**  
   Implemented a regex engine to control worst-case performance. Since
   tokenization requires only a restricted subset of regex features, the engine
   avoids backtracking and guarantees linear-time matching at the cost of reduced
-  expressiveness.
+  expressiveness
 
 - **Online parsing**  
   The parser is designed as an incremental (online) algorithm, consuming tokens
   as they are produced rather than requiring the full input stream. This enables
   bidirectional interaction between the parser and lexer: parsing state can
   influence tokenization decisions, allowing context-sensitive lexing (e.g.,
-  resolving identifiers based on prior declarations, as in the lexer
-  hack).
+  resolving identifiers based on prior declarations, as in the [lexer
+  hack](https://en.wikipedia.org/wiki/Lexer_hack))
 
 - **Language design (Jepp)**  
-  Uses dynamic typing with method dispatch based on the runtime types of
-  parameters, enabling both method and operator overloading while maintaining a
-  simple type system
+  Uses dynamic typing with runtime parameter-based method dispatch, enabling method
+  and operator overloading while keeping the type system simple
 
 ## Challenges
 
-- Profiled the parser generator using Java Flight Recorder to identify
-  bottlenecks, introducing aggressive memoization and finding that binary trees
-  outperformed hash tables for this access pattern
+- Profiled the parser generator using Java Flight Recorder to isolate bottlenecks;
+  introduced aggressive memoization and discovered that binary trees outperformed hash
+  tables for the memoized state lookups encountered when processing typical grammars
 - Designed an AST simplification pass to reduce tree depth and normalize
   structure, improving traversal and evaluation performance
 - Implemented scoped variable and method lookup in the interpreter, supporting
